@@ -13,9 +13,11 @@
 		41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF0B212DB6B40008E66B /* Assets.xcassets */; };
 		41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF0D212DB6B40008E66B /* LaunchScreen.storyboard */; };
 		41B4AF12212DB6B40008E66B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF11212DB6B40008E66B /* main.m */; };
+		A94DFA5EA5A7F199B9A4FE09 /* libPods-niudanios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02A9B9D301B91C1015EC5A55 /* Pods-niudanios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.debug.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.debug.xcconfig"; sourceTree = "<group>"; };
 		41B4AEFF212DB6B40008E66B /* niudanios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = niudanios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B4AF02212DB6B40008E66B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41B4AF03212DB6B40008E66B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		41B4AF0E212DB6B40008E66B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41B4AF10212DB6B40008E66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41B4AF11212DB6B40008E66B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-niudanios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.release.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A94DFA5EA5A7F199B9A4FE09 /* libPods-niudanios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E036F52C8B07511D6B096B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		41B4AEF6212DB6B40008E66B = {
 			isa = PBXGroup;
 			children = (
 				41B4AF01212DB6B40008E66B /* niudanios */,
 				41B4AF00212DB6B40008E66B /* Products */,
+				4E1E5BEE35A1C04FD36696F6 /* Pods */,
+				3E036F52C8B07511D6B096B2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +86,15 @@
 			path = niudanios;
 			sourceTree = "<group>";
 		};
+		4E1E5BEE35A1C04FD36696F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02A9B9D301B91C1015EC5A55 /* Pods-niudanios.debug.xcconfig */,
+				B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 41B4AF15212DB6B40008E66B /* Build configuration list for PBXNativeTarget "niudanios" */;
 			buildPhases = (
+				56A84602F5362BEE0E7C72CE /* [CP] Check Pods Manifest.lock */,
 				41B4AEFB212DB6B40008E66B /* Sources */,
 				41B4AEFC212DB6B40008E66B /* Frameworks */,
 				41B4AEFD212DB6B40008E66B /* Resources */,
+				40AA3DEEB76475AE50F1C673 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +123,7 @@
 		41B4AEF7212DB6B40008E66B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ND;
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = lsc;
 				TargetAttributes = {
@@ -136,6 +163,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40AA3DEEB76475AE50F1C673 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-niudanios/Pods-niudanios-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-niudanios/Pods-niudanios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56A84602F5362BEE0E7C72CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-niudanios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		41B4AEFB212DB6B40008E66B /* Sources */ = {
@@ -276,10 +348,12 @@
 		};
 		41B4AF16212DB6B40008E66B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02A9B9D301B91C1015EC5A55 /* Pods-niudanios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = niudanios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -289,10 +363,12 @@
 		};
 		41B4AF17212DB6B40008E66B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = niudanios/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
