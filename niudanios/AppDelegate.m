@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import <IQKeyboardManager.h>
+#import <AFNetworking.h>
+#import "NDBaseTabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,7 +19,54 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    [self IQKeyboardManagerInit];
+    [self SVProgressHUDInit];
+    [self AFNetWorkingInit];
+    
+    [NSURL URLWithString:@"www.baidu.com"];
+    
+    NDBaseTabBarController * tab = [[NDBaseTabBarController alloc] init];
+    self.window.rootViewController = tab;
+
+
+    [self.window makeKeyAndVisible];
     return YES;
+}
+#pragma mark  - KeyBoardInit
+-(void)IQKeyboardManagerInit
+{
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.enableAutoToolbar = NO;
+}
+
+#pragma mark  - SVProgressHUD
+-(void)SVProgressHUDInit{
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:0.8f]];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setMaximumDismissTimeInterval:2.0f];
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:15.0]];
+}
+
+#pragma mark  - AFNetWorkingInit
+-(void)AFNetWorkingInit
+{
+    [[AFNetworkReachabilityManager sharedManager]startMonitoring];
+    //网络状态监测
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        [[HLLShareManager shareMannager] setNetworkStatus:status];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_NETSTATUS_CHANGE object:nil userInfo:@{@"status":@(status)}];
+        if (![HLLShareManager shareMannager].isRegisterDevice) {
+           
+        }
+    }];
 }
 
 
