@@ -13,6 +13,19 @@
 		41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF0B212DB6B40008E66B /* Assets.xcassets */; };
 		41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF0D212DB6B40008E66B /* LaunchScreen.storyboard */; };
 		41B4AF12212DB6B40008E66B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF11212DB6B40008E66B /* main.m */; };
+		41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E3418F212E300100F19371 /* NDBaseNavigationController.m */; };
+		41E34193212E302700F19371 /* NDBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E34192212E302700F19371 /* NDBaseTabBarController.m */; };
+		41E34196212E303F00F19371 /* NDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E34195212E303F00F19371 /* NDBaseViewController.m */; };
+		41E3419B212E32D700F19371 /* NDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E34199212E32D700F19371 /* NDLoginViewController.m */; };
+		41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E3419A212E32D700F19371 /* NDLoginViewController.xib */; };
+		41E341A0212E32E800F19371 /* NDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E3419E212E32E800F19371 /* NDHomeViewController.m */; };
+		41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E3419F212E32E800F19371 /* NDHomeViewController.xib */; };
+		41E341A5212E32FD00F19371 /* NDNiudanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E341A3212E32FD00F19371 /* NDNiudanViewController.m */; };
+		41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E341A4212E32FD00F19371 /* NDNiudanViewController.xib */; };
+		41E341AA212E331400F19371 /* NDPackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E341A8212E331400F19371 /* NDPackageViewController.m */; };
+		41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E341A9212E331400F19371 /* NDPackageViewController.xib */; };
+		41E341AF212E332700F19371 /* NDMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E341AD212E332700F19371 /* NDMineViewController.m */; };
+		41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E341AE212E332700F19371 /* NDMineViewController.xib */; };
 		A94DFA5EA5A7F199B9A4FE09 /* libPods-niudanios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +41,28 @@
 		41B4AF0E212DB6B40008E66B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41B4AF10212DB6B40008E66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41B4AF11212DB6B40008E66B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		41E3418E212E300100F19371 /* NDBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBaseNavigationController.h; sourceTree = "<group>"; };
+		41E3418F212E300100F19371 /* NDBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDBaseNavigationController.m; sourceTree = "<group>"; };
+		41E34191212E302700F19371 /* NDBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBaseTabBarController.h; sourceTree = "<group>"; };
+		41E34192212E302700F19371 /* NDBaseTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDBaseTabBarController.m; sourceTree = "<group>"; };
+		41E34194212E303F00F19371 /* NDBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBaseViewController.h; sourceTree = "<group>"; };
+		41E34195212E303F00F19371 /* NDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDBaseViewController.m; sourceTree = "<group>"; };
+		41E34197212E30A800F19371 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		41E34198212E32D700F19371 /* NDLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDLoginViewController.h; sourceTree = "<group>"; };
+		41E34199212E32D700F19371 /* NDLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDLoginViewController.m; sourceTree = "<group>"; };
+		41E3419A212E32D700F19371 /* NDLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDLoginViewController.xib; sourceTree = "<group>"; };
+		41E3419D212E32E800F19371 /* NDHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeViewController.h; sourceTree = "<group>"; };
+		41E3419E212E32E800F19371 /* NDHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeViewController.m; sourceTree = "<group>"; };
+		41E3419F212E32E800F19371 /* NDHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDHomeViewController.xib; sourceTree = "<group>"; };
+		41E341A2212E32FD00F19371 /* NDNiudanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanViewController.h; sourceTree = "<group>"; };
+		41E341A3212E32FD00F19371 /* NDNiudanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanViewController.m; sourceTree = "<group>"; };
+		41E341A4212E32FD00F19371 /* NDNiudanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDNiudanViewController.xib; sourceTree = "<group>"; };
+		41E341A7212E331400F19371 /* NDPackageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPackageViewController.h; sourceTree = "<group>"; };
+		41E341A8212E331400F19371 /* NDPackageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPackageViewController.m; sourceTree = "<group>"; };
+		41E341A9212E331400F19371 /* NDPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDPackageViewController.xib; sourceTree = "<group>"; };
+		41E341AC212E332700F19371 /* NDMineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineViewController.h; sourceTree = "<group>"; };
+		41E341AD212E332700F19371 /* NDMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineViewController.m; sourceTree = "<group>"; };
+		41E341AE212E332700F19371 /* NDMineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineViewController.xib; sourceTree = "<group>"; };
 		6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-niudanios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.release.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +108,251 @@
 		41B4AF01212DB6B40008E66B /* niudanios */ = {
 			isa = PBXGroup;
 			children = (
+				41E34171212E2E9B00F19371 /* MAIN */,
+				41E34172212E2EA800F19371 /* FUNCTION */,
+				41E3418D212E2FAC00F19371 /* Other */,
+			);
+			path = niudanios;
+			sourceTree = "<group>";
+		};
+		41E34171212E2E9B00F19371 /* MAIN */ = {
+			isa = PBXGroup;
+			children = (
+				41E3418E212E300100F19371 /* NDBaseNavigationController.h */,
+				41E3418F212E300100F19371 /* NDBaseNavigationController.m */,
+				41E34191212E302700F19371 /* NDBaseTabBarController.h */,
+				41E34192212E302700F19371 /* NDBaseTabBarController.m */,
+				41E34194212E303F00F19371 /* NDBaseViewController.h */,
+				41E34195212E303F00F19371 /* NDBaseViewController.m */,
+			);
+			path = MAIN;
+			sourceTree = "<group>";
+		};
+		41E34172212E2EA800F19371 /* FUNCTION */ = {
+			isa = PBXGroup;
+			children = (
+				41E34173212E2EB100F19371 /* Login */,
+				41E34178212E2EEC00F19371 /* Home */,
+				41E3417D212E2F0300F19371 /* Niudan */,
+				41E34182212E2F7500F19371 /* Package */,
+				41E34187212E2F8300F19371 /* Mine */,
+			);
+			path = FUNCTION;
+			sourceTree = "<group>";
+		};
+		41E34173212E2EB100F19371 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				41E34174212E2EB100F19371 /* Controller */,
+				41E34175212E2EB100F19371 /* Model */,
+				41E34176212E2EB100F19371 /* Other */,
+				41E34177212E2EB100F19371 /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		41E34174212E2EB100F19371 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E34198212E32D700F19371 /* NDLoginViewController.h */,
+				41E34199212E32D700F19371 /* NDLoginViewController.m */,
+				41E3419A212E32D700F19371 /* NDLoginViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E34175212E2EB100F19371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41E34176212E2EB100F19371 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		41E34177212E2EB100F19371 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E34178212E2EEC00F19371 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				41E34179212E2EEC00F19371 /* Controller */,
+				41E3417A212E2EEC00F19371 /* Model */,
+				41E3417B212E2EEC00F19371 /* Other */,
+				41E3417C212E2EEC00F19371 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		41E34179212E2EEC00F19371 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E3419D212E32E800F19371 /* NDHomeViewController.h */,
+				41E3419E212E32E800F19371 /* NDHomeViewController.m */,
+				41E3419F212E32E800F19371 /* NDHomeViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E3417A212E2EEC00F19371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41E3417B212E2EEC00F19371 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		41E3417C212E2EEC00F19371 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E3417D212E2F0300F19371 /* Niudan */ = {
+			isa = PBXGroup;
+			children = (
+				41E3417E212E2F0300F19371 /* Controller */,
+				41E3417F212E2F0300F19371 /* Model */,
+				41E34180212E2F0300F19371 /* Other */,
+				41E34181212E2F0300F19371 /* View */,
+			);
+			path = Niudan;
+			sourceTree = "<group>";
+		};
+		41E3417E212E2F0300F19371 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E341A2212E32FD00F19371 /* NDNiudanViewController.h */,
+				41E341A3212E32FD00F19371 /* NDNiudanViewController.m */,
+				41E341A4212E32FD00F19371 /* NDNiudanViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E3417F212E2F0300F19371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41E34180212E2F0300F19371 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		41E34181212E2F0300F19371 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E34182212E2F7500F19371 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				41E34183212E2F7500F19371 /* Controller */,
+				41E34184212E2F7500F19371 /* Model */,
+				41E34185212E2F7500F19371 /* Other */,
+				41E34186212E2F7500F19371 /* View */,
+			);
+			path = Package;
+			sourceTree = "<group>";
+		};
+		41E34183212E2F7500F19371 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E341A7212E331400F19371 /* NDPackageViewController.h */,
+				41E341A8212E331400F19371 /* NDPackageViewController.m */,
+				41E341A9212E331400F19371 /* NDPackageViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E34184212E2F7500F19371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41E34185212E2F7500F19371 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		41E34186212E2F7500F19371 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E34187212E2F8300F19371 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				41E34188212E2F8300F19371 /* Controller */,
+				41E34189212E2F8300F19371 /* Model */,
+				41E3418A212E2F8300F19371 /* Other */,
+				41E3418B212E2F8300F19371 /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		41E34188212E2F8300F19371 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41E341AC212E332700F19371 /* NDMineViewController.h */,
+				41E341AD212E332700F19371 /* NDMineViewController.m */,
+				41E341AE212E332700F19371 /* NDMineViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		41E34189212E2F8300F19371 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41E3418A212E2F8300F19371 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		41E3418B212E2F8300F19371 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41E3418D212E2FAC00F19371 /* Other */ = {
+			isa = PBXGroup;
+			children = (
 				41B4AF02212DB6B40008E66B /* AppDelegate.h */,
 				41B4AF03212DB6B40008E66B /* AppDelegate.m */,
 				41B4AF05212DB6B40008E66B /* ViewController.h */,
@@ -82,8 +362,9 @@
 				41B4AF0D212DB6B40008E66B /* LaunchScreen.storyboard */,
 				41B4AF10212DB6B40008E66B /* Info.plist */,
 				41B4AF11212DB6B40008E66B /* main.m */,
+				41E34197212E30A800F19371 /* PrefixHeader.pch */,
 			);
-			path = niudanios;
+			name = Other;
 			sourceTree = "<group>";
 		};
 		4E1E5BEE35A1C04FD36696F6 /* Pods */ = {
@@ -156,8 +437,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
+				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
+				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
+				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
+				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
 				41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,9 +500,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */,
 				41B4AF07212DB6B40008E66B /* ViewController.m in Sources */,
+				41E34193212E302700F19371 /* NDBaseTabBarController.m in Sources */,
+				41E341A0212E32E800F19371 /* NDHomeViewController.m in Sources */,
 				41B4AF12212DB6B40008E66B /* main.m in Sources */,
+				41E3419B212E32D700F19371 /* NDLoginViewController.m in Sources */,
 				41B4AF04212DB6B40008E66B /* AppDelegate.m in Sources */,
+				41E341AF212E332700F19371 /* NDMineViewController.m in Sources */,
+				41E34196212E303F00F19371 /* NDBaseViewController.m in Sources */,
+				41E341A5212E32FD00F19371 /* NDNiudanViewController.m in Sources */,
+				41E341AA212E331400F19371 /* NDPackageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +646,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = niudanios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -367,6 +663,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PrefixHeader.pch";
 				INFOPLIST_FILE = niudanios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
