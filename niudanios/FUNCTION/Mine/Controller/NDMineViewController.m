@@ -9,9 +9,10 @@
 #import "NDMineViewController.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "UINavigationBar+Awesome.h"
+#import "NDMineTableViewCell.h"
 
 #define Head_H (kScreenWidth*(360.0/750))
-
+#define KheadViewH(x) ((x)*(kScreenWidth/375.0))
 @interface NDMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong) UIView * headView;
 
@@ -35,7 +36,7 @@
     [self.view addSubview:self.headView];
     [self.headView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(Head_H);
+        make.height.mas_equalTo(Head_H+(isIPhoneX?24:0));
     }];
     
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_a"]];
@@ -78,7 +79,7 @@
     
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(viewNav);
-        make.height.with.mas_equalTo(25);
+        make.height.width.mas_equalTo(25);
         make.right.mas_equalTo(self.headView).offset(-15);
     }];
     
@@ -90,10 +91,34 @@
     [self.headView addSubview:leftBtn];
     [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(viewNav);
-        make.height.with.mas_equalTo(25);
+        make.height.width.mas_equalTo(25);
         make.left.mas_equalTo(self.headView).offset(15);
     }];
     
+    
+    
+    UIImageView * imageHead = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_placehold"]];
+    imageHead.layer.cornerRadius = KheadViewH(60)/2.0;
+    imageHead.layer.masksToBounds = YES;
+    [self.headView addSubview:imageHead];
+    [imageHead mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(KheadViewH(60));
+        make.centerX.mas_equalTo(self.headView);
+        make.top.mas_equalTo(viewNav.mas_bottom).offset(KheadViewH(8));
+    }];
+    
+    
+    UILabel * labelName = [[UILabel alloc] init];
+    labelName.text = @"姓名";
+    labelName.textColor = [UIColor whiteColor];
+    labelName.textAlignment = NSTextAlignmentCenter;
+    labelName.font = [UIFont systemFontOfSize:16.0];
+    [self.headView addSubview:labelName];
+    [labelName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(self.headView);
+        make.left.mas_equalTo(self.headView).offset(10);
+        make.bottom.mas_equalTo(self.headView).offset(KheadViewH(-20));
+    }];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -104,6 +129,8 @@
     
     self.tableView.bounces = YES;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"NDMineTableViewCell" bundle:nil] forCellReuseIdentifier:@"NDMineTableViewCell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -152,10 +179,47 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.backgroundColor = [UIColor redColor];
-    return cell;
+    
+    if (indexPath.section == 0) {
+        NDMineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineTableViewCell"	 forIndexPath:indexPath];
+        cell.viewLine.hidden = NO;
+        if (indexPath.row == 0) {
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_ads"];
+            cell.labelName.text = @"全部订单";
+        }else if (indexPath.row == 1){
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_pd"];
+            cell.labelName.text = @"待发货";
+        }else if (indexPath.row == 2){
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_logistics"];
+            cell.labelName.text = @"待收货";
+        }else if (indexPath.row == 3){
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_rg"];
+            cell.labelName.text = @"已收货";
+            cell.viewLine.hidden = YES;
+        }
+        
+        
+        return cell;
+    }else if (indexPath.section == 2){
+        NDMineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineTableViewCell" forIndexPath:indexPath];
+        cell.viewLine.hidden = NO;
+        if (indexPath.row == 0) {
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_callservice"];
+            cell.labelName.text = @"联系客服";
+        }else if (indexPath.row == 1){
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_au"];
+            cell.labelName.text = @"关于我们";
+            cell.viewLine.hidden = YES;
+        }
+        
+        
+        return cell;
+    }else{
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        cell.backgroundColor = [UIColor redColor];
+        return cell;
+    }
 
 }
 

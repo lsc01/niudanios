@@ -225,6 +225,8 @@
 		41E34472212EFEEE00F19371 /* HLLShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E343A3212EFEED00F19371 /* HLLShareManager.m */; };
 		41E34473212EFEEE00F19371 /* HLLGetCurrentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E343A6212EFEED00F19371 /* HLLGetCurrentVC.m */; };
 		41E34474212EFEEE00F19371 /* HLLSysAuthorityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E343A8212EFEED00F19371 /* HLLSysAuthorityManager.m */; };
+		41E34478212F82F800F19371 /* NDMineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E34476212F82F800F19371 /* NDMineTableViewCell.m */; };
+		41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E34477212F82F800F19371 /* NDMineTableViewCell.xib */; };
 		A94DFA5EA5A7F199B9A4FE09 /* libPods-niudanios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */; };
 /* End PBXBuildFile section */
 
@@ -668,6 +670,9 @@
 		41E343A6212EFEED00F19371 /* HLLGetCurrentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLGetCurrentVC.m; sourceTree = "<group>"; };
 		41E343A7212EFEED00F19371 /* HLLSysAuthorityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSysAuthorityManager.h; sourceTree = "<group>"; };
 		41E343A8212EFEED00F19371 /* HLLSysAuthorityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSysAuthorityManager.m; sourceTree = "<group>"; };
+		41E34475212F82F800F19371 /* NDMineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineTableViewCell.h; sourceTree = "<group>"; };
+		41E34476212F82F800F19371 /* NDMineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineTableViewCell.m; sourceTree = "<group>"; };
+		41E34477212F82F800F19371 /* NDMineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineTableViewCell.xib; sourceTree = "<group>"; };
 		6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-niudanios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.release.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -918,9 +923,9 @@
 			isa = PBXGroup;
 			children = (
 				41E34188212E2F8300F19371 /* Controller */,
+				41E3418B212E2F8300F19371 /* View */,
 				41E34189212E2F8300F19371 /* Model */,
 				41E3418A212E2F8300F19371 /* Other */,
-				41E3418B212E2F8300F19371 /* View */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -952,6 +957,9 @@
 		41E3418B212E2F8300F19371 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41E34475212F82F800F19371 /* NDMineTableViewCell.h */,
+				41E34476212F82F800F19371 /* NDMineTableViewCell.m */,
+				41E34477212F82F800F19371 /* NDMineTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2062,6 +2070,7 @@
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
+				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
 				41E3446B212EFEEE00F19371 /* MLSelectPhoto.bundle in Resources */,
 				41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */,
@@ -2212,6 +2221,7 @@
 				41E343AD212EFEED00F19371 /* NSData+Encrypt.m in Sources */,
 				41E34424212EFEED00F19371 /* UIScrollView+APParallaxHeader.m in Sources */,
 				41E343B6212EFEED00F19371 /* NSDictionary+Merge.m in Sources */,
+				41E34478212F82F800F19371 /* NDMineTableViewCell.m in Sources */,
 				41E34403212EFEED00F19371 /* UIImage+Capture.m in Sources */,
 				41E343ED212EFEED00F19371 /* UIButton+CountDown.m in Sources */,
 				41E3440C212EFEED00F19371 /* UIImage+Resize.m in Sources */,
