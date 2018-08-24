@@ -10,6 +10,7 @@
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "UINavigationBar+Awesome.h"
 #import "NDMineTableViewCell.h"
+#import "NDMineFunctionCell.h"
 
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -79,7 +80,7 @@
     
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(viewNav);
-        make.height.width.mas_equalTo(25);
+        make.height.width.mas_equalTo(23);
         make.right.mas_equalTo(self.headView).offset(-15);
     }];
     
@@ -131,6 +132,7 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"NDMineTableViewCell" bundle:nil] forCellReuseIdentifier:@"NDMineTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NDMineFunctionCell" bundle:nil] forCellReuseIdentifier:@"NDMineFunctionCell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -153,7 +155,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 1) {
-        return 194.0f;
+        return (kScreenWidth*177.0/375);
     }
     
     return 44.0f;
@@ -215,16 +217,18 @@
         
         return cell;
     }else{
-        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        NDMineFunctionCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineFunctionCell" forIndexPath:indexPath];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        cell.backgroundColor = [UIColor redColor];
+        [cell setFunctionSelectedBlock:^(NSInteger tag) {
+            NSLog(@"tag:%d",tag);
+        }];
         return cell;
     }
 
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - 导航栏左右按钮点击

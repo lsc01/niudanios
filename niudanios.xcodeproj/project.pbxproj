@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41378AE921305D0A00076ADD /* NDMineFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AE721305D0A00076ADD /* NDMineFunctionCell.m */; };
+		41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */; };
 		41B4AF04212DB6B40008E66B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF03212DB6B40008E66B /* AppDelegate.m */; };
 		41B4AF07212DB6B40008E66B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF06212DB6B40008E66B /* ViewController.m */; };
 		41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF08212DB6B40008E66B /* Main.storyboard */; };
@@ -232,6 +234,9 @@
 
 /* Begin PBXFileReference section */
 		02A9B9D301B91C1015EC5A55 /* Pods-niudanios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.debug.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.debug.xcconfig"; sourceTree = "<group>"; };
+		41378AE621305D0A00076ADD /* NDMineFunctionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineFunctionCell.h; sourceTree = "<group>"; };
+		41378AE721305D0A00076ADD /* NDMineFunctionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineFunctionCell.m; sourceTree = "<group>"; };
+		41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineFunctionCell.xib; sourceTree = "<group>"; };
 		41B4AEFF212DB6B40008E66B /* niudanios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = niudanios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B4AF02212DB6B40008E66B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41B4AF03212DB6B40008E66B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -960,6 +965,9 @@
 				41E34475212F82F800F19371 /* NDMineTableViewCell.h */,
 				41E34476212F82F800F19371 /* NDMineTableViewCell.m */,
 				41E34477212F82F800F19371 /* NDMineTableViewCell.xib */,
+				41378AE621305D0A00076ADD /* NDMineFunctionCell.h */,
+				41378AE721305D0A00076ADD /* NDMineFunctionCell.m */,
+				41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2066,6 +2074,7 @@
 			files = (
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
+				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
@@ -2285,6 +2294,7 @@
 				41E34416212EFEED00F19371 /* UILabel+AutomaticWriting.m in Sources */,
 				41E3444A212EFEED00F19371 /* UIWebView+Canvas.m in Sources */,
 				41E343E0212EFEED00F19371 /* UIAlertView+Block.m in Sources */,
+				41378AE921305D0A00076ADD /* NDMineFunctionCell.m in Sources */,
 				41E3446C212EFEEE00F19371 /* HLLByteTransform.m in Sources */,
 				41E3441A212EFEED00F19371 /* UINavigationBar+Awesome.m in Sources */,
 				41E343DE212EFEED00F19371 /* NSMutableURLRequest+Upload.m in Sources */,
