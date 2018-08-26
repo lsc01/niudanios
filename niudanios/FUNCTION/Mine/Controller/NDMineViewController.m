@@ -11,6 +11,8 @@
 #import "UINavigationBar+Awesome.h"
 #import "NDMineTableViewCell.h"
 #import "NDMineFunctionCell.h"
+#import "NDSettingViewController.h"
+
 
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -185,6 +187,7 @@
     if (indexPath.section == 0) {
         NDMineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineTableViewCell"	 forIndexPath:indexPath];
         cell.viewLine.hidden = NO;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.row == 0) {
             cell.imageViewHead.image = [UIImage imageNamed:@"ic_ads"];
             cell.labelName.text = @"全部订单";
@@ -205,6 +208,7 @@
     }else if (indexPath.section == 2){
         NDMineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineTableViewCell" forIndexPath:indexPath];
         cell.viewLine.hidden = NO;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.row == 0) {
             cell.imageViewHead.image = [UIImage imageNamed:@"ic_callservice"];
             cell.labelName.text = @"联系客服";
@@ -229,10 +233,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 #pragma mark - 导航栏左右按钮点击
 -(void)navLeftBtnClick{
+    NDSettingViewController * settingVC = [[NDSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
     
 }
 -(void)navRightBtnClick{

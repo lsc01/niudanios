@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		41378AE921305D0A00076ADD /* NDMineFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AE721305D0A00076ADD /* NDMineFunctionCell.m */; };
 		41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */; };
+		41378AEE2132F8F500076ADD /* NDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AEC2132F8F500076ADD /* NDSettingViewController.m */; };
+		41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AED2132F8F500076ADD /* NDSettingViewController.xib */; };
+		41378AF22132FAFC00076ADD /* NDSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AF12132FAFC00076ADD /* NDSettingHeaderView.m */; };
+		41378AF42132FB0700076ADD /* NDSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AF32132FB0700076ADD /* NDSettingHeaderView.xib */; };
+		41378AF82133071B00076ADD /* NDSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AF62133071B00076ADD /* NDSettingTableViewCell.m */; };
+		41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AF72133071B00076ADD /* NDSettingTableViewCell.xib */; };
+		41378AFD21330B0200076ADD /* NDUpdatePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */; };
+		41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */; };
 		41B4AF04212DB6B40008E66B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF03212DB6B40008E66B /* AppDelegate.m */; };
 		41B4AF07212DB6B40008E66B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF06212DB6B40008E66B /* ViewController.m */; };
 		41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF08212DB6B40008E66B /* Main.storyboard */; };
@@ -237,6 +245,18 @@
 		41378AE621305D0A00076ADD /* NDMineFunctionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineFunctionCell.h; sourceTree = "<group>"; };
 		41378AE721305D0A00076ADD /* NDMineFunctionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineFunctionCell.m; sourceTree = "<group>"; };
 		41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineFunctionCell.xib; sourceTree = "<group>"; };
+		41378AEB2132F8F500076ADD /* NDSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDSettingViewController.h; sourceTree = "<group>"; };
+		41378AEC2132F8F500076ADD /* NDSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDSettingViewController.m; sourceTree = "<group>"; };
+		41378AED2132F8F500076ADD /* NDSettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDSettingViewController.xib; sourceTree = "<group>"; };
+		41378AF02132FAFC00076ADD /* NDSettingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDSettingHeaderView.h; sourceTree = "<group>"; };
+		41378AF12132FAFC00076ADD /* NDSettingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDSettingHeaderView.m; sourceTree = "<group>"; };
+		41378AF32132FB0700076ADD /* NDSettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDSettingHeaderView.xib; sourceTree = "<group>"; };
+		41378AF52133071B00076ADD /* NDSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDSettingTableViewCell.h; sourceTree = "<group>"; };
+		41378AF62133071B00076ADD /* NDSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDSettingTableViewCell.m; sourceTree = "<group>"; };
+		41378AF72133071B00076ADD /* NDSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDSettingTableViewCell.xib; sourceTree = "<group>"; };
+		41378AFA21330B0200076ADD /* NDUpdatePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDUpdatePhoneViewController.h; sourceTree = "<group>"; };
+		41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDUpdatePhoneViewController.m; sourceTree = "<group>"; };
+		41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDUpdatePhoneViewController.xib; sourceTree = "<group>"; };
 		41B4AEFF212DB6B40008E66B /* niudanios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = niudanios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B4AF02212DB6B40008E66B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41B4AF03212DB6B40008E66B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -941,6 +961,12 @@
 				41E341AC212E332700F19371 /* NDMineViewController.h */,
 				41E341AD212E332700F19371 /* NDMineViewController.m */,
 				41E341AE212E332700F19371 /* NDMineViewController.xib */,
+				41378AEB2132F8F500076ADD /* NDSettingViewController.h */,
+				41378AEC2132F8F500076ADD /* NDSettingViewController.m */,
+				41378AED2132F8F500076ADD /* NDSettingViewController.xib */,
+				41378AFA21330B0200076ADD /* NDUpdatePhoneViewController.h */,
+				41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */,
+				41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -968,6 +994,12 @@
 				41378AE621305D0A00076ADD /* NDMineFunctionCell.h */,
 				41378AE721305D0A00076ADD /* NDMineFunctionCell.m */,
 				41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */,
+				41378AF02132FAFC00076ADD /* NDSettingHeaderView.h */,
+				41378AF12132FAFC00076ADD /* NDSettingHeaderView.m */,
+				41378AF32132FB0700076ADD /* NDSettingHeaderView.xib */,
+				41378AF52133071B00076ADD /* NDSettingTableViewCell.h */,
+				41378AF62133071B00076ADD /* NDSettingTableViewCell.m */,
+				41378AF72133071B00076ADD /* NDSettingTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2074,13 +2106,17 @@
 			files = (
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
+				41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */,
+				41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */,
 				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
+				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
 				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
+				41378AF42132FB0700076ADD /* NDSettingHeaderView.xib in Resources */,
 				41E3446B212EFEEE00F19371 /* MLSelectPhoto.bundle in Resources */,
 				41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */,
 			);
@@ -2179,6 +2215,7 @@
 				41E343DA212EFEED00F19371 /* NSTimer+Blocks.m in Sources */,
 				41E343AE212EFEED00F19371 /* NSData+Gzip.m in Sources */,
 				41E34193212E302700F19371 /* NDBaseTabBarController.m in Sources */,
+				41378AFD21330B0200076ADD /* NDUpdatePhoneViewController.m in Sources */,
 				41E343B5212EFEED00F19371 /* NSDictionary+JSONString.m in Sources */,
 				41E3442F212EFEED00F19371 /* UITextView+PlaceHolder.m in Sources */,
 				41E34466212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
@@ -2216,6 +2253,7 @@
 				41E343C7212EFEED00F19371 /* NSString+DictionaryValue.m in Sources */,
 				41E343BA212EFEED00F19371 /* NSIndexPath+Offset.m in Sources */,
 				41E3444B212EFEED00F19371 /* UIWebView+JS.m in Sources */,
+				41378AF82133071B00076ADD /* NDSettingTableViewCell.m in Sources */,
 				41E3444F212EFEED00F19371 /* UIWebVIew+SwipeGesture.m in Sources */,
 				41E34435212EFEED00F19371 /* UIView+Find.m in Sources */,
 				41E343F6212EFEED00F19371 /* UIColor+Random.m in Sources */,
@@ -2277,6 +2315,8 @@
 				41E34417212EFEED00F19371 /* UILabel+AutoSize.m in Sources */,
 				41E343FD212EFEED00F19371 /* UIFont+WDCustomLoader.m in Sources */,
 				41E3445B212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
+				41378AEE2132F8F500076ADD /* NDSettingViewController.m in Sources */,
+				41378AF22132FAFC00076ADD /* NDSettingHeaderView.m in Sources */,
 				41E3442D212EFEED00F19371 /* UITextField+Shake.m in Sources */,
 				41E34412212EFEED00F19371 /* UIImageView+FaceAwareFill.m in Sources */,
 				41E34430212EFEED00F19371 /* UITextView+Select.m in Sources */,

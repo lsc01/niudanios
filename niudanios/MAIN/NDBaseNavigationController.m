@@ -69,7 +69,7 @@
 {
     UIButton *LeftItem = [UIButton buttonWithType:UIButtonTypeSystem];
     LeftItem.frame = CGRectMake(0, 0, 25, 25);
-    [LeftItem setBackgroundImage:[UIImage imageNamed:@"ic_back"] forState:UIControlStateNormal];
+    [LeftItem setBackgroundImage:[UIImage imageNamed:@"ic_back2"] forState:UIControlStateNormal];
     [LeftItem addTarget:self action:@selector(sup_BackBtnClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *customLeftItem = [[UIBarButtonItem alloc] initWithCustomView:LeftItem];
     Controller.navigationItem.leftBarButtonItem = customLeftItem;
