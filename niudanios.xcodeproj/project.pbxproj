@@ -17,6 +17,15 @@
 		41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AF72133071B00076ADD /* NDSettingTableViewCell.xib */; };
 		41378AFD21330B0200076ADD /* NDUpdatePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */; };
 		41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */; };
+		41AEAC4521344706003FE10B /* NDHomeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC4421344706003FE10B /* NDHomeHeadView.m */; };
+		41AEAC4821344B19003FE10B /* NDHomeSetionHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC4721344B19003FE10B /* NDHomeSetionHeadView.m */; };
+		41AEAC4A21344B2C003FE10B /* NDHomeSetionHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC4921344B2C003FE10B /* NDHomeSetionHeadView.xib */; };
+		41AEAC4E21345375003FE10B /* NDHomeGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC4C21345375003FE10B /* NDHomeGoodsCell.m */; };
+		41AEAC4F21345375003FE10B /* NDHomeGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC4D21345375003FE10B /* NDHomeGoodsCell.xib */; };
+		41AEAC532134538F003FE10B /* NDHomeLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC512134538F003FE10B /* NDHomeLikeCell.m */; };
+		41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC522134538F003FE10B /* NDHomeLikeCell.xib */; };
+		41AEAC5821345E35003FE10B /* NDHomeGoodsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC5621345E35003FE10B /* NDHomeGoodsCollectionViewCell.m */; };
+		41AEAC5921345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC5721345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib */; };
 		41B4AF04212DB6B40008E66B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF03212DB6B40008E66B /* AppDelegate.m */; };
 		41B4AF07212DB6B40008E66B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF06212DB6B40008E66B /* ViewController.m */; };
 		41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF08212DB6B40008E66B /* Main.storyboard */; };
@@ -257,6 +266,20 @@
 		41378AFA21330B0200076ADD /* NDUpdatePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDUpdatePhoneViewController.h; sourceTree = "<group>"; };
 		41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDUpdatePhoneViewController.m; sourceTree = "<group>"; };
 		41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDUpdatePhoneViewController.xib; sourceTree = "<group>"; };
+		41AEAC4321344706003FE10B /* NDHomeHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeHeadView.h; sourceTree = "<group>"; };
+		41AEAC4421344706003FE10B /* NDHomeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeHeadView.m; sourceTree = "<group>"; };
+		41AEAC4621344B19003FE10B /* NDHomeSetionHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeSetionHeadView.h; sourceTree = "<group>"; };
+		41AEAC4721344B19003FE10B /* NDHomeSetionHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeSetionHeadView.m; sourceTree = "<group>"; };
+		41AEAC4921344B2C003FE10B /* NDHomeSetionHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDHomeSetionHeadView.xib; sourceTree = "<group>"; };
+		41AEAC4B21345375003FE10B /* NDHomeGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeGoodsCell.h; sourceTree = "<group>"; };
+		41AEAC4C21345375003FE10B /* NDHomeGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeGoodsCell.m; sourceTree = "<group>"; };
+		41AEAC4D21345375003FE10B /* NDHomeGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDHomeGoodsCell.xib; sourceTree = "<group>"; };
+		41AEAC502134538F003FE10B /* NDHomeLikeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeLikeCell.h; sourceTree = "<group>"; };
+		41AEAC512134538F003FE10B /* NDHomeLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeLikeCell.m; sourceTree = "<group>"; };
+		41AEAC522134538F003FE10B /* NDHomeLikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDHomeLikeCell.xib; sourceTree = "<group>"; };
+		41AEAC5521345E35003FE10B /* NDHomeGoodsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeGoodsCollectionViewCell.h; sourceTree = "<group>"; };
+		41AEAC5621345E35003FE10B /* NDHomeGoodsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeGoodsCollectionViewCell.m; sourceTree = "<group>"; };
+		41AEAC5721345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDHomeGoodsCollectionViewCell.xib; sourceTree = "<group>"; };
 		41B4AEFF212DB6B40008E66B /* niudanios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = niudanios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B4AF02212DB6B40008E66B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41B4AF03212DB6B40008E66B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -856,6 +879,20 @@
 		41E3417C212E2EEC00F19371 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41AEAC4321344706003FE10B /* NDHomeHeadView.h */,
+				41AEAC4421344706003FE10B /* NDHomeHeadView.m */,
+				41AEAC4621344B19003FE10B /* NDHomeSetionHeadView.h */,
+				41AEAC4721344B19003FE10B /* NDHomeSetionHeadView.m */,
+				41AEAC4921344B2C003FE10B /* NDHomeSetionHeadView.xib */,
+				41AEAC4B21345375003FE10B /* NDHomeGoodsCell.h */,
+				41AEAC4C21345375003FE10B /* NDHomeGoodsCell.m */,
+				41AEAC4D21345375003FE10B /* NDHomeGoodsCell.xib */,
+				41AEAC502134538F003FE10B /* NDHomeLikeCell.h */,
+				41AEAC512134538F003FE10B /* NDHomeLikeCell.m */,
+				41AEAC522134538F003FE10B /* NDHomeLikeCell.xib */,
+				41AEAC5521345E35003FE10B /* NDHomeGoodsCollectionViewCell.h */,
+				41AEAC5621345E35003FE10B /* NDHomeGoodsCollectionViewCell.m */,
+				41AEAC5721345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2104,15 +2141,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41AEAC5921345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib in Resources */,
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
 				41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */,
+				41AEAC4A21344B2C003FE10B /* NDHomeSetionHeadView.xib in Resources */,
 				41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */,
 				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
+				41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
+				41AEAC4F21345375003FE10B /* NDHomeGoodsCell.xib in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
 				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
@@ -2192,6 +2233,7 @@
 				41E34454212EFEED00F19371 /* HLLAlertCustomVC.m in Sources */,
 				41E343F9212EFEED00F19371 /* UIControl+Block.m in Sources */,
 				41E34428212EFEED00F19371 /* UITableViewCell+NIB.m in Sources */,
+				41AEAC532134538F003FE10B /* NDHomeLikeCell.m in Sources */,
 				41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */,
 				41E343B2212EFEED00F19371 /* NSDate+Formatter.m in Sources */,
 				41E343E8212EFEED00F19371 /* UIBezierPath+LxThroughPointsBezier.m in Sources */,
@@ -2225,6 +2267,7 @@
 				41E343BB212EFEED00F19371 /* NSObject+AddProperty.m in Sources */,
 				41E34470212EFEEE00F19371 /* NullSafe.m in Sources */,
 				41E343D4212EFEED00F19371 /* NSString+Size.m in Sources */,
+				41AEAC4E21345375003FE10B /* NDHomeGoodsCell.m in Sources */,
 				41E343D0212EFEED00F19371 /* NSString+RegexCategory.m in Sources */,
 				41E343EF212EFEED00F19371 /* UIButton+LXMImagePosition.m in Sources */,
 				41E34465212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
@@ -2278,6 +2321,7 @@
 				41E343BF212EFEED00F19371 /* NSObject+EasyCopy.m in Sources */,
 				41E343FB212EFEED00F19371 /* UIDevice+PasscodeStatus.m in Sources */,
 				41E34411212EFEED00F19371 /* UIImageView+BetterFace.m in Sources */,
+				41AEAC4821344B19003FE10B /* NDHomeSetionHeadView.m in Sources */,
 				41E3440B212EFEED00F19371 /* UIImage+RemoteSize.m in Sources */,
 				41E343FA212EFEED00F19371 /* UIDevice+Hardware.m in Sources */,
 				41E343F5212EFEED00F19371 /* UIColor+Modify.m in Sources */,
@@ -2337,6 +2381,7 @@
 				41378AE921305D0A00076ADD /* NDMineFunctionCell.m in Sources */,
 				41E3446C212EFEEE00F19371 /* HLLByteTransform.m in Sources */,
 				41E3441A212EFEED00F19371 /* UINavigationBar+Awesome.m in Sources */,
+				41AEAC4521344706003FE10B /* NDHomeHeadView.m in Sources */,
 				41E343DE212EFEED00F19371 /* NSMutableURLRequest+Upload.m in Sources */,
 				41E343B0212EFEED00F19371 /* NSData+SDDataCache.m in Sources */,
 				41E3446A212EFEEE00F19371 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
@@ -2350,6 +2395,7 @@
 				41E343DF212EFEED00F19371 /* NSURLRequest+ParamsFromDictionary.m in Sources */,
 				41E3443A212EFEED00F19371 /* UIView+Recursion.m in Sources */,
 				41E34407212EFEED00F19371 /* UIImage+GIF2.m in Sources */,
+				41AEAC5821345E35003FE10B /* NDHomeGoodsCollectionViewCell.m in Sources */,
 				41E343CD212EFEED00F19371 /* NSString+MIME.m in Sources */,
 				41E343CF212EFEED00F19371 /* NSString+QMUI.m in Sources */,
 				41E3441E212EFEED00F19371 /* UINavigationItem+Margin.m in Sources */,

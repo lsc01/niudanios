@@ -19,7 +19,7 @@
     
     [self setupNavigationBarTheme];
     // Do any additional setup after loading the view.
-    [self.navigationBar setShadowImage:[self createImageWithColor:[UIColor whiteColor]]];
+    [self.navigationBar setShadowImage:[self createImageWithColor:HEXCOLOR(0x1dcb7c)]];
 }
 
 #pragma mark - 利用颜色创建颜色图片

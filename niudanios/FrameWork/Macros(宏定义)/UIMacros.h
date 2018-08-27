@@ -27,7 +27,7 @@
 
 // 状态栏和导航栏的高度
 #define kNavigationBarAndStateBarHeight (44.0f+kStateBarHeight)
-#define kTabbarHeight 49.0f
+#define kTabbarHeight (49.0f+kBottomHeight)
 #define kStateBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 //底部
 #define kBottomHeight (isIPhoneX ? 34 : 0)
