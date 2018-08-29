@@ -26,6 +26,11 @@
 		41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC522134538F003FE10B /* NDHomeLikeCell.xib */; };
 		41AEAC5821345E35003FE10B /* NDHomeGoodsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC5621345E35003FE10B /* NDHomeGoodsCollectionViewCell.m */; };
 		41AEAC5921345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC5721345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib */; };
+		41AEAC5C2136FB6A003FE10B /* NDNiudanFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC5B2136FB6A003FE10B /* NDNiudanFilterView.m */; };
+		41AEAC622136FD41003FE10B /* NDNiudanFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC602136FD41003FE10B /* NDNiudanFilterCell.m */; };
+		41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC612136FD41003FE10B /* NDNiudanFilterCell.xib */; };
+		41AEAC6721370345003FE10B /* NDNiudanGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41AEAC6521370345003FE10B /* NDNiudanGoodsCell.m */; };
+		41AEAC6821370345003FE10B /* NDNiudanGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41AEAC6621370345003FE10B /* NDNiudanGoodsCell.xib */; };
 		41B4AF04212DB6B40008E66B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF03212DB6B40008E66B /* AppDelegate.m */; };
 		41B4AF07212DB6B40008E66B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF06212DB6B40008E66B /* ViewController.m */; };
 		41B4AF0A212DB6B40008E66B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF08212DB6B40008E66B /* Main.storyboard */; };
@@ -280,6 +285,14 @@
 		41AEAC5521345E35003FE10B /* NDHomeGoodsCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeGoodsCollectionViewCell.h; sourceTree = "<group>"; };
 		41AEAC5621345E35003FE10B /* NDHomeGoodsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeGoodsCollectionViewCell.m; sourceTree = "<group>"; };
 		41AEAC5721345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDHomeGoodsCollectionViewCell.xib; sourceTree = "<group>"; };
+		41AEAC5A2136FB6A003FE10B /* NDNiudanFilterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanFilterView.h; sourceTree = "<group>"; };
+		41AEAC5B2136FB6A003FE10B /* NDNiudanFilterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanFilterView.m; sourceTree = "<group>"; };
+		41AEAC5F2136FD41003FE10B /* NDNiudanFilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanFilterCell.h; sourceTree = "<group>"; };
+		41AEAC602136FD41003FE10B /* NDNiudanFilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanFilterCell.m; sourceTree = "<group>"; };
+		41AEAC612136FD41003FE10B /* NDNiudanFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDNiudanFilterCell.xib; sourceTree = "<group>"; };
+		41AEAC6421370345003FE10B /* NDNiudanGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanGoodsCell.h; sourceTree = "<group>"; };
+		41AEAC6521370345003FE10B /* NDNiudanGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanGoodsCell.m; sourceTree = "<group>"; };
+		41AEAC6621370345003FE10B /* NDNiudanGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDNiudanGoodsCell.xib; sourceTree = "<group>"; };
 		41B4AEFF212DB6B40008E66B /* niudanios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = niudanios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B4AF02212DB6B40008E66B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41B4AF03212DB6B40008E66B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -935,6 +948,14 @@
 		41E34181212E2F0300F19371 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41AEAC5A2136FB6A003FE10B /* NDNiudanFilterView.h */,
+				41AEAC5B2136FB6A003FE10B /* NDNiudanFilterView.m */,
+				41AEAC5F2136FD41003FE10B /* NDNiudanFilterCell.h */,
+				41AEAC602136FD41003FE10B /* NDNiudanFilterCell.m */,
+				41AEAC612136FD41003FE10B /* NDNiudanFilterCell.xib */,
+				41AEAC6421370345003FE10B /* NDNiudanGoodsCell.h */,
+				41AEAC6521370345003FE10B /* NDNiudanGoodsCell.m */,
+				41AEAC6621370345003FE10B /* NDNiudanGoodsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2143,6 +2164,7 @@
 			files = (
 				41AEAC5921345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib in Resources */,
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
+				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
 				41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */,
 				41AEAC4A21344B2C003FE10B /* NDHomeSetionHeadView.xib in Resources */,
@@ -2156,6 +2178,7 @@
 				41AEAC4F21345375003FE10B /* NDHomeGoodsCell.xib in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
 				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
+				41AEAC6821370345003FE10B /* NDNiudanGoodsCell.xib in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
 				41378AF42132FB0700076ADD /* NDSettingHeaderView.xib in Resources */,
 				41E3446B212EFEEE00F19371 /* MLSelectPhoto.bundle in Resources */,
@@ -2223,6 +2246,7 @@
 				41E34450212EFEED00F19371 /* WebView+Debug.m in Sources */,
 				41E34441212EFEED00F19371 /* UIViewController+BackButtonItemTitle.m in Sources */,
 				41E343EA212EFEED00F19371 /* UIBezierPath+Symbol.m in Sources */,
+				41AEAC622136FD41003FE10B /* NDNiudanFilterCell.m in Sources */,
 				41E34471212EFEEE00F19371 /* HLLPhoneModel.m in Sources */,
 				41E3442A212EFEED00F19371 /* UITextField+Blocks.m in Sources */,
 				41E343BD212EFEED00F19371 /* NSObject+AutoCoding.m in Sources */,
@@ -2346,6 +2370,7 @@
 				41E343E2212EFEED00F19371 /* UIApplication+KeyboardFrame.m in Sources */,
 				41E343E7212EFEED00F19371 /* UIBezierPath+Length.m in Sources */,
 				41E343E5212EFEED00F19371 /* UIBarButtonItem+Action.m in Sources */,
+				41AEAC6721370345003FE10B /* NDNiudanGoodsCell.m in Sources */,
 				41E34440212EFEED00F19371 /* UIViewController+BackButtonHandler.m in Sources */,
 				41E343CE212EFEED00F19371 /* NSString+Pinyin.m in Sources */,
 				41E34451212EFEED00F19371 /* UIWindow+Hierarchy.m in Sources */,
@@ -2354,6 +2379,7 @@
 				41E343B8212EFEED00F19371 /* NSDictionary+XML.m in Sources */,
 				41E343BC212EFEED00F19371 /* NSObject+AppInfo.m in Sources */,
 				41E34425212EFEED00F19371 /* UIScrollView+Pages.m in Sources */,
+				41AEAC5C2136FB6A003FE10B /* NDNiudanFilterView.m in Sources */,
 				41E343DD212EFEED00F19371 /* NSURLConnection+SelfSigned.m in Sources */,
 				41E343B3212EFEED00F19371 /* NSDateFormatter+Make.m in Sources */,
 				41E34417212EFEED00F19371 /* UILabel+AutoSize.m in Sources */,
