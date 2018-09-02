@@ -7,8 +7,12 @@
 //
 
 #import "NDLoginViewController.h"
-
+#import "NDRegisterViewController.h"
 @interface NDLoginViewController ()
+@property (weak, nonatomic) IBOutlet UIView *viewInputBg;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldPwd;
+@property (weak, nonatomic) IBOutlet UIButton *btnLogin;
 
 @end
 
@@ -17,21 +21,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"登录";
+    [self setNav];
+    [self setUI];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setNav{
+    UIButton * btnRegist = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btnRegist setTitle:@"注册" forState:UIControlStateNormal];
+    [btnRegist setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    btnRegist.titleLabel.font = [UIFont systemFontOfSize:14];
+    [btnRegist addTarget:self action:@selector(registerBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:btnRegist];
+    self.navigationItem.rightBarButtonItem = item;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)registerBtnClick{
+    NDRegisterViewController * registerVC = [[NDRegisterViewController alloc] init];
+    [self.navigationController pushViewController:registerVC animated:YES];
 }
-*/
+
+-(void)setUI{
+    self.viewInputBg.layer.cornerRadius = 4;
+    self.viewInputBg.clipsToBounds = YES;
+    
+    
+    self.btnLogin.layer.cornerRadius = 4;
+    self.btnLogin.clipsToBounds = YES;
+}
+
+- (IBAction)loginClick:(id)sender {
+}
+- (IBAction)wechatLoginClick:(id)sender {
+}
+- (IBAction)qqLoginClick:(id)sender {
+}
 
 @end

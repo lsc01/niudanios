@@ -1,33 +1,30 @@
 //
-//  NDSettingViewController.m
+//  NDMIneDataViewController.m
 //  niudanios
 //
-//  Created by lsc on 2018/8/26.
+//  Created by lsc on 2018/9/2.
 //  Copyright © 2018年 lsc. All rights reserved.
 //
 
-#import "NDSettingViewController.h"
-#import "NDSettingTableViewCell.h"
-#import "NDSettingHeaderView.h"
-#import "NDUpdatePhoneViewController.h"
 #import "NDMIneDataViewController.h"
-
-@interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic ,strong) NDSettingHeaderView * headView;
+#import "NDMineDataCell.h"
+#import "NDMineDataHeaderView.h"
+#import "NDUpdatePhoneViewController.h"
+@interface NDMIneDataViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic ,strong) NDMineDataHeaderView * headView;
 
 @property (nonatomic ,strong) UIView * viewFooter;
 
 @property(nonatomic,strong)UITableView *tableView;
 
-
 @end
 
-@implementation NDSettingViewController
+@implementation NDMIneDataViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"设置";
+    self.title = @"账号资料";
     [self setUI];
 }
 
@@ -44,14 +41,14 @@
     self.tableView.tableFooterView = self.viewFooter;
     self.tableView.bounces = YES;
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"NDSettingTableViewCell" bundle:nil] forCellReuseIdentifier:@"NDSettingTableViewCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NDMineDataCell" bundle:nil] forCellReuseIdentifier:@"NDMineDataCell"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
 }
 
--(void)exitBtnClick{
+-(void)saveBtnClick{
     
 }
 
@@ -60,7 +57,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 1;
     
 }
 
@@ -74,8 +71,6 @@
     
     if(section == 0){
         return 3;
-    }else if(section == 1){
-        return 2;
     }else{
         return 0;
     }
@@ -89,37 +84,23 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
-        NDSettingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDSettingTableViewCell"     forIndexPath:indexPath];
+        NDMineDataCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineDataCell"  forIndexPath:indexPath];
         cell.viewLine.hidden = NO;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.switchVoice.hidden = YES;
-        cell.imageViewRight.hidden = NO;
+    
         if (indexPath.row == 0) {
-            
-            cell.labelName.text = @"账号资料";
+            cell.btnSelect.enabled = NO;
+            [cell.btnSelect setTitle:@"宋钟敏" forState:UIControlStateDisabled];
+            cell.labelTitle.text = @"昵称";
         }else if (indexPath.row == 1){
-            
-            cell.labelName.text = @"修改手机号";
+            cell.btnSelect.enabled = YES;
+            [cell.btnSelect setTitle:@"请选择" forState:UIControlStateNormal];
+            cell.labelTitle.text = @"性别";
         }else if (indexPath.row == 2){
-            
-            cell.labelName.text = @"修改密码";
-        }
-        
-        
-        return cell;
-    }else if (indexPath.section == 1){
-        NDSettingTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDSettingTableViewCell" forIndexPath:indexPath];
-        cell.viewLine.hidden = NO;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (indexPath.row == 0) {
-            cell.labelName.text = @"声音";
-            cell.switchVoice.hidden = NO;
-            cell.imageViewRight.hidden = YES;
-        }else if (indexPath.row == 1){
-            cell.labelName.text = @"清除缓存";
             cell.viewLine.hidden = YES;
-            cell.switchVoice.hidden = YES;
-            cell.imageViewRight.hidden = NO;
+            cell.btnSelect.enabled = YES;
+            [cell.btnSelect setTitle:@"请选择" forState:UIControlStateNormal];
+            cell.labelTitle.text = @"出生年月";
         }
         
         
@@ -131,23 +112,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            NDMIneDataViewController * mineDataVC = [[NDMIneDataViewController alloc] init];
-            [self.navigationController pushViewController:mineDataVC animated:YES];
-        }else if (indexPath.row == 1) {
-            NDUpdatePhoneViewController * updatePhone = [[NDUpdatePhoneViewController alloc] init];
-            [self.navigationController pushViewController:updatePhone animated:YES];
-        }
-    }
 }
 
 
 
 
--(NDSettingHeaderView *)headView{
+-(NDMineDataHeaderView *)headView{
     if(_headView == nil){
-        _headView = [[NSBundle mainBundle] loadNibNamed:@"NDSettingHeaderView" owner:self options:nil].firstObject;
+        _headView = [[NSBundle mainBundle] loadNibNamed:@"NDMineDataHeaderView" owner:self options:nil].firstObject;
         _headView.frame = CGRectMake(0, 0, kScreenWidth, 74);
         _headView.backgroundColor = [UIColor whiteColor];
     }
@@ -160,11 +132,11 @@
         _viewFooter.frame = CGRectMake(0, 0, kScreenWidth, 64);
         _viewFooter.backgroundColor = [UIColor clearColor];
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setBackgroundColor:[UIColor whiteColor]];
-        [btn setTitle:@"退出" forState:UIControlStateNormal];
-        [btn setTitleColor:HEXCOLOR(0x1dcb7c) forState:UIControlStateNormal];
+        [btn setBackgroundColor:HEXCOLOR(0x1dcb7c)];
+        [btn setTitle:@"保存" forState:UIControlStateNormal];
+        [btn setTitleColor:HEXCOLOR(0xffffff) forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:16];
-        [btn addTarget:self action:@selector(exitBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(saveBtnClick) forControlEvents:UIControlEventTouchUpInside];
         btn.frame = CGRectMake(15, 20, kScreenWidth-30, 44);
         btn.layer.cornerRadius = 4;
         btn.layer.masksToBounds = YES;

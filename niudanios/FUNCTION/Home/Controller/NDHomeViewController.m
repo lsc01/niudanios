@@ -11,11 +11,14 @@
 #import "NDHomeSetionHeadView.h"
 #import "NDHomeLikeCell.h"
 #import "NDHomeGoodsCell.h"
+
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
 
 @property(nonatomic,strong)UITableView *tableView;
+
+
 
 @end
 

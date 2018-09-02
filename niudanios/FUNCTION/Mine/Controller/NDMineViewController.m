@@ -12,7 +12,8 @@
 #import "NDMineTableViewCell.h"
 #import "NDMineFunctionCell.h"
 #import "NDSettingViewController.h"
-
+#import "NDLoginViewController.h"
+#import "NDMineOrderViewController.h"
 
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -225,6 +226,8 @@
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell setFunctionSelectedBlock:^(NSInteger tag) {
             NSLog(@"tag:%d",tag);
+            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+            [self.navigationController pushViewController:loginVC animated:YES];
         }];
         return cell;
     }
@@ -233,6 +236,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        NDMineOrderViewController * orderVC = [[NDMineOrderViewController alloc] init];
+        [self.navigationController pushViewController:orderVC animated:YES];
+    }
+    
     
 }
 

@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "SDCycleScrollView.h"
-
+#import "HRAdView.h"
 #define cycleView_H (kScreenWidth*(380.0/750))
 
 @interface NDHomeHeadView : UIView<SDCycleScrollViewDelegate>
 @property (nonatomic ,strong) SDCycleScrollView *cycleView;//轮播图
 
 @property (nonatomic ,strong) UIView * viewBottomBg;
+@property (nonatomic, strong) HRAdView *adView;
+
+@property (nonatomic ,strong) NSArray * arrayMsgData;
 @end
