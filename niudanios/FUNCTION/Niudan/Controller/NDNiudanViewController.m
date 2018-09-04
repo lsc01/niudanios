@@ -50,8 +50,8 @@
     
     self.btnSearch.layer.cornerRadius = 4;
     self.btnSearch.layer.masksToBounds = YES;
-    
     self.filterView.hidden = YES;
+    
     
     [self.view addSubview:self.collectionView];
     

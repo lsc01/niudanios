@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDNiudanFilterModel.h"
 @interface NDNiudanFilterView : UIView<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic ,strong) NSArray <NDNiudanFilterModel *> * arrayModel;
+
+
+@property (nonatomic ,copy) void(^selectRowBlock)(NSInteger row);
+-(void)setSelectRowBlock:(void (^)(NSInteger row))selectRowBlock;
+
 @end

@@ -14,6 +14,8 @@
 #import "NDSettingViewController.h"
 #import "NDLoginViewController.h"
 #import "NDMineOrderViewController.h"
+#import "NDMyWalletViewController.h"
+
 
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -240,6 +242,11 @@
     if (indexPath.section == 0) {
         NDMineOrderViewController * orderVC = [[NDMineOrderViewController alloc] init];
         [self.navigationController pushViewController:orderVC animated:YES];
+    }else if (indexPath.section == 2){
+        if (indexPath.row == 1) {
+            NDMyWalletViewController * vc = [[NDMyWalletViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     
     

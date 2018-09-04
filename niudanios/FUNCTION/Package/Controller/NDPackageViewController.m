@@ -7,8 +7,19 @@
 //
 
 #import "NDPackageViewController.h"
+#import "NDPackageTableViewCell.h"
 
-@interface NDPackageViewController ()
+@interface NDPackageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnAllSelect;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelSelect;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelDes;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+
 
 @end
 
@@ -17,21 +28,86 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    [self setUI];
+    
+}
+-(void)setUI{
+    self.btnAllSelect.layer.cornerRadius = 10;
+    self.btnAllSelect.clipsToBounds = YES;
+    self.btnAllSelect.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.btnAllSelect.layer.borderWidth = 1;
+    
+    
+    self.btnSubmit.layer.cornerRadius = 4;
+    self.btnSubmit.clipsToBounds = YES;
+    
+
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.showsHorizontalScrollIndicator = NO;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.bounces = YES;
+    self.tableView.sectionFooterHeight = 10.0f;
+    [self.tableView registerNib:[UINib nibWithNibName:@"NDPackageTableViewCell" bundle:nil] forCellReuseIdentifier:@"NDPackageTableViewCell"];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+
+- (IBAction)selectAllClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
+}
+- (IBAction)submitOrderClick:(UIButton *)sender {
+    
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - tableview
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 3;
+    
 }
-*/
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 93.0f;
+    
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+    
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [UIView new];
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    NDPackageTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDPackageTableViewCell"  forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 
 @end

@@ -13,7 +13,7 @@
 {
     self = [super init];
     if (self) {
-        
+        [self setUI];
     }
     return self;
 }
@@ -53,12 +53,6 @@
 }
 #pragma mark - tableview
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 1;
-    
-}
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 44.0f;
@@ -67,7 +61,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.arrayModel.count;
     
 }
 
@@ -76,20 +70,25 @@
     NDNiudanFilterCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDNiudanFilterCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor whiteColor];
-    if (indexPath.row == 0) {
-        cell.labelFilter.textColor = HEXCOLOR(0x1dcb7c);
-    }else{
-        cell.labelFilter.textColor = HEXCOLOR(0x222222);
-    }
+    NDNiudanFilterModel * model = self.arrayModel[indexPath.row];
+    
+    cell.labelFilter.textColor = model.textColor;
+    cell.labelFilter.text = model.textValue;
+  
     return cell;
     
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    _selectRowBlock?_selectRowBlock(indexPath.row):nil;
 }
 
+
+-(void)setArrayModel:(NSArray<NDNiudanFilterModel *> *)arrayModel{
+    _arrayModel = arrayModel;
+    [self.tableView reloadData];
+}
 
 
 @end
