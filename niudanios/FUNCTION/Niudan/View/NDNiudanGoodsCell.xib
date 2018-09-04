@@ -6,21 +6,94 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NDNiudanGoodsCell">
-            <rect key="frame" x="0.0" y="0.0" width="201" height="190"/>
+            <rect key="frame" x="0.0" y="0.0" width="201" height="291"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="201" height="190"/>
+                <rect key="frame" x="0.0" y="0.0" width="201" height="291"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="324-Ks-yd0">
+                        <rect key="frame" x="0.0" y="0.0" width="201" height="173"/>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="324-Ks-yd0" secondAttribute="height" multiplier="339:292" id="jD3-Ed-Ja5"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="销量:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C78-Vz-4ED">
+                        <rect key="frame" x="12" y="236.5" width="28.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsi-JE-QlY">
+                        <rect key="frame" x="45.5" y="236.5" width="28.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_balance" translatesAutoresizingMaskIntoConstraints="NO" id="Y3T-QP-Sqr">
+                        <rect key="frame" x="12" y="263" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="JJT-bj-CrA"/>
+                            <constraint firstAttribute="width" constant="16" id="xDA-tE-a8u"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSP-qg-rii">
+                        <rect key="frame" x="36" y="261.5" width="49" height="20.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="0.9882352941176471" green="0.42745098039215684" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlq-nM-7JM">
+                        <rect key="frame" x="164" y="254" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="k2G-Xp-Z7q"/>
+                            <constraint firstAttribute="width" constant="25" id="zzE-z6-0gA"/>
+                        </constraints>
+                        <state key="normal" image="ic_star1"/>
+                        <state key="selected" image="ic_star2"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="初音未来——创世纪音乐大家圣诞节爱打架" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIq-dE-7bE">
+                        <rect key="frame" x="12" y="185" width="177" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
             </view>
-            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-            <size key="customSize" width="201" height="190"/>
-            <point key="canvasLocation" x="-141" y="101"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Rlq-nM-7JM" secondAttribute="bottom" constant="12" id="07r-u5-TE3"/>
+                <constraint firstAttribute="trailing" secondItem="Rlq-nM-7JM" secondAttribute="trailing" constant="12" id="0IR-Fh-2Tp"/>
+                <constraint firstAttribute="trailing" secondItem="SIq-dE-7bE" secondAttribute="trailing" constant="12" id="0Z6-3d-jf7"/>
+                <constraint firstItem="SIq-dE-7bE" firstAttribute="top" secondItem="324-Ks-yd0" secondAttribute="bottom" constant="12" id="1Er-cn-qCL"/>
+                <constraint firstItem="tsi-JE-QlY" firstAttribute="leading" secondItem="C78-Vz-4ED" secondAttribute="trailing" constant="5" id="1gm-JG-a1T"/>
+                <constraint firstItem="324-Ks-yd0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5D6-Yw-WVq"/>
+                <constraint firstItem="tsi-JE-QlY" firstAttribute="centerY" secondItem="C78-Vz-4ED" secondAttribute="centerY" id="9Gg-df-Y18"/>
+                <constraint firstItem="jSP-qg-rii" firstAttribute="leading" secondItem="Y3T-QP-Sqr" secondAttribute="trailing" constant="8" id="CMR-7j-8kE"/>
+                <constraint firstAttribute="trailing" secondItem="324-Ks-yd0" secondAttribute="trailing" id="Krj-tb-It9"/>
+                <constraint firstItem="Y3T-QP-Sqr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="NfZ-mA-sOQ"/>
+                <constraint firstItem="SIq-dE-7bE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="QkZ-oY-d9N"/>
+                <constraint firstAttribute="bottom" secondItem="Y3T-QP-Sqr" secondAttribute="bottom" constant="12" id="SFY-G0-rcV"/>
+                <constraint firstItem="324-Ks-yd0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YAN-Hm-C7X"/>
+                <constraint firstItem="Y3T-QP-Sqr" firstAttribute="top" secondItem="C78-Vz-4ED" secondAttribute="bottom" constant="12" id="hIW-02-zlx"/>
+                <constraint firstItem="jSP-qg-rii" firstAttribute="centerY" secondItem="Y3T-QP-Sqr" secondAttribute="centerY" id="tUV-HX-SQP"/>
+                <constraint firstItem="C78-Vz-4ED" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="vJu-2v-H2S"/>
+            </constraints>
+            <size key="customSize" width="201" height="291"/>
+            <point key="canvasLocation" x="-141.5" y="151.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_balance" width="24" height="24"/>
+        <image name="ic_star1" width="28" height="28"/>
+        <image name="ic_star2" width="28" height="28"/>
+    </resources>
 </document>

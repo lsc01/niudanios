@@ -8,6 +8,8 @@
 
 #import "NDLoginViewController.h"
 #import "NDRegisterViewController.h"
+#import "UIViewController+toast.h"
+
 @interface NDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -51,6 +53,8 @@
 }
 
 - (IBAction)loginClick:(id)sender {
+    [self toastTip:@"密码不能为空哦"];
+    
 }
 - (IBAction)wechatLoginClick:(id)sender {
 }

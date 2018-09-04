@@ -22,5 +22,10 @@
 }
 
 - (IBAction)btnMore:(UIButton *)sender {
+    _moreGoodsBlock?_moreGoodsBlock(self.index):nil;
+    
+    
 }
+
+
 @end

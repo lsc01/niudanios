@@ -15,7 +15,8 @@
 #import "NDLoginViewController.h"
 #import "NDMineOrderViewController.h"
 #import "NDMyWalletViewController.h"
-
+#import "NDMineDownViewController.h"
+#import "NDTaskBonusViewController.h"
 
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -122,8 +123,7 @@
     [self.headView addSubview:labelName];
     [labelName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headView);
-        make.left.mas_equalTo(self.headView).offset(10);
-        make.bottom.mas_equalTo(self.headView).offset(KheadViewH(-20));
+        make.top.mas_equalTo(imageHead.mas_bottom).offset(KheadViewH(13));
     }];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -226,10 +226,21 @@
     }else{
         NDMineFunctionCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineFunctionCell" forIndexPath:indexPath];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        
+        WeakSelf();
         [cell setFunctionSelectedBlock:^(NSInteger tag) {
+            StrongSelf();
             NSLog(@"tag:%d",tag);
-            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
-            [self.navigationController pushViewController:loginVC animated:YES];
+            if (tag == 1) {
+                NDMyWalletViewController * vc = [[NDMyWalletViewController alloc] init];
+                [strongself.navigationController pushViewController:vc animated:YES];
+            }else if(tag == 4){
+                NDTaskBonusViewController * vc = [[NDTaskBonusViewController alloc] init];
+                [strongself.navigationController pushViewController:vc animated:YES];
+            }else if(tag == 6){
+                NDMineDownViewController * vc = [[NDMineDownViewController alloc] init];
+                [strongself.navigationController pushViewController:vc animated:YES];
+            }
         }];
         return cell;
     }
@@ -244,8 +255,10 @@
         [self.navigationController pushViewController:orderVC animated:YES];
     }else if (indexPath.section == 2){
         if (indexPath.row == 1) {
-            NDMyWalletViewController * vc = [[NDMyWalletViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+            [self.navigationController pushViewController:loginVC animated:YES];
         }
     }
     

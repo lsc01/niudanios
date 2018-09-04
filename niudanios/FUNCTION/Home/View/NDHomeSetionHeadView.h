@@ -18,4 +18,9 @@
 - (IBAction)btnMore:(UIButton *)sender;
 
 -(void)hideRightView;
+
+@property (nonatomic ,assign) NSInteger index;
+@property (nonatomic ,strong) void(^moreGoodsBlock)(NSInteger index);
+-(void)setMoreGoodsBlock:(void (^)(NSInteger index))moreGoodsBlock;
+
 @end

@@ -11,6 +11,9 @@
 #import "NDHomeSetionHeadView.h"
 #import "NDHomeLikeCell.h"
 #import "NDHomeGoodsCell.h"
+#import "NDPopularityGoodsViewController.h"
+#import "NDNewGoodsViewController.h"
+#import "NDGoodsPayViewController.h"
 
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -98,8 +101,10 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     NDHomeSetionHeadView * headView = [[NSBundle mainBundle] loadNibNamed:@"NDHomeSetionHeadView" owner:self options:nil].firstObject;
     headView.frame = CGRectMake(0, 0, kScreenWidth, 52);
+    headView.index = section;
     if (section == 0) {
         headView.labelDes.text = @"最新商品";
+        
     }else if (section == 1){
         headView.labelDes.text = @"人气商品";
         headView.viewLeftLine.backgroundColor = HEXCOLOR(0xfc6d35);
@@ -107,6 +112,18 @@
         headView.labelDes.text = @"猜你喜欢";
         [headView hideRightView];
     }
+    
+    WeakSelf();
+    [headView setMoreGoodsBlock:^(NSInteger index) {
+        StrongSelf();
+        if (index == 0) {
+            NDPopularityGoodsViewController * vc = [[NDPopularityGoodsViewController alloc] init];
+            [strongself.navigationController pushViewController:vc animated:YES];
+        }else if (index == 1){
+            NDNewGoodsViewController * vc = [[NDNewGoodsViewController alloc] init];
+            [strongself.navigationController pushViewController:vc animated:YES];
+        }
+    }];
     
     return headView;
 }
@@ -130,6 +147,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NDGoodsPayViewController * vc = [[NDGoodsPayViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(NDHomeHeadView *)headView{
@@ -140,4 +160,14 @@
     return _headView;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.headView startAnimation];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.headView stopAnimation];
+}
 @end

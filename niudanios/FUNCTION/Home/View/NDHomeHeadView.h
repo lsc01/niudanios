@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "SDCycleScrollView.h"
-#import "HRAdView.h"
+#import "ELCycleVerticalView.h"
+#import "CycleVerticalModel.h"
 #define cycleView_H (kScreenWidth*(380.0/750))
 
-@interface NDHomeHeadView : UIView<SDCycleScrollViewDelegate>
+@interface NDHomeHeadView : UIView<SDCycleScrollViewDelegate,ELCycleVerticalViewDelegate>
 @property (nonatomic ,strong) SDCycleScrollView *cycleView;//轮播图
 
 @property (nonatomic ,strong) UIView * viewBottomBg;
-@property (nonatomic, strong) HRAdView *adView;
 
-@property (nonatomic ,strong) NSArray * arrayMsgData;
+@property (nonatomic ,strong) ELCycleVerticalView *cycVerticalView;
+
+// 开启动画 (主要用于进入其他页面返回时开启)
+- (void)startAnimation;
+
+// 关闭动画 (进入其他页面时调用)
+- (void)stopAnimation;
 @end

@@ -20,6 +20,23 @@
 		410447B3213D8A6D00686119 /* NDNiudanFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447B2213D8A6D00686119 /* NDNiudanFilterModel.m */; };
 		410447B7213E09CF00686119 /* NDPackageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447B5213E09CF00686119 /* NDPackageTableViewCell.m */; };
 		410447B8213E09CF00686119 /* NDPackageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447B6213E09CF00686119 /* NDPackageTableViewCell.xib */; };
+		410447BC213EAEBD00686119 /* NDPopularityGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447BA213EAEBD00686119 /* NDPopularityGoodsViewController.m */; };
+		410447BD213EAEBD00686119 /* NDPopularityGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447BB213EAEBD00686119 /* NDPopularityGoodsViewController.xib */; };
+		410447C1213EAED800686119 /* NDNewGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447BF213EAED800686119 /* NDNewGoodsViewController.m */; };
+		410447C2213EAED800686119 /* NDNewGoodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447C0213EAED800686119 /* NDNewGoodsViewController.xib */; };
+		410447C6213EBA4600686119 /* NDGoodsPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447C4213EBA4600686119 /* NDGoodsPayViewController.m */; };
+		410447C7213EBA4600686119 /* NDGoodsPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447C5213EBA4600686119 /* NDGoodsPayViewController.xib */; };
+		410447CB213EC1B800686119 /* UIViewController+toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447CA213EC1B800686119 /* UIViewController+toast.m */; };
+		410447D1213EC2D800686119 /* CycleVerticalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447CE213EC2D800686119 /* CycleVerticalModel.m */; };
+		410447D2213EC2D800686119 /* ELCycleVerticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447D0213EC2D800686119 /* ELCycleVerticalView.m */; };
+		410447D6213ECDEE00686119 /* NDMineDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447D4213ECDEE00686119 /* NDMineDownViewController.m */; };
+		410447D7213ECDEE00686119 /* NDMineDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447D5213ECDEE00686119 /* NDMineDownViewController.xib */; };
+		410447DB213ECEA200686119 /* NDMineDownTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447D9213ECEA100686119 /* NDMineDownTableViewCell.m */; };
+		410447DC213ECEA200686119 /* NDMineDownTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447DA213ECEA100686119 /* NDMineDownTableViewCell.xib */; };
+		410447E0213ED29A00686119 /* NDTaskBonusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447DE213ED29A00686119 /* NDTaskBonusViewController.m */; };
+		410447E1213ED29A00686119 /* NDTaskBonusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447DF213ED29A00686119 /* NDTaskBonusViewController.xib */; };
+		410447E5213ED35300686119 /* NDTaskBonusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447E3213ED35300686119 /* NDTaskBonusTableViewCell.m */; };
+		410447E6213ED35300686119 /* NDTaskBonusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447E4213ED35300686119 /* NDTaskBonusTableViewCell.xib */; };
 		4115BE16213BEECF001AFA49 /* NDMineOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */; };
 		4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */; };
 		4115BE1B213C161B001AFA49 /* NDMineOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE19213C161B001AFA49 /* NDMineOrderDetailViewController.m */; };
@@ -28,7 +45,6 @@
 		4115BE21213C1650001AFA49 /* NDMineOrderDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE20213C1650001AFA49 /* NDMineOrderDetailView.xib */; };
 		4115BE25213C3327001AFA49 /* NDOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE23213C3327001AFA49 /* NDOrderDetailTableViewCell.m */; };
 		4115BE26213C3327001AFA49 /* NDOrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE24213C3327001AFA49 /* NDOrderDetailTableViewCell.xib */; };
-		4115BE29213C3BC4001AFA49 /* HRAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE28213C3BC4001AFA49 /* HRAdView.m */; };
 		41378AE921305D0A00076ADD /* NDMineFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AE721305D0A00076ADD /* NDMineFunctionCell.m */; };
 		41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */; };
 		41378AEE2132F8F500076ADD /* NDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AEC2132F8F500076ADD /* NDSettingViewController.m */; };
@@ -312,6 +328,33 @@
 		410447B4213E09CF00686119 /* NDPackageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPackageTableViewCell.h; sourceTree = "<group>"; };
 		410447B5213E09CF00686119 /* NDPackageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPackageTableViewCell.m; sourceTree = "<group>"; };
 		410447B6213E09CF00686119 /* NDPackageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDPackageTableViewCell.xib; sourceTree = "<group>"; };
+		410447B9213EAEBD00686119 /* NDPopularityGoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPopularityGoodsViewController.h; sourceTree = "<group>"; };
+		410447BA213EAEBD00686119 /* NDPopularityGoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPopularityGoodsViewController.m; sourceTree = "<group>"; };
+		410447BB213EAEBD00686119 /* NDPopularityGoodsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDPopularityGoodsViewController.xib; sourceTree = "<group>"; };
+		410447BE213EAED800686119 /* NDNewGoodsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNewGoodsViewController.h; sourceTree = "<group>"; };
+		410447BF213EAED800686119 /* NDNewGoodsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNewGoodsViewController.m; sourceTree = "<group>"; };
+		410447C0213EAED800686119 /* NDNewGoodsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDNewGoodsViewController.xib; sourceTree = "<group>"; };
+		410447C3213EBA4600686119 /* NDGoodsPayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDGoodsPayViewController.h; sourceTree = "<group>"; };
+		410447C4213EBA4600686119 /* NDGoodsPayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDGoodsPayViewController.m; sourceTree = "<group>"; };
+		410447C5213EBA4600686119 /* NDGoodsPayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDGoodsPayViewController.xib; sourceTree = "<group>"; };
+		410447C9213EC1B700686119 /* UIViewController+toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+toast.h"; sourceTree = "<group>"; };
+		410447CA213EC1B800686119 /* UIViewController+toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+toast.m"; sourceTree = "<group>"; };
+		410447CD213EC2D800686119 /* CycleVerticalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleVerticalModel.h; sourceTree = "<group>"; };
+		410447CE213EC2D800686119 /* CycleVerticalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleVerticalModel.m; sourceTree = "<group>"; };
+		410447CF213EC2D800686119 /* ELCycleVerticalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCycleVerticalView.h; sourceTree = "<group>"; };
+		410447D0213EC2D800686119 /* ELCycleVerticalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCycleVerticalView.m; sourceTree = "<group>"; };
+		410447D3213ECDEE00686119 /* NDMineDownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineDownViewController.h; sourceTree = "<group>"; };
+		410447D4213ECDEE00686119 /* NDMineDownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineDownViewController.m; sourceTree = "<group>"; };
+		410447D5213ECDEE00686119 /* NDMineDownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineDownViewController.xib; sourceTree = "<group>"; };
+		410447D8213ECEA100686119 /* NDMineDownTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineDownTableViewCell.h; sourceTree = "<group>"; };
+		410447D9213ECEA100686119 /* NDMineDownTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineDownTableViewCell.m; sourceTree = "<group>"; };
+		410447DA213ECEA100686119 /* NDMineDownTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineDownTableViewCell.xib; sourceTree = "<group>"; };
+		410447DD213ED29A00686119 /* NDTaskBonusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDTaskBonusViewController.h; sourceTree = "<group>"; };
+		410447DE213ED29A00686119 /* NDTaskBonusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDTaskBonusViewController.m; sourceTree = "<group>"; };
+		410447DF213ED29A00686119 /* NDTaskBonusViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDTaskBonusViewController.xib; sourceTree = "<group>"; };
+		410447E2213ED35300686119 /* NDTaskBonusTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDTaskBonusTableViewCell.h; sourceTree = "<group>"; };
+		410447E3213ED35300686119 /* NDTaskBonusTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDTaskBonusTableViewCell.m; sourceTree = "<group>"; };
+		410447E4213ED35300686119 /* NDTaskBonusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDTaskBonusTableViewCell.xib; sourceTree = "<group>"; };
 		4115BE13213BEECF001AFA49 /* NDMineOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderTableViewCell.h; sourceTree = "<group>"; };
 		4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderTableViewCell.m; sourceTree = "<group>"; };
 		4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -324,8 +367,6 @@
 		4115BE22213C3327001AFA49 /* NDOrderDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDOrderDetailTableViewCell.h; sourceTree = "<group>"; };
 		4115BE23213C3327001AFA49 /* NDOrderDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDOrderDetailTableViewCell.m; sourceTree = "<group>"; };
 		4115BE24213C3327001AFA49 /* NDOrderDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDOrderDetailTableViewCell.xib; sourceTree = "<group>"; };
-		4115BE27213C3BC3001AFA49 /* HRAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAdView.h; sourceTree = "<group>"; };
-		4115BE28213C3BC4001AFA49 /* HRAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAdView.m; sourceTree = "<group>"; };
 		41378AE621305D0A00076ADD /* NDMineFunctionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineFunctionCell.h; sourceTree = "<group>"; };
 		41378AE721305D0A00076ADD /* NDMineFunctionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineFunctionCell.m; sourceTree = "<group>"; };
 		41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineFunctionCell.xib; sourceTree = "<group>"; };
@@ -887,6 +928,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		410447C8213EC19E00686119 /* UIViewController+toast */ = {
+			isa = PBXGroup;
+			children = (
+				410447C9213EC1B700686119 /* UIViewController+toast.h */,
+				410447CA213EC1B800686119 /* UIViewController+toast.m */,
+			);
+			path = "UIViewController+toast";
+			sourceTree = "<group>";
+		};
+		410447CC213EC2D800686119 /* ELCycleVerticalView */ = {
+			isa = PBXGroup;
+			children = (
+				410447CD213EC2D800686119 /* CycleVerticalModel.h */,
+				410447CE213EC2D800686119 /* CycleVerticalModel.m */,
+				410447CF213EC2D800686119 /* ELCycleVerticalView.h */,
+				410447D0213EC2D800686119 /* ELCycleVerticalView.m */,
+			);
+			path = ELCycleVerticalView;
+			sourceTree = "<group>";
+		};
 		41B4AEF6212DB6B40008E66B = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1068,15 @@
 				41E3419D212E32E800F19371 /* NDHomeViewController.h */,
 				41E3419E212E32E800F19371 /* NDHomeViewController.m */,
 				41E3419F212E32E800F19371 /* NDHomeViewController.xib */,
+				410447B9213EAEBD00686119 /* NDPopularityGoodsViewController.h */,
+				410447BA213EAEBD00686119 /* NDPopularityGoodsViewController.m */,
+				410447BB213EAEBD00686119 /* NDPopularityGoodsViewController.xib */,
+				410447BE213EAED800686119 /* NDNewGoodsViewController.h */,
+				410447BF213EAED800686119 /* NDNewGoodsViewController.m */,
+				410447C0213EAED800686119 /* NDNewGoodsViewController.xib */,
+				410447C3213EBA4600686119 /* NDGoodsPayViewController.h */,
+				410447C4213EBA4600686119 /* NDGoodsPayViewController.m */,
+				410447C5213EBA4600686119 /* NDGoodsPayViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1028,8 +1098,6 @@
 		41E3417C212E2EEC00F19371 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4115BE27213C3BC3001AFA49 /* HRAdView.h */,
-				4115BE28213C3BC4001AFA49 /* HRAdView.m */,
 				41AEAC4321344706003FE10B /* NDHomeHeadView.h */,
 				41AEAC4421344706003FE10B /* NDHomeHeadView.m */,
 				41AEAC4621344B19003FE10B /* NDHomeSetionHeadView.h */,
@@ -1177,6 +1245,12 @@
 				4115BE18213C161B001AFA49 /* NDMineOrderDetailViewController.h */,
 				4115BE19213C161B001AFA49 /* NDMineOrderDetailViewController.m */,
 				4115BE1A213C161B001AFA49 /* NDMineOrderDetailViewController.xib */,
+				410447D3213ECDEE00686119 /* NDMineDownViewController.h */,
+				410447D4213ECDEE00686119 /* NDMineDownViewController.m */,
+				410447D5213ECDEE00686119 /* NDMineDownViewController.xib */,
+				410447DD213ED29A00686119 /* NDTaskBonusViewController.h */,
+				410447DE213ED29A00686119 /* NDTaskBonusViewController.m */,
+				410447DF213ED29A00686119 /* NDTaskBonusViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1228,6 +1302,12 @@
 				4115BE22213C3327001AFA49 /* NDOrderDetailTableViewCell.h */,
 				4115BE23213C3327001AFA49 /* NDOrderDetailTableViewCell.m */,
 				4115BE24213C3327001AFA49 /* NDOrderDetailTableViewCell.xib */,
+				410447D8213ECEA100686119 /* NDMineDownTableViewCell.h */,
+				410447D9213ECEA100686119 /* NDMineDownTableViewCell.m */,
+				410447DA213ECEA100686119 /* NDMineDownTableViewCell.xib */,
+				410447E2213ED35300686119 /* NDTaskBonusTableViewCell.h */,
+				410447E3213ED35300686119 /* NDTaskBonusTableViewCell.m */,
+				410447E4213ED35300686119 /* NDTaskBonusTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1278,6 +1358,7 @@
 		41E341C2212EFEED00F19371 /* Expand(扩展) */ = {
 			isa = PBXGroup;
 			children = (
+				410447C8213EC19E00686119 /* UIViewController+toast */,
 				41E341C3212EFEED00F19371 /* Categories(分类) */,
 				41E34347212EFEED00F19371 /* SVProgressHUD */,
 				41E3434A212EFEED00F19371 /* UILabel */,
@@ -2092,6 +2173,7 @@
 		41E34357212EFEED00F19371 /* Utils(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				410447CC213EC2D800686119 /* ELCycleVerticalView */,
 				41E34358212EFEED00F19371 /* AlertCustom(自定义弹窗) */,
 				41E3435E212EFEED00F19371 /* HLLVerifyTools */,
 				41E34364212EFEED00F19371 /* MLSelectPhoto */,
@@ -2339,21 +2421,27 @@
 				410447A6213D656C00686119 /* NDAccountPayViewController.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
 				41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */,
+				410447C7213EBA4600686119 /* NDGoodsPayViewController.xib in Resources */,
 				41AEAC4A21344B2C003FE10B /* NDHomeSetionHeadView.xib in Resources */,
 				41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */,
 				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				4104479C213D5D5F00686119 /* NDMyWalletViewController.xib in Resources */,
 				410447AB213D757100686119 /* NDAccountPayDeatailVC.xib in Resources */,
+				410447DC213ECEA200686119 /* NDMineDownTableViewCell.xib in Resources */,
 				41AEAC77213BCA1E003FE10B /* NDMIneDataViewController.xib in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41AEAC72213BC566003FE10B /* NDBindPhoneViewController.xib in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
 				41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
+				410447E1213ED29A00686119 /* NDTaskBonusViewController.xib in Resources */,
 				41AEAC4F21345375003FE10B /* NDHomeGoodsCell.xib in Resources */,
+				410447C2213EAED800686119 /* NDNewGoodsViewController.xib in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
 				41AEAC6D213BA6FC003FE10B /* NDRegisterViewController.xib in Resources */,
+				410447E6213ED35300686119 /* NDTaskBonusTableViewCell.xib in Resources */,
+				410447BD213EAEBD00686119 /* NDPopularityGoodsViewController.xib in Resources */,
 				4115BE26213C3327001AFA49 /* NDOrderDetailTableViewCell.xib in Resources */,
 				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
 				41AEAC6821370345003FE10B /* NDNiudanGoodsCell.xib in Resources */,
@@ -2362,6 +2450,7 @@
 				41AEAC7C213BCBFC003FE10B /* NDMineDataHeaderView.xib in Resources */,
 				4115BE21213C1650001AFA49 /* NDMineOrderDetailView.xib in Resources */,
 				410447B0213D7DFC00686119 /* NDAccountPayDetailCell.xib in Resources */,
+				410447D7213ECDEE00686119 /* NDMineDownViewController.xib in Resources */,
 				41378AF42132FB0700076ADD /* NDSettingHeaderView.xib in Resources */,
 				41E3446B212EFEEE00F19371 /* MLSelectPhoto.bundle in Resources */,
 				41AEAC81213BCDF0003FE10B /* NDMineDataCell.xib in Resources */,
@@ -2445,6 +2534,7 @@
 				41E34434212EFEED00F19371 /* UIView+draggable.m in Sources */,
 				41E34454212EFEED00F19371 /* HLLAlertCustomVC.m in Sources */,
 				41E343F9212EFEED00F19371 /* UIControl+Block.m in Sources */,
+				410447BC213EAEBD00686119 /* NDPopularityGoodsViewController.m in Sources */,
 				41E34428212EFEED00F19371 /* UITableViewCell+NIB.m in Sources */,
 				41AEAC532134538F003FE10B /* NDHomeLikeCell.m in Sources */,
 				41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */,
@@ -2470,6 +2560,7 @@
 				41E3445A212EFEEE00F19371 /* MLSelectPhotoAssets.m in Sources */,
 				41E34460212EFEEE00F19371 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
 				41E34415212EFEED00F19371 /* UIImageView+Reflect.m in Sources */,
+				410447D2213EC2D800686119 /* ELCycleVerticalView.m in Sources */,
 				41E343DA212EFEED00F19371 /* NSTimer+Blocks.m in Sources */,
 				41E343AE212EFEED00F19371 /* NSData+Gzip.m in Sources */,
 				41E34193212E302700F19371 /* NDBaseTabBarController.m in Sources */,
@@ -2478,6 +2569,7 @@
 				41E343B5212EFEED00F19371 /* NSDictionary+JSONString.m in Sources */,
 				41E3442F212EFEED00F19371 /* UITextView+PlaceHolder.m in Sources */,
 				41E34466212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
+				410447C6213EBA4600686119 /* NDGoodsPayViewController.m in Sources */,
 				41E343C6212EFEED00F19371 /* NSString+Contains.m in Sources */,
 				41E34464212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				41E343DB212EFEED00F19371 /* NSURL+Param.m in Sources */,
@@ -2515,17 +2607,20 @@
 				41E3444B212EFEED00F19371 /* UIWebView+JS.m in Sources */,
 				41378AF82133071B00076ADD /* NDSettingTableViewCell.m in Sources */,
 				41E3444F212EFEED00F19371 /* UIWebVIew+SwipeGesture.m in Sources */,
+				410447DB213ECEA200686119 /* NDMineDownTableViewCell.m in Sources */,
 				41AEAC85213BD8F4003FE10B /* NDMineOrderViewController.m in Sources */,
 				41E34435212EFEED00F19371 /* UIView+Find.m in Sources */,
 				41E343F6212EFEED00F19371 /* UIColor+Random.m in Sources */,
 				41E34462212EFEEE00F19371 /* MLSelectPhotoPickerViewController.m in Sources */,
 				41E3446F212EFEEE00F19371 /* HLLNetworkSpeed.m in Sources */,
+				410447E5213ED35300686119 /* NDTaskBonusTableViewCell.m in Sources */,
 				41E34431212EFEED00F19371 /* UIView+Animation.m in Sources */,
 				41E34406212EFEED00F19371 /* UIImage+FX.m in Sources */,
 				41E34463212EFEEE00F19371 /* MLPhotoPickerImageView.m in Sources */,
 				4115BE25213C3327001AFA49 /* NDOrderDetailTableViewCell.m in Sources */,
 				41E3444C212EFEED00F19371 /* UIWebView+Load.m in Sources */,
 				41E343E9212EFEED00F19371 /* UIBezierPath+SVG.m in Sources */,
+				410447E0213ED29A00686119 /* NDTaskBonusViewController.m in Sources */,
 				41E343D7212EFEED00F19371 /* NSString+UUID.m in Sources */,
 				41E343AD212EFEED00F19371 /* NSData+Encrypt.m in Sources */,
 				41E34424212EFEED00F19371 /* UIScrollView+APParallaxHeader.m in Sources */,
@@ -2619,12 +2714,15 @@
 				41E343FE212EFEED00F19371 /* UIFont-TTF.m in Sources */,
 				410447A5213D656C00686119 /* NDAccountPayViewController.m in Sources */,
 				41E341AF212E332700F19371 /* NDMineViewController.m in Sources */,
+				410447D1213EC2D800686119 /* CycleVerticalModel.m in Sources */,
 				41AEAC7A213BCBF1003FE10B /* NDMineDataHeaderView.m in Sources */,
+				410447D6213ECDEE00686119 /* NDMineDownViewController.m in Sources */,
 				41E343EC212EFEED00F19371 /* UIButton+Block.m in Sources */,
 				41E343D2212EFEED00F19371 /* NSString+Ruby.m in Sources */,
 				41E343DF212EFEED00F19371 /* NSURLRequest+ParamsFromDictionary.m in Sources */,
 				41E3443A212EFEED00F19371 /* UIView+Recursion.m in Sources */,
 				41E34407212EFEED00F19371 /* UIImage+GIF2.m in Sources */,
+				410447CB213EC1B800686119 /* UIViewController+toast.m in Sources */,
 				41AEAC5821345E35003FE10B /* NDHomeGoodsCollectionViewCell.m in Sources */,
 				41E343CD212EFEED00F19371 /* NSString+MIME.m in Sources */,
 				41E343CF212EFEED00F19371 /* NSString+QMUI.m in Sources */,
@@ -2660,13 +2758,13 @@
 				41E341A5212E32FD00F19371 /* NDNiudanViewController.m in Sources */,
 				41E34447212EFEED00F19371 /* UIViewController+Visible.m in Sources */,
 				41E34426212EFEED00F19371 /* UISearchBar+Blocks.m in Sources */,
+				410447C1213EAED800686119 /* NDNewGoodsViewController.m in Sources */,
 				41E34452212EFEED00F19371 /* SVProgressHUD+HLLToast.m in Sources */,
 				41E343C0212EFEED00F19371 /* NSObject+GCD.m in Sources */,
 				41E341AA212E331400F19371 /* NDPackageViewController.m in Sources */,
 				41E34418212EFEED00F19371 /* UILabel+ESAdjustableLabel.m in Sources */,
 				41E343B9212EFEED00F19371 /* NSFileManager+Paths.m in Sources */,
 				41E343F8212EFEED00F19371 /* UIControl+ActionBlocks.m in Sources */,
-				4115BE29213C3BC4001AFA49 /* HRAdView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
