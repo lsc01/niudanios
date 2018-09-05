@@ -17,6 +17,11 @@
 #import "NDMyWalletViewController.h"
 #import "NDMineDownViewController.h"
 #import "NDTaskBonusViewController.h"
+#import "NDMineEnshrineViewController.h"
+#import "NDNuidanRecordViewController.h"
+#import "NDAboutViewController.h"
+#import "NDMineAddressViewController.h"
+
 
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -234,8 +239,17 @@
             if (tag == 1) {
                 NDMyWalletViewController * vc = [[NDMyWalletViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
+            }else if(tag == 2){
+                NDMineEnshrineViewController * vc = [[NDMineEnshrineViewController alloc] init];
+                [strongself.navigationController pushViewController:vc animated:YES];
+            }else if(tag == 3){
+                NDNuidanRecordViewController * vc = [[NDNuidanRecordViewController alloc] init];
+                [strongself.navigationController pushViewController:vc animated:YES];
             }else if(tag == 4){
                 NDTaskBonusViewController * vc = [[NDTaskBonusViewController alloc] init];
+                [strongself.navigationController pushViewController:vc animated:YES];
+            }else if(tag == 5){
+                NDMineAddressViewController * vc = [[NDMineAddressViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
             }else if(tag == 6){
                 NDMineDownViewController * vc = [[NDMineDownViewController alloc] init];
@@ -256,9 +270,8 @@
     }else if (indexPath.section == 2){
         if (indexPath.row == 1) {
             
-            
-            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
-            [self.navigationController pushViewController:loginVC animated:YES];
+            NDAboutViewController * vc = [[NDAboutViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     
@@ -272,7 +285,8 @@
     
 }
 -(void)navRightBtnClick{
-   
+    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+    [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 

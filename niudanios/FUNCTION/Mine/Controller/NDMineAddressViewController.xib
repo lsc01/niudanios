@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NDMineAddressViewController">
+            <connections>
+                <outlet property="tableView" destination="NlN-9B-iOp" id="G7d-Ng-4cf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RO1-cF-jPj">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <color key="backgroundColor" red="0.1137254902" green="0.79607843140000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="dTU-Wd-MUl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="添加新地址"/>
+                    <connections>
+                        <action selector="addNewAddressClick:" destination="-1" eventType="touchUpInside" id="eGn-gW-Jfe"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NlN-9B-iOp">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NlN-9B-iOp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3qc-GW-3XQ"/>
+                <constraint firstAttribute="trailing" secondItem="NlN-9B-iOp" secondAttribute="trailing" id="9MB-Qv-CwY"/>
+                <constraint firstAttribute="trailing" secondItem="RO1-cF-jPj" secondAttribute="trailing" id="JhO-qf-ebt"/>
+                <constraint firstItem="RO1-cF-jPj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NyW-0A-g2S"/>
+                <constraint firstAttribute="bottom" secondItem="RO1-cF-jPj" secondAttribute="bottom" id="PTd-J7-XfA"/>
+                <constraint firstItem="RO1-cF-jPj" firstAttribute="top" secondItem="NlN-9B-iOp" secondAttribute="bottom" id="PhR-i0-hcT"/>
+                <constraint firstItem="NlN-9B-iOp" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RDw-Qw-JIU"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

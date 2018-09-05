@@ -37,6 +37,24 @@
 		410447E1213ED29A00686119 /* NDTaskBonusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447DF213ED29A00686119 /* NDTaskBonusViewController.xib */; };
 		410447E5213ED35300686119 /* NDTaskBonusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447E3213ED35300686119 /* NDTaskBonusTableViewCell.m */; };
 		410447E6213ED35300686119 /* NDTaskBonusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447E4213ED35300686119 /* NDTaskBonusTableViewCell.xib */; };
+		410447EA21400B6B00686119 /* NDNuidanRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447E821400B6B00686119 /* NDNuidanRecordViewController.m */; };
+		410447EB21400B6B00686119 /* NDNuidanRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447E921400B6B00686119 /* NDNuidanRecordViewController.xib */; };
+		410447EF21400BAC00686119 /* NDMineEnshrineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447ED21400BAC00686119 /* NDMineEnshrineViewController.m */; };
+		410447F021400BAC00686119 /* NDMineEnshrineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447EE21400BAC00686119 /* NDMineEnshrineViewController.xib */; };
+		410447F421401C7400686119 /* NDRecodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447F221401C7400686119 /* NDRecodeTableViewCell.m */; };
+		410447F521401C7400686119 /* NDRecodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447F321401C7400686119 /* NDRecodeTableViewCell.xib */; };
+		410447F921401C9200686119 /* NDMineEnshrineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447F721401C9200686119 /* NDMineEnshrineTableViewCell.m */; };
+		410447FA21401C9200686119 /* NDMineEnshrineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447F821401C9200686119 /* NDMineEnshrineTableViewCell.xib */; };
+		410447FE2140216700686119 /* NDAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410447FC2140216700686119 /* NDAboutViewController.m */; };
+		410447FF2140216700686119 /* NDAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410447FD2140216700686119 /* NDAboutViewController.xib */; };
+		410448032140219300686119 /* NDAboutTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410448012140219300686119 /* NDAboutTableViewCell.m */; };
+		410448042140219300686119 /* NDAboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410448022140219300686119 /* NDAboutTableViewCell.xib */; };
+		410448082140258700686119 /* NDMineAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 410448062140258700686119 /* NDMineAddressTableViewCell.m */; };
+		410448092140258700686119 /* NDMineAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410448072140258700686119 /* NDMineAddressTableViewCell.xib */; };
+		4104480D214025BD00686119 /* NDMineAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104480B214025BD00686119 /* NDMineAddressViewController.m */; };
+		4104480E214025BD00686119 /* NDMineAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104480C214025BD00686119 /* NDMineAddressViewController.xib */; };
+		4104481221402B2500686119 /* NDAddressEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104481021402B2500686119 /* NDAddressEditViewController.m */; };
+		4104481321402B2500686119 /* NDAddressEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104481121402B2500686119 /* NDAddressEditViewController.xib */; };
 		4115BE16213BEECF001AFA49 /* NDMineOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */; };
 		4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */; };
 		4115BE1B213C161B001AFA49 /* NDMineOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE19213C161B001AFA49 /* NDMineOrderDetailViewController.m */; };
@@ -355,6 +373,33 @@
 		410447E2213ED35300686119 /* NDTaskBonusTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDTaskBonusTableViewCell.h; sourceTree = "<group>"; };
 		410447E3213ED35300686119 /* NDTaskBonusTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDTaskBonusTableViewCell.m; sourceTree = "<group>"; };
 		410447E4213ED35300686119 /* NDTaskBonusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDTaskBonusTableViewCell.xib; sourceTree = "<group>"; };
+		410447E721400B6B00686119 /* NDNuidanRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNuidanRecordViewController.h; sourceTree = "<group>"; };
+		410447E821400B6B00686119 /* NDNuidanRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNuidanRecordViewController.m; sourceTree = "<group>"; };
+		410447E921400B6B00686119 /* NDNuidanRecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDNuidanRecordViewController.xib; sourceTree = "<group>"; };
+		410447EC21400BAC00686119 /* NDMineEnshrineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineEnshrineViewController.h; sourceTree = "<group>"; };
+		410447ED21400BAC00686119 /* NDMineEnshrineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineEnshrineViewController.m; sourceTree = "<group>"; };
+		410447EE21400BAC00686119 /* NDMineEnshrineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineEnshrineViewController.xib; sourceTree = "<group>"; };
+		410447F121401C7400686119 /* NDRecodeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDRecodeTableViewCell.h; sourceTree = "<group>"; };
+		410447F221401C7400686119 /* NDRecodeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDRecodeTableViewCell.m; sourceTree = "<group>"; };
+		410447F321401C7400686119 /* NDRecodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDRecodeTableViewCell.xib; sourceTree = "<group>"; };
+		410447F621401C9200686119 /* NDMineEnshrineTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineEnshrineTableViewCell.h; sourceTree = "<group>"; };
+		410447F721401C9200686119 /* NDMineEnshrineTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineEnshrineTableViewCell.m; sourceTree = "<group>"; };
+		410447F821401C9200686119 /* NDMineEnshrineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineEnshrineTableViewCell.xib; sourceTree = "<group>"; };
+		410447FB2140216700686119 /* NDAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAboutViewController.h; sourceTree = "<group>"; };
+		410447FC2140216700686119 /* NDAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAboutViewController.m; sourceTree = "<group>"; };
+		410447FD2140216700686119 /* NDAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDAboutViewController.xib; sourceTree = "<group>"; };
+		410448002140219300686119 /* NDAboutTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAboutTableViewCell.h; sourceTree = "<group>"; };
+		410448012140219300686119 /* NDAboutTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAboutTableViewCell.m; sourceTree = "<group>"; };
+		410448022140219300686119 /* NDAboutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDAboutTableViewCell.xib; sourceTree = "<group>"; };
+		410448052140258700686119 /* NDMineAddressTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineAddressTableViewCell.h; sourceTree = "<group>"; };
+		410448062140258700686119 /* NDMineAddressTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineAddressTableViewCell.m; sourceTree = "<group>"; };
+		410448072140258700686119 /* NDMineAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineAddressTableViewCell.xib; sourceTree = "<group>"; };
+		4104480A214025BD00686119 /* NDMineAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineAddressViewController.h; sourceTree = "<group>"; };
+		4104480B214025BD00686119 /* NDMineAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineAddressViewController.m; sourceTree = "<group>"; };
+		4104480C214025BD00686119 /* NDMineAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineAddressViewController.xib; sourceTree = "<group>"; };
+		4104480F21402B2500686119 /* NDAddressEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAddressEditViewController.h; sourceTree = "<group>"; };
+		4104481021402B2500686119 /* NDAddressEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAddressEditViewController.m; sourceTree = "<group>"; };
+		4104481121402B2500686119 /* NDAddressEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDAddressEditViewController.xib; sourceTree = "<group>"; };
 		4115BE13213BEECF001AFA49 /* NDMineOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderTableViewCell.h; sourceTree = "<group>"; };
 		4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderTableViewCell.m; sourceTree = "<group>"; };
 		4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -1251,6 +1296,21 @@
 				410447DD213ED29A00686119 /* NDTaskBonusViewController.h */,
 				410447DE213ED29A00686119 /* NDTaskBonusViewController.m */,
 				410447DF213ED29A00686119 /* NDTaskBonusViewController.xib */,
+				410447E721400B6B00686119 /* NDNuidanRecordViewController.h */,
+				410447E821400B6B00686119 /* NDNuidanRecordViewController.m */,
+				410447E921400B6B00686119 /* NDNuidanRecordViewController.xib */,
+				410447EC21400BAC00686119 /* NDMineEnshrineViewController.h */,
+				410447ED21400BAC00686119 /* NDMineEnshrineViewController.m */,
+				410447EE21400BAC00686119 /* NDMineEnshrineViewController.xib */,
+				410447FB2140216700686119 /* NDAboutViewController.h */,
+				410447FC2140216700686119 /* NDAboutViewController.m */,
+				410447FD2140216700686119 /* NDAboutViewController.xib */,
+				4104480A214025BD00686119 /* NDMineAddressViewController.h */,
+				4104480B214025BD00686119 /* NDMineAddressViewController.m */,
+				4104480C214025BD00686119 /* NDMineAddressViewController.xib */,
+				4104480F21402B2500686119 /* NDAddressEditViewController.h */,
+				4104481021402B2500686119 /* NDAddressEditViewController.m */,
+				4104481121402B2500686119 /* NDAddressEditViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1308,6 +1368,18 @@
 				410447E2213ED35300686119 /* NDTaskBonusTableViewCell.h */,
 				410447E3213ED35300686119 /* NDTaskBonusTableViewCell.m */,
 				410447E4213ED35300686119 /* NDTaskBonusTableViewCell.xib */,
+				410447F121401C7400686119 /* NDRecodeTableViewCell.h */,
+				410447F221401C7400686119 /* NDRecodeTableViewCell.m */,
+				410447F321401C7400686119 /* NDRecodeTableViewCell.xib */,
+				410447F621401C9200686119 /* NDMineEnshrineTableViewCell.h */,
+				410447F721401C9200686119 /* NDMineEnshrineTableViewCell.m */,
+				410447F821401C9200686119 /* NDMineEnshrineTableViewCell.xib */,
+				410448002140219300686119 /* NDAboutTableViewCell.h */,
+				410448012140219300686119 /* NDAboutTableViewCell.m */,
+				410448022140219300686119 /* NDAboutTableViewCell.xib */,
+				410448052140258700686119 /* NDMineAddressTableViewCell.h */,
+				410448062140258700686119 /* NDMineAddressTableViewCell.m */,
+				410448072140258700686119 /* NDMineAddressTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2416,6 +2488,7 @@
 			files = (
 				41AEAC5921345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib in Resources */,
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
+				410448042140219300686119 /* NDAboutTableViewCell.xib in Resources */,
 				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
 				4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */,
 				410447A6213D656C00686119 /* NDAccountPayViewController.xib in Resources */,
@@ -2425,14 +2498,18 @@
 				41AEAC4A21344B2C003FE10B /* NDHomeSetionHeadView.xib in Resources */,
 				41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */,
 				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
+				410447FA21401C9200686119 /* NDMineEnshrineTableViewCell.xib in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				4104479C213D5D5F00686119 /* NDMyWalletViewController.xib in Resources */,
 				410447AB213D757100686119 /* NDAccountPayDeatailVC.xib in Resources */,
 				410447DC213ECEA200686119 /* NDMineDownTableViewCell.xib in Resources */,
 				41AEAC77213BCA1E003FE10B /* NDMIneDataViewController.xib in Resources */,
+				410447EB21400B6B00686119 /* NDNuidanRecordViewController.xib in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41AEAC72213BC566003FE10B /* NDBindPhoneViewController.xib in Resources */,
+				410447FF2140216700686119 /* NDAboutViewController.xib in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
+				410448092140258700686119 /* NDMineAddressTableViewCell.xib in Resources */,
 				41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
 				410447E1213ED29A00686119 /* NDTaskBonusViewController.xib in Resources */,
@@ -2443,10 +2520,14 @@
 				410447E6213ED35300686119 /* NDTaskBonusTableViewCell.xib in Resources */,
 				410447BD213EAEBD00686119 /* NDPopularityGoodsViewController.xib in Resources */,
 				4115BE26213C3327001AFA49 /* NDOrderDetailTableViewCell.xib in Resources */,
+				4104480E214025BD00686119 /* NDMineAddressViewController.xib in Resources */,
 				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
 				41AEAC6821370345003FE10B /* NDNiudanGoodsCell.xib in Resources */,
 				41AEAC8B213BDBC8003FE10B /* NDMineOrderSelectView.xib in Resources */,
+				410447F521401C7400686119 /* NDRecodeTableViewCell.xib in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
+				410447F021400BAC00686119 /* NDMineEnshrineViewController.xib in Resources */,
+				4104481321402B2500686119 /* NDAddressEditViewController.xib in Resources */,
 				41AEAC7C213BCBFC003FE10B /* NDMineDataHeaderView.xib in Resources */,
 				4115BE21213C1650001AFA49 /* NDMineOrderDetailView.xib in Resources */,
 				410447B0213D7DFC00686119 /* NDAccountPayDetailCell.xib in Resources */,
@@ -2538,6 +2619,7 @@
 				41E34428212EFEED00F19371 /* UITableViewCell+NIB.m in Sources */,
 				41AEAC532134538F003FE10B /* NDHomeLikeCell.m in Sources */,
 				41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */,
+				410447F921401C9200686119 /* NDMineEnshrineTableViewCell.m in Sources */,
 				41E343B2212EFEED00F19371 /* NSDate+Formatter.m in Sources */,
 				41E343E8212EFEED00F19371 /* UIBezierPath+LxThroughPointsBezier.m in Sources */,
 				41E343C5212EFEED00F19371 /* NSString+Base64.m in Sources */,
@@ -2562,6 +2644,7 @@
 				41E34415212EFEED00F19371 /* UIImageView+Reflect.m in Sources */,
 				410447D2213EC2D800686119 /* ELCycleVerticalView.m in Sources */,
 				41E343DA212EFEED00F19371 /* NSTimer+Blocks.m in Sources */,
+				4104481221402B2500686119 /* NDAddressEditViewController.m in Sources */,
 				41E343AE212EFEED00F19371 /* NSData+Gzip.m in Sources */,
 				41E34193212E302700F19371 /* NDBaseTabBarController.m in Sources */,
 				41AEAC6C213BA6FC003FE10B /* NDRegisterViewController.m in Sources */,
@@ -2571,6 +2654,7 @@
 				41E34466212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
 				410447C6213EBA4600686119 /* NDGoodsPayViewController.m in Sources */,
 				41E343C6212EFEED00F19371 /* NSString+Contains.m in Sources */,
+				4104480D214025BD00686119 /* NDMineAddressViewController.m in Sources */,
 				41E34464212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				41E343DB212EFEED00F19371 /* NSURL+Param.m in Sources */,
 				41E343BB212EFEED00F19371 /* NSObject+AddProperty.m in Sources */,
@@ -2605,6 +2689,7 @@
 				41E343C7212EFEED00F19371 /* NSString+DictionaryValue.m in Sources */,
 				41E343BA212EFEED00F19371 /* NSIndexPath+Offset.m in Sources */,
 				41E3444B212EFEED00F19371 /* UIWebView+JS.m in Sources */,
+				410448032140219300686119 /* NDAboutTableViewCell.m in Sources */,
 				41378AF82133071B00076ADD /* NDSettingTableViewCell.m in Sources */,
 				41E3444F212EFEED00F19371 /* UIWebVIew+SwipeGesture.m in Sources */,
 				410447DB213ECEA200686119 /* NDMineDownTableViewCell.m in Sources */,
@@ -2617,6 +2702,7 @@
 				41E34431212EFEED00F19371 /* UIView+Animation.m in Sources */,
 				41E34406212EFEED00F19371 /* UIImage+FX.m in Sources */,
 				41E34463212EFEEE00F19371 /* MLPhotoPickerImageView.m in Sources */,
+				410447F421401C7400686119 /* NDRecodeTableViewCell.m in Sources */,
 				4115BE25213C3327001AFA49 /* NDOrderDetailTableViewCell.m in Sources */,
 				41E3444C212EFEED00F19371 /* UIWebView+Load.m in Sources */,
 				41E343E9212EFEED00F19371 /* UIBezierPath+SVG.m in Sources */,
@@ -2630,6 +2716,7 @@
 				41E343ED212EFEED00F19371 /* UIButton+CountDown.m in Sources */,
 				41E3440C212EFEED00F19371 /* UIImage+Resize.m in Sources */,
 				41AEAC71213BC566003FE10B /* NDBindPhoneViewController.m in Sources */,
+				410448082140258700686119 /* NDMineAddressTableViewCell.m in Sources */,
 				41E343F1212EFEED00F19371 /* UIButton+Submitting.m in Sources */,
 				41E343BE212EFEED00F19371 /* NSObject+Blocks.m in Sources */,
 				41E343D8212EFEED00F19371 /* NSString+XML.m in Sources */,
@@ -2642,6 +2729,7 @@
 				41E343FA212EFEED00F19371 /* UIDevice+Hardware.m in Sources */,
 				41E343F5212EFEED00F19371 /* UIColor+Modify.m in Sources */,
 				41E3443C212EFEED00F19371 /* UIView+Shake.m in Sources */,
+				410447EA21400B6B00686119 /* NDNuidanRecordViewController.m in Sources */,
 				41E34423212EFEED00F19371 /* UIScrollView+Addition.m in Sources */,
 				41AEAC80213BCDF0003FE10B /* NDMineDataCell.m in Sources */,
 				41B4AF12212DB6B40008E66B /* main.m in Sources */,
@@ -2698,6 +2786,7 @@
 				41E34453212EFEED00F19371 /* UILabel+HLLTextAlign.m in Sources */,
 				41E343EE212EFEED00F19371 /* UIButton+Indicator.m in Sources */,
 				41B4AF04212DB6B40008E66B /* AppDelegate.m in Sources */,
+				410447EF21400BAC00686119 /* NDMineEnshrineViewController.m in Sources */,
 				41E34416212EFEED00F19371 /* UILabel+AutomaticWriting.m in Sources */,
 				41E3444A212EFEED00F19371 /* UIWebView+Canvas.m in Sources */,
 				41E343E0212EFEED00F19371 /* UIAlertView+Block.m in Sources */,
@@ -2764,6 +2853,7 @@
 				41E341AA212E331400F19371 /* NDPackageViewController.m in Sources */,
 				41E34418212EFEED00F19371 /* UILabel+ESAdjustableLabel.m in Sources */,
 				41E343B9212EFEED00F19371 /* NSFileManager+Paths.m in Sources */,
+				410447FE2140216700686119 /* NDAboutViewController.m in Sources */,
 				41E343F8212EFEED00F19371 /* UIControl+ActionBlocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
