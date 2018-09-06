@@ -55,6 +55,23 @@
 		4104480E214025BD00686119 /* NDMineAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104480C214025BD00686119 /* NDMineAddressViewController.xib */; };
 		4104481221402B2500686119 /* NDAddressEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104481021402B2500686119 /* NDAddressEditViewController.m */; };
 		4104481321402B2500686119 /* NDAddressEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104481121402B2500686119 /* NDAddressEditViewController.xib */; };
+		41044817214171F900686119 /* NDVerifyOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41044815214171F900686119 /* NDVerifyOrderTableViewCell.m */; };
+		41044818214171F900686119 /* NDVerifyOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41044816214171F900686119 /* NDVerifyOrderTableViewCell.xib */; };
+		4104481B2141721900686119 /* NDVerifyOrderHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104481A2141721900686119 /* NDVerifyOrderHeadView.m */; };
+		4104481F2141723800686119 /* NDVerifyOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104481D2141723800686119 /* NDVerifyOrderViewController.m */; };
+		410448202141723800686119 /* NDVerifyOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104481E2141723800686119 /* NDVerifyOrderViewController.xib */; };
+		410448222141724800686119 /* NDVerifyOrderHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 410448212141724800686119 /* NDVerifyOrderHeadView.xib */; };
+		4104484A2141850700686119 /* QRCodebottomLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4104483E2141850700686119 /* QRCodebottomLeft@2x.png */; };
+		4104484B2141850700686119 /* QRCodebottomLeft@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4104483F2141850700686119 /* QRCodebottomLeft@3x.png */; };
+		4104484C2141850700686119 /* QRCodebottomRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448402141850700686119 /* QRCodebottomRight@2x.png */; };
+		4104484D2141850700686119 /* QRCodebottomRight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448412141850700686119 /* QRCodebottomRight@3x.png */; };
+		4104484E2141850700686119 /* QRCodeLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448422141850700686119 /* QRCodeLine@2x.png */; };
+		4104484F2141850700686119 /* QRCodeLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448432141850700686119 /* QRCodeLine@3x.png */; };
+		410448502141850700686119 /* QRCodeTopLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448442141850700686119 /* QRCodeTopLeft@2x.png */; };
+		410448512141850700686119 /* QRCodeTopLeft@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448452141850700686119 /* QRCodeTopLeft@3x.png */; };
+		410448522141850700686119 /* QRCodeTopRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448462141850700686119 /* QRCodeTopRight@2x.png */; };
+		410448532141850700686119 /* QRCodeTopRight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448472141850700686119 /* QRCodeTopRight@3x.png */; };
+		410448542141850700686119 /* SYQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410448492141850700686119 /* SYQRCodeViewController.m */; };
 		4115BE16213BEECF001AFA49 /* NDMineOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */; };
 		4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */; };
 		4115BE1B213C161B001AFA49 /* NDMineOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE19213C161B001AFA49 /* NDMineOrderDetailViewController.m */; };
@@ -400,6 +417,27 @@
 		4104480F21402B2500686119 /* NDAddressEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAddressEditViewController.h; sourceTree = "<group>"; };
 		4104481021402B2500686119 /* NDAddressEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAddressEditViewController.m; sourceTree = "<group>"; };
 		4104481121402B2500686119 /* NDAddressEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDAddressEditViewController.xib; sourceTree = "<group>"; };
+		41044814214171F900686119 /* NDVerifyOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDVerifyOrderTableViewCell.h; sourceTree = "<group>"; };
+		41044815214171F900686119 /* NDVerifyOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDVerifyOrderTableViewCell.m; sourceTree = "<group>"; };
+		41044816214171F900686119 /* NDVerifyOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDVerifyOrderTableViewCell.xib; sourceTree = "<group>"; };
+		410448192141721900686119 /* NDVerifyOrderHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDVerifyOrderHeadView.h; sourceTree = "<group>"; };
+		4104481A2141721900686119 /* NDVerifyOrderHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDVerifyOrderHeadView.m; sourceTree = "<group>"; };
+		4104481C2141723800686119 /* NDVerifyOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDVerifyOrderViewController.h; sourceTree = "<group>"; };
+		4104481D2141723800686119 /* NDVerifyOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDVerifyOrderViewController.m; sourceTree = "<group>"; };
+		4104481E2141723800686119 /* NDVerifyOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDVerifyOrderViewController.xib; sourceTree = "<group>"; };
+		410448212141724800686119 /* NDVerifyOrderHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDVerifyOrderHeadView.xib; sourceTree = "<group>"; };
+		4104483E2141850700686119 /* QRCodebottomLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodebottomLeft@2x.png"; sourceTree = "<group>"; };
+		4104483F2141850700686119 /* QRCodebottomLeft@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodebottomLeft@3x.png"; sourceTree = "<group>"; };
+		410448402141850700686119 /* QRCodebottomRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodebottomRight@2x.png"; sourceTree = "<group>"; };
+		410448412141850700686119 /* QRCodebottomRight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodebottomRight@3x.png"; sourceTree = "<group>"; };
+		410448422141850700686119 /* QRCodeLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeLine@2x.png"; sourceTree = "<group>"; };
+		410448432141850700686119 /* QRCodeLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeLine@3x.png"; sourceTree = "<group>"; };
+		410448442141850700686119 /* QRCodeTopLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeTopLeft@2x.png"; sourceTree = "<group>"; };
+		410448452141850700686119 /* QRCodeTopLeft@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeTopLeft@3x.png"; sourceTree = "<group>"; };
+		410448462141850700686119 /* QRCodeTopRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeTopRight@2x.png"; sourceTree = "<group>"; };
+		410448472141850700686119 /* QRCodeTopRight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeTopRight@3x.png"; sourceTree = "<group>"; };
+		410448482141850700686119 /* SYQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYQRCodeViewController.h; sourceTree = "<group>"; };
+		410448492141850700686119 /* SYQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYQRCodeViewController.m; sourceTree = "<group>"; };
 		4115BE13213BEECF001AFA49 /* NDMineOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderTableViewCell.h; sourceTree = "<group>"; };
 		4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderTableViewCell.m; sourceTree = "<group>"; };
 		4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -993,6 +1031,33 @@
 			path = ELCycleVerticalView;
 			sourceTree = "<group>";
 		};
+		4104483C2141850700686119 /* QRScanTool */ = {
+			isa = PBXGroup;
+			children = (
+				4104483D2141850700686119 /* Imgs */,
+				410448482141850700686119 /* SYQRCodeViewController.h */,
+				410448492141850700686119 /* SYQRCodeViewController.m */,
+			);
+			path = QRScanTool;
+			sourceTree = "<group>";
+		};
+		4104483D2141850700686119 /* Imgs */ = {
+			isa = PBXGroup;
+			children = (
+				4104483E2141850700686119 /* QRCodebottomLeft@2x.png */,
+				4104483F2141850700686119 /* QRCodebottomLeft@3x.png */,
+				410448402141850700686119 /* QRCodebottomRight@2x.png */,
+				410448412141850700686119 /* QRCodebottomRight@3x.png */,
+				410448422141850700686119 /* QRCodeLine@2x.png */,
+				410448432141850700686119 /* QRCodeLine@3x.png */,
+				410448442141850700686119 /* QRCodeTopLeft@2x.png */,
+				410448452141850700686119 /* QRCodeTopLeft@3x.png */,
+				410448462141850700686119 /* QRCodeTopRight@2x.png */,
+				410448472141850700686119 /* QRCodeTopRight@3x.png */,
+			);
+			path = Imgs;
+			sourceTree = "<group>";
+		};
 		41B4AEF6212DB6B40008E66B = {
 			isa = PBXGroup;
 			children = (
@@ -1311,6 +1376,9 @@
 				4104480F21402B2500686119 /* NDAddressEditViewController.h */,
 				4104481021402B2500686119 /* NDAddressEditViewController.m */,
 				4104481121402B2500686119 /* NDAddressEditViewController.xib */,
+				4104481C2141723800686119 /* NDVerifyOrderViewController.h */,
+				4104481D2141723800686119 /* NDVerifyOrderViewController.m */,
+				4104481E2141723800686119 /* NDVerifyOrderViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1380,6 +1448,12 @@
 				410448052140258700686119 /* NDMineAddressTableViewCell.h */,
 				410448062140258700686119 /* NDMineAddressTableViewCell.m */,
 				410448072140258700686119 /* NDMineAddressTableViewCell.xib */,
+				41044814214171F900686119 /* NDVerifyOrderTableViewCell.h */,
+				41044815214171F900686119 /* NDVerifyOrderTableViewCell.m */,
+				41044816214171F900686119 /* NDVerifyOrderTableViewCell.xib */,
+				410448192141721900686119 /* NDVerifyOrderHeadView.h */,
+				4104481A2141721900686119 /* NDVerifyOrderHeadView.m */,
+				410448212141724800686119 /* NDVerifyOrderHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2245,6 +2319,7 @@
 		41E34357212EFEED00F19371 /* Utils(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				4104483C2141850700686119 /* QRScanTool */,
 				410447CC213EC2D800686119 /* ELCycleVerticalView */,
 				41E34358212EFEED00F19371 /* AlertCustom(自定义弹窗) */,
 				41E3435E212EFEED00F19371 /* HLLVerifyTools */,
@@ -2490,15 +2565,19 @@
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
 				410448042140219300686119 /* NDAboutTableViewCell.xib in Resources */,
 				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
+				410448222141724800686119 /* NDVerifyOrderHeadView.xib in Resources */,
 				4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */,
 				410447A6213D656C00686119 /* NDAccountPayViewController.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
+				4104484E2141850700686119 /* QRCodeLine@2x.png in Resources */,
 				41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */,
 				410447C7213EBA4600686119 /* NDGoodsPayViewController.xib in Resources */,
 				41AEAC4A21344B2C003FE10B /* NDHomeSetionHeadView.xib in Resources */,
 				41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */,
+				410448502141850700686119 /* QRCodeTopLeft@2x.png in Resources */,
 				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
 				410447FA21401C9200686119 /* NDMineEnshrineTableViewCell.xib in Resources */,
+				4104484A2141850700686119 /* QRCodebottomLeft@2x.png in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				4104479C213D5D5F00686119 /* NDMyWalletViewController.xib in Resources */,
 				410447AB213D757100686119 /* NDAccountPayDeatailVC.xib in Resources */,
@@ -2508,7 +2587,10 @@
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41AEAC72213BC566003FE10B /* NDBindPhoneViewController.xib in Resources */,
 				410447FF2140216700686119 /* NDAboutViewController.xib in Resources */,
+				41044818214171F900686119 /* NDVerifyOrderTableViewCell.xib in Resources */,
+				4104484B2141850700686119 /* QRCodebottomLeft@3x.png in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
+				410448512141850700686119 /* QRCodeTopLeft@3x.png in Resources */,
 				410448092140258700686119 /* NDMineAddressTableViewCell.xib in Resources */,
 				41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
@@ -2517,16 +2599,22 @@
 				410447C2213EAED800686119 /* NDNewGoodsViewController.xib in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
 				41AEAC6D213BA6FC003FE10B /* NDRegisterViewController.xib in Resources */,
+				410448532141850700686119 /* QRCodeTopRight@3x.png in Resources */,
 				410447E6213ED35300686119 /* NDTaskBonusTableViewCell.xib in Resources */,
+				410448522141850700686119 /* QRCodeTopRight@2x.png in Resources */,
 				410447BD213EAEBD00686119 /* NDPopularityGoodsViewController.xib in Resources */,
 				4115BE26213C3327001AFA49 /* NDOrderDetailTableViewCell.xib in Resources */,
+				4104484C2141850700686119 /* QRCodebottomRight@2x.png in Resources */,
 				4104480E214025BD00686119 /* NDMineAddressViewController.xib in Resources */,
 				41E34479212F82F800F19371 /* NDMineTableViewCell.xib in Resources */,
 				41AEAC6821370345003FE10B /* NDNiudanGoodsCell.xib in Resources */,
+				4104484F2141850700686119 /* QRCodeLine@3x.png in Resources */,
 				41AEAC8B213BDBC8003FE10B /* NDMineOrderSelectView.xib in Resources */,
 				410447F521401C7400686119 /* NDRecodeTableViewCell.xib in Resources */,
+				4104484D2141850700686119 /* QRCodebottomRight@3x.png in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
 				410447F021400BAC00686119 /* NDMineEnshrineViewController.xib in Resources */,
+				410448202141723800686119 /* NDVerifyOrderViewController.xib in Resources */,
 				4104481321402B2500686119 /* NDAddressEditViewController.xib in Resources */,
 				41AEAC7C213BCBFC003FE10B /* NDMineDataHeaderView.xib in Resources */,
 				4115BE21213C1650001AFA49 /* NDMineOrderDetailView.xib in Resources */,
@@ -2604,6 +2692,7 @@
 				41E34450212EFEED00F19371 /* WebView+Debug.m in Sources */,
 				41E34441212EFEED00F19371 /* UIViewController+BackButtonItemTitle.m in Sources */,
 				41E343EA212EFEED00F19371 /* UIBezierPath+Symbol.m in Sources */,
+				4104481F2141723800686119 /* NDVerifyOrderViewController.m in Sources */,
 				41AEAC622136FD41003FE10B /* NDNiudanFilterCell.m in Sources */,
 				41E34471212EFEEE00F19371 /* HLLPhoneModel.m in Sources */,
 				41E3442A212EFEED00F19371 /* UITextField+Blocks.m in Sources */,
@@ -2638,6 +2727,7 @@
 				41E343AC212EFEED00F19371 /* NSData+Base64.m in Sources */,
 				41E343DC212EFEED00F19371 /* NSURL+QueryDictionary.m in Sources */,
 				41E34402212EFEED00F19371 /* UIImage+Blur.m in Sources */,
+				410448542141850700686119 /* SYQRCodeViewController.m in Sources */,
 				41B4AF07212DB6B40008E66B /* ViewController.m in Sources */,
 				41E3445A212EFEEE00F19371 /* MLSelectPhotoAssets.m in Sources */,
 				41E34460212EFEEE00F19371 /* MLSelectPhotoPickerAssetsViewController.m in Sources */,
@@ -2661,6 +2751,7 @@
 				41E34470212EFEEE00F19371 /* NullSafe.m in Sources */,
 				41E343D4212EFEED00F19371 /* NSString+Size.m in Sources */,
 				41AEAC4E21345375003FE10B /* NDHomeGoodsCell.m in Sources */,
+				41044817214171F900686119 /* NDVerifyOrderTableViewCell.m in Sources */,
 				41E343D0212EFEED00F19371 /* NSString+RegexCategory.m in Sources */,
 				41E343EF212EFEED00F19371 /* UIButton+LXMImagePosition.m in Sources */,
 				41E34465212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
@@ -2702,6 +2793,7 @@
 				41E34431212EFEED00F19371 /* UIView+Animation.m in Sources */,
 				41E34406212EFEED00F19371 /* UIImage+FX.m in Sources */,
 				41E34463212EFEEE00F19371 /* MLPhotoPickerImageView.m in Sources */,
+				4104481B2141721900686119 /* NDVerifyOrderHeadView.m in Sources */,
 				410447F421401C7400686119 /* NDRecodeTableViewCell.m in Sources */,
 				4115BE25213C3327001AFA49 /* NDOrderDetailTableViewCell.m in Sources */,
 				41E3444C212EFEED00F19371 /* UIWebView+Load.m in Sources */,
@@ -2990,6 +3082,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5W52S85U9Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/niudanios/PrefixHeader.pch";
 				INFOPLIST_FILE = niudanios/Info.plist;
@@ -3007,6 +3100,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5W52S85U9Q;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/niudanios/PrefixHeader.pch";
 				INFOPLIST_FILE = niudanios/Info.plist;

@@ -14,7 +14,7 @@
 #import "NDPopularityGoodsViewController.h"
 #import "NDNewGoodsViewController.h"
 #import "NDGoodsPayViewController.h"
-
+#import "SYQRCodeViewController.h"
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
@@ -46,7 +46,18 @@
 }
 
 -(void)scanBtnClick{
-    
+    SYQRCodeViewController *QRVC = [SYQRCodeViewController new];
+    [QRVC setSYQRCodeSuncessBlock:^(SYQRCodeViewController *vc, NSString *qrString) {
+        [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"string:%@",qrString);
+    }];
+    [QRVC setSYQRCodeFailBlock:^(SYQRCodeViewController *vc) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [QRVC setSYQRCodeCancleBlock:^(SYQRCodeViewController *vc) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    [self.navigationController pushViewController:QRVC animated:YES];
 }
 
 -(void)setUI{

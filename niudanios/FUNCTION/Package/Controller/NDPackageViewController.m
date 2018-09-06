@@ -8,7 +8,7 @@
 
 #import "NDPackageViewController.h"
 #import "NDPackageTableViewCell.h"
-
+#import "NDVerifyOrderViewController.h"
 @interface NDPackageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -64,7 +64,8 @@
     sender.selected = !sender.selected;
 }
 - (IBAction)submitOrderClick:(UIButton *)sender {
-    
+    NDVerifyOrderViewController * vc = [[NDVerifyOrderViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
