@@ -10,4 +10,8 @@
 
 @interface NDMineOrderDetailView : UIView
 
+
+@property (nonatomic ,copy) void(^lookOrderLogisticsDetailBlock)(void);
+-(void)setLookOrderLogisticsDetailBlock:(void (^)(void))lookOrderLogisticsDetailBlock;
+
 @end

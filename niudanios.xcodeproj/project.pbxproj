@@ -72,6 +72,12 @@
 		410448522141850700686119 /* QRCodeTopRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448462141850700686119 /* QRCodeTopRight@2x.png */; };
 		410448532141850700686119 /* QRCodeTopRight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 410448472141850700686119 /* QRCodeTopRight@3x.png */; };
 		410448542141850700686119 /* SYQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 410448492141850700686119 /* SYQRCodeViewController.m */; };
+		4104485821434B9C00686119 /* NDLogisticsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104485621434B9C00686119 /* NDLogisticsDetailViewController.m */; };
+		4104485921434B9C00686119 /* NDLogisticsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104485721434B9C00686119 /* NDLogisticsDetailViewController.xib */; };
+		4104485C21434C0700686119 /* NDLogisticsDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104485B21434C0700686119 /* NDLogisticsDetailHeadView.m */; };
+		4104485E21434C1400686119 /* NDLogisticsDetailHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104485D21434C1400686119 /* NDLogisticsDetailHeadView.xib */; };
+		4104486221434C3B00686119 /* NDLogisticsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104486021434C3B00686119 /* NDLogisticsDetailTableViewCell.m */; };
+		4104486321434C3B00686119 /* NDLogisticsDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104486121434C3B00686119 /* NDLogisticsDetailTableViewCell.xib */; };
 		4115BE16213BEECF001AFA49 /* NDMineOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */; };
 		4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */; };
 		4115BE1B213C161B001AFA49 /* NDMineOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE19213C161B001AFA49 /* NDMineOrderDetailViewController.m */; };
@@ -438,6 +444,15 @@
 		410448472141850700686119 /* QRCodeTopRight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "QRCodeTopRight@3x.png"; sourceTree = "<group>"; };
 		410448482141850700686119 /* SYQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYQRCodeViewController.h; sourceTree = "<group>"; };
 		410448492141850700686119 /* SYQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYQRCodeViewController.m; sourceTree = "<group>"; };
+		4104485521434B9C00686119 /* NDLogisticsDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDLogisticsDetailViewController.h; sourceTree = "<group>"; };
+		4104485621434B9C00686119 /* NDLogisticsDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDLogisticsDetailViewController.m; sourceTree = "<group>"; };
+		4104485721434B9C00686119 /* NDLogisticsDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDLogisticsDetailViewController.xib; sourceTree = "<group>"; };
+		4104485A21434C0700686119 /* NDLogisticsDetailHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDLogisticsDetailHeadView.h; sourceTree = "<group>"; };
+		4104485B21434C0700686119 /* NDLogisticsDetailHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDLogisticsDetailHeadView.m; sourceTree = "<group>"; };
+		4104485D21434C1400686119 /* NDLogisticsDetailHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDLogisticsDetailHeadView.xib; sourceTree = "<group>"; };
+		4104485F21434C3B00686119 /* NDLogisticsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDLogisticsDetailTableViewCell.h; sourceTree = "<group>"; };
+		4104486021434C3B00686119 /* NDLogisticsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDLogisticsDetailTableViewCell.m; sourceTree = "<group>"; };
+		4104486121434C3B00686119 /* NDLogisticsDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDLogisticsDetailTableViewCell.xib; sourceTree = "<group>"; };
 		4115BE13213BEECF001AFA49 /* NDMineOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderTableViewCell.h; sourceTree = "<group>"; };
 		4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderTableViewCell.m; sourceTree = "<group>"; };
 		4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -1379,6 +1394,9 @@
 				4104481C2141723800686119 /* NDVerifyOrderViewController.h */,
 				4104481D2141723800686119 /* NDVerifyOrderViewController.m */,
 				4104481E2141723800686119 /* NDVerifyOrderViewController.xib */,
+				4104485521434B9C00686119 /* NDLogisticsDetailViewController.h */,
+				4104485621434B9C00686119 /* NDLogisticsDetailViewController.m */,
+				4104485721434B9C00686119 /* NDLogisticsDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1454,6 +1472,12 @@
 				410448192141721900686119 /* NDVerifyOrderHeadView.h */,
 				4104481A2141721900686119 /* NDVerifyOrderHeadView.m */,
 				410448212141724800686119 /* NDVerifyOrderHeadView.xib */,
+				4104485A21434C0700686119 /* NDLogisticsDetailHeadView.h */,
+				4104485B21434C0700686119 /* NDLogisticsDetailHeadView.m */,
+				4104485D21434C1400686119 /* NDLogisticsDetailHeadView.xib */,
+				4104485F21434C3B00686119 /* NDLogisticsDetailTableViewCell.h */,
+				4104486021434C3B00686119 /* NDLogisticsDetailTableViewCell.m */,
+				4104486121434C3B00686119 /* NDLogisticsDetailTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2563,10 +2587,13 @@
 			files = (
 				41AEAC5921345E35003FE10B /* NDHomeGoodsCollectionViewCell.xib in Resources */,
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
+				4104486321434C3B00686119 /* NDLogisticsDetailTableViewCell.xib in Resources */,
 				410448042140219300686119 /* NDAboutTableViewCell.xib in Resources */,
 				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
 				410448222141724800686119 /* NDVerifyOrderHeadView.xib in Resources */,
+				4104485921434B9C00686119 /* NDLogisticsDetailViewController.xib in Resources */,
 				4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */,
+				4104485E21434C1400686119 /* NDLogisticsDetailHeadView.xib in Resources */,
 				410447A6213D656C00686119 /* NDAccountPayViewController.xib in Resources */,
 				41E341A6212E32FD00F19371 /* NDNiudanViewController.xib in Resources */,
 				4104484E2141850700686119 /* QRCodeLine@2x.png in Resources */,
@@ -2700,6 +2727,7 @@
 				41E343E1212EFEED00F19371 /* UIApplication+ApplicationSize.m in Sources */,
 				41E343FF212EFEED00F19371 /* UIImage+Alpha.m in Sources */,
 				4115BE1B213C161B001AFA49 /* NDMineOrderDetailViewController.m in Sources */,
+				4104485C21434C0700686119 /* NDLogisticsDetailHeadView.m in Sources */,
 				41E34444212EFEED00F19371 /* UIViewController+MJPopupViewController.m in Sources */,
 				41E34434212EFEED00F19371 /* UIView+draggable.m in Sources */,
 				41E34454212EFEED00F19371 /* HLLAlertCustomVC.m in Sources */,
@@ -2750,6 +2778,7 @@
 				41E343BB212EFEED00F19371 /* NSObject+AddProperty.m in Sources */,
 				41E34470212EFEEE00F19371 /* NullSafe.m in Sources */,
 				41E343D4212EFEED00F19371 /* NSString+Size.m in Sources */,
+				4104486221434C3B00686119 /* NDLogisticsDetailTableViewCell.m in Sources */,
 				41AEAC4E21345375003FE10B /* NDHomeGoodsCell.m in Sources */,
 				41044817214171F900686119 /* NDVerifyOrderTableViewCell.m in Sources */,
 				41E343D0212EFEED00F19371 /* NSString+RegexCategory.m in Sources */,
@@ -2868,6 +2897,7 @@
 				41E3440D212EFEED00F19371 /* UIImage+RoundedCorner.m in Sources */,
 				41E34448212EFEED00F19371 /* UIWebView+Alert.m in Sources */,
 				410447AA213D757100686119 /* NDAccountPayDeatailVC.m in Sources */,
+				4104485821434B9C00686119 /* NDLogisticsDetailViewController.m in Sources */,
 				4115BE1F213C1645001AFA49 /* NDMineOrderDetailView.m in Sources */,
 				41E343AF212EFEED00F19371 /* NSData+Hash.m in Sources */,
 				41E343D3212EFEED00F19371 /* NSString+Score.m in Sources */,

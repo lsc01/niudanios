@@ -17,5 +17,8 @@
     // Drawing code
 }
 */
+- (IBAction)OrderDetailClick:(UIButton *)sender {
+    _lookOrderLogisticsDetailBlock?_lookOrderLogisticsDetailBlock():nil;
+}
 
 @end

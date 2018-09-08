@@ -9,6 +9,7 @@
 #import "NDMineOrderDetailViewController.h"
 #import "NDMineOrderDetailView.h"
 #import "NDOrderDetailTableViewCell.h"
+#import "NDLogisticsDetailViewController.h"
 @interface NDMineOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDMineOrderDetailView * headerView;
@@ -43,6 +44,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    
+    WeakSelf();
+    [self.headerView setLookOrderLogisticsDetailBlock:^{
+        StrongSelf();
+        NDLogisticsDetailViewController * vc = [[NDLogisticsDetailViewController alloc] init];
+        [strongself.navigationController pushViewController:vc animated:YES];
+    }];
 }
 
 
