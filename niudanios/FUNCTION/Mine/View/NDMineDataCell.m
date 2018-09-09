@@ -22,5 +22,6 @@
 }
 
 - (IBAction)selectBtnClick:(UIButton *)sender {
+    _selectBtnBlock?_selectBtnBlock(sender):nil;
 }
 @end

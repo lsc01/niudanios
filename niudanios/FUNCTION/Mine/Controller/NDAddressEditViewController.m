@@ -7,7 +7,7 @@
 //
 
 #import "NDAddressEditViewController.h"
-
+#import "BRAddressPickerView.h"
 @interface NDAddressEditViewController ()<UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPerson;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -22,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"编辑收货地址";
+    
     self.textAddressDetail.text = @"请填写详细地址    ";
     self.textAddressDetail.textColor = HEXCOLOR(0xaaaaaa);
     self.textAddressDetail.delegate = self;
@@ -34,6 +37,12 @@
 - (IBAction)saveBtnClick:(UIButton *)sender {
 }
 - (IBAction)selectAddressClick:(UIButton *)sender {
+    
+    WeakSelf();
+    [BRAddressPickerView showAddressPickerWithDefaultSelected:@[@0,@0,@0] isAutoSelect:NO resultBlock:^(NSArray *selectAddressArr) {
+        StrongSelf();
+        strongself.labelAddress.text = [NSString stringWithFormat:@"%@%@%@",selectAddressArr[0],selectAddressArr[1],selectAddressArr[2]];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

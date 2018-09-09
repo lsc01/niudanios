@@ -10,6 +10,8 @@
 #import "NDMineDataCell.h"
 #import "NDMineDataHeaderView.h"
 #import "NDUpdatePhoneViewController.h"
+#import "BRDatePickerView.h"
+#import "NDSexSelectView.h"
 @interface NDMIneDataViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong) NDMineDataHeaderView * headView;
 
@@ -96,12 +98,29 @@
             cell.btnSelect.enabled = YES;
             [cell.btnSelect setTitle:@"请选择" forState:UIControlStateNormal];
             cell.labelTitle.text = @"性别";
+           
         }else if (indexPath.row == 2){
             cell.viewLine.hidden = YES;
             cell.btnSelect.enabled = YES;
             [cell.btnSelect setTitle:@"请选择" forState:UIControlStateNormal];
             cell.labelTitle.text = @"出生年月";
+            
         }
+        [cell setSelectBtnBlock:^(UIButton *btnSelect) {
+            if (indexPath.row == 1) {
+                [NDSexSelectView showSexResultBlock:^(NSString *selectValue) {
+                    [btnSelect setTitle:selectValue forState:UIControlStateNormal];
+                }];
+                
+            }else if (indexPath.row == 2){
+                [BRDatePickerView showDatePickerWithTitle:@"" dateType:UIDatePickerModeDate defaultSelValue:@"" minDateStr:@"" maxDateStr:@"" isAutoSelect:NO resultBlock:^(NSString *selectValue,NSDate * selectDate) {
+                    [btnSelect setTitle:selectValue forState:UIControlStateNormal];
+                }];
+            }
+            
+            
+        }];
+        
         
         
         return cell;

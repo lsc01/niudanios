@@ -78,6 +78,13 @@
 		4104485E21434C1400686119 /* NDLogisticsDetailHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104485D21434C1400686119 /* NDLogisticsDetailHeadView.xib */; };
 		4104486221434C3B00686119 /* NDLogisticsDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104486021434C3B00686119 /* NDLogisticsDetailTableViewCell.m */; };
 		4104486321434C3B00686119 /* NDLogisticsDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4104486121434C3B00686119 /* NDLogisticsDetailTableViewCell.xib */; };
+		4104487E21455B1D00686119 /* BRAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104487021455B1D00686119 /* BRAddressModel.m */; };
+		4104487F21455B1D00686119 /* BRAddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104487221455B1D00686119 /* BRAddressPickerView.m */; };
+		4104488021455B1D00686119 /* BRCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4104487321455B1D00686119 /* BRCity.plist */; };
+		4104488121455B1D00686119 /* BRBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104487621455B1D00686119 /* BRBaseView.m */; };
+		4104488221455B1D00686119 /* BRDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104487A21455B1D00686119 /* BRDatePickerView.m */; };
+		4104488321455B1D00686119 /* BRStringPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4104487D21455B1D00686119 /* BRStringPickerView.m */; };
+		410448862145655400686119 /* NDSexSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 410448852145655400686119 /* NDSexSelectView.m */; };
 		4115BE16213BEECF001AFA49 /* NDMineOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */; };
 		4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */; };
 		4115BE1B213C161B001AFA49 /* NDMineOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE19213C161B001AFA49 /* NDMineOrderDetailViewController.m */; };
@@ -453,6 +460,20 @@
 		4104485F21434C3B00686119 /* NDLogisticsDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDLogisticsDetailTableViewCell.h; sourceTree = "<group>"; };
 		4104486021434C3B00686119 /* NDLogisticsDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDLogisticsDetailTableViewCell.m; sourceTree = "<group>"; };
 		4104486121434C3B00686119 /* NDLogisticsDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDLogisticsDetailTableViewCell.xib; sourceTree = "<group>"; };
+		4104486F21455B1D00686119 /* BRAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAddressModel.h; sourceTree = "<group>"; };
+		4104487021455B1D00686119 /* BRAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAddressModel.m; sourceTree = "<group>"; };
+		4104487121455B1D00686119 /* BRAddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAddressPickerView.h; sourceTree = "<group>"; };
+		4104487221455B1D00686119 /* BRAddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAddressPickerView.m; sourceTree = "<group>"; };
+		4104487321455B1D00686119 /* BRCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BRCity.plist; sourceTree = "<group>"; };
+		4104487521455B1D00686119 /* BRBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBaseView.h; sourceTree = "<group>"; };
+		4104487621455B1D00686119 /* BRBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBaseView.m; sourceTree = "<group>"; };
+		4104487721455B1D00686119 /* BRPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRPickerView.h; sourceTree = "<group>"; };
+		4104487921455B1D00686119 /* BRDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRDatePickerView.h; sourceTree = "<group>"; };
+		4104487A21455B1D00686119 /* BRDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRDatePickerView.m; sourceTree = "<group>"; };
+		4104487C21455B1D00686119 /* BRStringPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRStringPickerView.h; sourceTree = "<group>"; };
+		4104487D21455B1D00686119 /* BRStringPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRStringPickerView.m; sourceTree = "<group>"; };
+		410448842145655400686119 /* NDSexSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDSexSelectView.h; sourceTree = "<group>"; };
+		410448852145655400686119 /* NDSexSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDSexSelectView.m; sourceTree = "<group>"; };
 		4115BE13213BEECF001AFA49 /* NDMineOrderTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderTableViewCell.h; sourceTree = "<group>"; };
 		4115BE14213BEECF001AFA49 /* NDMineOrderTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderTableViewCell.m; sourceTree = "<group>"; };
 		4115BE15213BEECF001AFA49 /* NDMineOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineOrderTableViewCell.xib; sourceTree = "<group>"; };
@@ -1073,6 +1094,57 @@
 			path = Imgs;
 			sourceTree = "<group>";
 		};
+		4104486D21455B1D00686119 /* BRPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4104486E21455B1D00686119 /* AddressPickerView */,
+				4104487421455B1D00686119 /* Base */,
+				4104487721455B1D00686119 /* BRPickerView.h */,
+				4104487821455B1D00686119 /* DatePickerView */,
+				4104487B21455B1D00686119 /* StringPickerView */,
+			);
+			path = BRPickerView;
+			sourceTree = "<group>";
+		};
+		4104486E21455B1D00686119 /* AddressPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4104486F21455B1D00686119 /* BRAddressModel.h */,
+				4104487021455B1D00686119 /* BRAddressModel.m */,
+				4104487121455B1D00686119 /* BRAddressPickerView.h */,
+				4104487221455B1D00686119 /* BRAddressPickerView.m */,
+				4104487321455B1D00686119 /* BRCity.plist */,
+			);
+			path = AddressPickerView;
+			sourceTree = "<group>";
+		};
+		4104487421455B1D00686119 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4104487521455B1D00686119 /* BRBaseView.h */,
+				4104487621455B1D00686119 /* BRBaseView.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4104487821455B1D00686119 /* DatePickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4104487921455B1D00686119 /* BRDatePickerView.h */,
+				4104487A21455B1D00686119 /* BRDatePickerView.m */,
+			);
+			path = DatePickerView;
+			sourceTree = "<group>";
+		};
+		4104487B21455B1D00686119 /* StringPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				4104487C21455B1D00686119 /* BRStringPickerView.h */,
+				4104487D21455B1D00686119 /* BRStringPickerView.m */,
+			);
+			path = StringPickerView;
+			sourceTree = "<group>";
+		};
 		41B4AEF6212DB6B40008E66B = {
 			isa = PBXGroup;
 			children = (
@@ -1478,6 +1550,8 @@
 				4104485F21434C3B00686119 /* NDLogisticsDetailTableViewCell.h */,
 				4104486021434C3B00686119 /* NDLogisticsDetailTableViewCell.m */,
 				4104486121434C3B00686119 /* NDLogisticsDetailTableViewCell.xib */,
+				410448842145655400686119 /* NDSexSelectView.h */,
+				410448852145655400686119 /* NDSexSelectView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2343,6 +2417,7 @@
 		41E34357212EFEED00F19371 /* Utils(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				4104486D21455B1D00686119 /* BRPickerView */,
 				4104483C2141850700686119 /* QRScanTool */,
 				410447CC213EC2D800686119 /* ELCycleVerticalView */,
 				41E34358212EFEED00F19371 /* AlertCustom(自定义弹窗) */,
@@ -2616,6 +2691,7 @@
 				410447FF2140216700686119 /* NDAboutViewController.xib in Resources */,
 				41044818214171F900686119 /* NDVerifyOrderTableViewCell.xib in Resources */,
 				4104484B2141850700686119 /* QRCodebottomLeft@3x.png in Resources */,
+				4104488021455B1D00686119 /* BRCity.plist in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
 				410448512141850700686119 /* QRCodeTopLeft@3x.png in Resources */,
 				410448092140258700686119 /* NDMineAddressTableViewCell.xib in Resources */,
@@ -2716,6 +2792,7 @@
 				41AEAC76213BCA1E003FE10B /* NDMIneDataViewController.m in Sources */,
 				41E343CC212EFEED00F19371 /* NSString+Matcher.m in Sources */,
 				41E34456212EFEED00F19371 /* HLLVerifyTools.m in Sources */,
+				4104487E21455B1D00686119 /* BRAddressModel.m in Sources */,
 				41E34450212EFEED00F19371 /* WebView+Debug.m in Sources */,
 				41E34441212EFEED00F19371 /* UIViewController+BackButtonItemTitle.m in Sources */,
 				41E343EA212EFEED00F19371 /* UIBezierPath+Symbol.m in Sources */,
@@ -2780,6 +2857,7 @@
 				41E343D4212EFEED00F19371 /* NSString+Size.m in Sources */,
 				4104486221434C3B00686119 /* NDLogisticsDetailTableViewCell.m in Sources */,
 				41AEAC4E21345375003FE10B /* NDHomeGoodsCell.m in Sources */,
+				4104488121455B1D00686119 /* BRBaseView.m in Sources */,
 				41044817214171F900686119 /* NDVerifyOrderTableViewCell.m in Sources */,
 				41E343D0212EFEED00F19371 /* NSString+RegexCategory.m in Sources */,
 				41E343EF212EFEED00F19371 /* UIButton+LXMImagePosition.m in Sources */,
@@ -2846,6 +2924,7 @@
 				41AEAC89213BDBBC003FE10B /* NDMineOrderSelectView.m in Sources */,
 				41E34411212EFEED00F19371 /* UIImageView+BetterFace.m in Sources */,
 				41AEAC4821344B19003FE10B /* NDHomeSetionHeadView.m in Sources */,
+				4104487F21455B1D00686119 /* BRAddressPickerView.m in Sources */,
 				41E3440B212EFEED00F19371 /* UIImage+RemoteSize.m in Sources */,
 				41E343FA212EFEED00F19371 /* UIDevice+Hardware.m in Sources */,
 				41E343F5212EFEED00F19371 /* UIColor+Modify.m in Sources */,
@@ -2886,6 +2965,7 @@
 				41AEAC5C2136FB6A003FE10B /* NDNiudanFilterView.m in Sources */,
 				41E343DD212EFEED00F19371 /* NSURLConnection+SelfSigned.m in Sources */,
 				41E343B3212EFEED00F19371 /* NSDateFormatter+Make.m in Sources */,
+				4104488321455B1D00686119 /* BRStringPickerView.m in Sources */,
 				41E34417212EFEED00F19371 /* UILabel+AutoSize.m in Sources */,
 				41E343FD212EFEED00F19371 /* UIFont+WDCustomLoader.m in Sources */,
 				41E3445B212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhoto.m in Sources */,
@@ -2923,6 +3003,7 @@
 				41E34474212EFEEE00F19371 /* HLLSysAuthorityManager.m in Sources */,
 				41E34461212EFEEE00F19371 /* MLSelectPhotoPickerGroupViewController.m in Sources */,
 				41E343FE212EFEED00F19371 /* UIFont-TTF.m in Sources */,
+				4104488221455B1D00686119 /* BRDatePickerView.m in Sources */,
 				410447A5213D656C00686119 /* NDAccountPayViewController.m in Sources */,
 				41E341AF212E332700F19371 /* NDMineViewController.m in Sources */,
 				410447D1213EC2D800686119 /* CycleVerticalModel.m in Sources */,
@@ -2935,6 +3016,7 @@
 				41E34407212EFEED00F19371 /* UIImage+GIF2.m in Sources */,
 				410447CB213EC1B800686119 /* UIViewController+toast.m in Sources */,
 				41AEAC5821345E35003FE10B /* NDHomeGoodsCollectionViewCell.m in Sources */,
+				410448862145655400686119 /* NDSexSelectView.m in Sources */,
 				41E343CD212EFEED00F19371 /* NSString+MIME.m in Sources */,
 				41E343CF212EFEED00F19371 /* NSString+QMUI.m in Sources */,
 				41E3441E212EFEED00F19371 /* UINavigationItem+Margin.m in Sources */,

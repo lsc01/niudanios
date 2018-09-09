@@ -15,4 +15,8 @@
 - (IBAction)selectBtnClick:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIView *viewLine;
 
+@property (nonatomic ,copy) void(^selectBtnBlock)(UIButton * btnSelect);
+-(void)setSelectBtnBlock:(void (^)(UIButton * btnSelect))selectBtnBlock;
+
+
 @end
