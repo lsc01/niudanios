@@ -501,6 +501,7 @@
 		41378AFA21330B0200076ADD /* NDUpdatePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDUpdatePhoneViewController.h; sourceTree = "<group>"; };
 		41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDUpdatePhoneViewController.m; sourceTree = "<group>"; };
 		41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDUpdatePhoneViewController.xib; sourceTree = "<group>"; };
+		4147F94D2147FB0A00ECC253 /* ShareSdkHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareSdkHeader.h; sourceTree = "<group>"; };
 		41AEAC4321344706003FE10B /* NDHomeHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeHeadView.h; sourceTree = "<group>"; };
 		41AEAC4421344706003FE10B /* NDHomeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeHeadView.m; sourceTree = "<group>"; };
 		41AEAC4621344B19003FE10B /* NDHomeSetionHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeSetionHeadView.h; sourceTree = "<group>"; };
@@ -1584,6 +1585,7 @@
 				41E341B7212EFEBF00F19371 /* ThirdInfoMacros.h */,
 				41E341B8212EFEBF00F19371 /* UIMacros.h */,
 				41E341B9212EFEBF00F19371 /* URLMacros.h */,
+				4147F94D2147FB0A00ECC253 /* ShareSdkHeader.h */,
 			);
 			path = "Macros(宏定义)";
 			sourceTree = "<group>";
@@ -2748,6 +2750,9 @@
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SAMKeychain/Support/SAMKeychain.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDK.bundle",
+				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle",
+				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2755,6 +2760,9 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SAMKeychain.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ShareSDKUI.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

@@ -10,6 +10,7 @@
 #import <IQKeyboardManager.h>
 #import <AFNetworking.h>
 #import "NDBaseTabBarController.h"
+#import "ShareSDKHeader.h"
 @interface AppDelegate ()
 
 @end
@@ -68,6 +69,66 @@
         }
     }];
 }
+
+#pragma mark  - ShareSDKInit
+- (void)ADShareSDKInit {
+        /**初始化ShareSDK应用
+         
+         @param activePlatforms
+         使用的分享平台集合
+         @param importHandler (onImport)
+         导入回调处理，当某个平台的功能需要依赖原平台提供的SDK支持时，需要在此方法中对原平台SDK进行导入操作
+         @param configurationHandler (onConfiguration)
+         配置回调处理，在此方法中根据设置的platformType来填充应用配置信息
+         */
+        [ShareSDK registerActivePlatforms:@[
+                                            @(SSDKPlatformTypeSinaWeibo),
+                                            @(SSDKPlatformTypeWechat),
+                                            @(SSDKPlatformTypeQQ)
+                                            ]
+                                 onImport:^(SSDKPlatformType platformType){
+                                     switch (platformType)
+                                     {
+                                         case SSDKPlatformTypeWechat:
+                                             [ShareSDKConnector connectWeChat:[WXApi class]];
+                                             break;
+                                         case SSDKPlatformTypeQQ:
+                                             [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                                             break;
+                                         case SSDKPlatformTypeSinaWeibo:
+                                             [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+                                             break;
+                                         default:
+                                             break;
+                                     }
+                                 }onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo){
+             
+                                     switch (platformType)
+                                     {
+                                         case SSDKPlatformTypeSinaWeibo:
+                                             //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                                             [appInfo SSDKSetupSinaWeiboByAppKey:@"3974139300"
+                                                                       appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                                                                     redirectUri:@"http://www.sharesdk.cn"
+                                                                        authType:SSDKAuthTypeBoth];
+                                             break;
+                                         case SSDKPlatformTypeWechat:
+                                             [appInfo SSDKSetupWeChatByAppId:@"wxe8bb4cd46e4b1142"
+                                                                   appSecret:@"55c7fe18f6746b378e57b3d29e93fbed"];
+                                             break;
+                                         case SSDKPlatformTypeQQ:
+                                             [appInfo SSDKSetupQQByAppId:@"1106085747"
+                                                                  appKey:@"UxwQQvm3ynHG8o7v"
+                                                                authType:SSDKAuthTypeBoth];
+                                             break;
+                                    
+                                         default:
+                                               break;
+                                     }
+                                    }];
+    
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -9,7 +9,7 @@
 #import "NDLoginViewController.h"
 #import "NDRegisterViewController.h"
 #import "UIViewController+toast.h"
-
+#import "ShareSdkHeader.h"
 @interface NDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -57,8 +57,45 @@
     
 }
 - (IBAction)wechatLoginClick:(id)sender {
+    [ShareSDK getUserInfo:SSDKPlatformTypeWechat
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             
+             NSLog(@"uid=%@",user.uid);
+             NSLog(@"%@",user.credential);
+             NSLog(@"token=%@",user.credential.token);
+             NSLog(@"nickname=%@",user.nickname);
+         }
+         
+         else
+         {
+             NSLog(@"%@",error);
+         }
+         
+     }];
+    
 }
 - (IBAction)qqLoginClick:(id)sender {
+    [ShareSDK getUserInfo:SSDKPlatformTypeQQ
+           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+     {
+         if (state == SSDKResponseStateSuccess)
+         {
+             
+             NSLog(@"uid=%@",user.uid);
+             NSLog(@"%@",user.credential);
+             NSLog(@"token=%@",user.credential.token);
+             NSLog(@"nickname=%@",user.nickname);
+         }
+         
+         else
+         {
+             NSLog(@"%@",error);
+         }
+         
+     }];
 }
 
 @end
