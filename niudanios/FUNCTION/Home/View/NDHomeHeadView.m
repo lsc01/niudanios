@@ -37,23 +37,7 @@
                                   font:[UIFont systemFontOfSize:14]
                          textAlignment:NSTextAlignmentCenter];
     
-    CycleVerticalModel * model = [[CycleVerticalModel alloc] init];
-    model.personName = @"model";
-    model.goodsName = @"大家都";
     
-    CycleVerticalModel * model2 = [[CycleVerticalModel alloc] init];
-    model2.personName = @"model2";
-    model2.goodsName = @"大大师傅离开";
-    CycleVerticalModel * model3 = [[CycleVerticalModel alloc] init];
-    model3.personName = @"model2";
-    model3.goodsName = @"阿道夫敢问";
-    CycleVerticalModel * model4 = [[CycleVerticalModel alloc] init];
-    model4.personName = @"model4";
-    model4.goodsName = @"鬼地方个";
-    
-    self.cycVerticalView.dataSource = @[
-                                   model,model2,model3,model4
-                                   ];
 }
 #pragma mark - SDCycleScrollViewDelegate 轮播器点击
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
@@ -105,6 +89,30 @@
 // 关闭动画 (进入其他页面时调用)
 - (void)stopAnimation{
     [self.cycVerticalView stopAnimation];
+}
+-(void)setClcleViewUrlImageArray:(NSArray *)array{
+    [self.cycleView setImageURLStringsGroup:array];
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+-(void)setcycVerticalArray:(NSArray *)array{
+    CycleVerticalModel * model = [[CycleVerticalModel alloc] init];
+    model.personName = @"model";
+    model.goodsName = @"大家都";
+    
+    CycleVerticalModel * model2 = [[CycleVerticalModel alloc] init];
+    model2.personName = @"model2";
+    model2.goodsName = @"大大师傅离开";
+    CycleVerticalModel * model3 = [[CycleVerticalModel alloc] init];
+    model3.personName = @"model2";
+    model3.goodsName = @"阿道夫敢问";
+    CycleVerticalModel * model4 = [[CycleVerticalModel alloc] init];
+    model4.personName = @"model4";
+    model4.goodsName = @"鬼地方个";
+    
+    self.cycVerticalView.dataSource = @[
+                                        model,model2,model3,model4
+                                        ];
 }
 
 @end

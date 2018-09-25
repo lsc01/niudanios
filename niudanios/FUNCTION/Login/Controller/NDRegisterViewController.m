@@ -55,8 +55,29 @@
 }
 
 - (IBAction)registerClick:(id)sender {
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"18670373195" forKey:@"loginMobile"];
+    [dictP setObject:@"123456" forKey:@"loginPwd"];
+    [dictP setObject:@"123456" forKey:@"verificationCode"];
+    
+    [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
 }
 
 - (IBAction)getCodeClick:(id)sender {
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"18670373195" forKey:@"loginMobile"];
+    [dictP setObject:@"123456" forKey:@"loginPwd"];
+    [dictP setObject:@"123456" forKey:@"verificationCode"];
+    
+    [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
+    
 }
 @end

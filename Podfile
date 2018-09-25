@@ -28,7 +28,7 @@ pod 'mob_sharesdk/ShareSDKUI'
 # 平台SDK模块(对照一下平台，需要的加上。如果只需要QQ、微信、新浪微博，只需要以下3行)
 pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
 pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
-pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'   
+pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull'
 
 
 # 使用配置文件分享模块（非必需）
@@ -36,7 +36,7 @@ pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
 
 # 扩展模块（在调用可以弹出我们UI分享方法的时候是必需的）
 pod 'mob_sharesdk/ShareSDKExtension'
-
+pod 'WechatOpenSDK'
 end
 
 

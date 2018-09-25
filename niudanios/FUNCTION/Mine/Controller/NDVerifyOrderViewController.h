@@ -7,7 +7,12 @@
 //
 
 #import "NDBaseViewController.h"
-
+#import "NDSelectDefaultAddrModel.h"
+#import "NDPackageGoodsModel.h"
 @interface NDVerifyOrderViewController : NDBaseViewController
+
+@property (nonatomic ,strong) NDSelectDefaultAddrModel * defaultAddrModel;
+
+@property (nonatomic ,strong) NSArray <NDPackageGoodsModel *> * arrGoodsModel;
 
 @end

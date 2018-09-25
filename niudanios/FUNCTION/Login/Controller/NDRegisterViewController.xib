@@ -89,9 +89,8 @@
                             </constraints>
                         </view>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d3y-t1-MM8">
-                            <rect key="frame" x="52" y="52" width="80" height="30"/>
+                            <rect key="frame" x="52" y="52" width="169" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="19m-bH-ejd"/>
                                 <constraint firstAttribute="height" constant="30" id="ZDy-fv-xsE"/>
                             </constraints>
                             <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -121,6 +120,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Qfn-nh-Lt0" firstAttribute="height" secondItem="csH-2K-a54" secondAttribute="height" id="0Lw-4C-yrK"/>
+                        <constraint firstItem="kdY-gl-ltw" firstAttribute="leading" secondItem="d3y-t1-MM8" secondAttribute="trailing" constant="10" id="0z6-9V-J4O"/>
                         <constraint firstItem="gCh-KZ-ppR" firstAttribute="leading" secondItem="HZf-26-dk9" secondAttribute="leading" id="0zt-UT-mWe"/>
                         <constraint firstItem="d3y-t1-MM8" firstAttribute="centerY" secondItem="Qfn-nh-Lt0" secondAttribute="centerY" id="2IM-b9-rSg"/>
                         <constraint firstAttribute="trailing" secondItem="hYx-kv-22f" secondAttribute="trailing" id="3Ih-9w-Nd9"/>

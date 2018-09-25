@@ -9,6 +9,7 @@
 #import "NDVerifyOrderViewController.h"
 #import "NDVerifyOrderTableViewCell.h"
 #import "NDVerifyOrderHeadView.h"
+#import "NDAddressEditViewController.h"
 @interface NDVerifyOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -48,6 +49,12 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
+    WeakSelf();
+    [self.headView setAddNewAddrBlock:^{
+        StrongSelf();
+        NDAddressEditViewController * vc = [[NDAddressEditViewController alloc] init];
+        [strongself.navigationController pushViewController:vc animated:YES];
+    }];
 }
 
 
@@ -55,7 +62,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return self.arrGoodsModel.count;
     
 }
 
@@ -95,8 +102,11 @@
     if (_headView == nil) {
         _headView = [[NSBundle mainBundle] loadNibNamed:@"NDVerifyOrderHeadView" owner:self options:nil].firstObject;
         _headView.frame = CGRectMake(0, 0, kScreenWidth, 75);
-        
-        _headView.hasAddress = YES;
+        if ([self.defaultAddrModel.cond isEqualToString:@"N"]) {
+            _headView.hasAddress = NO;
+        }else{
+            _headView.hasAddress = YES;
+        }
     }
     return _headView;
 }

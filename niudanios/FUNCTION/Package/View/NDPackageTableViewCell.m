@@ -19,6 +19,14 @@
     
 }
 
+-(void)setModel:(NDPackageGoodsModel *)model{
+    _model = model;
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:model.gashaponImg] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.labelName.text = model.gashaponName;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -27,6 +35,6 @@
 
 - (IBAction)selectBtnClick:(UIButton *)sender {
     sender.selected = !sender.selected;
-    
+    _SelectGoodsBlock?_SelectGoodsBlock(sender.selected,self.model):nil;
 }
 @end

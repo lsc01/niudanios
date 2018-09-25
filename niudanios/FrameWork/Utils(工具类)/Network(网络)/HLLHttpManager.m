@@ -23,29 +23,36 @@ typedef NS_ENUM(NSInteger , RequsetType) {
 {
     
     AFHTTPSessionManager *mgr = [HLLHttpManager shareManager];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    });
     
-    NSMutableDictionary * dictParams = [[NSMutableDictionary alloc] initWithDictionary:params];
-    [dictParams setObject:[HLLPhoneModel getUUIDString] forKey:@"deviceId"];
     
-    [mgr POST:url parameters:dictParams progress:^(NSProgress * _Nonnull uploadProgress) {
+    [mgr POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
 //        progress?progress(uploadProgress):nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        });
         NSData * data = (NSData *)responseObject;
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"url:%@ ---- \nresponseObject：%@",url,dict);
-            if ([dict[@"code"] integerValue] == 200) {
+            NSInteger code = [dict[@"code"] integerValue];
+            if (code == 0) {
                 success?success(dict):nil;
-            }else{
-                failure?failure(nil,[dict[@"code"] integerValue],dict[@"msg"]):nil;
-                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",[dict[@"code"] integerValue],dict[@"msg"],url,dictParams);
+            }else if (code == 999999){
+                failure?failure(nil,999999,dict[@"errorMsg"]):nil;
+                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",[dict[@"code"] integerValue],dict[@"msg"],url,params);
             }
+            
         });
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+        });
         dispatch_async(dispatch_get_main_queue(), ^{
             failure?failure(error,0,nil):nil;
             HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
@@ -59,27 +66,27 @@ typedef NS_ENUM(NSInteger , RequsetType) {
     AFHTTPSessionManager *mgr = [HLLHttpManager shareManager];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
-    NSMutableDictionary * dictParams = [[NSMutableDictionary alloc] initWithDictionary:params];
-    [dictParams setObject:[HLLPhoneModel getUUIDString] forKey:@"deviceId"];
-    [mgr GET:url parameters:dictParams progress:^(NSProgress * _Nonnull downloadProgress) {
+
+    [mgr GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
 //        progress?progress(downloadProgress):nil;
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         NSData * data = (NSData *)responseObject;
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([dict[@"code"] integerValue] == 200) {
+            NSInteger code = [dict[@"code"] integerValue];
+            if (code == 0) {
                 success?success(dict):nil;
-            }else{
-                failure?failure(nil,[dict[@"code"] integerValue],dict[@"msg"]):nil;
-                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",[dict[@"code"] integerValue],dict[@"msg"],url,params);
+            }else if (code == 999999){
+                failure?failure(nil,999999,dict[@"errorMsg"]):nil;
+                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",999999,dict[@"msg"],url,params);
             }
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             failure?failure(error,0,nil):nil;
-            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,dictParams);
+            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
         });
     }];
 }
@@ -91,9 +98,8 @@ typedef NS_ENUM(NSInteger , RequsetType) {
     
     AFHTTPSessionManager *mgr = [HLLHttpManager shareManager];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSMutableDictionary * dictParams = [[NSMutableDictionary alloc] initWithDictionary:params];
-    [dictParams setObject:[HLLPhoneModel getUUIDString] forKey:@"deviceId"];
-    [mgr POST:url parameters:dictParams constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull totalFormData) {
+
+    [mgr POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull totalFormData) {
         for(HLLFormData *formData in formDataArray){
             [totalFormData appendPartWithFileData:formData.data name:formData.name fileName:formData.filename mimeType:formData.mimeType];
         }
@@ -105,18 +111,19 @@ typedef NS_ENUM(NSInteger , RequsetType) {
         NSData * data = (NSData *)responseObject;
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([dict[@"code"] integerValue] == 200) {
+            NSInteger code = [dict[@"code"] integerValue];
+            if (code == 0) {
                 success?success(dict):nil;
-            }else{
-                failure?failure(nil,[dict[@"code"] integerValue],dict[@"msg"]):nil;
-               
+            }else if (code == 999999){
+                failure?failure(nil,999999,dict[@"errorMsg"]):nil;
+                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",999999,dict[@"msg"],url,params);
             }
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             failure?failure(error,0,nil):nil;
-            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,dictParams);
+            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
         });
     }];
 }

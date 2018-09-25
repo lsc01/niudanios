@@ -35,6 +35,8 @@
 }
 
 - (IBAction)addNewAddressClick:(UIButton *)sender {
+    
+    _addNewAddrBlock?_addNewAddrBlock():nil;
 }
 
 -(void)setHasAddress:(BOOL)hasAddress{

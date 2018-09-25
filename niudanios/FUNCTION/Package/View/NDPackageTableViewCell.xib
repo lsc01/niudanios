@@ -72,6 +72,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnSelect" destination="Mxk-We-7Jf" id="NDi-WY-VnB"/>
                 <outlet property="imageViewGoods" destination="OZW-hP-hSG" id="Moc-lI-7XI"/>
                 <outlet property="labelName" destination="Ifc-ew-hX0" id="Tee-oc-yod"/>
                 <outlet property="labelTime" destination="H9y-mQ-aMl" id="ayk-Or-UFo"/>

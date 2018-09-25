@@ -140,6 +140,9 @@
             _tmpBtmView = _tmpAnimationView1;
         }
     }
+    if (_dataSource.count<1) {
+        return;
+    }
     CycleVerticalModel * model = _dataSource[_indexNow%(_dataSource.count)];
     [self setLabelAttributedText:_tmpMiddleView andModel:model];
     
@@ -186,6 +189,9 @@
 }
 
 - (void)btnClick{
+    if (_dataSource.count<1) {
+        return;
+    }
     if(_delegate && [_delegate respondsToSelector:@selector(elCycleVerticalView:didClickItemIndex:)]){
         [_delegate elCycleVerticalView:self didClickItemIndex:_indexNow%(_dataSource.count)];
     }

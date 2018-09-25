@@ -19,6 +19,9 @@
 
 @property (nonatomic ,strong) ELCycleVerticalView *cycVerticalView;
 
+
+-(void)setClcleViewUrlImageArray:(NSArray *)array;
+-(void)setcycVerticalArray:(NSArray *)array;
 // 开启动画 (主要用于进入其他页面返回时开启)
 - (void)startAnimation;
 

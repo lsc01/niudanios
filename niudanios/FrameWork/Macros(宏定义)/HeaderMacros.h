@@ -25,4 +25,5 @@
 #import "HLLHttpManager.h"
 #import "HLLShareManager.h"
 #import "HLLVerifyTools.h"
+#import <UIImageView+WebCache.h>
 #endif /* HeaderMacros_h */

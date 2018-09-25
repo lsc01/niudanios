@@ -53,7 +53,15 @@
 }
 
 - (IBAction)loginClick:(id)sender {
-    [self toastTip:@"密码不能为空哦"];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:self.textFieldPhone.text forKey:@"loginMobile"];
+    [dictP setObject:self.textFieldPwd.text forKey:@"loginPwd"];
+    
+    [HLLHttpManager postWithURL:URL_LoginPwd params:dictP success:^(NSDictionary *responseObject) {
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
     
 }
 - (IBAction)wechatLoginClick:(id)sender {

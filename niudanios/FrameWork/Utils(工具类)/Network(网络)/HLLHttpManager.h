@@ -42,8 +42,4 @@
  */
 + (void)uploadWithURL:(NSString *)url params:(NSDictionary *)params progress:(void (^)(id uploadProgress))progress formDataArray:(NSArray *)formDataArray success:(void (^)(NSDictionary * responseObject))success failure:(void (^)(NSError * error ,NSInteger errCode,NSString * errMsg))failure;
 
-///保存登录的信息
-+(void)savaLoginInfoWithDict:(NSDictionary *)dictInfo;
-+(NSString *)getToken;
-+(void)removeAllLoginInfo;
 @end

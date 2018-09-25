@@ -59,6 +59,9 @@
                         </constraints>
                         <state key="normal" image="ic_star1"/>
                         <state key="selected" image="ic_star2"/>
+                        <connections>
+                            <action selector="collectBtnClick:" destination="gTV-IL-0wX" eventType="touchUpInside" id="3C7-7v-q7e"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="初音未来——创世纪音乐大家圣诞节爱打架" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIq-dE-7bE">
                         <rect key="frame" x="12" y="185" width="177" height="33.5"/>
@@ -88,6 +91,13 @@
                 <constraint firstItem="C78-Vz-4ED" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="vJu-2v-H2S"/>
             </constraints>
             <size key="customSize" width="201" height="291"/>
+            <connections>
+                <outlet property="btnCollect" destination="Rlq-nM-7JM" id="qK8-zA-0Tz"/>
+                <outlet property="imageViewGoods" destination="324-Ks-yd0" id="Snu-k0-47d"/>
+                <outlet property="labelGoodsName" destination="SIq-dE-7bE" id="8sw-t5-ZWA"/>
+                <outlet property="labelGoodsNum" destination="tsi-JE-QlY" id="CVe-XV-N98"/>
+                <outlet property="labelPrice" destination="jSP-qg-rii" id="HG8-xj-dUt"/>
+            </connections>
             <point key="canvasLocation" x="-141.5" y="151.5"/>
         </collectionViewCell>
     </objects>

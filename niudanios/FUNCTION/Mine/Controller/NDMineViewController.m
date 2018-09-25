@@ -286,7 +286,7 @@
 }
 -(void)navRightBtnClick{
     
-#if 0
+#if 1
     NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
     [self.navigationController pushViewController:loginVC animated:YES];
     

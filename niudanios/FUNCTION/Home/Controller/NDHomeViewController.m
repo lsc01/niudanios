@@ -15,14 +15,16 @@
 #import "NDNewGoodsViewController.h"
 #import "NDGoodsPayViewController.h"
 #import "SYQRCodeViewController.h"
+#import "NDHomeBannerModel.h"
+#import "NDHomeNewMessageModel.h"
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
 
 @property(nonatomic,strong)UITableView *tableView;
 
-
-
+@property (nonatomic ,strong) NSArray * arrBannerModel;
+@property (nonatomic ,strong) NSArray * arrNewMsgModel;
 @end
 
 @implementation NDHomeViewController
@@ -33,8 +35,9 @@
     
     [self setNav];
     [self setUI];
-    
+    [self performSelector:@selector(httpGetInfoRequest) withObject:nil afterDelay:0.5];
 }
+
 
 -(void)setNav{
     UIButton * btnNav = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,10 +131,11 @@
     [headView setMoreGoodsBlock:^(NSInteger index) {
         StrongSelf();
         if (index == 0) {
-            NDPopularityGoodsViewController * vc = [[NDPopularityGoodsViewController alloc] init];
+            NDNewGoodsViewController * vc = [[NDNewGoodsViewController alloc] init];
             [strongself.navigationController pushViewController:vc animated:YES];
         }else if (index == 1){
-            NDNewGoodsViewController * vc = [[NDNewGoodsViewController alloc] init];
+            NDPopularityGoodsViewController * vc = [[NDPopularityGoodsViewController alloc] init];
+            
             [strongself.navigationController pushViewController:vc animated:YES];
         }
     }];
@@ -181,4 +185,116 @@
     [super viewDidDisappear:animated];
     [self.headView stopAnimation];
 }
+
+#pragma mark - 网络请求
+
+-(void)httpGetInfoRequest{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD show];
+    });
+    [self httpGetBannerData];
+    [self httpGetNotiMsgData];
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_async(group, queue, ^{
+        
+        [self httpGetLikeGoodsFinish:^{
+            dispatch_semaphore_signal(semaphore);
+            
+        }];
+    });
+ 
+    dispatch_group_async(group, queue, ^{
+        
+        [self httpGetNewGoodsFinish:^{
+            dispatch_semaphore_signal(semaphore);
+            
+        }];
+    });
+    dispatch_group_async(group, queue, ^{
+        
+        [self httpGetPopularityGoodsFinish:^{
+            dispatch_semaphore_signal(semaphore);
+            
+        }];
+    });
+   
+    
+    dispatch_group_notify(group, queue, ^{
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showToast:@"six six six"];
+            [self.tableView reloadData];
+        });
+    });
+    
+    
+}
+
+-(void)httpGetBannerData{
+    [HLLHttpManager postWithURL:URL_Banner params:nil success:^(NSDictionary *responseObject) {
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrBannerModel = nil;
+        self.arrBannerModel = [NDHomeBannerModel mj_objectArrayWithKeyValuesArray:arrRows];
+        NSMutableArray * arrImages = [NSMutableArray array];
+        for (NDHomeBannerModel * model in arrImages) {
+            [arrImages addObject:[model.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        }
+        [self.headView setClcleViewUrlImageArray:arrImages];
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
+}
+
+-(void)httpGetNotiMsgData{
+
+    [HLLHttpManager postWithURL:URL_NewMgs params:nil success:^(NSDictionary *responseObject) {
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrNewMsgModel = nil;
+        self.arrNewMsgModel = [NDHomeNewMessageModel mj_objectArrayWithKeyValuesArray:arrRows];
+        NSMutableArray * arrMsgName = [NSMutableArray array];
+        for (NDHomeNewMessageModel * model in arrMsgName) {
+            [arrMsgName addObject:model.messageName];
+        }
+        [self.headView setcycVerticalArray:arrMsgName];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
+}
+
+-(void)httpGetLikeGoodsFinish:(void(^)(void))finishBlock{
+
+    [HLLHttpManager postWithURL:URL_likeGoods params:nil success:^(NSDictionary *responseObject) {
+        finishBlock?finishBlock():nil;
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        finishBlock?finishBlock():nil;
+    }];
+}
+
+-(void)httpGetNewGoodsFinish:(void(^)(void))finishBlock{
+    
+    [HLLHttpManager postWithURL:URL_newGoods params:nil success:^(NSDictionary *responseObject) {
+        finishBlock?finishBlock():nil;
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        finishBlock?finishBlock():nil;
+    }];
+}
+-(void)httpGetPopularityGoodsFinish:(void(^)(void))finishBlock{
+    
+    [HLLHttpManager postWithURL:URL_HumanGoods params:nil success:^(NSDictionary *responseObject) {
+        finishBlock?finishBlock():nil;
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        finishBlock?finishBlock():nil;
+    }];
+}
+
 @end

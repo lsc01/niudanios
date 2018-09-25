@@ -23,4 +23,6 @@
 
 @property (nonatomic ,assign ,getter=isHasAddress) BOOL hasAddress;
 
+
+@property (nonatomic ,copy ) void (^addNewAddrBlock)(void);
 @end

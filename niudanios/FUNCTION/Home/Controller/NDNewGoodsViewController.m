@@ -14,7 +14,7 @@
 #define Cell_Spacing (kScreenWidth - 2*Cell_Width)/3.0
 @interface NDNewGoodsViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
 @property (nonatomic ,strong) UICollectionView * collectionView;
-
+@property (nonatomic ,strong) NSMutableArray * arrData;
 @end
 
 @implementation NDNewGoodsViewController
@@ -24,8 +24,24 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"最新商品";
     [self setUI];
+    [self postRequest];
 }
 
+-(void)postRequest{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@(1) forKey:@"customerId"];
+    [HLLHttpManager postWithURL:URL_newGoodsDetail params:dictP success:^(NSDictionary *responseObject) {
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrData = nil;
+        for (NSDictionary * dict in arrRows) {
+            NDGoodsInfoModel * model = [NDGoodsInfoModel mj_objectWithKeyValues:dict];
+            [self.arrData addObject:model];
+        }
+        [self.collectionView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
+}
 -(void)setUI{
     
     
@@ -46,16 +62,17 @@
 
 //设置每个分组里cell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5;
+    return self.arrData.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     //只能用注册的方式
-    
+    NDGoodsInfoModel * model = self.arrData[indexPath.row];
     NDNiudanGoodsCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NDNiudanGoodsCell" forIndexPath:indexPath];
-    
     cell.layer.cornerRadius = 4;
     cell.layer.masksToBounds = YES;
+    
+    cell.model = model;
     return cell;
 }
 
@@ -104,6 +121,13 @@
         [_collectionView registerNib:[UINib nibWithNibName:@"NDNiudanGoodsCell" bundle:nil] forCellWithReuseIdentifier:@"NDNiudanGoodsCell"];
     }
     return _collectionView;
+}
+
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
 }
 
 @end

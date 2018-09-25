@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDGoodsInfoModel.h"
 @interface NDNiudanGoodsCell : UICollectionViewCell
 
+@property (nonatomic ,strong) NDGoodsInfoModel * model;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewGoods;
+@property (weak, nonatomic) IBOutlet UILabel *labelGoodsName;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelGoodsNum;
+@property (weak, nonatomic) IBOutlet UILabel *labelPrice;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnCollect;
+- (IBAction)collectBtnClick:(UIButton *)sender;
 @end
