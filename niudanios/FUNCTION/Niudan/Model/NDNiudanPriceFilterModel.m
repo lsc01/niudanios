@@ -1,14 +1,14 @@
 //
-//  NDNiudanFilterModel.m
+//  NDNiudanPriceFilterModel.m
 //  niudanios
 //
-//  Created by lsc on 2018/9/3.
+//  Created by lsc on 2018/9/27.
 //  Copyright © 2018年 lsc. All rights reserved.
 //
 
-#import "NDNiudanFilterModel.h"
+#import "NDNiudanPriceFilterModel.h"
 
-@implementation NDNiudanFilterModel
+@implementation NDNiudanPriceFilterModel
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
     return @{@"Id": @"id"};
 }

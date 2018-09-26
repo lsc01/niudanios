@@ -8,13 +8,30 @@
 
 #import "NDNiudanViewController.h"
 #import "NDNiudanFilterView.h"
-
 #import "NDNiudanGoodsCell.h"
+#import "NDNiudanKindFilterModel.h"
+#import "NDNiudanPriceFilterModel.h"
+#import "NDNiudanSortFilterModel.h"
+
+
+typedef NS_ENUM(NSInteger,FilterType) {
+    Filter_Nomal = 0,
+    Filter_Kind = 1,
+    Filter_Price = 2,
+    Filter_Sort = 3
+};
 
 #define Cell_Width (338.0/750*kScreenWidth)
 #define CELL_Height ((255.0/168)*Cell_Width)
 #define Cell_Spacing (kScreenWidth - 2*Cell_Width)/3.0
 @interface NDNiudanViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+
+@property (nonatomic ,assign) FilterType filterType;
+@property (nonatomic ,copy) NSString * kindIdCurr;
+@property (nonatomic ,copy) NSString * priceIdCurr;
+@property (nonatomic ,copy) NSString * sortIdCurr;
+@property (nonatomic ,strong) NSMutableArray * arrFilterCurr;
+@property (nonatomic ,strong) NSArray * arrSortFilter;
 
 @property (nonatomic ,strong) UICollectionView * collectionView;
 
@@ -31,18 +48,47 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewFilterBar;
 
-
+@property (nonatomic ,strong) NSMutableArray * arrData;
 @end
 
 @implementation NDNiudanViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.filterType = Filter_Nomal;
+        self.sortIdCurr = @"0";
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     [self setUI];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"1" forKey:@"customerId"];
+    [self postRequestWithDictP:dictP];
 }
 
+-(void)postRequestWithDictP:(NSDictionary *)params{
+    [SVProgressHUD show];
+    
+    [HLLHttpManager postWithURL:URL_qrequirementAll params:params success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrData = nil;
+        for (NSDictionary * dict in arrRows) {
+            NDGoodsInfoModel * model = [NDGoodsInfoModel mj_objectWithKeyValues:dict];
+            [self.arrData addObject:model];
+        }
+        [self.collectionView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
 
 -(void)setUI{
     self.viewSearchFieldBg.layer.cornerRadius = 4;
@@ -60,6 +106,46 @@
         make.left.bottom.right.mas_equalTo(self.view);
     }];
     
+    WeakSelf();
+    [self.filterView setSelectRowBlock:^(NSInteger row) {
+        StrongSelf();
+        strongself.filterView.hidden = YES;
+        NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+        [dictP setObject:@"1" forKey:@"customerId"];
+        switch (self.filterType) {
+            case Filter_Kind:
+            {
+                
+                NDNiudanKindFilterModel * model = self.arrFilterCurr[row];
+                [dictP setObject:model.Id forKey:@"classifyId"];
+                self.kindIdCurr = model.Id;
+            }
+                break;
+            case Filter_Price:
+            {
+                NDNiudanPriceFilterModel * model = self.arrFilterCurr[row];
+                [dictP setObject:model.Id forKey:@"compareId"];
+                self.priceIdCurr = model.Id;
+            }
+                break;
+            case Filter_Sort:
+            {
+                if (row == 0) {
+                    self.sortIdCurr = @"0";
+                    break;
+                }
+                NDNiudanKindFilterModel * model = self.arrFilterCurr[row];
+                [dictP setObject:model.Id forKey:@"status"];
+                self.sortIdCurr = model.Id;
+            }
+                break;
+                
+            default:
+                break;
+        }
+        [self postRequestWithDictP:dictP];
+    }];
+    
 }
 
 
@@ -71,16 +157,18 @@
 
 //设置每个分组里cell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5;
+    return self.arrData.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     //只能用注册的方式
-    
+    NDGoodsInfoModel * model = self.arrData[indexPath.row];
     NDNiudanGoodsCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NDNiudanGoodsCell" forIndexPath:indexPath];
     
     cell.layer.cornerRadius = 4;
     cell.layer.masksToBounds = YES;
+    
+    cell.model = model;
     return cell;
 }
 
@@ -134,11 +222,121 @@
 - (IBAction)searchBtnClick:(UIButton *)sender {
 }
 - (IBAction)kindBtnClick:(UIButton *)sender {
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_classify params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        [self.view bringSubviewToFront:self.filterView];
+        self.filterView.hidden = NO;
+        self.filterType = Filter_Kind;
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrFilterCurr = nil;
+        NSMutableArray * arrTemp = [NSMutableArray array];
+        for (NSDictionary * dict in arrRows) {
+            NDNiudanKindFilterModel * model = [NDNiudanKindFilterModel mj_objectWithKeyValues:dict];
+            [self.arrFilterCurr addObject:model];
+            
+            NDNiudanFilterModel * modelTemp = [[NDNiudanFilterModel alloc] init];
+            modelTemp.textValue = model.classifyName;
+            if ([model.Id isEqualToString:self.kindIdCurr]) {
+                modelTemp.textColor = HEXCOLOR(kBaseColor);
+            }else{
+                modelTemp.textColor = HEXCOLOR(0x222222);
+            }
+            [arrTemp addObject:modelTemp];
+        }
+        self.filterView.arrayModel = arrTemp;
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"获取失败,请重试"];
+    }];
+    
 }
 - (IBAction)priceBtnClick:(UIButton *)sender {
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_qmoneyCompare params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        [self.view bringSubviewToFront:self.filterView];
+        self.filterView.hidden = NO;
+        self.filterType = Filter_Price;
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrFilterCurr = nil;
+        NSMutableArray * arrTemp = [NSMutableArray array];
+        for (NSDictionary * dict in arrRows) {
+            NDNiudanPriceFilterModel * model = [NDNiudanPriceFilterModel mj_objectWithKeyValues:dict];
+            [self.arrFilterCurr addObject:model];
+            
+            NDNiudanFilterModel * modelTemp = [[NDNiudanFilterModel alloc] init];
+            modelTemp.textValue = model.name;
+            if ([model.Id isEqualToString:self.priceIdCurr]) {
+                modelTemp.textColor = HEXCOLOR(kBaseColor);
+            }else{
+                modelTemp.textColor = HEXCOLOR(0x222222);
+            }
+            [arrTemp addObject:modelTemp];
+        }
+        self.filterView.arrayModel = arrTemp;
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"获取失败,请重试"];
+    }];
+    
 }
 - (IBAction)normalBtnClick:(UIButton *)sender {
+
+        [self.view bringSubviewToFront:self.filterView];
+        self.filterView.hidden = NO;
+        self.filterType = Filter_Sort;
+        self.arrFilterCurr = nil;
+        NSMutableArray * arrTemp = [NSMutableArray array];
+        for (NDNiudanSortFilterModel * model in self.arrSortFilter) {
+            [self.arrFilterCurr addObject:model];
+            
+            NDNiudanFilterModel * modelTemp = [[NDNiudanFilterModel alloc] init];
+            modelTemp.textValue = model.status;
+            if ([model.Id isEqualToString:self.sortIdCurr]) {
+                modelTemp.textColor = HEXCOLOR(kBaseColor);
+            }else{
+                modelTemp.textColor = HEXCOLOR(0x222222);
+            }
+            [arrTemp addObject:modelTemp];
+        }
+        self.filterView.arrayModel = arrTemp;
 }
 
+-(NSMutableArray *)arrFilterCurr{
+    if (_arrFilterCurr == nil) {
+        _arrFilterCurr = [NSMutableArray array];
+    }
+    return _arrFilterCurr;
+}
+-(NSArray *)arrSortFilter{
+    NDNiudanSortFilterModel * model = [[NDNiudanSortFilterModel alloc] init];
+    model.Id = @"0";
+    model.status = @"默认排序";
+    NDNiudanSortFilterModel * model1 = [[NDNiudanSortFilterModel alloc] init];
+    model1.Id = @"1";
+    model1.status = @"销售降序";
+    NDNiudanSortFilterModel * model2 = [[NDNiudanSortFilterModel alloc] init];
+    model2.Id = @"2";
+    model2.status = @"最新上架";
+    NDNiudanSortFilterModel * model3 = [[NDNiudanSortFilterModel alloc] init];
+    model3.Id = @"3";
+    model3.status = @"价格降序";
+    NDNiudanSortFilterModel * model4 = [[NDNiudanSortFilterModel alloc] init];
+    model4.Id = @"4";
+    model4.status = @"价格升序";
+    return @[model,model1,model2,model3,model4];
+}
+
+
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
+}
 
 @end

@@ -41,6 +41,15 @@
 #define URL_HumanGoodsDetail HTTP(@"app/gashaponMachine/queryBycustomerIdHuman.mvc")
 
 
+#pragma mark - 扭蛋
+//条件查询过滤扭蛋机/a
+#define URL_qrequirementAll HTTP(@"app/gashaponMachine/requirementAll.mvc")
+//扭蛋机查询扭蛋
+#define URL_queryByMachineId HTTP(@"app/gashaponMachine/queryByMachineId.mvc")
+//扭蛋机金额条件
+#define URL_qmoneyCompare HTTP(@"app/moneyCompare/list.mvc")
+//扭蛋机分类
+#define URL_classify HTTP(@"app/classify/list.mvc")
 
 #pragma mark - 背包
 

@@ -375,6 +375,9 @@
 		41FF527A215A8246002BA837 /* NDGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF5279215A8246002BA837 /* NDGoodsInfoModel.m */; };
 		41FF527D215A8548002BA837 /* NDPackageGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF527C215A8548002BA837 /* NDPackageGoodsModel.m */; };
 		41FF5280215A94F8002BA837 /* NDSelectDefaultAddrModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF527F215A94F8002BA837 /* NDSelectDefaultAddrModel.m */; };
+		41FF5286215BE565002BA837 /* NDNiudanKindFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF5285215BE565002BA837 /* NDNiudanKindFilterModel.m */; };
+		41FF5289215BE57A002BA837 /* NDNiudanPriceFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF5288215BE57A002BA837 /* NDNiudanPriceFilterModel.m */; };
+		41FF528C215BE5E6002BA837 /* NDNiudanSortFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF528B215BE5E6002BA837 /* NDNiudanSortFilterModel.m */; };
 		A94DFA5EA5A7F199B9A4FE09 /* libPods-niudanios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */; };
 /* End PBXBuildFile section */
 
@@ -1120,6 +1123,12 @@
 		41FF527C215A8548002BA837 /* NDPackageGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPackageGoodsModel.m; sourceTree = "<group>"; };
 		41FF527E215A94F8002BA837 /* NDSelectDefaultAddrModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDSelectDefaultAddrModel.h; sourceTree = "<group>"; };
 		41FF527F215A94F8002BA837 /* NDSelectDefaultAddrModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDSelectDefaultAddrModel.m; sourceTree = "<group>"; };
+		41FF5284215BE565002BA837 /* NDNiudanKindFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanKindFilterModel.h; sourceTree = "<group>"; };
+		41FF5285215BE565002BA837 /* NDNiudanKindFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanKindFilterModel.m; sourceTree = "<group>"; };
+		41FF5287215BE57A002BA837 /* NDNiudanPriceFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanPriceFilterModel.h; sourceTree = "<group>"; };
+		41FF5288215BE57A002BA837 /* NDNiudanPriceFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanPriceFilterModel.m; sourceTree = "<group>"; };
+		41FF528A215BE5E5002BA837 /* NDNiudanSortFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanSortFilterModel.h; sourceTree = "<group>"; };
+		41FF528B215BE5E6002BA837 /* NDNiudanSortFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanSortFilterModel.m; sourceTree = "<group>"; };
 		6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-niudanios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.release.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1624,6 +1633,12 @@
 			children = (
 				410447B1213D8A6D00686119 /* NDNiudanFilterModel.h */,
 				410447B2213D8A6D00686119 /* NDNiudanFilterModel.m */,
+				41FF5284215BE565002BA837 /* NDNiudanKindFilterModel.h */,
+				41FF5285215BE565002BA837 /* NDNiudanKindFilterModel.m */,
+				41FF5287215BE57A002BA837 /* NDNiudanPriceFilterModel.h */,
+				41FF5288215BE57A002BA837 /* NDNiudanPriceFilterModel.m */,
+				41FF528A215BE5E5002BA837 /* NDNiudanSortFilterModel.h */,
+				41FF528B215BE5E6002BA837 /* NDNiudanSortFilterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3158,6 +3173,7 @@
 				4104486221434C3B00686119 /* NDLogisticsDetailTableViewCell.m in Sources */,
 				41AEAC4E21345375003FE10B /* NDHomeGoodsCell.m in Sources */,
 				4104488121455B1D00686119 /* BRBaseView.m in Sources */,
+				41FF5286215BE565002BA837 /* NDNiudanKindFilterModel.m in Sources */,
 				41044817214171F900686119 /* NDVerifyOrderTableViewCell.m in Sources */,
 				41E343D0212EFEED00F19371 /* NSString+RegexCategory.m in Sources */,
 				41E343EF212EFEED00F19371 /* UIButton+LXMImagePosition.m in Sources */,
@@ -3179,11 +3195,13 @@
 				41E3440F212EFEED00F19371 /* UIImage+Vector.m in Sources */,
 				41E34446212EFEED00F19371 /* UIViewController+TopBarMessage.m in Sources */,
 				41E34445212EFEED00F19371 /* UIViewController+StoreKit.m in Sources */,
+				41FF528C215BE5E6002BA837 /* NDNiudanSortFilterModel.m in Sources */,
 				41E343CB212EFEED00F19371 /* NSString+Hash.m in Sources */,
 				41E3444E212EFEED00F19371 /* UIWebView+Style.m in Sources */,
 				41E34436212EFEED00F19371 /* UIView+Frame.m in Sources */,
 				41E343D1212EFEED00F19371 /* NSString+RemoveEmoji.m in Sources */,
 				41E341A0212E32E800F19371 /* NDHomeViewController.m in Sources */,
+				41FF5289215BE57A002BA837 /* NDNiudanPriceFilterModel.m in Sources */,
 				41E343FC212EFEED00F19371 /* UIFont+DynamicFontControl.m in Sources */,
 				41E343C7212EFEED00F19371 /* NSString+DictionaryValue.m in Sources */,
 				41E343BA212EFEED00F19371 /* NSIndexPath+Offset.m in Sources */,
