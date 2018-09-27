@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDPackageGoodsModel.h"
 @interface NDVerifyOrderTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewGoods;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelSpecification;
+
+@property (nonatomic ,strong) NDPackageGoodsModel * model;
 @end

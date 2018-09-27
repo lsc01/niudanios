@@ -59,6 +59,8 @@
 #define URL_selectBackpack HTTP(@"app/selfitem/selectBackpack.mvc")
 //查询用户默认地址
 #define URL_selectDefaultAddr HTTP(@"app/ShippingAddress/selectDefault.mvc")
+///查询运费金额
+#define URL_squeryDistinguish HTTP(@"app/expressCost/queryDistinguish.mvc")
 
 
 

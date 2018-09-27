@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelYunfei;
 
 @property (nonatomic ,strong) NDVerifyOrderHeadView * headView;
+@property (nonatomic ,copy) NSString * yunfei;
 @end
 
 @implementation NDVerifyOrderViewController
@@ -26,11 +27,68 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"确认订单";
-    
+    self.labelTotalGoods.text = [NSString stringWithFormat:@"共%d件商品",self.arrGoodsModel.count];
+    if ([self.defaultAddrModel.cond isEqualToString:@"N"]) {
+        self.labelYunfei.text = @"(快递费0元)";
+        self.yunfei = @"0";
+    }else{
+        //通过区计算快递费
+        [self calculateYunfeiWithAredId:self.defaultAddrModel.areaId];
+    }
     [self setUI];
     
 }
+
+
+-(void)calculateYunfeiWithAredId:(NSString *)aredId{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:aredId forKey:@"aredId"];
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_squeryDistinguish params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrayRows = responseObject[@"rows"];
+        if (arrayRows.count>0) {
+            NSDictionary * dictRow = arrayRows.firstObject;
+            self.labelYunfei.text = [NSString stringWithFormat:@"(快递费%@元)",dictRow[@"money"]];
+            self.yunfei = dictRow[@"money"];
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+    
+}
 - (IBAction)submitOrderClick:(UIButton *)sender {
+    NSMutableString * dataParams = [NSMutableString string];
+    for (NSInteger i=0; i<self.arrGoodsModel.count; i++) {
+        NDPackageGoodsModel * model = self.arrGoodsModel[i];
+        [dataParams appendString:model.Id];
+        if (i != self.arrGoodsModel.count-1) {
+            [dataParams appendString:@","];
+        }
+    }
+
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:self.yunfei forKey:@"money"];
+    [dictP setObject:dataParams forKey:@"data"];
+    [dictP setObject:@"" forKey:@"addressId"];
+    [dictP setObject:@"1" forKey:@"customerId"];
+    
+    [SVProgressHUD showWithStatus:@"正在提交"];
+    [HLLHttpManager postWithURL:URL_squeryDistinguish params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"下单成功"];
+        if ([self.delegate respondsToSelector:@selector(submitOrderSucceed)]) {
+            [self.delegate submitOrderSucceed];
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+    
+    
+    
 }
 -(void)setUI{
     
@@ -88,7 +146,8 @@
     
     NDVerifyOrderTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDVerifyOrderTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    NDPackageGoodsModel * model = self.arrGoodsModel[indexPath.section];
+    cell.model = model;
     return cell;
     
 }

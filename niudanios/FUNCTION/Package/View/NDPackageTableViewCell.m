@@ -25,6 +25,11 @@
         NSLog(@"error:%@",error);
     }];
     self.labelName.text = model.gashaponName;
+    long long interval = [model.createMaturity longLongValue]/1000 - [model.currentTime longLongValue];
+    NSInteger day = interval/(24*60*60);
+    NSInteger hour = interval%(24*60*60)/(60*60);
+    NSInteger min = interval%(24*60*60)%(60*60)/60;
+    self.labelTime.text = [NSString stringWithFormat:@"%d天%d时%d分",day,hour,min];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

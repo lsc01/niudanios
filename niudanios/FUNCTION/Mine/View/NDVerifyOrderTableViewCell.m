@@ -18,6 +18,15 @@
     self.imageViewGoods.clipsToBounds = YES;
 }
 
+-(void)setModel:(NDPackageGoodsModel *)model{
+    _model = model;
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:model.gashaponImg] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.labelName.text = model.gashaponName;
+    self.labelSpecification.text = model.describe;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

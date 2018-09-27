@@ -10,7 +10,7 @@
 #import "NDPackageTableViewCell.h"
 #import "NDVerifyOrderViewController.h"
 #import "NDPackageGoodsModel.h"
-@interface NDPackageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface NDPackageViewController ()<UITableViewDelegate,UITableViewDataSource,NDVerifyOrderViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAllSelect;
@@ -40,6 +40,7 @@
 }
 
 -(void)postRequest{
+    [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:@(1) forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_queryBackpack params:dictP success:^(NSDictionary *responseObject) {
@@ -50,8 +51,9 @@
             [self.arrData addObject:model];
         }
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
-        
+        [SVProgressHUD dismiss];
     }];
 }
 
@@ -90,6 +92,7 @@
             [self.arrID addObject:model.Id];
         }
     }
+    self.labelSelect.text = [NSString stringWithFormat:@"已选择%d件",self.arrID.count];
     [self.tableView reloadData];
 }
 - (IBAction)submitOrderClick:(UIButton *)sender {
@@ -116,6 +119,7 @@
         NDVerifyOrderViewController * vc = [[NDVerifyOrderViewController alloc] init];
         vc.defaultAddrModel = addrModel;
         vc.arrGoodsModel = self.arrID;
+        vc.delegate = self;
         [self.navigationController pushViewController:vc animated:YES];
         
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
@@ -231,6 +235,7 @@
         }else{
             [strongself.arrID removeObject:goodsModel];
         }
+        strongself.labelSelect.text = [NSString stringWithFormat:@"已选择%d件",strongself.arrID.count];
     }];
     if (self.btnAllSelect.selected) {
         cell.btnSelect.selected = YES;
@@ -245,6 +250,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - 提交订单成功代理回调
+-(void)submitOrderSucceed{
+    [self postRequest];
+}
+
 
 -(NSMutableArray *)arrData{
     if (_arrData == nil) {
