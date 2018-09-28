@@ -8,8 +8,12 @@
 
 #import "NDNuidanRecordViewController.h"
 #import "NDRecodeTableViewCell.h"
+#import "NDNuidanRecordModel.h"
 @interface NDNuidanRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
+@property (nonatomic ,strong) NSMutableArray * arrData;
 @end
 
 @implementation NDNuidanRecordViewController
@@ -19,7 +23,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"扭蛋记录";
     [self setUI];
-    
+    [self postRequest];
 }
 -(void)setUI{
     
@@ -36,14 +40,31 @@
     
 }
 
-
+-(void)postRequest{
+    [SVProgressHUD show];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"1" forKey:@"customerId"];
+    
+    [HLLHttpManager postWithURL:URL_niudanqueryRecord params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrData = nil;
+        for (NSDictionary * dict in arrRows) {
+            NDNuidanRecordModel * model = [NDNuidanRecordModel mj_objectWithKeyValues:dict];
+            [self.arrData addObject:model];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
 
 
 #pragma mark - tableview
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return self.arrData.count;
     
 }
 
@@ -69,8 +90,8 @@
     
     NDRecodeTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDRecodeTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
+    NDNuidanRecordModel * model = self.arrData[indexPath.section];
+    cell.model = model;
     return cell;
     
 }
@@ -79,5 +100,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
+}
 
 @end

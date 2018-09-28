@@ -10,6 +10,7 @@
 #import "NDAccountPayDetailCell.h"
 #import "NDNiudanFilterView.h"
 #import "NDNiudanFilterModel.h"
+#import "NDMyWalletRecordModel.h"
 @interface NDAccountPayDeatailVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UITableView *tableView;
@@ -17,6 +18,8 @@
 @property (strong, nonatomic) NDNiudanFilterView *filterView;
 
 @property (nonatomic ,strong) UIButton * btnTitle;
+
+@property (nonatomic ,strong) NSMutableArray * arrData;
 
 @end
 
@@ -28,10 +31,34 @@
     
     [self setNav];
     [self setUI];
+    [self postRequestWithTag:0];
 }
+-(void)postRequestWithTag:(NSInteger)tag{
+    [SVProgressHUD show];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"1" forKey:@"customerId"];
+    if (tag!=0) {
+        [dictP setObject:@(tag-1) forKey:@"status"];
+    }
+    
+    [HLLHttpManager postWithURL:URL_queryConsume params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrData = nil;
+        for (NSDictionary * dict in arrRows) {
+            NDMyWalletRecordModel * model = [NDMyWalletRecordModel mj_objectWithKeyValues:dict];
+            [self.arrData addObject:model];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
+
 
 -(void)setNav{
     self.navigationItem.titleView = self.btnTitle;
+    
 }
 
 -(void)setUI{
@@ -62,10 +89,11 @@
     WeakSelf();
     [self.filterView setSelectRowBlock:^(NSInteger row) {
         StrongSelf();
+        NDNiudanFilterModel * model = strongself.filterView.arrayModel[row];
+        [strongself.btnTitle setTitle:model.textValue forState:UIControlStateNormal];
         strongself.filterView.hidden = YES;
-        
+        [strongself postRequestWithTag:row];
     }];
-    
 }
 -(void)setFilterArray{
     
@@ -114,7 +142,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 4;
+    return self.arrData.count;
     
 }
 
@@ -123,22 +151,8 @@
     
     NDAccountPayDetailCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDAccountPayDetailCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.accountPayDetailType = indexPath.row+1;
-    
-    if (indexPath.row == 0) {
-        cell.labelDes.text = @"充值";
-        cell.labelAdd.text = @"+20";
-    }else if (indexPath.row == 1){
-        cell.labelDes.text = @"任务奖励";
-        cell.labelAdd.text = @"+15";
-    }else if (indexPath.row == 2){
-        cell.labelDes.text = @"扭蛋";
-        cell.labelAdd.text = @"-30";
-    }else if (indexPath.row == 3){
-        cell.labelDes.text = @"订单";
-        cell.labelAdd.text = @"-20";
-    }
+    NDMyWalletRecordModel * model = self.arrData[indexPath.row];
+    cell.model = model;
     
     return cell;
     
@@ -178,5 +192,13 @@
     }
     return _btnTitle;
 }
+
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
+}
+
 
 @end

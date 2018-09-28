@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDMineDownInfoModel.h"
 @interface NDMineDownTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageviewHead;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *labelDate;
 @property (weak, nonatomic) IBOutlet UILabel *labelCount;
 
+
+@property (nonatomic ,strong) NDMineDownInfoModel * model;
 @end

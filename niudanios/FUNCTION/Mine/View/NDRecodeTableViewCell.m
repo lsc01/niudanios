@@ -7,7 +7,7 @@
 //
 
 #import "NDRecodeTableViewCell.h"
-
+#import "NSDate+Formatter.h"
 @implementation NDRecodeTableViewCell
 
 - (void)awakeFromNib {
@@ -16,6 +16,18 @@
     
     self.imageViewGoods.layer.cornerRadius = 4;
     self.imageViewGoods.clipsToBounds = YES;
+}
+
+-(void)setModel:(NDNuidanRecordModel *)model{
+    _model = model;
+    
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:HTTP(model.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.labelName.text = model.gashaponName;
+    self.labelTime.text = model.timeFormat;
+    self.labelPrice.text = [NSString stringWithFormat:@"%@",model.machinePrice];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -7,6 +7,7 @@
 //
 
 #import "NDUpdatePhoneViewController.h"
+#import "SAMKeychain.h"
 
 @interface NDUpdatePhoneViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewBg1;
@@ -37,11 +38,84 @@
     self.viewBg2.layer.masksToBounds = YES;
     self.btnSubmit.layer.cornerRadius = 4;
     self.btnSubmit.layer.masksToBounds = YES;
-//    self.labelTips.hidden = YES;
+    self.labelTips.hidden = YES;
+    if ([HLLShareManager shareMannager].userModel.loginMobile.length!=11) {
+        self.labelBindPhone.text = @"未绑定手机号";
+    }else{
+       self.labelBindPhone.text = [NSString stringWithFormat:@"已绑定手机号:%@****%@",[[HLLShareManager shareMannager].userModel.loginMobile substringToIndex:5],[[HLLShareManager shareMannager].userModel.loginMobile substringFromIndex:9]];
+    }
+    
 }
 - (IBAction)getCodeBtnClick:(UIButton *)sender {
+    [SVProgressHUD show];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.loginMobile forKey:@"loginMobile"];
+    
+    [HLLHttpManager postWithURL:URL_identifyingCode params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSInteger code = [dictT[@"code"] integerValue];
+            if (code == 0) {
+                [SVProgressHUD showToast:@"验证码发送成功"];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+            }
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+    
 }
 - (IBAction)submitClick:(UIButton *)sender {
+    self.labelTips.hidden = YES;
+    if (![HLLVerifyTools hllVerifyMobile:self.textFieldNewPhone.text]) {
+        [SVProgressHUD showToast:@"手机号不正确"];
+        return;
+    }
+    
+    if ([self.textFieldNewPhone.text isEqualToString:[HLLShareManager shareMannager].userModel.loginMobile]) {
+        self.labelTips.hidden = NO;
+        return;
+    }
+    
+    if (![HLLVerifyTools hllIsNum:self.textFieldCode.text]) {
+        [SVProgressHUD showToast:@"验证码格式错误"];
+        return;
+    }
+    
+    
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:self.textFieldCode.text forKey:@"confirmation"];
+    [dictP setObject:self.textFieldNewPhone.text forKey:@"newMobile"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.loginMobile forKey:@"loginMobile"];
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSInteger code = [dictT[@"code"] integerValue];
+            if (code == 0) {
+                [SVProgressHUD showToast:@"修改成功"];
+                [HLLShareManager shareMannager].userModel.loginMobile = self.textFieldNewPhone.text;
+                NSDictionary * dic = [[HLLShareManager shareMannager].userModel mj_keyValues];
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                if ([self.delegate respondsToSelector:@selector(updatePhoneSuccess)]) {
+                    [self.delegate updatePhoneSuccess];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+            }
+        }
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

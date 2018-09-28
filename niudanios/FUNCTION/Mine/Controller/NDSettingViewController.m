@@ -12,7 +12,7 @@
 #import "NDUpdatePhoneViewController.h"
 #import "NDMIneDataViewController.h"
 
-@interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource,NDUpdatePhoneViewControllerDelegate>
 @property (nonatomic ,strong) NDSettingHeaderView * headView;
 
 @property (nonatomic ,strong) UIView * viewFooter;
@@ -49,6 +49,12 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    
+    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait)] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.headView.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
+    self.headView.labelPhone.text = [NSString stringWithFormat:@"电话号码：%@",[HLLShareManager shareMannager].userModel.loginMobile];
 }
 
 -(void)exitBtnClick{
@@ -137,12 +143,15 @@
             [self.navigationController pushViewController:mineDataVC animated:YES];
         }else if (indexPath.row == 1) {
             NDUpdatePhoneViewController * updatePhone = [[NDUpdatePhoneViewController alloc] init];
+            updatePhone.delegate = self;
             [self.navigationController pushViewController:updatePhone animated:YES];
         }
     }
 }
 
-
+-(void)updatePhoneSuccess{
+    self.headView.labelPhone.text = [NSString stringWithFormat:@"电话号码：%@",[HLLShareManager shareMannager].userModel.loginMobile];
+}
 
 
 -(NDSettingHeaderView *)headView{

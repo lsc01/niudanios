@@ -21,4 +21,7 @@
 
 
 @property (nonatomic ,strong)UIButton * btnCurr;
+
+
+@property (nonatomic ,copy) void(^selectBtnStatusBlock)(NSInteger tag);
 @end

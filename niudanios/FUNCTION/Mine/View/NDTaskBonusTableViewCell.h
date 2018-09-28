@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDTaskBonusModel.h"
 #define KScale_C (kScreenWidth/375.0)
 #define Kcell_height ((90*kScreenWidth/375.0)+64)
 @interface NDTaskBonusTableViewCell : UITableViewCell
@@ -24,6 +24,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *viewBg;
 
+@property (nonatomic ,strong) NDTaskBonusModel * model;
+
+@property (nonatomic ,copy) void(^getTaskBonusBlock)(NDTaskBonusModel * model);
 - (IBAction)getBtnClick:(UIButton *)sender;
 
 @end

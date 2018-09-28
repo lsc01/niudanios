@@ -7,7 +7,13 @@
 //
 
 #import "NDBaseViewController.h"
+@protocol NDUpdatePhoneViewControllerDelegate<NSObject>
+-(void)updatePhoneSuccess;
+
+@end
 
 @interface NDUpdatePhoneViewController : NDBaseViewController
+
+@property (nonatomic ,weak) id<NDUpdatePhoneViewControllerDelegate> delegate;
 
 @end

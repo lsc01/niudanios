@@ -12,6 +12,7 @@
 #import "NDUpdatePhoneViewController.h"
 #import "BRDatePickerView.h"
 #import "NDSexSelectView.h"
+
 @interface NDMIneDataViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong) NDMineDataHeaderView * headView;
 
@@ -48,6 +49,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    
+    [self.headView.imageViewHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait)] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+ 
 }
 
 -(void)saveBtnClick{
@@ -92,17 +98,18 @@
     
         if (indexPath.row == 0) {
             cell.btnSelect.enabled = NO;
-            [cell.btnSelect setTitle:@"宋钟敏" forState:UIControlStateDisabled];
+            [cell.btnSelect setTitle:[HLLShareManager shareMannager].userModel.nickName forState:UIControlStateDisabled];
             cell.labelTitle.text = @"昵称";
         }else if (indexPath.row == 1){
             cell.btnSelect.enabled = YES;
-            [cell.btnSelect setTitle:@"请选择" forState:UIControlStateNormal];
+            
+            [cell.btnSelect setTitle:[[HLLShareManager shareMannager].userModel.sex isEqualToString:@"1"]?@"男":@"女" forState:UIControlStateNormal];
             cell.labelTitle.text = @"性别";
            
         }else if (indexPath.row == 2){
             cell.viewLine.hidden = YES;
             cell.btnSelect.enabled = YES;
-            [cell.btnSelect setTitle:@"请选择" forState:UIControlStateNormal];
+            [cell.btnSelect setTitle:[HLLShareManager shareMannager].userModel.birthdayTime forState:UIControlStateNormal];
             cell.labelTitle.text = @"出生年月";
             
         }
@@ -141,6 +148,7 @@
         _headView = [[NSBundle mainBundle] loadNibNamed:@"NDMineDataHeaderView" owner:self options:nil].firstObject;
         _headView.frame = CGRectMake(0, 0, kScreenWidth, 74);
         _headView.backgroundColor = [UIColor whiteColor];
+        
     }
     return _headView;
 }

@@ -19,6 +19,22 @@
     [self setUI];
     
 }
+
+-(void)setModel:(NDTaskBonusModel *)model{
+    _model = model;
+    self.labelTitle.text = [NSString stringWithFormat:@"下线累计完成%@次扭蛋",model.number];
+    self.labelNum.text = [NSString stringWithFormat:@"%@",model.money];
+//    0未完成，1未领取，2已完成
+    if ([model.status integerValue] == 0) {
+        
+    }else if ([model.status integerValue] == 1){
+        
+    }else if ([model.status integerValue] == 2){
+        
+    }
+    
+    
+}
 -(void)setUI{
     
     self.labelNum.adjustsFontSizeToFitWidth = YES;
@@ -50,5 +66,6 @@
 }
 
 - (IBAction)getBtnClick:(UIButton *)sender {
+    _getTaskBonusBlock?_getTaskBonusBlock(self.model):nil;
 }
 @end

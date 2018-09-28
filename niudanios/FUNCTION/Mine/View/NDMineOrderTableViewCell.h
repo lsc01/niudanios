@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDMineOrderInfoModel.h"
 typedef NS_ENUM(NSInteger,OrderState) {
     OrderState_1 = 1,
     OrderState_2 = 2,
@@ -32,4 +32,7 @@ typedef NS_ENUM(NSInteger,OrderState) {
 - (IBAction)rightBtnClick:(UIButton *)sender;
 
 @property (nonatomic ,assign) OrderState orderState;
+
+@property (nonatomic ,strong) NDMineOrderInfoModel * model;
+
 @end

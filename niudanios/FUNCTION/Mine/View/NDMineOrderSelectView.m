@@ -12,7 +12,10 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
-
+    self.btn1.tag = 2220;
+    self.btn2.tag = 2221;
+    self.btn3.tag = 2222;
+    self.btn4.tag = 2223;
 }
 - (IBAction)btnSelectClick:(UIButton *)sender {
     if (sender == self.btnCurr) {
@@ -26,20 +29,22 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.viewLine.center = center;
     }];
+    
+    _selectBtnStatusBlock?_selectBtnStatusBlock(sender.tag-2220):nil;
 }
 
 -(void)setSelectNormalWithTag:(NSInteger)tag{
     if (tag == 0) {
-        self.btnCurr = self.btn1;
+        
         [self btnSelectClick:self.btn1];
     }else if (tag == 1){
-        self.btnCurr = self.btn2;
+        
         [self btnSelectClick:self.btn2];
     }else if (tag == 2){
-        self.btnCurr = self.btn3;
+        
         [self btnSelectClick:self.btn3];
     }else if (tag == 3){
-        self.btnCurr = self.btn4;
+        
         [self btnSelectClick:self.btn4];
     }
 }

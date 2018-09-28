@@ -25,6 +25,26 @@
     
 }
 
+
+-(void)setModel:(NDMineOrderInfoModel *)model{
+    _model = model;
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:HTTP(model.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.labelOrderId.text= model.orderId;
+    self.labelGoodsName.text = model.gashaponName;
+    self.labelTime.text = model.createTime;
+    
+    if ([model.status isEqualToString:@"DF"]) {
+        self.orderState = OrderState_1;
+    }else if ([model.status isEqualToString:@"DS"]){
+        self.orderState = OrderState_2;
+    }else if ([model.status isEqualToString:@"YS"]){
+        self.orderState = OrderState_3;
+    }
+    
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

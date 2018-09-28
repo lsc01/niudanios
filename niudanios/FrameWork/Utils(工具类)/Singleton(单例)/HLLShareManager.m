@@ -7,7 +7,7 @@
 //
 
 #import "HLLShareManager.h"
-
+#import "SAMKeychain.h"
 @implementation HLLShareManager
 static HLLShareManager *share = nil;
 +(instancetype)shareMannager
@@ -17,9 +17,22 @@ static HLLShareManager *share = nil;
     dispatch_once(&onceToken, ^{
         share = [[HLLShareManager alloc]init];
         share.NetworkStatus = AFNetworkReachabilityStatusUnknown;
-        share.registerDevice = NO;
+
     });
     return share;
+}
+
+-(NDUserInfoModel *)userModel{
+    if (_userModel) {
+        return _userModel;
+    }else{
+        NSData * data = [SAMKeychain passwordDataForService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+        if (data==nil) {
+            return nil;
+        }
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        return [NDUserInfoModel mj_objectWithKeyValues:dict];
+    }
 }
 
 @end

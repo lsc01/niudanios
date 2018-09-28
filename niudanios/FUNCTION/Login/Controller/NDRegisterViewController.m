@@ -8,6 +8,7 @@
 
 #import "NDRegisterViewController.h"
 #import "NDBindPhoneViewController.h"
+#import "HLLVerifyTools.h"
 @interface NDRegisterViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -18,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelRemind;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnRegister;
+
+
 @end
 
 @implementation NDRegisterViewController
@@ -55,28 +58,73 @@
 }
 
 - (IBAction)registerClick:(id)sender {
-    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"18670373195" forKey:@"loginMobile"];
-    [dictP setObject:@"123456" forKey:@"loginPwd"];
-    [dictP setObject:@"123456" forKey:@"verificationCode"];
+    if (![HLLVerifyTools hllVerifyMobile:self.textFieldPhone.text]) {
+        [SVProgressHUD showToast:@"手机号不正确"];
+        return;
+    }
     
+    if (![HLLVerifyTools hllIsNum:self.textFieldMsg.text]) {
+        [SVProgressHUD showToast:@"验证码格式错误"];
+        return;
+    }
+    
+    if(self.textFieldPwd.text.length<1||self.textFieldPwdTow.text.length<1){
+        [SVProgressHUD showToast:@"密码不能为空"];
+        return;
+    }
+    if(![self.textFieldPwd.text isEqualToString:self.textFieldPwdTow.text]){
+        [SVProgressHUD showToast:@"两次密码不一致"];
+        return;
+    }
+    
+    
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:self.textFieldPhone.text forKey:@"loginMobile"];
+    [dictP setObject:self.textFieldPwd.text forKey:@"loginPwd"];
+    [dictP setObject:self.textFieldPwd.text forKey:@"verificationCode"];
+    [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
-        
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSInteger code = [dictT[@"code"] integerValue];
+            if (code == 0) {
+                [SVProgressHUD showToast:@"注册成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+            }
+        }
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
-        
+        [SVProgressHUD dismiss];
     }];
 }
 
 - (IBAction)getCodeClick:(id)sender {
+    if (![HLLVerifyTools hllVerifyMobile:self.textFieldPhone.text]) {
+        [SVProgressHUD showToast:@"手机号不正确"];
+        return;
+    }
+    [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"18670373195" forKey:@"loginMobile"];
-    [dictP setObject:@"123456" forKey:@"loginPwd"];
-    [dictP setObject:@"123456" forKey:@"verificationCode"];
+    [dictP setObject:self.textFieldPhone.text forKey:@"loginMobile"];
     
-    [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
-        
+    [HLLHttpManager postWithURL:URL_identifyingCode params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSInteger code = [dictT[@"code"] integerValue];
+            if (code == 0) {
+                [SVProgressHUD showToast:@"验证码发送成功"];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+            }
+        }
+    
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
-        
+        [SVProgressHUD dismiss];
     }];
     
 }

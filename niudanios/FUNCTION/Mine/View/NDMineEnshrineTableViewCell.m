@@ -18,6 +18,16 @@
     self.imageViewGoods.clipsToBounds = YES;
 }
 - (IBAction)deleteBtnClick:(UIButton *)sender {
+    _deleteEnshrinGoodsBlock?_deleteEnshrinGoodsBlock(self.model.gmid):nil;
+}
+
+-(void)setModel:(NDMineEnshrineInfoModel *)model{
+    _model = model;
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:HTTP(model.machineImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.labelName.text = model.machineName;
+    self.labelPrice.text = [NSString stringWithFormat:@"%@",model.machinePrice];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -8,9 +8,10 @@
 
 #import "NDMineEnshrineViewController.h"
 #import "NDMineEnshrineTableViewCell.h"
+#import "NDMineEnshrineInfoModel.h"
 @interface NDMineEnshrineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic ,strong) NSMutableArray * arrData;
 @end
 
 @implementation NDMineEnshrineViewController
@@ -21,7 +22,8 @@
     self.title = @"我的收藏";
     
     [self setUI];
-    
+    [SVProgressHUD show];
+    [self postRequest];
 }
 -(void)setUI{
     
@@ -39,16 +41,43 @@
 }
 
 
+-(void)postRequest{
+    
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"1" forKey:@"customerId"];
+    
+    [HLLHttpManager postWithURL:URL_findCustomerId params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+            self.arrData = nil;
+            for (NSDictionary * dict in arrRows) {
+                NDMineEnshrineInfoModel * model = [NDMineEnshrineInfoModel mj_objectWithKeyValues:dict];
+                [self.arrData addObject:model];
+            }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
 
 
-
-
+-(void)deleteEnshrinGoodsWithId:(NSString *)Id{
+    [SVProgressHUD showWithStatus:@"正在删除"];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:Id forKey:@"id"];
+    
+    [HLLHttpManager postWithURL:URL_modifyCollect params:dictP success:^(NSDictionary *responseObject) {
+        [self postRequest];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
 
 #pragma mark - tableview
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return self.arrData.count;
     
 }
 
@@ -74,14 +103,29 @@
     
     NDMineEnshrineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineEnshrineTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    NDMineEnshrineInfoModel * model = self.arrData[indexPath.section];
+    cell.model = model;
+    WeakSelf();
+    [cell setDeleteEnshrinGoodsBlock:^(NSString *Id) {
+        StrongSelf();
+        [strongself deleteEnshrinGoodsWithId:Id];
+    }];
     
     return cell;
     
 }
 
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
+}
 @end

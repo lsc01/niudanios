@@ -22,7 +22,10 @@
 #define URL_Register HTTP(@"app/customer/register.mvc")
 ///密码登录
 #define URL_LoginPwd HTTP(@"app/customer/login.mvc")
-
+//手机验证码发送
+#define URL_identifyingCode HTTP(@"app/customer/identifyingCode.mvc")
+//重置手机号 新手机号验证
+#define URL_cresetMobile HTTP(@"app/customer/resetMobile.mvc")
 
 #pragma mark - 首页
 ///首页轮播
@@ -62,6 +65,29 @@
 ///查询运费金额
 #define URL_squeryDistinguish HTTP(@"app/expressCost/queryDistinguish.mvc")
 
+#pragma mark - 我的
+#pragma mark - 订单
+//查询全部订单
+#define URL_stotalOrder HTTP(@"app/order/totalOrder.mvc")
+//app/order/AddressOrder.mvc
+#define URL_AddressOrder HTTP(@"app/order/AddressOrder.mvc")
+//收藏查询
+#define URL_findCustomerId HTTP(@"app/collect/findCustomerId.mvc")
+//删除收藏
+#define URL_modifyCollect HTTP(@"app/collect/modify.mvc")
+//扭蛋记录
+#define URL_niudanqueryRecord HTTP(@"app/selfitem/queryRecord.mvc")
 
+//奖励金查询
+#define URL_queryBounty HTTP(@"app/Horation/queryBounty.mvc")
+//领取奖励金
+#define URL_receiveHortation HTTP(@"app/Horation/receiveHortation.mvc")
+//我的下线
+#define URL_rqueryHeeler HTTP(@"app/customer/queryHeeler.mvc")
+
+
+#pragma mark -钱包
+//查询消费记录
+#define URL_queryConsume HTTP(@"app/customerDetail/queryConsume.mvc")
 
 #endif /* URLMacros_h */

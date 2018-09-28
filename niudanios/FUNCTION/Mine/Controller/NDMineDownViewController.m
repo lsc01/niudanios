@@ -8,9 +8,10 @@
 
 #import "NDMineDownViewController.h"
 #import "NDMineDownTableViewCell.h"
+#import "NDMineDownInfoModel.h"
 @interface NDMineDownViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic ,strong) NSMutableArray * arrData;
 @end
 
 @implementation NDMineDownViewController
@@ -21,8 +22,30 @@
     self.title = @"我的下线";
 
     [self setUI];
-
+    [self postRequest];
 }
+
+-(void)postRequest{
+    [SVProgressHUD show];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"1" forKey:@"id"];
+   
+    [HLLHttpManager postWithURL:URL_rqueryHeeler params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrData = nil;
+        for (NSDictionary * dict in arrRows) {
+            NDMineDownInfoModel * model = [NDMineDownInfoModel mj_objectWithKeyValues:dict];
+            [self.arrData addObject:model];
+        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
+
+
+
 -(void)setUI{
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -41,7 +64,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return self.arrData.count;
     
 }
 
@@ -67,7 +90,8 @@
     
     NDMineDownTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineDownTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    NDMineDownInfoModel * model =self.arrData[indexPath.section];
+    cell.model = model;
     
     return cell;
     
@@ -77,6 +101,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
+}
 
 @end

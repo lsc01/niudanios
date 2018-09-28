@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDMyWalletRecordModel.h"
 
 typedef NS_ENUM(NSInteger,AccountPayDetailType) {
     AccountPayDetailType1 = 1,
@@ -26,4 +26,6 @@ typedef NS_ENUM(NSInteger,AccountPayDetailType) {
 @property (weak, nonatomic) IBOutlet UIView *viewLIne;
 
 @property (nonatomic ,assign) AccountPayDetailType accountPayDetailType;
+
+@property (nonatomic ,strong) NDMyWalletRecordModel * model;
 @end

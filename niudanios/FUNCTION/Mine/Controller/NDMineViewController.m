@@ -26,9 +26,14 @@
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
 @interface NDMineViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic ,strong) UIImageView * imageHead;
+@property (nonatomic ,strong) UILabel * labelName;
+
 @property (nonatomic ,strong) UIView * headView;
 
 @property(nonatomic,strong)UITableView *tableView;
+
 @end
 
 @implementation NDMineViewController
@@ -42,6 +47,16 @@
     [self setUI];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([HLLShareManager shareMannager].userModel) {
+        [self.imageHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait)] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            NSLog(@"error:%@",error);
+        }];
+      
+        self.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
+    }
+}
 
 -(void)setUI{
     
@@ -109,26 +124,26 @@
     
     
     
-    UIImageView * imageHead = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_placehold"]];
-    imageHead.layer.cornerRadius = KheadViewH(60)/2.0;
-    imageHead.layer.masksToBounds = YES;
-    [self.headView addSubview:imageHead];
-    [imageHead mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.imageHead = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head_placehold"]];
+    self.imageHead.layer.cornerRadius = KheadViewH(60)/2.0;
+    self.imageHead.layer.masksToBounds = YES;
+    [self.headView addSubview:self.imageHead];
+    [self.imageHead mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(KheadViewH(60));
         make.centerX.mas_equalTo(self.headView);
         make.top.mas_equalTo(viewNav.mas_bottom).offset(KheadViewH(8));
     }];
     
     
-    UILabel * labelName = [[UILabel alloc] init];
-    labelName.text = @"姓名";
-    labelName.textColor = [UIColor whiteColor];
-    labelName.textAlignment = NSTextAlignmentCenter;
-    labelName.font = [UIFont systemFontOfSize:16.0];
-    [self.headView addSubview:labelName];
-    [labelName mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.labelName = [[UILabel alloc] init];
+    self.labelName.text = @"未登录";
+    self.labelName.textColor = [UIColor whiteColor];
+    self.labelName.textAlignment = NSTextAlignmentCenter;
+    self.labelName.font = [UIFont systemFontOfSize:16.0];
+    [self.headView addSubview:self.labelName];
+    [self.labelName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.headView);
-        make.top.mas_equalTo(imageHead.mas_bottom).offset(KheadViewH(13));
+        make.top.mas_equalTo(self.imageHead.mas_bottom).offset(KheadViewH(13));
     }];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -266,10 +281,10 @@
     
     if (indexPath.section == 0) {
         NDMineOrderViewController * orderVC = [[NDMineOrderViewController alloc] init];
+        orderVC.selectTag = indexPath.row;
         [self.navigationController pushViewController:orderVC animated:YES];
     }else if (indexPath.section == 2){
         if (indexPath.row == 1) {
-            
             NDAboutViewController * vc = [[NDAboutViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }

@@ -105,7 +105,7 @@
                                 <constraint firstAttribute="height" constant="24" id="kvA-Nl-YK4"/>
                             </constraints>
                         </imageView>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12323123" placeholder="请输入新手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="283-1J-cgT">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="283-1J-cgT">
                             <rect key="frame" x="64" y="7.5" width="267" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="NhP-3c-5z0"/>

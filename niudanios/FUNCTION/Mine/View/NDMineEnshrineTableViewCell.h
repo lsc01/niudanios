@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDMineEnshrineInfoModel.h"
 @interface NDMineEnshrineTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewGoods;
@@ -15,4 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
+
+
+@property (nonatomic ,strong) NDMineEnshrineInfoModel * model;
+
+
+@property (nonatomic ,copy) void (^deleteEnshrinGoodsBlock)(NSString * Id);
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NDMyWalletHeadView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *labelMoney;
 
 @end

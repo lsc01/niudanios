@@ -10,6 +10,8 @@
 #import "NDRegisterViewController.h"
 #import "UIViewController+toast.h"
 #import "ShareSdkHeader.h"
+#import "NDUserInfoModel.h"
+#import "SAMKeychain.h"
 @interface NDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -56,11 +58,26 @@
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:self.textFieldPhone.text forKey:@"loginMobile"];
     [dictP setObject:self.textFieldPwd.text forKey:@"loginPwd"];
-    
+    [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_LoginPwd params:dictP success:^(NSDictionary *responseObject) {
-        
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSInteger code = [dictT[@"code"] integerValue];
+            if (code == 0) {
+                [SVProgressHUD showToast:@"登录成功"];
+                NDUserInfoModel * userModel = [NDUserInfoModel mj_objectWithKeyValues:dictT];
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
+                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                [HLLShareManager shareMannager].userModel = userModel;
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+            }
+        }
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
-        
+        [SVProgressHUD dismiss];
     }];
     
 }

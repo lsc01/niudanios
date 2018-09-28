@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDNuidanRecordModel.h"
 @interface NDRecodeTableViewCell : UITableViewCell
 
 
@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
+
+@property (nonatomic ,strong) NDNuidanRecordModel * model;
 @end

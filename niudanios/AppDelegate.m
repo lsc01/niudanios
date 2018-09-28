@@ -65,9 +65,7 @@
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         [[HLLShareManager shareMannager] setNetworkStatus:status];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_NETSTATUS_CHANGE object:nil userInfo:@{@"status":@(status)}];
-        if (![HLLShareManager shareMannager].isRegisterDevice) {
-           
-        }
+       
     }];
 }
 

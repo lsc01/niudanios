@@ -25,8 +25,27 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"订单详情";
     [self setUI];
+    [self postRequest];
 }
 
+-(void)postRequest{
+    [SVProgressHUD show];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:self.model.Id forKey:@"id"];
+   
+    [HLLHttpManager postWithURL:URL_AddressOrder params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+//        self.arrData = nil;
+//        for (NSDictionary * dict in arrRows) {
+//            NDMineOrderInfoModel * model = [NDMineOrderInfoModel mj_objectWithKeyValues:dict];
+//            [self.arrData addObject:model];
+//        }
+        [self.tableView reloadData];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
+}
 
 -(void)setUI{
     

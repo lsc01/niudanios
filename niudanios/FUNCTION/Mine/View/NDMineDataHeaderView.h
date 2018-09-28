@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface NDMineDataHeaderView : UIView
+@property (weak, nonatomic) IBOutlet UIButton *btnImageHead;
+- (IBAction)headBtnClick:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewHead;
 
 @end

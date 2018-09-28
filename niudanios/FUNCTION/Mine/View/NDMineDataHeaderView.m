@@ -18,4 +18,6 @@
 }
 */
 
+- (IBAction)headBtnClick:(UIButton *)sender {
+}
 @end
