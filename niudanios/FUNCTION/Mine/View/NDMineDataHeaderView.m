@@ -19,5 +19,7 @@
 */
 
 - (IBAction)headBtnClick:(UIButton *)sender {
+    _headViewUpdateBlock?_headViewUpdateBlock(self.imageViewHead):nil;
+    
 }
 @end

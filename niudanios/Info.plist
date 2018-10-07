@@ -73,8 +73,15 @@
 	<string>b3868d9dd31b2b05edb37d8795e81216</string>
 	<key>MOBAppkey</key>
 	<string>27d47739447bc</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>需要使用相机进行二维码扫描</string>
+	<string>需要使用相机进行二维码扫描、修改头像时拍摄照片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要使用相册修改头像时选取照片</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -96,10 +103,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 </dict>
 </plist>

@@ -13,13 +13,28 @@
 #import "BRDatePickerView.h"
 #import "NDSexSelectView.h"
 #import "SAMKeychain.h"
+#import "HLLSysAuthorityManager.h"
+#import "HLLPhoneModel.h"
 
-@interface NDMIneDataViewController ()<UITableViewDelegate,UITableViewDataSource>
+//照片相关库
+#import "MLSelectPhotoPickerViewController.h"
+#import "MLSelectPhotoAssets.h"
+#import "MLSelectPhotoPickerAssetsViewController.h"
+#import "MLSelectPhotoBrowserViewController.h"
+
+#import "UIImage+Resize.h"
+#import "HLLFormData.h"
+#import "AFHTTPSessionManager.h"
+typedef void(^SelectedPhotos)(NSArray *photoArray);
+
+@interface NDMIneDataViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic ,strong) NDMineDataHeaderView * headView;
 
 @property (nonatomic ,strong) UIView * viewFooter;
 
 @property(nonatomic,strong)UITableView *tableView;
+
+@property(nonatomic,copy) SelectedPhotos selectedPhotosBlock;
 
 @end
 
@@ -54,6 +69,12 @@
     [self.headView.imageViewHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
+    
+    WeakSelf();
+    [self.headView setHeadViewUpdateBlock:^(UIImageView *imageView) {
+        StrongSelf();
+        [strongself cellImageHeaderReplaceWithImageView:imageView];
+    }];
  
 }
 
@@ -72,49 +93,77 @@
     }
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:birth forKey:@"Strdate"];
-    [dictP setObject:@"18907350967"?:[HLLShareManager shareMannager].userModel.loginMobile forKey:@"loginMobile"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.loginMobile forKey:@"loginMobile"];
     [dictP setObject:[stringSex isEqualToString:@"男"]?@(1):@(0) forKey:@"sex"];
     [dictP setObject:stringName forKey:@"nickName"];
-//    [dictP setObject:@"这传头像" forKey:@"portrait"];
+    
+    HLLFormData * Data =[[HLLFormData alloc]init];
+    NSData *imageData =  UIImagePNGRepresentation(self.headView.imageViewHead.image);
+    Data.data = imageData;
+    Data.mimeType = @"image/png";
+    Data.name = @"portrait";
+    Data.filename = @"portrait.png";
     
     [SVProgressHUD show];
-    [HLLHttpManager postWithURL:URL_updateCustomerInfo params:dictP success:^(NSDictionary *responseObject) {
-        [SVProgressHUD dismiss];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+    
+    [manager POST:URL_updateCustomerInfo parameters:dictP constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        
+        NSData *pictureData = UIImageJPEGRepresentation(self.headView.imageViewHead.image, 0.5);
+        NSString *fileName = @"portrait";
+        NSString *nameStr = @"portrait";
+        NSLog(@"%@", nameStr);
+        NSLog(@"%@", fileName);
+        [formData appendPartWithFileData:pictureData name:nameStr fileName:[NSString stringWithFormat:@"%@.png", fileName] mimeType:@"image/png"];
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray * arrRows = responseObject[@"rows"];
         if (arrRows.count > 0) {
             NSDictionary * dict = arrRows.firstObject;
             if ([dict[@"code"] integerValue] == 0) {
-                [HLLShareManager shareMannager].userModel.birthdayTime = birth;
-                [HLLShareManager shareMannager].userModel.sex = [stringSex isEqualToString:@"男"]?@"1":@"0";
-                [HLLShareManager shareMannager].userModel.nickName = stringName;
                 
-                NSDictionary * dictT = [[HLLShareManager shareMannager].userModel mj_keyValues];
-                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
-                
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    if ([self.delegate respondsToSelector:@selector(updateDataInfoSuccess)]) {
-                        [self.delegate updateDataInfoSuccess];
-                    }
-                    [self.navigationController popViewControllerAnimated:YES];
-                });
-                
+                [self findCustomerInfoFunction];
+            }else{
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showToast:dict[@"msg"]];
             }
-            [SVProgressHUD showToast:dict[@"msg"]];
+            
         }
         
-        
-        
-        
-    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showToast:@"修改失败"];
         
     }];
-    
-    
+
+}
+
+-(void)findCustomerInfoFunction{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:@"1" forKey:@"id"];
+    [HLLHttpManager postWithURL:URL_findCustomerInfo params:dictP success:^(NSDictionary *responseObject) {
+         [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count > 0) {
+            NSDictionary * dict = arrRows.firstObject;
+            NDUserInfoModel * model = [NDUserInfoModel mj_objectWithKeyValues:dict];
+            [HLLShareManager shareMannager].userModel = model;
+            NSDictionary * dictT = [[HLLShareManager shareMannager].userModel mj_keyValues];
+            NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
+            [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+        }
+        [SVProgressHUD showToast:@"修改成功"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(updateDataInfoSuccess)]) {
+                [self.delegate updateDataInfoSuccess];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
 
@@ -208,6 +257,237 @@
 }
 
 
+-(void)cellImageHeaderReplaceWithImageView:(UIImageView *)imageView{
+    
+    [self openPhotoMenuWithPhotos:^(NSArray *photoArray) {
+        [SVProgressHUD showWithStatus:@"正在压缩图片.."];
+        [self CompressImages:photoArray
+                      toSize:CGSizeMake(750,316)
+                     Quality:kCGInterpolationHigh
+                 returnBlock:^(NSArray *CompressedImages, NSArray *datas) {
+                     [SVProgressHUD dismiss];
+                     UIImage *photo = CompressedImages.firstObject;
+                     imageView.image = photo;
+                 }];
+    }];
+}
+//打开选择列表
+-(void)openPhotoMenuWithPhotos:(SelectedPhotos)PhotosBlock{
+    
+    _selectedPhotosBlock = PhotosBlock;
+    //在这里呼出下方菜单按钮项
+    UIActionSheet *PicActionSheet = [[UIActionSheet alloc]
+                                     initWithTitle:nil
+                                     delegate:self
+                                     cancelButtonTitle:@"取消"
+                                     destructiveButtonTitle:nil
+                                     otherButtonTitles:@"从相册选择",@"拍照", nil];
+    [PicActionSheet showInView:self.view];
+}
+#pragma mark - UIActionSheetDelegate
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == actionSheet.cancelButtonIndex){
+        NSLog(@"取消");
+    }
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self OpenPotoLibWithPhoto];
+        }
+            
+            break;
+        case 1:
+            [self takePhoto];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+///使用相机
+-(void)takePhoto
+{
+    WeakSelf();
+    
+    switch ([HLLSysAuthorityManager isAllowCamera]) {
+        case SYS_NotDetermined:
+        {
+            [HLLSysAuthorityManager getCameraPermissions:^(BOOL isAllow) {
+                StrongSelf();
+                if (isAllow) {
+                    
+                    [strongself OpenCamera];
+                }else{
+                    
+                    [HLLSysAuthorityManager alertWithTitle:@"相机被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相机",[HLLPhoneModel getAPPName]]];
+                    HLLLog(@"不允许相机");
+                }
+            }];
+        }
+            break;
+        case SYS_Authorized:
+        {
+            [self OpenCamera];
+            HLLLog(@"允许相机");
+        }
+            break;
+        case SYS_Denied:
+        {
+            
+            [HLLSysAuthorityManager alertWithTitle:@"相机被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相机",[HLLPhoneModel getAPPName]]];
+            HLLLog(@"不允许相机");
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+#pragma mark  - 照相机
+///打开相机
+-(void)OpenCamera{
+    UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypeCamera;
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = sourceType;
+        picker.delegate = self;
+        //设置拍照后的图片可被编辑
+        //            picker.showsCameraControls = YES;
+        picker.allowsEditing = YES;
+        
+        [self presentViewController:picker animated:YES completion:nil];
+    } else {
+        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+    }
+}
+
+
+//当选择一张图片后进入这里
+-(void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    //当选择的类型是图片
+    if ([type isEqualToString:@"public.image"])
+    {
+        UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+        //        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];  //图库
+        //        //保存到本地
+        //        [library writeImageToSavedPhotosAlbum:image.CGImage metadata:nil completionBlock:^(NSURL *assetURL, NSError *error) {
+        //        }];
+        
+        
+        NSArray *imageArray = [NSArray arrayWithObject:image];
+        _selectedPhotosBlock?_selectedPhotosBlock(imageArray):nil;
+        
+        //关闭相册界面
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        
+    }
+    
+}
+
+
+#pragma mark --------照片相关库代理方法
+#pragma mark - 打开相册第三方库
+-(void)OpenPotoLibWithPhoto
+{
+    WeakSelf();
+    switch ([HLLSysAuthorityManager isAllowPhotoAlbum]) {
+        case SYS_NotDetermined:
+        {
+            [HLLSysAuthorityManager getPhotoPermissions:^(BOOL isAllow) {
+                StrongSelf();
+                if (isAllow) {
+                    
+                    [strongself openPhotoAlbum];
+                }else{
+                    
+                    [HLLSysAuthorityManager alertWithTitle:@"相册被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相册",[HLLPhoneModel getAPPName]]];
+                    HLLLog(@"不允许相册");
+                }
+            }];
+        }
+            break;
+        case SYS_Authorized:
+        {
+            [self openPhotoAlbum];
+            HLLLog(@"允许相册");
+        }
+            break;
+        case SYS_Denied:
+        {
+            
+            [HLLSysAuthorityManager alertWithTitle:@"相册被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相册",[HLLPhoneModel getAPPName]]];
+            HLLLog(@"不允许相册");
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+
+///打开相册
+-(void)openPhotoAlbum{
+    // 创建控制器
+    MLSelectPhotoPickerViewController *pickerVc = [[MLSelectPhotoPickerViewController alloc] init];
+    // 默认显示相册里面的内容SavePhotos
+    pickerVc.status = PickerViewShowStatusCameraRoll;
+    pickerVc.maxCount = 1;
+    [pickerVc showPickerVc:self];
+    
+    pickerVc.callBack = ^(NSArray *assets){
+        NSMutableArray *imageArray = [NSMutableArray array];
+        
+        for(int i= 0; i< assets.count;i++){
+            MLSelectPhotoAssets *asset = assets[i];
+            [imageArray addObject:[MLSelectPhotoPickerViewController getImageWithImageObj:asset]];
+            
+        }
+        _selectedPhotosBlock?_selectedPhotosBlock(imageArray):nil;
+    };
+}
+
+
+
+#pragma  mark - 压缩图片
+-(void)CompressImages:(NSArray *)ImageArray
+               toSize:(CGSize)size
+              Quality:(CGInterpolationQuality)QualityKind
+          returnBlock:(void(^)(NSArray *CompressedImages,NSArray *datas))ImageReturnBlock
+{
+    __block NSMutableArray *CompressedArray = [NSMutableArray new];
+    __block NSMutableArray *CompressData = [NSMutableArray new];
+    [ImageArray enumerateObjectsUsingBlock:^(UIImage*  _Nonnull img, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIImage *NewImage = [img resizedImage:size interpolationQuality:QualityKind];//调整尺寸
+        
+        NSData* Imagedata = [NSData new];
+        if (UIImagePNGRepresentation(NewImage) == nil)
+        {
+            Imagedata = UIImageJPEGRepresentation(NewImage, 0.2);
+        }
+        else
+        {
+            Imagedata = UIImagePNGRepresentation(NewImage);
+        }
+        [CompressData addObject:Imagedata];
+        UIImage *compressedImage = [UIImage imageWithData:Imagedata];
+        [CompressedArray addObject:compressedImage];
+        
+    }];
+    if((CompressedArray.count != 0)&&(ImageReturnBlock)){//返回处理后的数据
+        ImageReturnBlock(CompressedArray,CompressData);
+    }
+}
+
 
 
 -(NDMineDataHeaderView *)headView{
@@ -239,6 +519,8 @@
     }
     return _viewFooter;
 }
+
+
 
 
 @end

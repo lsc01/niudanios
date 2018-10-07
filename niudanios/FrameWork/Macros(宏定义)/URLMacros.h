@@ -31,7 +31,8 @@
 #define URL_resetPwd HTTP(@"app/customer/resetPwd.mvc")//没接
 ///修改用户信息
 #define URL_updateCustomerInfo HTTP(@"app/customer/updateCustomerInfo.mvc")
-
+///查询用户信息
+#define URL_findCustomerInfo HTTP(@"app/customer/one.mvc")
 
 #pragma mark - 首页
 ///首页轮播

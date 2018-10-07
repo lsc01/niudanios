@@ -3641,7 +3641,7 @@
 					"$(PROJECT_DIR)/niudanios/FrameWork/PayTools/AliPay",
 					"$(PROJECT_DIR)/niudanios/FrameWork/OpenSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudaniosT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3684,7 +3684,7 @@
 					"$(PROJECT_DIR)/niudanios/FrameWork/PayTools/AliPay",
 					"$(PROJECT_DIR)/niudanios/FrameWork/OpenSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudaniosT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

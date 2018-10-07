@@ -13,4 +13,6 @@
 - (IBAction)headBtnClick:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewHead;
 
+@property (nonatomic ,copy) void(^headViewUpdateBlock)(UIImageView * imageView);
+
 @end
