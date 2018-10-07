@@ -8,7 +8,7 @@
 //
 
 #import "NDHomeHeadView.h"
-
+#import "NDHomeNewMessageModel.h"
 
 @implementation NDHomeHeadView
 
@@ -96,23 +96,16 @@
     [self layoutIfNeeded];
 }
 -(void)setcycVerticalArray:(NSArray *)array{
-    CycleVerticalModel * model = [[CycleVerticalModel alloc] init];
-    model.personName = @"model";
-    model.goodsName = @"大家都";
+    NSMutableArray * arrM = [NSMutableArray array];
+    for (NDHomeNewMessageModel * modelT in array) {
+        CycleVerticalModel * model = [[CycleVerticalModel alloc] init];
+        model.personName = modelT.userName;
+        model.descri = modelT.typeName;
+        model.goodsName = modelT.twistedName;
+        [arrM addObject:model];
+    }
     
-    CycleVerticalModel * model2 = [[CycleVerticalModel alloc] init];
-    model2.personName = @"model2";
-    model2.goodsName = @"大大师傅离开";
-    CycleVerticalModel * model3 = [[CycleVerticalModel alloc] init];
-    model3.personName = @"model2";
-    model3.goodsName = @"阿道夫敢问";
-    CycleVerticalModel * model4 = [[CycleVerticalModel alloc] init];
-    model4.personName = @"model4";
-    model4.goodsName = @"鬼地方个";
-    
-    self.cycVerticalView.dataSource = @[
-                                        model,model2,model3,model4
-                                        ];
+    self.cycVerticalView.dataSource = arrM;
 }
 
 @end

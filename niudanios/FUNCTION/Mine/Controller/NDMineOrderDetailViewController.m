@@ -10,11 +10,14 @@
 #import "NDMineOrderDetailView.h"
 #import "NDOrderDetailTableViewCell.h"
 #import "NDLogisticsDetailViewController.h"
+#import "NDOrderDetailInfoModel.h"
 @interface NDMineOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDMineOrderDetailView * headerView;
 
-@property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong) UITableView *tableView;
+
+@property (nonatomic ,strong) NDOrderDetailInfoModel * modelInfo;
 
 @end
 
@@ -31,16 +34,17 @@
 -(void)postRequest{
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:self.model.Id forKey:@"id"];
+//    [dictP setObject:self.model.Id forKey:@"id"];
+    [dictP setObject:@"260029793869096960" forKey:@"id"];
    
-    [HLLHttpManager postWithURL:URL_AddressOrder params:dictP success:^(NSDictionary *responseObject) {
+    [HLLHttpManager postWithURL:URL_detailOrder params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         NSArray * arrRows = responseObject[@"rows"];
-//        self.arrData = nil;
-//        for (NSDictionary * dict in arrRows) {
-//            NDMineOrderInfoModel * model = [NDMineOrderInfoModel mj_objectWithKeyValues:dict];
-//            [self.arrData addObject:model];
-//        }
+        if (arrRows.count>0) {
+            NSDictionary * dict = arrRows.firstObject;
+            self.modelInfo = [NDOrderDetailInfoModel mj_objectWithKeyValues:dict];
+        }
+        self.headerView.model = self.modelInfo;
         [self.tableView reloadData];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
@@ -68,6 +72,7 @@
     [self.headerView setLookOrderLogisticsDetailBlock:^{
         StrongSelf();
         NDLogisticsDetailViewController * vc = [[NDLogisticsDetailViewController alloc] init];
+        vc.modelInfo = strongself.modelInfo;
         [strongself.navigationController pushViewController:vc animated:YES];
     }];
 }
@@ -89,7 +94,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 1;
+    return self.modelInfo==nil?0:1;
     
 }
 
@@ -100,6 +105,14 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NDOrderDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDOrderDetailTableViewCell"     forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+    [cell.imageViewOrder sd_setImageWithURL:[NSURL URLWithString:HTTP(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    cell.labelOrderId.text = self.modelInfo.Id;
+    cell.labelGoodsName.text = self.modelInfo.gashaponName;
+    cell.labelMoney.text =[NSString stringWithFormat:@"¥ %d",self.modelInfo.freightMoney];
     
     return cell;
    

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDSelectDefaultAddrModel.h"
 @interface NDVerifyOrderHeadView : UIView
 
 
@@ -20,7 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIView *viewBackgruondNone;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddAddress;
 
+- (IBAction)replaceAddressClick:(UIButton *)sender;
 
+@property (nonatomic ,copy) void(^replaceAddressBlock)(void);
+
+
+@property (nonatomic ,strong) NDSelectDefaultAddrModel * model;
 @property (nonatomic ,assign ,getter=isHasAddress) BOOL hasAddress;
 
 

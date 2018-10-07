@@ -11,4 +11,13 @@
 @interface NDLogisticsDetailHeadView : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewGoods;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelState;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelKuaiDiCompany;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelOrderId;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelPhone;
+
 @end

@@ -10,7 +10,8 @@
 #import "NDPackageTableViewCell.h"
 #import "NDVerifyOrderViewController.h"
 #import "NDPackageGoodsModel.h"
-@interface NDPackageViewController ()<UITableViewDelegate,UITableViewDataSource,NDVerifyOrderViewControllerDelegate>
+#import "UIScrollView+EmptyDataSet.h"
+@interface NDPackageViewController ()<UITableViewDelegate,UITableViewDataSource,NDVerifyOrderViewControllerDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAllSelect;
@@ -24,6 +25,7 @@
 @property (nonatomic ,strong) NSMutableArray * arrData;
 
 @property (nonatomic ,strong) NSMutableArray * arrID;//记录选中的id
+@property (weak, nonatomic) IBOutlet UIView *viewBottomTool;
 
 @end
 
@@ -33,14 +35,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    self.title = @"我的扭蛋";
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    self.viewBottomTool.hidden = YES;
     [self setUI];
-    
+    [SVProgressHUD show];
+//    [self postRequest];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self postRequest];
 }
 
 -(void)postRequest{
-    [SVProgressHUD show];
+    
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:@(1) forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_queryBackpack params:dictP success:^(NSDictionary *responseObject) {
@@ -51,6 +61,11 @@
             [self.arrData addObject:model];
         }
         [self.tableView reloadData];
+        if (self.arrData.count>0) {
+            self.viewBottomTool.hidden = NO;
+        }else{
+            self.viewBottomTool.hidden = YES;
+        }
         [SVProgressHUD dismiss];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
@@ -58,6 +73,8 @@
 }
 
 -(void)setUI{
+    
+    
     self.btnAllSelect.layer.cornerRadius = 10;
     self.btnAllSelect.clipsToBounds = YES;
     self.btnAllSelect.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -251,9 +268,51 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
+#pragma mark - 空白页
+//空白页显示图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"bg_enpty"];
+}
+//空白页显示标题
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"这里是空的哦~~~";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:12.0f],
+                                 NSForegroundColorAttributeName:HEXCOLOR(0x999999)
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+//空白页显示详细描述
+//- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+//    NSString *text = @"暂时没有已上课程";
+//
+//    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+//    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+//    paragraph.alignment = NSTextAlignmentCenter;
+//
+//    NSDictionary *attributes = @{
+//                                 NSFontAttributeName:[UIFont systemFontOfSize:14.0f],
+//                                 NSForegroundColorAttributeName:[UIColor lightGrayColor],
+//                                 NSParagraphStyleAttributeName:paragraph
+//                                 };
+//
+//    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+//}
+
+//将组件彼此上下分离（默认分隔为11个分
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 16.0f;
+}
+
+
+
+
+
 #pragma mark - 提交订单成功代理回调
 -(void)submitOrderSucceed{
-    [self postRequest];
+    [SVProgressHUD show];
+//    [self postRequest];
 }
 
 

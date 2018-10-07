@@ -10,7 +10,9 @@
 #import "NDVerifyOrderTableViewCell.h"
 #import "NDVerifyOrderHeadView.h"
 #import "NDAddressEditViewController.h"
-@interface NDVerifyOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "NDMineAddressViewController.h"
+
+@interface NDVerifyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,NDMineAddressViewControllerDelegate>
 
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -72,16 +74,19 @@
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:self.yunfei forKey:@"money"];
     [dictP setObject:dataParams forKey:@"data"];
-    [dictP setObject:@"" forKey:@"addressId"];
+    [dictP setObject:self.defaultAddrModel.Id forKey:@"addressId"];
     [dictP setObject:@"1" forKey:@"customerId"];
     
     [SVProgressHUD showWithStatus:@"正在提交"];
-    [HLLHttpManager postWithURL:URL_squeryDistinguish params:dictP success:^(NSDictionary *responseObject) {
+    [HLLHttpManager postWithURL:URL_order_confirm params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showToast:@"下单成功"];
-        if ([self.delegate respondsToSelector:@selector(submitOrderSucceed)]) {
-            [self.delegate submitOrderSucceed];
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if ([self.delegate respondsToSelector:@selector(submitOrderSucceed)]) {
+                [self.delegate submitOrderSucceed];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        });
         
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
@@ -113,6 +118,22 @@
         NDAddressEditViewController * vc = [[NDAddressEditViewController alloc] init];
         [strongself.navigationController pushViewController:vc animated:YES];
     }];
+    
+    [self.headView setReplaceAddressBlock:^{
+        StrongSelf();
+        [strongself replaceAddress];
+    }];
+}
+
+-(void)replaceAddress{
+    NDMineAddressViewController * mineAddrVC = [[NDMineAddressViewController alloc] init];
+    mineAddrVC.delegate = self;
+    [self.navigationController pushViewController:mineAddrVC animated:YES];
+}
+
+-(void)selectMineAddressWithModel:(NDSelectDefaultAddrModel *)model{
+    self.defaultAddrModel = model;
+    _headView.model = self.defaultAddrModel;
 }
 
 
@@ -165,6 +186,7 @@
             _headView.hasAddress = NO;
         }else{
             _headView.hasAddress = YES;
+            _headView.model = self.defaultAddrModel;
         }
     }
     return _headView;

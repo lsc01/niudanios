@@ -15,6 +15,12 @@
     // Initialization code
 }
 
+-(void)setModel:(NDAboutInfoModel *)model{
+    _model = model;
+    self.labeltitle.text = model.title;
+    self.labelDes.text = model.context;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

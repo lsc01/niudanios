@@ -141,6 +141,7 @@
         }
     }
     if (_dataSource.count<1) {
+        [self setLabelAttributedText:_tmpMiddleView andModel:nil];
         return;
     }
     CycleVerticalModel * model = _dataSource[_indexNow%(_dataSource.count)];
@@ -161,14 +162,20 @@
 
 
 -(void)setLabelAttributedText:(UILabel *)label andModel:(CycleVerticalModel *)model{
+    if (model==nil) {
+        label.textAlignment = NSTextAlignmentLeft;
+        label.text = @"暂无新消息";
+        label.textColor = HEXCOLOR(0x222222);
+        return;
+    }
     label.textAlignment = NSTextAlignmentLeft;
-    NSString *text = [NSString stringWithFormat:@"恭喜  %@  傻气爆棚，获得了  %@",model.personName,model.goodsName];
+    NSString *text = [NSString stringWithFormat:@"恭喜  %@  %@  %@",model.personName,model.descri,model.goodsName];
     label.text = text;
     NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
     [attributeStr addAttribute:NSForegroundColorAttributeName value:HEXCOLOR(0x222222) range:NSMakeRange(0, 4)];
     [attributeStr addAttribute:NSForegroundColorAttributeName value:HEXCOLOR(0x1dcb7c) range:NSMakeRange(4, model.personName.length)];
-    [attributeStr addAttribute:NSForegroundColorAttributeName value:HEXCOLOR(0x222222) range:NSMakeRange(4+model.personName.length, 12)];
-    [attributeStr addAttribute:NSForegroundColorAttributeName value:HEXCOLOR(0x1dcb7c) range:NSMakeRange(4+model.personName.length+12, model.goodsName.length)];
+    [attributeStr addAttribute:NSForegroundColorAttributeName value:HEXCOLOR(0x222222) range:NSMakeRange(4+model.personName.length, model.descri.length+4)];
+    [attributeStr addAttribute:NSForegroundColorAttributeName value:HEXCOLOR(0x1dcb7c) range:NSMakeRange(4+model.personName.length+model.descri.length+4, model.goodsName.length)];
     label.attributedText = attributeStr;
 }
 

@@ -9,7 +9,8 @@
 #import "NDNuidanRecordViewController.h"
 #import "NDRecodeTableViewCell.h"
 #import "NDNuidanRecordModel.h"
-@interface NDNuidanRecordViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UIScrollView+EmptyDataSet.h"
+@interface NDNuidanRecordViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
@@ -37,7 +38,8 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
 
 -(void)postRequest{
@@ -99,6 +101,49 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - 空白页
+//空白页显示图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"bg_nrd"];
+}
+//空白页显示标题
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"您还没有任何的扭蛋记录哦";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName:HEXCOLOR(0x999999)
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    NSString *text = @"点击 这里 前往商城来一发吧~~~~";
+    
+    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc] initWithString:text];
+    // 设置所有字体大小为 #15
+    [attStr addAttribute:NSFontAttributeName
+                   value:[UIFont systemFontOfSize:14.0]
+                   range:NSMakeRange(0, text.length)];
+    // 设置所有字体颜色为浅灰色
+    [attStr addAttribute:NSForegroundColorAttributeName
+                   value:HEXCOLOR(0x999999)
+                   range:NSMakeRange(0, text.length)];
+    // 设置指定4个字体为蓝色
+    [attStr addAttribute:NSForegroundColorAttributeName
+                   value:HEXCOLOR(0x1dcb7c)
+                   range:NSMakeRange(2, 4)];
+    return attStr;
+}
+
+//将组件彼此上下分离（默认分隔为11个分
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 16.0f;
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button {
+    NSLog(@"空白按钮点击");
+}
+
 
 -(NSMutableArray *)arrData{
     if (_arrData == nil) {

@@ -9,7 +9,9 @@
 #import "NDMineEnshrineViewController.h"
 #import "NDMineEnshrineTableViewCell.h"
 #import "NDMineEnshrineInfoModel.h"
-@interface NDMineEnshrineViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UIScrollView+EmptyDataSet.h"
+@interface NDMineEnshrineViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic ,strong) NSMutableArray * arrData;
 @end
@@ -37,7 +39,8 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
 }
 
 
@@ -70,6 +73,7 @@
         [self postRequest];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"删除失败"];
     }];
 }
 
@@ -121,6 +125,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - 空白页
+//空白页显示图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"bg_eeg"];
+}
+//空白页显示标题
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"这里啥都没有";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName:HEXCOLOR(0x999999)
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+
+//将组件彼此上下分离（默认分隔为11个分
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 16.0f;
+}
 
 -(NSMutableArray *)arrData{
     if (_arrData == nil) {

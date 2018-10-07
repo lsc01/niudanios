@@ -13,5 +13,9 @@
 
 @property (nonatomic ,copy) NSString * createTime;
 
-@property (nonatomic ,copy) NSString * messageName;
+@property (nonatomic ,copy) NSString * twistedName;
+
+@property (nonatomic ,copy) NSString * typeName;
+
+@property (nonatomic ,copy) NSString * userName;
 @end

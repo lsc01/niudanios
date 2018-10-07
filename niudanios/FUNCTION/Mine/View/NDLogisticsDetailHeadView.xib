@@ -121,6 +121,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="imageViewGoods" destination="cfx-2L-y0f" id="VFe-bC-V7V"/>
+                <outlet property="labelKuaiDiCompany" destination="gZP-Ng-ZvO" id="p1B-TN-dTt"/>
+                <outlet property="labelOrderId" destination="ejx-ik-rSD" id="KtW-Ku-aSq"/>
+                <outlet property="labelPhone" destination="K2r-fr-BXN" id="Wb2-XI-Vbo"/>
+                <outlet property="labelState" destination="9fZ-5O-PIn" id="Zuj-2M-E6w"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="98"/>
         </view>

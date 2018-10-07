@@ -50,11 +50,14 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if ([HLLShareManager shareMannager].userModel) {
-        [self.imageHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait)] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [self.imageHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             NSLog(@"error:%@",error);
         }];
       
         self.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
+    }else{
+        self.imageHead.image = [UIImage imageNamed:@"head_placehold"];
+        self.labelName.text = @"未登录";
     }
 }
 
@@ -251,6 +254,12 @@
         [cell setFunctionSelectedBlock:^(NSInteger tag) {
             StrongSelf();
             NSLog(@"tag:%d",tag);
+            if (![HLLShareManager shareMannager].userModel) {
+                NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+                [strongself.navigationController pushViewController:loginVC animated:YES];
+                return;
+            }
+            
             if (tag == 1) {
                 NDMyWalletViewController * vc = [[NDMyWalletViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
@@ -280,6 +289,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
+        if (![HLLShareManager shareMannager].userModel) {
+            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+            [self.navigationController pushViewController:loginVC animated:YES];
+            return;
+        }
         NDMineOrderViewController * orderVC = [[NDMineOrderViewController alloc] init];
         orderVC.selectTag = indexPath.row;
         [self.navigationController pushViewController:orderVC animated:YES];
@@ -287,26 +301,53 @@
         if (indexPath.row == 1) {
             NDAboutViewController * vc = [[NDAboutViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row == 0){
+            [self contactCustomerService];
         }
     }
     
-    
+}
+
+-(void)contactCustomerService{
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_customPhone params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSString * phone = dictT[@"phone"];
+            NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",phone];
+            UIWebView * callWebview = [[UIWebView alloc] init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+            [self.view addSubview:callWebview];
+        }
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"呼叫失败"];
+    }];
 }
 
 #pragma mark - 导航栏左右按钮点击
 -(void)navLeftBtnClick{
+    
+    if (![HLLShareManager shareMannager].userModel) {
+        NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+        return;
+    }
+    
+    
     NDSettingViewController * settingVC = [[NDSettingViewController alloc] init];
     [self.navigationController pushViewController:settingVC animated:YES];
     
 }
 -(void)navRightBtnClick{
     
-#if 1
-    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
-    [self.navigationController pushViewController:loginVC animated:YES];
+    [SVProgressHUD showToast:@"分享"];
+    
     
     return;
-#endif
+
     //1、创建分享参数
     NSArray* imageArray = @[[UIImage imageNamed:@"bg_a.png"]];
     if (imageArray) {

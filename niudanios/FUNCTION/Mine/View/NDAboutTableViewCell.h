@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NDAboutInfoModel.h"
 @interface NDAboutTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *labeltitle;
+@property (weak, nonatomic) IBOutlet UILabel *labelDes;
+
+@property (nonatomic, strong) NDAboutInfoModel * model;
 
 @end

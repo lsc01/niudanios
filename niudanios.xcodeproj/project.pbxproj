@@ -103,6 +103,10 @@
 		41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AF72133071B00076ADD /* NDSettingTableViewCell.xib */; };
 		41378AFD21330B0200076ADD /* NDUpdatePhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */; };
 		41378AFE21330B0200076ADD /* NDUpdatePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */; };
+		413B725A2163668A000163C2 /* NDOrderDetailInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 413B72592163668A000163C2 /* NDOrderDetailInfoModel.m */; };
+		413B725D2163C866000163C2 /* NDAddressCityDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 413B725C2163C866000163C2 /* NDAddressCityDataModel.m */; };
+		413B72602163CC19000163C2 /* NDAddressModel2.m in Sources */ = {isa = PBXBuildFile; fileRef = 413B725F2163CC19000163C2 /* NDAddressModel2.m */; };
+		413B72632163CC28000163C2 /* NDAddressPickerView2.m in Sources */ = {isa = PBXBuildFile; fileRef = 413B72622163CC28000163C2 /* NDAddressPickerView2.m */; };
 		4147F959214E3F1B00ECC253 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F958214E3F1B00ECC253 /* libz.tbd */; };
 		4147F95A214E3F2500ECC253 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F957214E3F0B00ECC253 /* SystemConfiguration.framework */; };
 		4147F95C214E3F2F00ECC253 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F95B214E3F2F00ECC253 /* libsqlite3.0.tbd */; };
@@ -165,6 +169,9 @@
 		41B4AF12212DB6B40008E66B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF11212DB6B40008E66B /* main.m */; };
 		41C6C88A21551FEB00B89DE5 /* NDHomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C6C88921551FEB00B89DE5 /* NDHomeBannerModel.m */; };
 		41C6C88D215528F400B89DE5 /* NDHomeNewMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C6C88C215528F400B89DE5 /* NDHomeNewMessageModel.m */; };
+		41D237332169E8F100FF32F6 /* NDAboutInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D237322169E8F100FF32F6 /* NDAboutInfoModel.m */; };
+		41D237372169FBA200FF32F6 /* NDForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D237352169FBA200FF32F6 /* NDForgetPwdViewController.m */; };
+		41D237382169FBA200FF32F6 /* NDForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D237362169FBA200FF32F6 /* NDForgetPwdViewController.xib */; };
 		41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E3418F212E300100F19371 /* NDBaseNavigationController.m */; };
 		41E34193212E302700F19371 /* NDBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E34192212E302700F19371 /* NDBaseTabBarController.m */; };
 		41E34196212E303F00F19371 /* NDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E34195212E303F00F19371 /* NDBaseViewController.m */; };
@@ -535,6 +542,14 @@
 		41378AFA21330B0200076ADD /* NDUpdatePhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDUpdatePhoneViewController.h; sourceTree = "<group>"; };
 		41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDUpdatePhoneViewController.m; sourceTree = "<group>"; };
 		41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDUpdatePhoneViewController.xib; sourceTree = "<group>"; };
+		413B72582163668A000163C2 /* NDOrderDetailInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDOrderDetailInfoModel.h; sourceTree = "<group>"; };
+		413B72592163668A000163C2 /* NDOrderDetailInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDOrderDetailInfoModel.m; sourceTree = "<group>"; };
+		413B725B2163C866000163C2 /* NDAddressCityDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAddressCityDataModel.h; sourceTree = "<group>"; };
+		413B725C2163C866000163C2 /* NDAddressCityDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAddressCityDataModel.m; sourceTree = "<group>"; };
+		413B725E2163CC19000163C2 /* NDAddressModel2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAddressModel2.h; sourceTree = "<group>"; };
+		413B725F2163CC19000163C2 /* NDAddressModel2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAddressModel2.m; sourceTree = "<group>"; };
+		413B72612163CC28000163C2 /* NDAddressPickerView2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAddressPickerView2.h; sourceTree = "<group>"; };
+		413B72622163CC28000163C2 /* NDAddressPickerView2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAddressPickerView2.m; sourceTree = "<group>"; };
 		4147F94D2147FB0A00ECC253 /* ShareSdkHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareSdkHeader.h; sourceTree = "<group>"; };
 		4147F957214E3F0B00ECC253 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4147F958214E3F1B00ECC253 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -707,6 +722,11 @@
 		41C6C88921551FEB00B89DE5 /* NDHomeBannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeBannerModel.m; sourceTree = "<group>"; };
 		41C6C88B215528F400B89DE5 /* NDHomeNewMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeNewMessageModel.h; sourceTree = "<group>"; };
 		41C6C88C215528F400B89DE5 /* NDHomeNewMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeNewMessageModel.m; sourceTree = "<group>"; };
+		41D237312169E8F100FF32F6 /* NDAboutInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAboutInfoModel.h; sourceTree = "<group>"; };
+		41D237322169E8F100FF32F6 /* NDAboutInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAboutInfoModel.m; sourceTree = "<group>"; };
+		41D237342169FBA200FF32F6 /* NDForgetPwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDForgetPwdViewController.h; sourceTree = "<group>"; };
+		41D237352169FBA200FF32F6 /* NDForgetPwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDForgetPwdViewController.m; sourceTree = "<group>"; };
+		41D237362169FBA200FF32F6 /* NDForgetPwdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDForgetPwdViewController.xib; sourceTree = "<group>"; };
 		41E3418E212E300100F19371 /* NDBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBaseNavigationController.h; sourceTree = "<group>"; };
 		41E3418F212E300100F19371 /* NDBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDBaseNavigationController.m; sourceTree = "<group>"; };
 		41E34191212E302700F19371 /* NDBaseTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBaseTabBarController.h; sourceTree = "<group>"; };
@@ -1303,6 +1323,10 @@
 				4104487121455B1D00686119 /* BRAddressPickerView.h */,
 				4104487221455B1D00686119 /* BRAddressPickerView.m */,
 				4104487321455B1D00686119 /* BRCity.plist */,
+				413B725E2163CC19000163C2 /* NDAddressModel2.h */,
+				413B725F2163CC19000163C2 /* NDAddressModel2.m */,
+				413B72612163CC28000163C2 /* NDAddressPickerView2.h */,
+				413B72622163CC28000163C2 /* NDAddressPickerView2.m */,
 			);
 			path = AddressPickerView;
 			sourceTree = "<group>";
@@ -1542,6 +1566,9 @@
 				41AEAC6E213BC566003FE10B /* NDBindPhoneViewController.h */,
 				41AEAC6F213BC566003FE10B /* NDBindPhoneViewController.m */,
 				41AEAC70213BC566003FE10B /* NDBindPhoneViewController.xib */,
+				41D237342169FBA200FF32F6 /* NDForgetPwdViewController.h */,
+				41D237352169FBA200FF32F6 /* NDForgetPwdViewController.m */,
+				41D237362169FBA200FF32F6 /* NDForgetPwdViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1823,6 +1850,12 @@
 				419F489D215E64CF00F483CA /* NDTaskBonusModel.m */,
 				419F489F215E718600F483CA /* NDMineDownInfoModel.h */,
 				419F48A0215E718600F483CA /* NDMineDownInfoModel.m */,
+				413B72582163668A000163C2 /* NDOrderDetailInfoModel.h */,
+				413B72592163668A000163C2 /* NDOrderDetailInfoModel.m */,
+				413B725B2163C866000163C2 /* NDAddressCityDataModel.h */,
+				413B725C2163C866000163C2 /* NDAddressCityDataModel.m */,
+				41D237312169E8F100FF32F6 /* NDAboutInfoModel.h */,
+				41D237322169E8F100FF32F6 /* NDAboutInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3016,6 +3049,7 @@
 				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
 				410448222141724800686119 /* NDVerifyOrderHeadView.xib in Resources */,
 				4104485921434B9C00686119 /* NDLogisticsDetailViewController.xib in Resources */,
+				41D237382169FBA200FF32F6 /* NDForgetPwdViewController.xib in Resources */,
 				4115BE17213BEECF001AFA49 /* NDMineOrderTableViewCell.xib in Resources */,
 				4104485E21434C1400686119 /* NDLogisticsDetailHeadView.xib in Resources */,
 				410447A6213D656C00686119 /* NDAccountPayViewController.xib in Resources */,
@@ -3167,12 +3201,14 @@
 				41E34454212EFEED00F19371 /* HLLAlertCustomVC.m in Sources */,
 				41FF5280215A94F8002BA837 /* NDSelectDefaultAddrModel.m in Sources */,
 				41E343F9212EFEED00F19371 /* UIControl+Block.m in Sources */,
+				41D237332169E8F100FF32F6 /* NDAboutInfoModel.m in Sources */,
 				410447BC213EAEBD00686119 /* NDPopularityGoodsViewController.m in Sources */,
 				41E34428212EFEED00F19371 /* UITableViewCell+NIB.m in Sources */,
 				41AEAC532134538F003FE10B /* NDHomeLikeCell.m in Sources */,
 				41E34190212E300100F19371 /* NDBaseNavigationController.m in Sources */,
 				410447F921401C9200686119 /* NDMineEnshrineTableViewCell.m in Sources */,
 				41E343B2212EFEED00F19371 /* NSDate+Formatter.m in Sources */,
+				41D237372169FBA200FF32F6 /* NDForgetPwdViewController.m in Sources */,
 				41E343E8212EFEED00F19371 /* UIBezierPath+LxThroughPointsBezier.m in Sources */,
 				41E343C5212EFEED00F19371 /* NSString+Base64.m in Sources */,
 				410447B3213D8A6D00686119 /* NDNiudanFilterModel.m in Sources */,
@@ -3208,6 +3244,7 @@
 				41E34466212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoView.m in Sources */,
 				410447C6213EBA4600686119 /* NDGoodsPayViewController.m in Sources */,
 				41E343C6212EFEED00F19371 /* NSString+Contains.m in Sources */,
+				413B72632163CC28000163C2 /* NDAddressPickerView2.m in Sources */,
 				4104480D214025BD00686119 /* NDMineAddressViewController.m in Sources */,
 				41E34464212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoImageView.m in Sources */,
 				41E343DB212EFEED00F19371 /* NSURL+Param.m in Sources */,
@@ -3223,6 +3260,7 @@
 				41E343EF212EFEED00F19371 /* UIButton+LXMImagePosition.m in Sources */,
 				41E34465212EFEEE00F19371 /* MLSelectPhotoPickerBrowserPhotoScrollView.m in Sources */,
 				41E3441C212EFEED00F19371 /* UINavigationItem+Loading.m in Sources */,
+				413B725A2163668A000163C2 /* NDOrderDetailInfoModel.m in Sources */,
 				41E34472212EFEEE00F19371 /* HLLShareManager.m in Sources */,
 				41E343C8212EFEED00F19371 /* NSString+Emoji.m in Sources */,
 				41E3442C212EFEED00F19371 /* UITextField+Select.m in Sources */,
@@ -3398,6 +3436,7 @@
 				41E34422212EFEED00F19371 /* UIScreen+Frame.m in Sources */,
 				41E343D5212EFEED00F19371 /* NSString+Trims.m in Sources */,
 				41E3443E212EFEED00F19371 /* UIView+ViewController.m in Sources */,
+				413B725D2163C866000163C2 /* NDAddressCityDataModel.m in Sources */,
 				41E343C1212EFEED00F19371 /* NSObject+KVOBlocks.m in Sources */,
 				41E34419212EFEED00F19371 /* UILabel+SuggestSize.m in Sources */,
 				41E343EB212EFEED00F19371 /* UIButton+BackgroundColor.m in Sources */,
@@ -3427,6 +3466,7 @@
 				41E34447212EFEED00F19371 /* UIViewController+Visible.m in Sources */,
 				41E34426212EFEED00F19371 /* UISearchBar+Blocks.m in Sources */,
 				410447C1213EAED800686119 /* NDNewGoodsViewController.m in Sources */,
+				413B72602163CC19000163C2 /* NDAddressModel2.m in Sources */,
 				41E34452212EFEED00F19371 /* SVProgressHUD+HLLToast.m in Sources */,
 				41E343C0212EFEED00F19371 /* NSObject+GCD.m in Sources */,
 				41E341AA212E331400F19371 /* NDPackageViewController.m in Sources */,

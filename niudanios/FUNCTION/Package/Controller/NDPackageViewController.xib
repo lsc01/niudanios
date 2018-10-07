@@ -17,6 +17,7 @@
                 <outlet property="labelSelect" destination="NzC-P4-8Id" id="eMw-BJ-fcb"/>
                 <outlet property="tableView" destination="kuC-0K-0Dt" id="ptq-qw-gc7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBottomTool" destination="heU-5A-T0L" id="rGm-dp-9cn"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

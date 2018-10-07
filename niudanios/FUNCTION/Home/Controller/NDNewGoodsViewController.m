@@ -73,7 +73,70 @@
     cell.layer.masksToBounds = YES;
     
     cell.model = model;
+    WeakSelf();
+    [cell setCollectGoodsBlock:^(NSString *gashaponMachineId, BOOL isCollect) {
+        StrongSelf();
+        if (isCollect) {
+            [strongself collectGoodsWithId:gashaponMachineId andIndexPath:indexPath];
+        }else{
+            [strongself collectCancelGoodsWithId:gashaponMachineId andIndexPath:indexPath];
+        }
+    }];
     return cell;
+}
+
+
+-(void)collectGoodsWithId:(NSString *)gashaponMachineId andIndexPath:(NSIndexPath *)inexPath{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:gashaponMachineId forKey:@"gashaponMachineId"];
+    [dictP setObject:@(1) forKey:@"customerId"];
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_AddCollect params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count >0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            if ([dictT[@"code"] integerValue] == 1) {
+                [SVProgressHUD showToast:@"收藏成功"];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+                NDNiudanGoodsCell * cell = (NDNiudanGoodsCell *)[self.collectionView cellForItemAtIndexPath:inexPath];
+                cell.btnCollect.selected = NO;
+            }
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"收藏失败"];
+        NDNiudanGoodsCell * cell = (NDNiudanGoodsCell *)[self.collectionView cellForItemAtIndexPath:inexPath];
+        cell.btnCollect.selected = NO;
+    }];
+}
+-(void)collectCancelGoodsWithId:(NSString *)gashaponMachineId andIndexPath:(NSIndexPath *)inexPath{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:gashaponMachineId forKey:@"gashaponMachineId"];
+    [dictP setObject:@(1) forKey:@"customerId"];
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_removeCollert params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count >0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            if ([dictT[@"code"] integerValue] == 1) {
+                [SVProgressHUD showToast:@"取消收藏成功"];
+            }else{
+                [SVProgressHUD showToast:dictT[@"msg"]];
+                NDNiudanGoodsCell * cell = (NDNiudanGoodsCell *)[self.collectionView cellForItemAtIndexPath:inexPath];
+                cell.btnCollect.selected = YES;
+            }
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"取消失败"];
+        NDNiudanGoodsCell * cell = (NDNiudanGoodsCell *)[self.collectionView cellForItemAtIndexPath:inexPath];
+        cell.btnCollect.selected = YES;
+    }];
 }
 
 //设置cell的大小

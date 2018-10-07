@@ -28,5 +28,8 @@
 }
 
 - (IBAction)collectBtnClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    _collectGoodsBlock?_collectGoodsBlock(self.model.Id,sender.selected):nil;
+    
 }
 @end

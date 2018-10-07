@@ -86,5 +86,7 @@
 }
 
 - (IBAction)rightBtnClick:(UIButton *)sender {
+    _rigthBtnActionBlock?_rigthBtnActionBlock(self.model.Id,self.orderState):nil;
+    
 }
 @end

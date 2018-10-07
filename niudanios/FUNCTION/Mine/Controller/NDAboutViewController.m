@@ -8,9 +8,10 @@
 
 #import "NDAboutViewController.h"
 #import "NDAboutTableViewCell.h"
+#import "NDAboutInfoModel.h"
 @interface NDAboutViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (nonatomic ,strong) NSMutableArray * arrData;
 @end
 
 @implementation NDAboutViewController
@@ -18,8 +19,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"关于我们";
     [self setUI];
+    [self postRequest];
     
+}
+
+-(void)postRequest{
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_cqueryAboutUs params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        self.arrData = nil;
+        for (NSDictionary * dict in arrRows) {
+            NDAboutInfoModel * model = [NDAboutInfoModel mj_objectWithKeyValues:dict];
+            [self.arrData addObject:model];
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+    }];
 }
 -(void)setUI{
     
@@ -41,7 +61,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return self.arrData.count;
     
 }
 
@@ -67,7 +87,9 @@
     
     NDAboutTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDAboutTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NDAboutInfoModel * model = self.arrData[indexPath.section];
     
+    [cell setModel:model];
     
     return cell;
     
@@ -77,5 +99,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(NSMutableArray *)arrData{
+    if (_arrData == nil) {
+        _arrData = [NSMutableArray array];
+    }
+    return _arrData;
+}
 
 @end

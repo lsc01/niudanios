@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NDMineDataCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UITextField *textFieldName;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
 @property (weak, nonatomic) IBOutlet UIButton *btnSelect;

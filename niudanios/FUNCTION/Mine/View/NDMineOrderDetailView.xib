@@ -187,6 +187,14 @@
                 <constraint firstItem="m8A-eu-iPa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vMM-5X-cO3"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="labelAddr" destination="m8d-be-uay" id="vVy-rH-VPU"/>
+                <outlet property="labelName" destination="ENL-4Z-8ea" id="QRo-nI-o5n"/>
+                <outlet property="labelOrderState" destination="nJN-I3-HRI" id="0eG-BQ-Dz4"/>
+                <outlet property="labelPhone" destination="0ca-wV-ED8" id="viQ-mX-xnC"/>
+                <outlet property="labelTime" destination="quD-lQ-WOQ" id="qap-cc-0bk"/>
+                <outlet property="labelogInfo" destination="BPQ-xZ-58o" id="slz-1i-o0U"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>

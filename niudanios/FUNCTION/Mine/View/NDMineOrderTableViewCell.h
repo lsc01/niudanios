@@ -35,4 +35,7 @@ typedef NS_ENUM(NSInteger,OrderState) {
 
 @property (nonatomic ,strong) NDMineOrderInfoModel * model;
 
+
+@property (nonatomic ,copy) void(^rigthBtnActionBlock)(NSString * Id, OrderState orderState);
+
 @end

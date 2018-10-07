@@ -18,6 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="390" height="90.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="off-CU-MvH">
+                        <rect key="frame" x="132" y="30" width="248" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="vvg-iz-8c6"/>
+                        </constraints>
+                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nv-50-qbI">
                         <rect key="frame" x="122" y="5" width="256" height="80.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -54,19 +63,23 @@
                     <constraint firstItem="jk0-Cb-DgU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="OtH-ou-Y8t"/>
                     <constraint firstAttribute="bottom" secondItem="rr9-G6-kzH" secondAttribute="bottom" id="PeU-xO-nX2"/>
                     <constraint firstAttribute="trailing" secondItem="rr9-G6-kzH" secondAttribute="trailing" id="THP-TL-qxU"/>
+                    <constraint firstItem="off-CU-MvH" firstAttribute="centerY" secondItem="2Nv-50-qbI" secondAttribute="centerY" id="X4o-Lo-MRQ"/>
+                    <constraint firstItem="off-CU-MvH" firstAttribute="leading" secondItem="jk0-Cb-DgU" secondAttribute="trailing" constant="20" id="XAD-Vu-lDp"/>
                     <constraint firstItem="rr9-G6-kzH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Zb0-is-va2"/>
                     <constraint firstItem="jk0-Cb-DgU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eAQ-ev-kGq"/>
                     <constraint firstItem="2Nv-50-qbI" firstAttribute="leading" secondItem="jk0-Cb-DgU" secondAttribute="trailing" constant="10" id="eE2-2X-1xM"/>
                     <constraint firstItem="2Nv-50-qbI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="frI-Vf-2e9"/>
+                    <constraint firstAttribute="trailing" secondItem="off-CU-MvH" secondAttribute="trailing" constant="10" id="hPY-5w-Tsp"/>
                     <constraint firstAttribute="bottom" secondItem="2Nv-50-qbI" secondAttribute="bottom" constant="5" id="sYV-rm-tpe"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnSelect" destination="2Nv-50-qbI" id="9yr-I2-QIf"/>
                 <outlet property="labelTitle" destination="jk0-Cb-DgU" id="dWm-MO-rXg"/>
+                <outlet property="textFieldName" destination="off-CU-MvH" id="cpU-Ga-MNE"/>
                 <outlet property="viewLine" destination="rr9-G6-kzH" id="IXN-va-YTN"/>
             </connections>
-            <point key="canvasLocation" x="69" y="77.5"/>
+            <point key="canvasLocation" x="-96" y="57"/>
         </tableViewCell>
     </objects>
 </document>

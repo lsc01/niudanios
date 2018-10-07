@@ -7,7 +7,14 @@
 //
 
 #import "NDBaseViewController.h"
+@protocol NDMIneDataViewControllerDelegate <NSObject>
+
+-(void)updateDataInfoSuccess;
+
+@end
 
 @interface NDMIneDataViewController : NDBaseViewController
+
+@property (nonatomic ,weak) id<NDMIneDataViewControllerDelegate> delegate;
 
 @end

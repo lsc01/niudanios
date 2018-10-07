@@ -231,7 +231,6 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
-            [SVProgressHUD showToast:@"six six six"];
             [self.tableView reloadData];
         });
     });
@@ -245,7 +244,7 @@
         self.arrBannerModel = nil;
         self.arrBannerModel = [NDHomeBannerModel mj_objectArrayWithKeyValuesArray:arrRows];
         NSMutableArray * arrImages = [NSMutableArray array];
-        for (NDHomeBannerModel * model in arrImages) {
+        for (NDHomeBannerModel * model in self.arrBannerModel) {
             [arrImages addObject:[model.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
         [self.headView setClcleViewUrlImageArray:arrImages];
@@ -261,11 +260,7 @@
         NSArray * arrRows = responseObject[@"rows"];
         self.arrNewMsgModel = nil;
         self.arrNewMsgModel = [NDHomeNewMessageModel mj_objectArrayWithKeyValuesArray:arrRows];
-        NSMutableArray * arrMsgName = [NSMutableArray array];
-        for (NDHomeNewMessageModel * model in arrMsgName) {
-            [arrMsgName addObject:model.messageName];
-        }
-        [self.headView setcycVerticalArray:arrMsgName];
+        [self.headView setcycVerticalArray:self.arrNewMsgModel];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         
     }];

@@ -24,11 +24,11 @@
 ///手机验证码发送
 #define URL_identifyingCode HTTP(@"app/customer/identifyingCode.mvc")
 ///重置手机号 新手机号验证
-#define URL_cresetMobile HTTP(@"app/customer/resetMobile.mvc")
+#define URL_cresetMobile HTTP(@"app/customer/resetMobile.mvc")//没接
 ///修改密码
 #define URL_updatePwd HTTP(@"app/customer/updatePwd.mvc")
 ///重置密码
-#define URL_resetPwd HTTP(@"app/customer/resetPwd.mvc")
+#define URL_resetPwd HTTP(@"app/customer/resetPwd.mvc")//没接
 ///修改用户信息
 #define URL_updateCustomerInfo HTTP(@"app/customer/updateCustomerInfo.mvc")
 
@@ -54,9 +54,9 @@
 ///条件查询过滤扭蛋机
 #define URL_qrequirementAll HTTP(@"app/gashaponMachine/requirementAll.mvc")
 ///扭蛋机查询扭蛋
-#define URL_queryByMachineId HTTP(@"app/gashaponMachine/queryByMachineId.mvc")
+#define URL_queryByMachineId HTTP(@"app/gashaponMachine/queryByMachineId.mvc")//没接
 ///启动扭蛋机
-#define URL_beginTwistedEgg HTTP(@"app/gashaponMachine/beginTwistedEgg.mvc")
+#define URL_beginTwistedEgg HTTP(@"app/gashaponMachine/beginTwistedEgg.mvc")//没接
 ///扭蛋机金额条件
 #define URL_qmoneyCompare HTTP(@"app/moneyCompare/list.mvc")
 ///扭蛋机分类
@@ -70,7 +70,7 @@
 ///背包选中商品信息
 #define URL_selectBackpack HTTP(@"app/selfitem/selectBackpack.mvc")
 ///更新扭蛋的到期时间
-#define URL_selfitemreplace HTTP(@"app/selfitem/replace.mvc")
+#define URL_selfitemreplace HTTP(@"app/selfitem/replace.mvc")//没接
 ///扭蛋记录
 #define URL_niudanqueryRecord HTTP(@"app/selfitem/queryRecord.mvc")
 
@@ -78,7 +78,7 @@
 ///查询运费金额
 #define URL_squeryDistinguish HTTP(@"app/expressCost/queryDistinguish.mvc")
 ///查询包邮数量
-#define URL_queryPostage HTTP(@"app/expressCost/queryPostage.mvc")
+#define URL_queryPostage HTTP(@"app/expressCost/queryPostage.mvc")//没接
 
 
 
@@ -89,13 +89,13 @@
 ///查询订单详情
 #define URL_detailOrder HTTP(@"app/order/detailOrder.mvc")
 ///查询订单中的订单地址
-#define URL_AddressOrder HTTP(@"app/order/AddressOrder.mvc")
+#define URL_AddressOrder HTTP(@"app/order/addressOrder.mvc")//没接
 ///删除订单
 #define URL_deleteOrder HTTP(@"app/order/deleteOrder.mvc")
 ///提醒发货
 #define URL_remindOrder HTTP(@"app/order/remindOrder.mvc")
 ///查询订单中扭蛋信息
-#define URL_ordertwistedEgg HTTP(@"app/order/twistedEgg.mvc")
+#define URL_ordertwistedEgg HTTP(@"app/order/twistedEgg.mvc")//没接
 ///确认订单
 #define URL_order_confirm HTTP(@"app/order/confirm.mvc")
 
@@ -104,7 +104,7 @@
 ///收藏查询
 #define URL_findCustomerId HTTP(@"app/collect/findCustomerId.mvc")
 ///新增收藏
-#define URL_AddCollect HTTP(@"app/collect/AddCollect.mvc")
+#define URL_AddCollect HTTP(@"app/collect/addCollect.mvc")
 ///删除收藏
 #define URL_modifyCollect HTTP(@"app/collect/modify.mvc")
 ///取消收藏
@@ -125,31 +125,33 @@
 ///查询省市县三层所有
 #define URL_selectProvince HTTP(@"app/addressProvince/selectProvince.mvc")
 ///省的信息
-#define URL_addressProvince HTTP(@"app/addressProvince/list.mvc")
+#define URL_addressProvince HTTP(@"app/addressProvince/list.mvc")//没接
 ///市的信息
-#define URL_addressCity HTTP(@"app/addressCity/list.mvc")
+#define URL_addressCity HTTP(@"app/addressCity/list.mvc")//没接
 ///区的信息
-#define URL_AddressArea HTTP(@"app/AddressArea/list.mvc")
+#define URL_AddressArea HTTP(@"app/addressArea/list.mvc")//没接
 ///详细地址消息
-#define URL_ShippingAddressfindId HTTP(@"app/ShippingAddress/findId.mvc")
+#define URL_ShippingAddressfindId HTTP(@"app/shippingAddress/findId.mvc")//没接
 ///更新地址信息
-#define URL_ShippingAddressmodify HTTP(@"app/ShippingAddress/modify.mvc")
+#define URL_ShippingAddressmodify HTTP(@"app/shippingAddress/modify.mvc")
 ///删除地址
-#define URL_ShippingAddressdelete HTTP(@"app/ShippingAddress/delete.mvc")
+#define URL_ShippingAddressdelete HTTP(@"app/shippingAddress/delete.mvc")
 ///查询地址信息
-#define URL_ShippingAddressfind HTTP(@"app/ShippingAddress/findCustomerId.mvc")
+#define URL_ShippingAddressfind HTTP(@"app/shippingAddress/findCustomerId.mvc")
 ///修改地址为默认选中的
-#define URL_reviseDefault HTTP(@"app/ShippingAddress/reviseDefault.mvc")
+#define URL_reviseDefault HTTP(@"app/shippingAddress/reviseDefault.mvc")//没接
 ///地址新增
-#define URL_ShippingAddressadd HTTP(@"app/ShippingAddress/add.mvc")
+#define URL_ShippingAddressadd HTTP(@"app/shippingAddress/add.mvc")
 ///查询用户默认地址
-#define URL_selectDefaultAddr HTTP(@"app/ShippingAddress/selectDefault.mvc")
+#define URL_selectDefaultAddr HTTP(@"app/shippingAddress/selectDefault.mvc")
 
 #pragma mark 钱包
 ///查询消费记录
 #define URL_queryConsume HTTP(@"app/customerDetail/queryConsume.mvc")
 
+///关于我们
+#define URL_cqueryAboutUs HTTP(@"app/expressCost/queryAboutUs.mvc")
+
 ///客服电话
 #define URL_customPhone HTTP(@"app/expressCost/customPhone.mvc")
-
 #endif /* URLMacros_h */

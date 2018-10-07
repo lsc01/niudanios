@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NDGoodsInfoModel : NSObject
-@property (nonatomic ,assign) NSInteger Id;
+@property (nonatomic ,copy) NSString * Id;
 @property (nonatomic ,copy) NSString * classifyName;
 @property (nonatomic ,copy) NSString * createTime;
 @property (nonatomic ,copy) NSString * flag;

@@ -16,9 +16,20 @@
 }
 
 - (IBAction)editAddressClick:(UIButton *)sender {
+    _editAddressBlock?_editAddressBlock():nil;
 }
 
 - (IBAction)deleteAddressClick:(UIButton *)sender {
+    _deleteAddressBlock?_deleteAddressBlock():nil;
+}
+
+
+-(void)setModel:(NDSelectDefaultAddrModel *)model{
+    _model = model;
+    self.labelPersonName.text = model.recipientName;
+    self.labelPhone.text = model.moblie;
+    self.labelAddress.text = [NSString stringWithFormat:@"%@%@%@%@",model.provinceName,model.cityName,model.areaName,model.detail];
+    
 }
 
 

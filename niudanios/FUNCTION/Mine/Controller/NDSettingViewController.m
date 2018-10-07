@@ -11,8 +11,9 @@
 #import "NDSettingHeaderView.h"
 #import "NDUpdatePhoneViewController.h"
 #import "NDMIneDataViewController.h"
-
-@interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource,NDUpdatePhoneViewControllerDelegate>
+#import "SAMKeychain.h"
+#import "NDForgetPwdViewController.h"
+@interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource,NDUpdatePhoneViewControllerDelegate,NDMIneDataViewControllerDelegate>
 @property (nonatomic ,strong) NDSettingHeaderView * headView;
 
 @property (nonatomic ,strong) UIView * viewFooter;
@@ -50,7 +51,7 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait)] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.headView.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
@@ -58,7 +59,17 @@
 }
 
 -(void)exitBtnClick{
-    
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"" message:@"确定退出登录?" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮响应事件
+        [SAMKeychain deletePasswordForService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+        [HLLShareManager shareMannager].userModel = nil;
+        [self.navigationController popViewControllerAnimated:YES];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //点击按钮响应事件
+    }]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
@@ -140,13 +151,30 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             NDMIneDataViewController * mineDataVC = [[NDMIneDataViewController alloc] init];
+            mineDataVC.delegate = self;
             [self.navigationController pushViewController:mineDataVC animated:YES];
         }else if (indexPath.row == 1) {
             NDUpdatePhoneViewController * updatePhone = [[NDUpdatePhoneViewController alloc] init];
             updatePhone.delegate = self;
             [self.navigationController pushViewController:updatePhone animated:YES];
+        }else if (indexPath.row == 2){
+            NDForgetPwdViewController * updatePwdVC = [[NDForgetPwdViewController alloc] init];
+            [self.navigationController pushViewController:updatePwdVC animated:YES];
+        }
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 1) {
+            [SVProgressHUD showWithStatus:@"正在清除"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showToast:@"清除完成"];
+            });
         }
     }
+}
+
+-(void)updateDataInfoSuccess{
+    self.headView.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
+    self.headView.labelPhone.text = [NSString stringWithFormat:@"电话号码：%@",[HLLShareManager shareMannager].userModel.loginMobile];
 }
 
 -(void)updatePhoneSuccess{

@@ -12,6 +12,8 @@
 
 @property (nonatomic ,copy) NSString * personName;
 
+@property (nonatomic ,copy) NSString * descri;
+
 @property (nonatomic ,copy) NSString * goodsName;
 
 

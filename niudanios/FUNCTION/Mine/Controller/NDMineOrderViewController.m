@@ -11,7 +11,8 @@
 #import "NDMineOrderTableViewCell.h"
 #import "NDMineOrderDetailViewController.h"
 #import "NDMineOrderInfoModel.h"
-@interface NDMineOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UIScrollView+EmptyDataSet.h"
+@interface NDMineOrderViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 
 @property(nonatomic,strong)UITableView *tableView;
@@ -26,10 +27,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"我的订单";
+    
     [self setUI];
 }
 
 -(void)postRequest:(NSInteger)selectTag{
+    self.selectTag = selectTag;
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:@(10) forKey:@"rows"];
@@ -105,6 +108,8 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self.view);
@@ -141,8 +146,88 @@
     
     NDMineOrderInfoModel * model = self.arrData[indexPath.section];
     cell.model = model;
+    WeakSelf();
+    [cell setRigthBtnActionBlock:^(NSString *Id, OrderState orderState) {
+        StrongSelf();
+        [strongself cellRigthBtnActionWithId:Id andOrderState:orderState];
+    }];
     return cell;
     
+}
+
+-(void)cellRigthBtnActionWithId:(NSString *)Id andOrderState:(OrderState)state{
+    switch (state) {
+        case OrderState_1:
+        {
+            [self cellRemindSendWithId:Id];
+        }
+            break;
+        case OrderState_2:
+        {
+            [self cellOrderDetailWithId:Id];
+        }
+            break;
+        case OrderState_3:
+        {
+            [self cellDeleteOrderWithId:Id];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)cellRemindSendWithId:(NSString *)Id{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:Id forKey:@"id"];
+
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_remindOrder params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"已提醒发货"];
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"操作失败"];
+     
+    }];
+}
+
+-(void)cellOrderDetailWithId:(NSString *)Id{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:Id forKey:@"id"];
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_detailOrder params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count >0) {
+            NSDictionary * dictT = arrRows.firstObject;
+           
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"操作失败"];
+     
+    }];
+}
+
+-(void)cellDeleteOrderWithId:(NSString *)Id{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:Id forKey:@"id"];
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_deleteOrder params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"删除成功"];
+        [self postRequest:self.selectTag];
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"操作失败"];
+       
+    }];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -153,6 +238,26 @@
     [self.navigationController pushViewController:vc animated:YES];
     
     
+}
+
+#pragma mark - 空白页
+//空白页显示图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"bg_nrd"];
+}
+//空白页显示标题
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"您还没有任何订单哦";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName:HEXCOLOR(0x999999)
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+
+//将组件彼此上下分离（默认分隔为11个分
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 16.0f;
 }
 
 

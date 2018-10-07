@@ -12,6 +12,7 @@
 #import "NDUpdatePhoneViewController.h"
 #import "BRDatePickerView.h"
 #import "NDSexSelectView.h"
+#import "SAMKeychain.h"
 
 @interface NDMIneDataViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic ,strong) NDMineDataHeaderView * headView;
@@ -50,13 +51,69 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    [self.headView.imageViewHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait)] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.headView.imageViewHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
  
 }
 
 -(void)saveBtnClick{
+    
+    
+    NDMineDataCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    NSString * stringName = cell.textFieldName.text;
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    NSString * stringSex = cell.btnSelect.titleLabel.text;
+    cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    NSString * birth = cell.btnSelect.titleLabel.text;
+    if ([birth isEqualToString:@"请选择"]) {
+        [SVProgressHUD showToast:@"请选择出生日期"];
+        return;
+    }
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:birth forKey:@"Strdate"];
+    [dictP setObject:@"18907350967"?:[HLLShareManager shareMannager].userModel.loginMobile forKey:@"loginMobile"];
+    [dictP setObject:[stringSex isEqualToString:@"男"]?@(1):@(0) forKey:@"sex"];
+    [dictP setObject:stringName forKey:@"nickName"];
+//    [dictP setObject:@"这传头像" forKey:@"portrait"];
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_updateCustomerInfo params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        
+        
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count > 0) {
+            NSDictionary * dict = arrRows.firstObject;
+            if ([dict[@"code"] integerValue] == 0) {
+                [HLLShareManager shareMannager].userModel.birthdayTime = birth;
+                [HLLShareManager shareMannager].userModel.sex = [stringSex isEqualToString:@"男"]?@"1":@"0";
+                [HLLShareManager shareMannager].userModel.nickName = stringName;
+                
+                NSDictionary * dictT = [[HLLShareManager shareMannager].userModel mj_keyValues];
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
+                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if ([self.delegate respondsToSelector:@selector(updateDataInfoSuccess)]) {
+                        [self.delegate updateDataInfoSuccess];
+                    }
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+                
+            }
+            [SVProgressHUD showToast:dict[@"msg"]];
+        }
+        
+        
+        
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"修改失败"];
+        
+    }];
+    
     
 }
 
@@ -95,10 +152,15 @@
         NDMineDataCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineDataCell"  forIndexPath:indexPath];
         cell.viewLine.hidden = NO;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+        cell.textFieldName.hidden = YES;
+        cell.btnSelect.hidden = NO;
+        
         if (indexPath.row == 0) {
             cell.btnSelect.enabled = NO;
-            [cell.btnSelect setTitle:[HLLShareManager shareMannager].userModel.nickName forState:UIControlStateDisabled];
+
+            cell.textFieldName.text = [HLLShareManager shareMannager].userModel.nickName;
+            cell.textFieldName.hidden = NO;
+            cell.btnSelect.hidden = YES;
             cell.labelTitle.text = @"昵称";
         }else if (indexPath.row == 1){
             cell.btnSelect.enabled = YES;
@@ -109,7 +171,12 @@
         }else if (indexPath.row == 2){
             cell.viewLine.hidden = YES;
             cell.btnSelect.enabled = YES;
-            [cell.btnSelect setTitle:[HLLShareManager shareMannager].userModel.birthdayTime forState:UIControlStateNormal];
+            
+            NSArray * arrayT = [[HLLShareManager shareMannager].userModel.birthdayTime componentsSeparatedByString:@" "];
+            if (arrayT.count>0) {
+                NSString * Birth = arrayT.firstObject;
+                [cell.btnSelect setTitle:Birth forState:UIControlStateNormal];
+            }
             cell.labelTitle.text = @"出生年月";
             
         }

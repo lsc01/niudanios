@@ -18,7 +18,13 @@
 }
 */
 
-
+-(void)setModel:(NDSelectDefaultAddrModel *)model{
+    _model = model;
+    self.labelName. text = model.recipientName;
+    self.lablePhone.text = model.moblie;
+    self.labelAddress.text = [NSString stringWithFormat:@"%@%@%@%@",model.provinceName,model.cityName,model.areaName,model.detail];
+    
+}
 
 -(void)awakeFromNib{
     [super awakeFromNib];
@@ -51,4 +57,7 @@
    
 }
 
+- (IBAction)replaceAddressClick:(UIButton *)sender {
+    _replaceAddressBlock?_replaceAddressBlock():nil;
+}
 @end

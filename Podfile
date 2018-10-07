@@ -14,7 +14,7 @@ pod 'SDCycleScrollView', '~> 1.75' #轮播器
 #pod 'SSZipArchive','~> 2.1.2'# 压缩
 #pod 'TOCropViewController', '~> 2.0.12'#图片裁剪
 #pod 'LLSimpleCamera', '~> 5.0.0' #自定义相机
-#pod 'DZNEmptyDataSet', '~> 1.8.1' #无数据背景设置
+pod 'DZNEmptyDataSet', '~> 1.8.1' #无数据背景设置
 #pod 'ZFPlayer', '~> 2.1.5' #播放器
 #pod 'TZImagePickerController' #图片预览
 #pod 'CocoaSecurity', '~> 1.2.4'     
@@ -36,7 +36,7 @@ pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull'
 
 # 扩展模块（在调用可以弹出我们UI分享方法的时候是必需的）
 pod 'mob_sharesdk/ShareSDKExtension'
-pod 'WechatOpenSDK'
+#pod 'WechatOpenSDK'
 end
 
 

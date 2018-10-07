@@ -7,7 +7,9 @@
 //
 
 #import "NDBaseViewController.h"
-
+#import "NDOrderDetailInfoModel.h"
 @interface NDLogisticsDetailViewController : NDBaseViewController
+
+@property (nonatomic ,strong) NDOrderDetailInfoModel * modelInfo;
 
 @end

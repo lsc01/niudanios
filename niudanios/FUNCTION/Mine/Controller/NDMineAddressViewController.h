@@ -7,7 +7,15 @@
 //
 
 #import "NDBaseViewController.h"
+#import "NDSelectDefaultAddrModel.h"
+@protocol NDMineAddressViewControllerDelegate <NSObject>
+
+-(void)selectMineAddressWithModel:(NDSelectDefaultAddrModel *)model;
+
+@end
 
 @interface NDMineAddressViewController : NDBaseViewController
+
+@property (nonatomic ,weak) id<NDMineAddressViewControllerDelegate> delegate;
 
 @end

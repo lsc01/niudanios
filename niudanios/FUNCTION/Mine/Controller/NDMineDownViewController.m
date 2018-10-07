@@ -9,7 +9,8 @@
 #import "NDMineDownViewController.h"
 #import "NDMineDownTableViewCell.h"
 #import "NDMineDownInfoModel.h"
-@interface NDMineDownViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UIScrollView+EmptyDataSet.h"
+@interface NDMineDownViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic ,strong) NSMutableArray * arrData;
 @end
@@ -58,6 +59,8 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
     
 }
 #pragma mark - tableview
@@ -100,6 +103,26 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+#pragma mark - 空白页
+//空白页显示图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"bg_nrd"];
+}
+//空白页显示标题
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"您还没有下线用户哦";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:14.0f],
+                                 NSForegroundColorAttributeName:HEXCOLOR(0x999999)
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+
+//将组件彼此上下分离（默认分隔为11个分
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 16.0f;
+}
+
 
 -(NSMutableArray *)arrData{
     if (_arrData == nil) {

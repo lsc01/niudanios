@@ -29,7 +29,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"订单详情";
-    self.arrData = @[@"",@"",@"",@""];
+    self.arrData = self.modelInfo.logisticsDataArray;
+    [self.headView.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:HTTP(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSLog(@"error:%@",error);
+    }];
+    self.headView.labelOrderId.text = self.modelInfo.Id;
+    if ([self.modelInfo.status isEqualToString:@"DF"]) {
+        self.headView.labelState.text = @"待发货";
+    }else if ([self.modelInfo.status isEqualToString:@"DS"]) {
+        self.headView.labelState.text = @"运输中";
+    }else if ([self.modelInfo.status isEqualToString:@"YS"]) {
+        self.headView.labelState.text = @"已收货";
+    }
+
+    self.headView.labelPhone.text =self.modelInfo.phone==nil?self.modelInfo.phone:@"暂无";
+    self.headView.labelKuaiDiCompany.text = self.modelInfo.companyName;
+    
     [self setUI];
     
 }
@@ -83,7 +98,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    NDLogisticsInfoModel * model = self.arrData[indexPath.row];
     NDLogisticsDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDLogisticsDetailTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.row == 0) {
@@ -99,7 +114,8 @@
         cell.viewLineBottom.hidden = NO;
         cell.labelDes.textColor = HEXCOLOR(0x666666);
     }
-    
+    cell.labelTime.text = model.time;
+    cell.labelDes.text = model.context;
     
     return cell;
     

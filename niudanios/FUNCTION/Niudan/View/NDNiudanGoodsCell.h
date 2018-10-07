@@ -19,4 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnCollect;
 - (IBAction)collectBtnClick:(UIButton *)sender;
+
+@property (nonatomic ,copy) void (^collectGoodsBlock)(NSString * gashaponMachineId ,BOOL isCollect);
 @end
