@@ -80,7 +80,7 @@
     [dictP setObject:self.textFieldPerson.text forKey:@"recipientName"];
     [dictP setObject:self.selectIdArr[1] forKey:@"cityId"];
     [dictP setObject:self.selectIdArr[0] forKey:@"provinceId"];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [dictP setObject:self.textAddressDetail.text forKey:@"detail"];
     [dictP setObject:self.selectIdArr[2] forKey:@"areaId"];
     

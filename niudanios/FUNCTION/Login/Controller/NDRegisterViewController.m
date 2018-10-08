@@ -81,7 +81,7 @@
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:self.textFieldPhone.text forKey:@"loginMobile"];
     [dictP setObject:self.textFieldPwd.text forKey:@"loginPwd"];
-    [dictP setObject:self.textFieldPwd.text forKey:@"verificationCode"];
+    [dictP setObject:self.textFieldMsg.text forKey:@"confirmation"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

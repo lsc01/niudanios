@@ -61,9 +61,8 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37e-To-SWA">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37e-To-SWA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
-                            <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="replaceAddressClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="PMU-Fo-SlY"/>
                             </connections>

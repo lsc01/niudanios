@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"订单详情";
     self.arrData = self.modelInfo.logisticsDataArray;
-    [self.headView.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:HTTP(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.headView.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:ImageUrl(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.headView.labelOrderId.text = self.modelInfo.Id;

@@ -19,7 +19,7 @@
 
 -(void)setModel:(NDMineDownInfoModel *)model{
     _model = model;
-    [self.imageviewHead sd_setImageWithURL:[NSURL URLWithString:HTTP(model.headPortrait)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.imageviewHead sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.headPortrait)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.labelDate.text = model.createTime;

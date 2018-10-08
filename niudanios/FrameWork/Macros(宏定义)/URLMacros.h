@@ -155,4 +155,6 @@
 
 ///客服电话
 #define URL_customPhone HTTP(@"app/expressCost/customPhone.mvc")
+
+#define ImageUrl(x) ([(x) hasPrefix:@"https"]||[(x) hasPrefix:@"http"])?(x):(HTTP(x))
 #endif /* URLMacros_h */

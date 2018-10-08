@@ -12,7 +12,7 @@
 #import "NDAddressEditViewController.h"
 #import "NDMineAddressViewController.h"
 
-@interface NDVerifyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,NDMineAddressViewControllerDelegate>
+@interface NDVerifyOrderViewController ()<UITableViewDelegate,UITableViewDataSource,NDMineAddressViewControllerDelegate,NDAddressEditViewControllerDelegate>
 
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -62,6 +62,10 @@
     
 }
 - (IBAction)submitOrderClick:(UIButton *)sender {
+    if ([self.defaultAddrModel.cond isEqualToString:@"N"]) {
+        [SVProgressHUD showToast:@"未选择地址"];
+        return;
+    }
     NSMutableString * dataParams = [NSMutableString string];
     for (NSInteger i=0; i<self.arrGoodsModel.count; i++) {
         NDPackageGoodsModel * model = self.arrGoodsModel[i];
@@ -75,7 +79,7 @@
     [dictP setObject:self.yunfei forKey:@"money"];
     [dictP setObject:dataParams forKey:@"data"];
     [dictP setObject:self.defaultAddrModel.Id forKey:@"addressId"];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     
     [SVProgressHUD showWithStatus:@"正在提交"];
     [HLLHttpManager postWithURL:URL_order_confirm params:dictP success:^(NSDictionary *responseObject) {
@@ -115,8 +119,11 @@
     WeakSelf();
     [self.headView setAddNewAddrBlock:^{
         StrongSelf();
-        NDAddressEditViewController * vc = [[NDAddressEditViewController alloc] init];
-        [strongself.navigationController pushViewController:vc animated:YES];
+//        NDAddressEditViewController * vc = [[NDAddressEditViewController alloc] init];
+//        vc.delegate = self;
+//        [strongself.navigationController pushViewController:vc animated:YES];
+        
+        [strongself replaceAddress];
     }];
     
     [self.headView setReplaceAddressBlock:^{
@@ -133,7 +140,13 @@
 
 -(void)selectMineAddressWithModel:(NDSelectDefaultAddrModel *)model{
     self.defaultAddrModel = model;
-    _headView.model = self.defaultAddrModel;
+    if ([self.defaultAddrModel.cond isEqualToString:@"N"]) {
+        _headView.hasAddress = NO;
+    }else{
+        _headView.hasAddress = YES;
+        _headView.model = self.defaultAddrModel;
+    }
+    self.headView.model = self.defaultAddrModel;
 }
 
 

@@ -28,7 +28,7 @@
 
 -(void)setModel:(NDMineOrderInfoModel *)model{
     _model = model;
-    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:HTTP(model.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.labelOrderId.text= model.orderId;

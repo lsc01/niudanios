@@ -50,7 +50,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if ([HLLShareManager shareMannager].userModel) {
-        [self.imageHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [self.imageHead sd_setImageWithURL:[NSURL URLWithString:ImageUrl([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             NSLog(@"error:%@",error);
         }];
       
@@ -343,8 +343,9 @@
 }
 -(void)navRightBtnClick{
     
-    [SVProgressHUD showToast:@"分享"];
-    
+//    [SVProgressHUD showToast:@"分享"];
+    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+    [self.navigationController pushViewController:loginVC animated:YES];
     
     return;
 

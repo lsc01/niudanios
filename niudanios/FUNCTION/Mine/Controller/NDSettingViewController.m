@@ -51,7 +51,7 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:ImageUrl([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.headView.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
@@ -173,7 +173,7 @@
 }
 
 -(void)updateDataInfoSuccess{
-    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.headView.imageViewHeader sd_setImageWithURL:[NSURL URLWithString:ImageUrl([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.headView.labelName.text = [HLLShareManager shareMannager].userModel.nickName;

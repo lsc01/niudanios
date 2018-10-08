@@ -56,6 +56,7 @@
     [HLLHttpManager postWithURL:URL_queryBackpack params:dictP success:^(NSDictionary *responseObject) {
         NSArray * arrRows = responseObject[@"rows"];
         self.arrData = nil;
+        self.arrID = nil;
         for (NSDictionary * dict in arrRows) {
             NDPackageGoodsModel * model = [NDPackageGoodsModel mj_objectWithKeyValues:dict];
             [self.arrData addObject:model];
@@ -106,7 +107,7 @@
     [self.arrID removeAllObjects];
     if (sender.selected) {
         for (NDPackageGoodsModel * model in self.arrData) {
-            [self.arrID addObject:model.Id];
+            [self.arrID addObject:model];
         }
     }
     self.labelSelect.text = [NSString stringWithFormat:@"已选择%d件",self.arrID.count];
@@ -119,9 +120,10 @@
     }
     
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_selectDefaultAddr params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
+        NSLog(@"啥玩意：%@",responseObject);
         NSArray * arrRows = responseObject[@"rows"];
         NDSelectDefaultAddrModel * addrModel = nil;
         if (arrRows.count>=1) {
@@ -204,7 +206,7 @@
 -(void)httpGetSelectDefaultAddrFinish:(void(^)(void))finishBlock{
     
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_selectDefaultAddr params:dictP success:^(NSDictionary *responseObject) {
         finishBlock?finishBlock():nil;
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
@@ -251,6 +253,9 @@
             [strongself.arrID addObject:goodsModel];
         }else{
             [strongself.arrID removeObject:goodsModel];
+            if (strongself.arrID.count==0) {
+                self.btnAllSelect.selected = NO;
+            }
         }
         strongself.labelSelect.text = [NSString stringWithFormat:@"已选择%d件",strongself.arrID.count];
     }];

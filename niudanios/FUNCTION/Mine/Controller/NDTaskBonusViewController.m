@@ -31,7 +31,7 @@
 -(void)postRequest{
     
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"id"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"id"];
     
     [HLLHttpManager postWithURL:URL_queryBounty params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

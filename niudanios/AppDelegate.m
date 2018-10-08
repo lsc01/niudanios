@@ -28,7 +28,7 @@
     [self IQKeyboardManagerInit];
     [self SVProgressHUDInit];
     [self AFNetWorkingInit];
-    
+    [self ADShareSDKInit];
     [NSURL URLWithString:@"www.baidu.com"];
     
     NDBaseTabBarController * tab = [[NDBaseTabBarController alloc] init];
@@ -112,8 +112,8 @@
                                                                         authType:SSDKAuthTypeBoth];
                                              break;
                                          case SSDKPlatformTypeWechat:
-                                             [appInfo SSDKSetupWeChatByAppId:@"wxe8bb4cd46e4b1142"
-                                                                   appSecret:@"55c7fe18f6746b378e57b3d29e93fbed"];
+                                             [appInfo SSDKSetupWeChatByAppId:@"wx100ef5fc5d46c202"
+                                                                   appSecret:@"c917a079bfff60f28242c072639008f0"];
                                              break;
                                          case SSDKPlatformTypeQQ:
                                              [appInfo SSDKSetupQQByAppId:@"1106085747"

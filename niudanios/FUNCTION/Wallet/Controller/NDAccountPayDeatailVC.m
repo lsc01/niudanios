@@ -36,7 +36,7 @@
 -(void)postRequestWithTag:(NSInteger)tag{
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     if (tag!=0) {
         [dictP setObject:@(tag-1) forKey:@"status"];
     }

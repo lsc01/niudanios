@@ -29,7 +29,7 @@
 -(void)postRequest{
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_ShippingAddressfind params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         self.arrData = nil;
@@ -148,7 +148,9 @@
     NDSelectDefaultAddrModel * model = self.arrData[indexPath.section];
     if ([self.delegate respondsToSelector:@selector(selectMineAddressWithModel:)]) {
         [self.delegate selectMineAddressWithModel:model];
+        [self.navigationController popViewControllerAnimated:YES];
     }
+    
 }
 
 - (IBAction)addNewAddressClick:(UIButton *)sender {

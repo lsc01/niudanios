@@ -47,7 +47,7 @@
 -(void)postRequest{
     
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     
     [HLLHttpManager postWithURL:URL_findCustomerId params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

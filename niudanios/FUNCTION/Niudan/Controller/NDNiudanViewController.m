@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
     
     [self setUI];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [self postRequestWithDictP:dictP];
 }
 
@@ -111,7 +111,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
         StrongSelf();
         strongself.filterView.hidden = YES;
         NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-        [dictP setObject:@"1" forKey:@"customerId"];
+        [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
         switch (self.filterType) {
             case Filter_Kind:
             {

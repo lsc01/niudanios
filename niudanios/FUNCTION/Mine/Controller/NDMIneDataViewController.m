@@ -66,7 +66,7 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
-    [self.headView.imageViewHead sd_setImageWithURL:[NSURL URLWithString:HTTP([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.headView.imageViewHead sd_setImageWithURL:[NSURL URLWithString:ImageUrl([HLLShareManager shareMannager].userModel.headPortrait?:@"")] placeholderImage:[UIImage imageNamed:@"head_placehold"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     
@@ -142,7 +142,7 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
 
 -(void)findCustomerInfoFunction{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@"1" forKey:@"id"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"id"];
     [HLLHttpManager postWithURL:URL_findCustomerInfo params:dictP success:^(NSDictionary *responseObject) {
          [SVProgressHUD dismiss];
         NSArray * arrRows = responseObject[@"rows"];

@@ -107,7 +107,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
-    [cell.imageViewOrder sd_setImageWithURL:[NSURL URLWithString:HTTP(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [cell.imageViewOrder sd_setImageWithURL:[NSURL URLWithString:ImageUrl(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     cell.labelOrderId.text = self.modelInfo.Id;
