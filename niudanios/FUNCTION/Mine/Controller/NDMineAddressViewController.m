@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic ,strong) NSMutableArray * arrData;
 
+
+@property (nonatomic ,strong) NSIndexPath * indexPathCurr;
+
 @end
 
 @implementation NDMineAddressViewController
@@ -91,7 +94,9 @@
     NDSelectDefaultAddrModel * model = self.arrData[indexPath.section];
     NDMineAddressTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDMineAddressTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    if ([model.type isEqualToString:@"1"]) {
+        self.indexPathCurr = indexPath;
+    }
     cell.model = model;
     WeakSelf();
     [cell setEditAddressBlock:^{
@@ -103,7 +108,45 @@
         StrongSelf();
         [strongself deleteAddressWithModel:model];
     }];
+    __weak typeof(cell) cellWeak = cell;
+    [cell setSelectNormalAddressBlock:^{
+        StrongSelf();
+        [strongself selectNormalAddressWithModel:model andCell:cellWeak];
+    }];
+    
     return cell;
+    
+}
+
+-(void)selectNormalAddressWithModel:(NDSelectDefaultAddrModel *)model andCell:(NDMineAddressTableViewCell *)cellSelect{
+    NDMineAddressTableViewCell * cell = [self.tableView cellForRowAtIndexPath:self.indexPathCurr];
+    cell.btnNormalAddr.selected = NO;
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
+    [dictP setObject:model.Id forKey:@"id"];
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_reviseDefault params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dicT = arrRows.firstObject;
+            if ([dicT[@"code"] integerValue] == 1) {
+                [SVProgressHUD showToast:@"设置成功"];
+                [self postRequest];
+            }else{
+                [SVProgressHUD showToast:@"设置失败"];
+                cell.btnNormalAddr.selected = YES;
+                cellSelect.btnNormalAddr.selected = NO;
+            }
+        }
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"设置失败"];
+        cell.btnNormalAddr.selected = YES;
+        cellSelect.btnNormalAddr.selected = NO;
+    }];
     
 }
 

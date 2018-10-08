@@ -29,7 +29,7 @@
     self.labelPersonName.text = model.recipientName;
     self.labelPhone.text = model.moblie;
     self.labelAddress.text = [NSString stringWithFormat:@"%@%@%@%@",model.provinceName,model.cityName,model.areaName,model.detail];
-    
+    self.btnNormalAddr.selected = [model.type isEqualToString:@"1"];
 }
 
 
@@ -39,4 +39,11 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)selectNormalAddr:(UIButton *)sender {
+    
+    if (!sender.selected) {
+        sender.selected = YES;
+        _selectNormalAddressBlock?_selectNormalAddressBlock():nil;
+    }
+}
 @end

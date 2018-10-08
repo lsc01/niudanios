@@ -24,7 +24,9 @@
 ///手机验证码发送
 #define URL_identifyingCode HTTP(@"app/customer/identifyingCode.mvc")
 ///重置手机号 新手机号验证
-#define URL_cresetMobile HTTP(@"app/customer/resetMobile.mvc")//没接
+#define URL_resetMobile HTTP(@"app/customer/resetMobile.mvc")//没接
+///重置手机号 验证原来手机号号码
+#define URL_confirmMobile HTTP(@"/app/customer/confirmMobile.mvc")
 ///修改密码
 #define URL_updatePwd HTTP(@"app/customer/updatePwd.mvc")
 ///重置密码

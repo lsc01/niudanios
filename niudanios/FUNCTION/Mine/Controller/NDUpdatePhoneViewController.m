@@ -8,8 +8,8 @@
 
 #import "NDUpdatePhoneViewController.h"
 #import "SAMKeychain.h"
-
-@interface NDUpdatePhoneViewController ()
+#import "NDResetPhoneViewController.h"
+@interface NDUpdatePhoneViewController ()<NDResetPhoneViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewBg1;
 @property (weak, nonatomic) IBOutlet UIView *viewBg2;
 @property (weak, nonatomic) IBOutlet UILabel *labelBindPhone;
@@ -89,25 +89,19 @@
     
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:self.textFieldCode.text forKey:@"confirmation"];
-    [dictP setObject:self.textFieldNewPhone.text forKey:@"newMobile"];
     [dictP setObject:[HLLShareManager shareMannager].userModel.loginMobile forKey:@"loginMobile"];
     [SVProgressHUD show];
-    [HLLHttpManager postWithURL:URL_Register params:dictP success:^(NSDictionary *responseObject) {
+    [HLLHttpManager postWithURL:URL_confirmMobile params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         NSArray * arrRows = responseObject[@"rows"];
         if (arrRows.count>0) {
             NSDictionary * dictT = arrRows.firstObject;
             NSInteger code = [dictT[@"code"] integerValue];
             if (code == 0) {
-                [SVProgressHUD showToast:@"修改成功"];
-                [HLLShareManager shareMannager].userModel.loginMobile = self.textFieldNewPhone.text;
-                NSDictionary * dic = [[HLLShareManager shareMannager].userModel mj_keyValues];
-                NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
-                if ([self.delegate respondsToSelector:@selector(updatePhoneSuccess)]) {
-                    [self.delegate updatePhoneSuccess];
-                }
-                [self.navigationController popViewControllerAnimated:YES];
+                NDResetPhoneViewController * vc = [[NDResetPhoneViewController alloc] init];
+                vc.delegate = self;
+                vc.phone = self.textFieldNewPhone.text;
+                [self.navigationController pushViewController:vc animated:YES];
             }else{
                 [SVProgressHUD showToast:dictT[@"msg"]];
             }
@@ -116,6 +110,13 @@
         [SVProgressHUD dismiss];
     }];
     
+}
+
+-(void)updatePhoneSuccess{
+    if ([self.delegate respondsToSelector:@selector(updatePhoneSuccess)]) {
+        [self.delegate updatePhoneSuccess];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

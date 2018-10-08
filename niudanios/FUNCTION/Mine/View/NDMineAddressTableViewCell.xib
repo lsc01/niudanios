@@ -89,25 +89,50 @@
                             <action selector="editAddressClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gAO-JR-KiS"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P6-Rd-Fd5">
+                        <rect key="frame" x="20" y="96" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="E79-1u-31O"/>
+                            <constraint firstAttribute="height" constant="20" id="bTN-6H-4t8"/>
+                        </constraints>
+                        <state key="normal" image="ic_tick" backgroundImage="ic_tick"/>
+                        <state key="selected" image="ic_tick_1"/>
+                        <connections>
+                            <action selector="selectNormalAddr:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mNL-2S-AOc"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="默认地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnD-vf-Sxv">
+                        <rect key="frame" x="45" y="96.5" width="57.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="4Xe-M6-yMP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hu6-ON-Hnc" firstAttribute="leading" secondItem="wlJ-8M-8Xk" secondAttribute="trailing" constant="40" id="2Oe-jJ-PWr"/>
                     <constraint firstItem="jxL-ht-uxd" firstAttribute="leading" secondItem="hu6-ON-Hnc" secondAttribute="leading" id="3lB-PB-fD0"/>
+                    <constraint firstItem="TnD-vf-Sxv" firstAttribute="centerY" secondItem="1P6-Rd-Fd5" secondAttribute="centerY" id="4dx-3C-Pqt"/>
                     <constraint firstItem="38b-9M-pgu" firstAttribute="top" secondItem="56p-qN-sm4" secondAttribute="bottom" constant="10" id="6aK-2F-S8Q"/>
                     <constraint firstAttribute="bottom" secondItem="o3L-6K-vhb" secondAttribute="bottom" id="6vV-o0-xbJ"/>
                     <constraint firstAttribute="bottom" secondItem="jxL-ht-uxd" secondAttribute="bottom" id="6vz-2z-JBt"/>
                     <constraint firstAttribute="trailing" secondItem="JJK-Fi-RGg" secondAttribute="trailing" constant="12" id="9l6-5Z-Vur"/>
                     <constraint firstAttribute="bottom" secondItem="wlJ-8M-8Xk" secondAttribute="bottom" constant="12" id="Acz-d1-c7b"/>
+                    <constraint firstItem="1P6-Rd-Fd5" firstAttribute="centerY" secondItem="o3L-6K-vhb" secondAttribute="centerY" id="IlS-6e-Ivy"/>
                     <constraint firstItem="JJK-Fi-RGg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="KQv-hH-3xW"/>
                     <constraint firstItem="wlJ-8M-8Xk" firstAttribute="leading" secondItem="L6V-fz-Bcn" secondAttribute="trailing" constant="12" id="KZy-b8-cdT"/>
                     <constraint firstItem="56p-qN-sm4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Kcb-5H-O5u"/>
                     <constraint firstItem="o3L-6K-vhb" firstAttribute="leading" secondItem="L6V-fz-Bcn" secondAttribute="leading" id="OTr-oy-Bja"/>
                     <constraint firstAttribute="trailing" secondItem="38b-9M-pgu" secondAttribute="trailing" constant="12" id="TA3-E2-aON"/>
+                    <constraint firstItem="TnD-vf-Sxv" firstAttribute="leading" secondItem="1P6-Rd-Fd5" secondAttribute="trailing" constant="5" id="UhS-pd-lAi"/>
                     <constraint firstItem="0tN-fR-IXp" firstAttribute="leading" secondItem="hu6-ON-Hnc" secondAttribute="trailing" constant="10" id="VbR-34-K6P"/>
                     <constraint firstItem="jxL-ht-uxd" firstAttribute="top" secondItem="A3F-eO-o0q" secondAttribute="bottom" id="VkL-cS-tPK"/>
                     <constraint firstItem="L6V-fz-Bcn" firstAttribute="centerY" secondItem="wlJ-8M-8Xk" secondAttribute="centerY" id="WFY-e4-D2v"/>
                     <constraint firstItem="o3L-6K-vhb" firstAttribute="trailing" secondItem="wlJ-8M-8Xk" secondAttribute="trailing" id="Y1O-Hl-Pha"/>
                     <constraint firstAttribute="trailing" secondItem="A3F-eO-o0q" secondAttribute="trailing" constant="12" id="a8F-MM-1Ew"/>
+                    <constraint firstItem="1P6-Rd-Fd5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="bDY-Zd-xwl"/>
                     <constraint firstAttribute="bottom" secondItem="0tN-fR-IXp" secondAttribute="bottom" constant="12" id="gF5-mA-OYO"/>
                     <constraint firstItem="A3F-eO-o0q" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="gQ1-qz-eDN"/>
                     <constraint firstItem="56p-qN-sm4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="iEb-le-mA1"/>
@@ -120,6 +145,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnNormalAddr" destination="1P6-Rd-Fd5" id="S9u-Oo-zuu"/>
                 <outlet property="labelAddress" destination="38b-9M-pgu" id="OK3-9P-dNI"/>
                 <outlet property="labelPersonName" destination="56p-qN-sm4" id="Cid-zT-viL"/>
                 <outlet property="labelPhone" destination="JJK-Fi-RGg" id="wDC-n3-UaL"/>
@@ -130,5 +156,7 @@
     <resources>
         <image name="ic_del" width="24" height="24"/>
         <image name="ic_edit" width="24" height="24"/>
+        <image name="ic_tick" width="20" height="20"/>
+        <image name="ic_tick_1" width="20" height="20"/>
     </resources>
 </document>

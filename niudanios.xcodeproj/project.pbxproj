@@ -167,6 +167,8 @@
 		41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF0B212DB6B40008E66B /* Assets.xcassets */; };
 		41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B4AF0D212DB6B40008E66B /* LaunchScreen.storyboard */; };
 		41B4AF12212DB6B40008E66B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF11212DB6B40008E66B /* main.m */; };
+		41BFB71B216BB97D00ABA033 /* NDResetPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BFB719216BB97D00ABA033 /* NDResetPhoneViewController.m */; };
+		41BFB71C216BB97D00ABA033 /* NDResetPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41BFB71A216BB97D00ABA033 /* NDResetPhoneViewController.xib */; };
 		41C6C88A21551FEB00B89DE5 /* NDHomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C6C88921551FEB00B89DE5 /* NDHomeBannerModel.m */; };
 		41C6C88D215528F400B89DE5 /* NDHomeNewMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C6C88C215528F400B89DE5 /* NDHomeNewMessageModel.m */; };
 		41D237332169E8F100FF32F6 /* NDAboutInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D237322169E8F100FF32F6 /* NDAboutInfoModel.m */; };
@@ -718,6 +720,9 @@
 		41B4AF0E212DB6B40008E66B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41B4AF10212DB6B40008E66B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41B4AF11212DB6B40008E66B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		41BFB718216BB97D00ABA033 /* NDResetPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDResetPhoneViewController.h; sourceTree = "<group>"; };
+		41BFB719216BB97D00ABA033 /* NDResetPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDResetPhoneViewController.m; sourceTree = "<group>"; };
+		41BFB71A216BB97D00ABA033 /* NDResetPhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDResetPhoneViewController.xib; sourceTree = "<group>"; };
 		41C6C88821551FEB00B89DE5 /* NDHomeBannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeBannerModel.h; sourceTree = "<group>"; };
 		41C6C88921551FEB00B89DE5 /* NDHomeBannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeBannerModel.m; sourceTree = "<group>"; };
 		41C6C88B215528F400B89DE5 /* NDHomeNewMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeNewMessageModel.h; sourceTree = "<group>"; };
@@ -1797,6 +1802,9 @@
 				41378AFA21330B0200076ADD /* NDUpdatePhoneViewController.h */,
 				41378AFB21330B0200076ADD /* NDUpdatePhoneViewController.m */,
 				41378AFC21330B0200076ADD /* NDUpdatePhoneViewController.xib */,
+				41BFB718216BB97D00ABA033 /* NDResetPhoneViewController.h */,
+				41BFB719216BB97D00ABA033 /* NDResetPhoneViewController.m */,
+				41BFB71A216BB97D00ABA033 /* NDResetPhoneViewController.xib */,
 				41AEAC73213BCA1E003FE10B /* NDMIneDataViewController.h */,
 				41AEAC74213BCA1E003FE10B /* NDMIneDataViewController.m */,
 				41AEAC75213BCA1E003FE10B /* NDMIneDataViewController.xib */,
@@ -3061,6 +3069,7 @@
 				41378AF92133071B00076ADD /* NDSettingTableViewCell.xib in Resources */,
 				410448502141850700686119 /* QRCodeTopLeft@2x.png in Resources */,
 				41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */,
+				41BFB71C216BB97D00ABA033 /* NDResetPhoneViewController.xib in Resources */,
 				410447FA21401C9200686119 /* NDMineEnshrineTableViewCell.xib in Resources */,
 				4104484A2141850700686119 /* QRCodebottomLeft@2x.png in Resources */,
 				4147F963214E3FB000ECC253 /* AlipaySDK.bundle in Resources */,
@@ -3457,6 +3466,7 @@
 				41E34449212EFEED00F19371 /* UIWebView+Blocks.m in Sources */,
 				41E343F7212EFEED00F19371 /* UIColor+Web.m in Sources */,
 				41E343E4212EFEED00F19371 /* UIApplication+Permissions.m in Sources */,
+				41BFB71B216BB97D00ABA033 /* NDResetPhoneViewController.m in Sources */,
 				41E34408212EFEED00F19371 /* UIImage+Merge.m in Sources */,
 				41E343C3212EFEED00F19371 /* NSObject+Reflection.m in Sources */,
 				41E34196212E303F00F19371 /* NDBaseViewController.m in Sources */,

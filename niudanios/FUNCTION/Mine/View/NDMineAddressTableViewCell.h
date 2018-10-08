@@ -13,11 +13,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelPhone;
 @property (weak, nonatomic) IBOutlet UILabel *labelAddress;
+@property (weak, nonatomic) IBOutlet UIButton *btnNormalAddr;
 
+- (IBAction)selectNormalAddr:(UIButton *)sender;
 
 @property (nonatomic,strong) NDSelectDefaultAddrModel * model;
 
 
 @property (nonatomic ,copy) void(^editAddressBlock)(void);
 @property (nonatomic ,copy) void(^deleteAddressBlock)(void);
+@property (nonatomic ,copy) void(^selectNormalAddressBlock)(void);
 @end

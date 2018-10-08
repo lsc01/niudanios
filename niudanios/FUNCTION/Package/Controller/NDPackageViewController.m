@@ -121,25 +121,44 @@
     
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
-    [HLLHttpManager postWithURL:URL_selectDefaultAddr params:dictP success:^(NSDictionary *responseObject) {
-        [SVProgressHUD dismiss];
-        NSLog(@"啥玩意：%@",responseObject);
+    [HLLHttpManager postWithURL:URL_selfitemreplace params:dictP success:^(NSDictionary *responseObject) {
+        
         NSArray * arrRows = responseObject[@"rows"];
-        NDSelectDefaultAddrModel * addrModel = nil;
         if (arrRows.count>=1) {
             NSDictionary * dictT = arrRows.firstObject;
-            addrModel =[NDSelectDefaultAddrModel mj_objectWithKeyValues:dictT];
+            if ([dictT[@"count"] integerValue] == 0) {
+                [HLLHttpManager postWithURL:URL_selectDefaultAddr params:dictP success:^(NSDictionary *responseObject) {
+                    [SVProgressHUD dismiss];
+                    
+                    NSArray * arrRows = responseObject[@"rows"];
+                    NDSelectDefaultAddrModel * addrModel = nil;
+                    if (arrRows.count>=1) {
+                        NSDictionary * dictT = arrRows.firstObject;
+                        addrModel =[NDSelectDefaultAddrModel mj_objectWithKeyValues:dictT];
+                    }else{
+                        NDSelectDefaultAddrModel * model = [[NDSelectDefaultAddrModel alloc] init];
+                        model.cond = @"N";
+                        addrModel = model;
+                    }
+                    
+                    NDVerifyOrderViewController * vc = [[NDVerifyOrderViewController alloc] init];
+                    vc.defaultAddrModel = addrModel;
+                    vc.arrGoodsModel = self.arrID;
+                    vc.delegate = self;
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+                    [SVProgressHUD dismiss];
+                    [SVProgressHUD showToast:@"下单失败,请重试"];
+                }];
+            }else{
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showToast:@"有扭蛋到期"];
+            }
+            
         }else{
-            NDSelectDefaultAddrModel * model = [[NDSelectDefaultAddrModel alloc] init];
-            model.cond = @"N";
-            addrModel = model;
+           [SVProgressHUD dismiss];
         }
-        
-        NDVerifyOrderViewController * vc = [[NDVerifyOrderViewController alloc] init];
-        vc.defaultAddrModel = addrModel;
-        vc.arrGoodsModel = self.arrID;
-        vc.delegate = self;
-        [self.navigationController pushViewController:vc animated:YES];
         
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
