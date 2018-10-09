@@ -93,6 +93,7 @@
 		4115BE21213C1650001AFA49 /* NDMineOrderDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE20213C1650001AFA49 /* NDMineOrderDetailView.xib */; };
 		4115BE25213C3327001AFA49 /* NDOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115BE23213C3327001AFA49 /* NDOrderDetailTableViewCell.m */; };
 		4115BE26213C3327001AFA49 /* NDOrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115BE24213C3327001AFA49 /* NDOrderDetailTableViewCell.xib */; };
+		4118EE2B216D079E00D7F774 /* 未完成功能统计.md in Resources */ = {isa = PBXBuildFile; fileRef = 4118EE2A216D079E00D7F774 /* 未完成功能统计.md */; };
 		41378AE921305D0A00076ADD /* NDMineFunctionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AE721305D0A00076ADD /* NDMineFunctionCell.m */; };
 		41378AEA21305D0A00076ADD /* NDMineFunctionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */; };
 		41378AEE2132F8F500076ADD /* NDSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41378AEC2132F8F500076ADD /* NDSettingViewController.m */; };
@@ -529,6 +530,7 @@
 		4115BE22213C3327001AFA49 /* NDOrderDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDOrderDetailTableViewCell.h; sourceTree = "<group>"; };
 		4115BE23213C3327001AFA49 /* NDOrderDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDOrderDetailTableViewCell.m; sourceTree = "<group>"; };
 		4115BE24213C3327001AFA49 /* NDOrderDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDOrderDetailTableViewCell.xib; sourceTree = "<group>"; };
+		4118EE2A216D079E00D7F774 /* 未完成功能统计.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "未完成功能统计.md"; sourceTree = "<group>"; };
 		41378AE621305D0A00076ADD /* NDMineFunctionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineFunctionCell.h; sourceTree = "<group>"; };
 		41378AE721305D0A00076ADD /* NDMineFunctionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineFunctionCell.m; sourceTree = "<group>"; };
 		41378AE821305D0A00076ADD /* NDMineFunctionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDMineFunctionCell.xib; sourceTree = "<group>"; };
@@ -1496,6 +1498,7 @@
 		41B4AEF6212DB6B40008E66B = {
 			isa = PBXGroup;
 			children = (
+				4118EE2A216D079E00D7F774 /* 未完成功能统计.md */,
 				41B4AF01212DB6B40008E66B /* niudanios */,
 				41B4AF00212DB6B40008E66B /* Products */,
 				4E1E5BEE35A1C04FD36696F6 /* Pods */,
@@ -3074,6 +3077,7 @@
 				4104484A2141850700686119 /* QRCodebottomLeft@2x.png in Resources */,
 				4147F963214E3FB000ECC253 /* AlipaySDK.bundle in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
+				4118EE2B216D079E00D7F774 /* 未完成功能统计.md in Resources */,
 				4104479C213D5D5F00686119 /* NDMyWalletViewController.xib in Resources */,
 				410447AB213D757100686119 /* NDAccountPayDeatailVC.xib in Resources */,
 				410447DC213ECEA200686119 /* NDMineDownTableViewCell.xib in Resources */,
