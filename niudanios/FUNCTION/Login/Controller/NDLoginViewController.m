@@ -71,7 +71,13 @@
                 NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
                 [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
                 [HLLShareManager shareMannager].userModel = userModel;
-                [self.navigationController popViewControllerAnimated:YES];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    if ([self.delegate respondsToSelector:@selector(loginAccountSuccess)]) {
+                        [self.delegate loginAccountSuccess];
+                    }
+                });
             }else{
                 [SVProgressHUD showToast:dictT[@"msg"]];
             }

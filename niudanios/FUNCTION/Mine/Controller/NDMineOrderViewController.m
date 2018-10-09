@@ -37,7 +37,7 @@
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:@(10) forKey:@"rows"];
     [dictP setObject:@(1) forKey:@"page"];
-    [dictP setObject:@(1) forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     switch (selectTag) {
         case 1:
         {

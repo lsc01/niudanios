@@ -186,7 +186,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
 -(void)collectGoodsWithId:(NSString *)gashaponMachineId andIndexPath:(NSIndexPath *)inexPath{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:gashaponMachineId forKey:@"gashaponMachineId"];
-    [dictP setObject:@(1) forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_AddCollect params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
@@ -212,7 +212,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
 -(void)collectCancelGoodsWithId:(NSString *)gashaponMachineId andIndexPath:(NSIndexPath *)inexPath{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:gashaponMachineId forKey:@"gashaponMachineId"];
-    [dictP setObject:@(1) forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_removeCollert params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

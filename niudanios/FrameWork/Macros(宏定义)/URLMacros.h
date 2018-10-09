@@ -24,7 +24,7 @@
 ///手机验证码发送
 #define URL_identifyingCode HTTP(@"app/customer/identifyingCode.mvc")
 ///重置手机号 新手机号验证
-#define URL_resetMobile HTTP(@"app/customer/resetMobile.mvc")//没接
+#define URL_resetMobile HTTP(@"app/customer/resetMobile.mvc")
 ///重置手机号 验证原来手机号号码
 #define URL_confirmMobile HTTP(@"/app/customer/confirmMobile.mvc")
 ///修改密码
@@ -73,7 +73,7 @@
 ///背包选中商品信息
 #define URL_selectBackpack HTTP(@"app/selfitem/selectBackpack.mvc")
 ///更新扭蛋的到期时间
-#define URL_selfitemreplace HTTP(@"app/selfitem/replace.mvc")//没接
+#define URL_selfitemreplace HTTP(@"app/selfitem/replace.mvc")
 ///扭蛋记录
 #define URL_niudanqueryRecord HTTP(@"app/selfitem/queryRecord.mvc")
 
@@ -91,8 +91,6 @@
 #define URL_stotalOrder HTTP(@"app/order/totalOrder.mvc")
 ///查询订单详情
 #define URL_detailOrder HTTP(@"app/order/detailOrder.mvc")
-///查询订单中的订单地址
-#define URL_AddressOrder HTTP(@"app/order/addressOrder.mvc")//没接
 ///删除订单
 #define URL_deleteOrder HTTP(@"app/order/deleteOrder.mvc")
 ///提醒发货
@@ -127,12 +125,6 @@
 #pragma mark 地址相关
 ///查询省市县三层所有
 #define URL_selectProvince HTTP(@"app/addressProvince/selectProvince.mvc")
-///省的信息
-#define URL_addressProvince HTTP(@"app/addressProvince/list.mvc")//没接
-///市的信息
-#define URL_addressCity HTTP(@"app/addressCity/list.mvc")//没接
-///区的信息
-#define URL_AddressArea HTTP(@"app/addressArea/list.mvc")//没接
 ///详细地址消息
 #define URL_ShippingAddressfindId HTTP(@"app/shippingAddress/findId.mvc")//没接
 ///更新地址信息
@@ -142,7 +134,7 @@
 ///查询地址信息
 #define URL_ShippingAddressfind HTTP(@"app/shippingAddress/findCustomerId.mvc")
 ///修改地址为默认选中的
-#define URL_reviseDefault HTTP(@"app/shippingAddress/reviseDefault.mvc")//没接
+#define URL_reviseDefault HTTP(@"app/shippingAddress/reviseDefault.mvc")
 ///地址新增
 #define URL_ShippingAddressadd HTTP(@"app/shippingAddress/add.mvc")
 ///查询用户默认地址

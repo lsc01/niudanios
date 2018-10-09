@@ -25,6 +25,10 @@
 
 @property (nonatomic ,strong) NSArray * arrBannerModel;
 @property (nonatomic ,strong) NSArray * arrNewMsgModel;
+
+///当前点击的是哪个，用来验证登录 0 最新商品  1人气商品
+@property (nonatomic ,assign) NSInteger selectIndex;
+
 @end
 
 @implementation NDHomeViewController
@@ -130,6 +134,12 @@
     WeakSelf();
     [headView setMoreGoodsBlock:^(NSInteger index) {
         StrongSelf();
+        if (!Is_Login) {
+            strongself.selectIndex = index;
+            [strongself gotoLoginViewController];
+            return ;
+        }
+    
         if (index == 0) {
             NDNewGoodsViewController * vc = [[NDNewGoodsViewController alloc] init];
             [strongself.navigationController pushViewController:vc animated:YES];
@@ -141,6 +151,19 @@
     }];
     
     return headView;
+}
+
+-(void)loginAccountSuccess{
+    NSLog(@"。。。");
+    if (self.selectIndex == 0) {
+        NDNewGoodsViewController * vc = [[NDNewGoodsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (self.selectIndex == 1){
+        NDNewGoodsViewController * vc = [[NDNewGoodsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (self.selectIndex == 2){
+        
+    }
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{

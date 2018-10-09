@@ -12,7 +12,11 @@
 #import "NDNiudanViewController.h"
 #import "NDPackageViewController.h"
 #import "NDMineViewController.h"
-@interface NDBaseTabBarController ()
+#import "HLLGetCurrentVC.h"
+#import "NDLoginViewController.h"
+@interface NDBaseTabBarController ()<UITabBarControllerDelegate,LoginViewControllerDelegate>
+
+@property (nonatomic,assign) NSInteger indexSelect;
 
 @end
 
@@ -27,6 +31,8 @@
 {
     self = [super init];
     if (self) {
+        self.indexSelect = -1;
+        self.delegate = self;
         [self RTSetUpVcs];
     }
     return self;
@@ -78,5 +84,35 @@
     return Nav;
 }
 
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    if (viewController == tabBarController.viewControllers[1] ) {
+        if (!Is_Login) {
+            self.indexSelect = 1;
+            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+            loginVC.delegate = self;
+            
+            [self.selectedViewController pushViewController:loginVC animated:YES];
+            return NO;
+        }
+    }else if (viewController == tabBarController.viewControllers[2]) {
+        self.indexSelect = 2;
+        if (!Is_Login) {
+            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+            loginVC.delegate = self;
+            
+            [self.selectedViewController pushViewController:loginVC animated:YES];
+            return NO;
+        }
+    }
+    self.indexSelect = -1;
+    return YES;
+}
+
+-(void)loginAccountSuccess{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.selectedIndex = self.indexSelect;
+    });
+}
 
 @end

@@ -59,4 +59,7 @@
 //App版本号
 #define APPVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
+
+#define Is_Login ([HLLShareManager shareMannager].userModel!=nil)
+
 #endif /* Macros_h */

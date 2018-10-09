@@ -29,7 +29,7 @@
 
 -(void)postRequest{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:@(1) forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_newGoodsDetail params:dictP success:^(NSDictionary *responseObject) {
         NSArray * arrRows = responseObject[@"rows"];
         self.arrData = nil;
@@ -89,7 +89,7 @@
 -(void)collectGoodsWithId:(NSString *)gashaponMachineId andIndexPath:(NSIndexPath *)inexPath{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:gashaponMachineId forKey:@"gashaponMachineId"];
-    [dictP setObject:@(1) forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_AddCollect params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
@@ -115,7 +115,7 @@
 -(void)collectCancelGoodsWithId:(NSString *)gashaponMachineId andIndexPath:(NSIndexPath *)inexPath{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:gashaponMachineId forKey:@"gashaponMachineId"];
-    [dictP setObject:@(1) forKey:@"customerId"];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_removeCollert params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

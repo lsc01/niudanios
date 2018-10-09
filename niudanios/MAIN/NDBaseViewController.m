@@ -7,7 +7,7 @@
 //
 
 #import "NDBaseViewController.h"
-
+#import "NDLoginViewController.h"
 @interface NDBaseViewController ()
 
 @end
@@ -18,6 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = HEXCOLOR(0xeeeeee);
+    
+}
+
+-(void)gotoLoginViewController{
+    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+    loginVC.delegate = self;
+    [self.navigationController pushViewController:loginVC animated:YES];
+}
+
+- (void)loginAccountSuccess{
     
 }
 
