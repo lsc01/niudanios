@@ -247,6 +247,13 @@
 }
 
 -(void)cellOrderDetailWithId:(NSString *)Id{
+    
+    NDMineOrderDetailViewController * vc = [[NDMineOrderDetailViewController alloc] init];
+    vc.modelId = Id;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    return;
+    
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:Id forKey:@"id"];
     
@@ -256,7 +263,7 @@
         NSArray * arrRows = responseObject[@"rows"];
         if (arrRows.count >0) {
             NSDictionary * dictT = arrRows.firstObject;
-           
+        
         }
         
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {

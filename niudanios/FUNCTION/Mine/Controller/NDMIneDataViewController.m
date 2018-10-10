@@ -148,7 +148,7 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
         NSArray * arrRows = responseObject[@"rows"];
         if (arrRows.count > 0) {
             NSDictionary * dict = arrRows.firstObject;
-            NDUserInfoModel * model = [NDUserInfoModel mj_objectWithKeyValues:dict];
+            NDUserInfoModel * model = [NDUserInfoModel mj_objectWithKeyValues:dict[@"tbCustomer"]];
             [HLLShareManager shareMannager].userModel = model;
             NSDictionary * dictT = [[HLLShareManager shareMannager].userModel mj_keyValues];
             NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];

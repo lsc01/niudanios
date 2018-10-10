@@ -27,7 +27,8 @@
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(12);
-        make.top.bottom.right.mas_equalTo(self);
+        make.right.mas_equalTo(-12);
+        make.top.bottom.mas_equalTo(self);
     }];
 }
 -(UICollectionView *)collectionView{
@@ -37,7 +38,7 @@
         //设置滑动方向（横向/纵向）UICollectionViewScrollDirectionHorizontal横向
         layout.scrollDirection =  UICollectionViewScrollDirectionHorizontal; //纵向
         //初始化网格视图，需要设置一个layout
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(12, 0, kScreenWidth-12, CELL_Height) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(12, 0, kScreenWidth-24, CELL_Height) collectionViewLayout:layout];
         _collectionView.delegate = self;//UICollectionViewDelegateFlowLayout
         _collectionView.dataSource = self;//UICollectionViewDataSource
         _collectionView.showsHorizontalScrollIndicator = NO;

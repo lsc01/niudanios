@@ -34,7 +34,7 @@
 -(void)postRequest{
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
-    [dictP setObject:self.model.Id forKey:@"id"];
+    [dictP setObject:self.modelId forKey:@"id"];
 //    [dictP setObject:@"260029793869096960" forKey:@"id"];
    
     [HLLHttpManager postWithURL:URL_detailOrder params:dictP success:^(NSDictionary *responseObject) {

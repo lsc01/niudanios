@@ -42,6 +42,7 @@ PODS:
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
   - SVProgressHUD (2.2.2)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - SDCycleScrollView (~> 1.75)
   - SDWebImage (~> 4.2.2)
   - SVProgressHUD (~> 2.2.2)
+  - "UITableView+FDTemplateLayoutCell (~> 1.6)"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -75,6 +77,7 @@ SPEC REPOS:
     - SDCycleScrollView
     - SDWebImage
     - SVProgressHUD
+    - "UITableView+FDTemplateLayoutCell"
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -89,7 +92,8 @@ SPEC CHECKSUMS:
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 10e23b9761ee8f3e87b1fbd9511a5b4fa88ba83c
+PODFILE CHECKSUM: ae3aa9e12704b25816a37007975e090300f949e2
 
 COCOAPODS: 1.6.0.beta.1

@@ -38,4 +38,39 @@
 @property (nonatomic ,copy) NSString * parentId;
 @property (nonatomic ,copy) NSString * headPortrait;
 
+@property (nonatomic ,copy) NSString * qqOpenid;
+@property (nonatomic ,copy) NSString * qqName;
+@property (nonatomic ,copy) NSString * qqAvatar;
+
+@property (nonatomic ,copy) NSString * wxOpenid;
+@property (nonatomic ,copy) NSString * wxName;
+@property (nonatomic ,copy) NSString * wxAvatar;
+
+/*
+ {
+ "msg": "登录成功",
+ "code": 0,
+ "tbCustomer": {
+ "flag": "1",
+ "loginPwd": "96e79218965eb72c92a549dd5a330112",
+ "qqAvatar": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3102390729,849681462&fm=27&gp=0.jpg",
+ "nickName": "小兵",
+ "wxOpenid": "wx123",
+ "sex": "",
+ "qqOpenid": "120",
+ "parentId": "",
+ "birthdayTime": "",
+ "money": 0,
+ "createTime": "2018-10-10 16:57:59",
+ "wxAvatar": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3102390729,849681462&fm=27&gp=0.jpg",
+ "id": "4666827481781467136",
+ "qqName": "墨迹",
+ "headPortrait": "123",
+ "wxName": "张三",
+ "loginMobile": "16620344002"
+ }
+ }
+ */
+
+
 @end

@@ -18,7 +18,7 @@ pod 'DZNEmptyDataSet', '~> 1.8.1' #无数据背景设置
 #pod 'ZFPlayer', '~> 2.1.5' #播放器
 #pod 'TZImagePickerController' #图片预览
 #pod 'CocoaSecurity', '~> 1.2.4'     
-
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
 # 主模块(必须)
 pod 'mob_sharesdk' #MOBFoundation (3.0.6) mob_sharesdk (4.0.4)
 

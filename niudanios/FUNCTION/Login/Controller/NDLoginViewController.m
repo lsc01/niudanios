@@ -67,7 +67,7 @@
             NSInteger code = [dictT[@"code"] integerValue];
             if (code == 0) {
                 [SVProgressHUD showToast:@"登录成功"];
-                NDUserInfoModel * userModel = [NDUserInfoModel mj_objectWithKeyValues:dictT];
+                NDUserInfoModel * userModel = [NDUserInfoModel mj_objectWithKeyValues:dictT[@"tbCustomer"]];
                 NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
                 [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
                 [HLLShareManager shareMannager].userModel = userModel;
