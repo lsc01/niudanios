@@ -284,6 +284,14 @@ typedef NS_ENUM(NSInteger,FilterType) {
 }
 
 - (IBAction)searchBtnClick:(UIButton *)sender {
+    if(self.textFieldSearch.text.length <1){
+        [SVProgressHUD showToast:@"请输入查询条件"];
+        return;
+    }
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
+    [dictP setObject:self.textFieldSearch.text forKey:@"machineName"];
+    [self postRequestWithDictP:dictP];
 }
 - (IBAction)kindBtnClick:(UIButton *)sender {
     
