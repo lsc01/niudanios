@@ -19,6 +19,7 @@
 
 @property (nonatomic ,strong) NSMutableArray * arrData;
 
+@property (nonatomic ,assign) NSInteger currPage;
 @end
 
 @implementation NDMineOrderViewController
@@ -27,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"我的订单";
-    
+    self.currPage = 1;
     [self setUI];
 }
 
@@ -36,8 +37,9 @@
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:@(10) forKey:@"rows"];
-    [dictP setObject:@(1) forKey:@"page"];
+    [dictP setObject:@(self.currPage) forKey:@"page"];
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
+    
     switch (selectTag) {
         case 1:
         {
@@ -62,14 +64,32 @@
     [HLLHttpManager postWithURL:URL_stotalOrder params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         NSArray * arrRows = responseObject[@"rows"];
-        self.arrData = nil;
+        if (self.currPage ==1) {
+            self.arrData = nil;
+        }
         for (NSDictionary * dict in arrRows) {
             NDMineOrderInfoModel * model = [NDMineOrderInfoModel mj_objectWithKeyValues:dict];
             [self.arrData addObject:model];
         }
+        if (arrRows.count <10) {//小于10个说明接下来没有更多数据了
+            if (arrRows.count ==0 && self.currPage == 1) {
+                [self.tableView.mj_footer endRefreshing];
+            }else{
+               [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+        }else{
+            [self.tableView.mj_footer endRefreshing];
+        }
+        [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
+        if (self.currPage != 1) {
+            self.currPage--;
+        }
+        [self.tableView.mj_footer endRefreshing];
+        [self.tableView reloadData];
     }];
 }
 
@@ -85,6 +105,12 @@
     WeakSelf();
     [view setSelectBtnStatusBlock:^(NSInteger tag) {
         StrongSelf();
+        strongself.arrData = nil;
+        [strongself.tableView reloadData];
+        if (tag != strongself.selectTag) {
+            strongself.currPage = 1;
+        }
+        [strongself.tableView.mj_footer resetNoMoreData];
         [strongself postRequest:tag];
     }];
     view.viewLine.hidden = YES;
@@ -115,6 +141,32 @@
         make.left.right.bottom.mas_equalTo(self.view);
         make.top.mas_equalTo(view.mas_bottom);
     }];
+    
+    
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
+
+    MJRefreshAutoNormalFooter * footer =  [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+    [footer setTitle:@"" forState:MJRefreshStateIdle];
+    self.tableView.mj_footer = footer;
+    
+   
+}
+
+-(void)loadMore
+{
+    if (self.arrData.count == 0) {
+        [self.tableView.mj_footer endRefreshing];
+        return;
+    }
+    self.currPage++;
+    [self postRequest:self.selectTag];
+}
+
+-(void)headerRefresh
+{
+    self.currPage = 1;
+    [self.tableView.mj_footer resetNoMoreData];
+    [self postRequest:self.selectTag];
 }
 
 #pragma mark - tableview
@@ -222,6 +274,8 @@
     [HLLHttpManager postWithURL:URL_deleteOrder params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showToast:@"删除成功"];
+        self.currPage = 1;
+        [self.tableView.mj_footer resetNoMoreData];
         [self postRequest:self.selectTag];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
@@ -232,10 +286,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NDMineOrderInfoModel * model = self.arrData[indexPath.section];
-    NDMineOrderDetailViewController * vc = [[NDMineOrderDetailViewController alloc] init];
-    vc.model = model;
-    [self.navigationController pushViewController:vc animated:YES];
+//    NDMineOrderInfoModel * model = self.arrData[indexPath.section];
+//    NDMineOrderDetailViewController * vc = [[NDMineOrderDetailViewController alloc] init];
+//    vc.model = model;
+//    [self.navigationController pushViewController:vc animated:YES];
     
     
 }
