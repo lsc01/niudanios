@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -72,6 +72,9 @@
                             <state key="normal" title="获取验证码">
                                 <color key="titleColor" red="0.11372549019607843" green="0.79607843137254897" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="disabled" title="60s后重试">
+                                <color key="titleColor" red="0.1137254902" green="0.79607843140000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <connections>
                                 <action selector="getCodeBtnClick:" destination="-1" eventType="touchUpInside" id="CxA-Eq-upM"/>
                             </connections>
@@ -99,14 +102,14 @@
                     <rect key="frame" x="12" y="112" width="351" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_phone" translatesAutoresizingMaskIntoConstraints="NO" id="q4i-dM-o06">
-                            <rect key="frame" x="20" y="10.5" width="24" height="24"/>
+                            <rect key="frame" x="20" y="10" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="8Sv-Vs-lZp"/>
                                 <constraint firstAttribute="height" constant="24" id="kvA-Nl-YK4"/>
                             </constraints>
                         </imageView>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="283-1J-cgT">
-                            <rect key="frame" x="64" y="7.5" width="267" height="30"/>
+                            <rect key="frame" x="64" y="7" width="267" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="NhP-3c-5z0"/>
                             </constraints>

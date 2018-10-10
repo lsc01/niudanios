@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelTips;
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
 
+@property (nonatomic ,strong) NSTimer * timer;
+@property (nonatomic ,assign) NSInteger secondsCoundDown;
+
 @end
 
 @implementation NDUpdatePhoneViewController
@@ -59,6 +62,11 @@
             NSInteger code = [dictT[@"code"] integerValue];
             if (code == 0) {
                 [SVProgressHUD showToast:@"验证码发送成功"];
+                if (self.timer == nil) {
+                    self.btnCode.enabled = NO;
+                    self.secondsCoundDown = 60;
+                    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(msmCodeGet) userInfo:nil repeats:YES];
+                }
             }else{
                 [SVProgressHUD showToast:dictT[@"msg"]];
             }
@@ -119,19 +127,25 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)msmCodeGet{
+    self.secondsCoundDown --;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setSecondsCoundDown:(NSInteger)secondsCoundDown{
+    _secondsCoundDown = secondsCoundDown;
+    if (_secondsCoundDown == 0) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.btnCode.enabled = YES;
+    }else{
+        [self.btnCode setTitle:[NSString stringWithFormat:@"%ds后重试",self.secondsCoundDown] forState:UIControlStateDisabled];
+    }
 }
-*/
 
+-(void)dealloc{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
 @end

@@ -19,7 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelRemind;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnRegister;
-
+@property (nonatomic ,strong) NSTimer * timer;
+@property (nonatomic ,assign) NSInteger secondsCoundDown;
 
 @end
 
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"注册";
+    self.labelRemind.hidden = YES;
     [self setNav];
     [self setUI];
 }
@@ -58,6 +60,7 @@
 }
 
 - (IBAction)registerClick:(id)sender {
+    self.labelRemind.hidden = YES;
     if (![HLLVerifyTools hllVerifyMobile:self.textFieldPhone.text]) {
         [SVProgressHUD showToast:@"手机号不正确"];
         return;
@@ -73,7 +76,8 @@
         return;
     }
     if(![self.textFieldPwd.text isEqualToString:self.textFieldPwdTow.text]){
-        [SVProgressHUD showToast:@"两次密码不一致"];
+//        [SVProgressHUD showToast:@"两次密码不一致"];
+        self.labelRemind.hidden = NO;
         return;
     }
     
@@ -101,6 +105,9 @@
     }];
 }
 
+
+
+
 - (IBAction)getCodeClick:(id)sender {
     if (![HLLVerifyTools hllVerifyMobile:self.textFieldPhone.text]) {
         [SVProgressHUD showToast:@"手机号不正确"];
@@ -118,6 +125,11 @@
             NSInteger code = [dictT[@"code"] integerValue];
             if (code == 0) {
                 [SVProgressHUD showToast:@"验证码发送成功"];
+                if (self.timer == nil) {
+                    self.btnGetCode.enabled = NO;
+                    self.secondsCoundDown = 60;
+                    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(msmCodeGet) userInfo:nil repeats:YES];
+                }
             }else{
                 [SVProgressHUD showToast:dictT[@"msg"]];
             }
@@ -127,5 +139,28 @@
         [SVProgressHUD dismiss];
     }];
     
+}
+
+
+-(void)msmCodeGet{
+    self.secondsCoundDown --;
+}
+
+-(void)setSecondsCoundDown:(NSInteger)secondsCoundDown{
+    _secondsCoundDown = secondsCoundDown;
+    if (_secondsCoundDown == 0) {
+        [self.timer invalidate];
+        self.timer = nil;
+       self.btnGetCode.enabled = YES;
+    }else{
+        [self.btnGetCode setTitle:[NSString stringWithFormat:@"%ds后重试",self.secondsCoundDown] forState:UIControlStateDisabled];
+    }
+}
+
+-(void)dealloc{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 @end

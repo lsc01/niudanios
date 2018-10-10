@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnGetCode;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSubmit;
+
+@property (nonatomic ,strong) NSTimer * timer;
+@property (nonatomic ,assign) NSInteger secondsCoundDown;
 @end
 
 @implementation NDForgetPwdViewController
@@ -102,6 +105,11 @@
             NSInteger code = [dictT[@"code"] integerValue];
             if (code == 0) {
                 [SVProgressHUD showToast:@"验证码发送成功"];
+                if (self.timer == nil) {
+                    self.btnGetCode.enabled = NO;
+                    self.secondsCoundDown = 60;
+                    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(msmCodeGet) userInfo:nil repeats:YES];
+                }
             }else{
                 [SVProgressHUD showToast:dictT[@"msg"]];
             }
@@ -111,6 +119,27 @@
         [SVProgressHUD dismiss];
     }];
     
+}
+-(void)msmCodeGet{
+    self.secondsCoundDown --;
+}
+
+-(void)setSecondsCoundDown:(NSInteger)secondsCoundDown{
+    _secondsCoundDown = secondsCoundDown;
+    if (_secondsCoundDown == 0) {
+        [self.timer invalidate];
+        self.timer = nil;
+        self.btnGetCode.enabled = YES;
+    }else{
+        [self.btnGetCode setTitle:[NSString stringWithFormat:@"%ds后重试",self.secondsCoundDown] forState:UIControlStateDisabled];
+    }
+}
+
+-(void)dealloc{
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
 }
 
 @end
