@@ -57,7 +57,7 @@
             if (code == 0) {
                 [SVProgressHUD showToast:@"验证码发送成功"];
                 if (self.timer == nil) {
-                    self.btnGetCode.enabled = NO;
+                    self.btnCode.enabled = NO;
                     self.secondsCoundDown = 60;
                     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(msmCodeGet) userInfo:nil repeats:YES];
                 }
@@ -120,9 +120,9 @@
     if (_secondsCoundDown == 0) {
         [self.timer invalidate];
         self.timer = nil;
-        self.btnGetCode.enabled = YES;
+        self.btnCode.enabled = YES;
     }else{
-        [self.btnGetCode setTitle:[NSString stringWithFormat:@"%ds后重试",self.secondsCoundDown] forState:UIControlStateDisabled];
+        [self.btnCode setTitle:[NSString stringWithFormat:@"%ds后重试",self.secondsCoundDown] forState:UIControlStateDisabled];
     }
 }
 
