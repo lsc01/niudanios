@@ -346,7 +346,7 @@
 //    [SVProgressHUD showToast:@"分享"];
     NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
     [self.navigationController pushViewController:loginVC animated:YES];
-    
+
     return;
 
     //1、创建分享参数

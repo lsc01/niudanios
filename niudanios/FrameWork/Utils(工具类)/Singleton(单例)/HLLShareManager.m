@@ -31,7 +31,8 @@ static HLLShareManager *share = nil;
             return nil;
         }
         NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        return [NDUserInfoModel mj_objectWithKeyValues:dict];
+        share.userModel = [NDUserInfoModel mj_objectWithKeyValues:dict[@"tbCustomer"]];
+        return share.userModel;
     }
 }
 
