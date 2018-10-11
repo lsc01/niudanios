@@ -9,5 +9,11 @@
 #import "NDBaseViewController.h"
 
 @interface NDBindPhoneViewController : NDBaseViewController
+@property (nonatomic ,copy) NSString * openId;
+
+@property (nonatomic ,copy) NSString * status;
+@property (nonatomic ,copy) NSString * name;
+@property (nonatomic ,copy) NSString * avatar;
 
 @end
+

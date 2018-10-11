@@ -36,6 +36,12 @@
 ///查询用户信息
 #define URL_findCustomerInfo HTTP(@"app/customer/one.mvc")
 
+
+///app第三方登陆登陆 请求用户信息
+#define URL_thirdParty HTTP(@"app/customer/thirdParty.mvc")
+///openid和机型绑定手机号
+#define URL_bundlingPhone HTTP(@"app/customer/bundling.mvc")
+
 #pragma mark - 首页
 ///首页轮播
 #define URL_Banner HTTP(@"app/commonImage/Rotation.mvc")
