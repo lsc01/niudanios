@@ -8,7 +8,7 @@
 
 #import "NDAccountPayViewController.h"
 #import "UIButton+BackgroundColor.h"
-@interface NDAccountPayViewController ()
+@interface NDAccountPayViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btnPay1;
 @property (weak, nonatomic) IBOutlet UIButton *btnPay2;
@@ -43,7 +43,7 @@
 
 
 -(void)setUI{
-    
+    self.textFieldPay.delegate = self;
     self.btnCurrPayType = self.btnSelectPayAli;
     self.btnSelectPayAli.enabled = NO;
     
@@ -146,6 +146,96 @@
 }
 
 - (IBAction)submitPayClick:(UIButton *)sender {
+    [self.view endEditing:YES];
+    if([self.textFieldPay.text isEqualToString:@"0"]){
+        ///取上面选中的按钮
+        NSInteger money = 300;
+        if (self.btnCurrPay == self.btnPay1) {
+            money = 300;
+        }else if (self.btnCurrPay == self.btnPay2){
+            money = 200;
+        }else if (self.btnCurrPay == self.btnPay3){
+            money = 150;
+        }else if (self.btnCurrPay == self.btnPay4){
+            money = 100;
+        }else if (self.btnCurrPay == self.btnPay5){
+            money = 50;
+        }else if (self.btnCurrPay == self.btnPay6){
+            money = 20;
+        }
+         [self payBeginWithMoney:money];
+    }else{//自定义输入
+        NSString *temp = nil;
+        NSInteger lengthT = -1;
+        
+        for (NSInteger i = 0; i<[self.textFieldPay.text length] ;i++) {
+            temp = [self.textFieldPay.text substringWithRange:NSMakeRange(i, 1)];
+            if (![temp isEqualToString:@"0"]) {
+                lengthT = i;
+                break;
+            }
+        }
+        if (lengthT == -1) {
+            ///全是0，取上面选中的按钮
+            NSInteger money = 300;
+            if (self.btnCurrPay == self.btnPay1) {
+                money = 300;
+            }else if (self.btnCurrPay == self.btnPay2){
+                money = 200;
+            }else if (self.btnCurrPay == self.btnPay3){
+                money = 150;
+            }else if (self.btnCurrPay == self.btnPay4){
+                money = 100;
+            }else if (self.btnCurrPay == self.btnPay5){
+                money = 50;
+            }else if (self.btnCurrPay == self.btnPay6){
+                money = 20;
+            }
+            [self payBeginWithMoney:money];
+        }else{
+            self.textFieldPay.text = [self.textFieldPay.text substringFromIndex:lengthT];
+            if (self.textFieldPay.text.length > 10) {
+                [SVProgressHUD showToast:@"充值金额过大"];
+                return;
+            }
+            [self payBeginWithMoney:[self.textFieldPay.text integerValue]];
+        }
+    }
+}
+
+
+-(void)payBeginWithMoney:(NSInteger)money{
+    if (self.btnCurrPayType == self.btnSelectPayAli) {
+        [SVProgressHUD showToast:[NSString stringWithFormat:@"支付宝支付-%d元",money]];
+    }else if (self.btnCurrPayType == self.btnSelectPayWechat){
+        [SVProgressHUD showToast:[NSString stringWithFormat:@"微信支付-%d元",money]];
+    }
+    
+}
+
+#pragma mark - UItextFieldDeleaget
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField.text.length == 0) {
+        textField.text = @"0";
+    }else if (textField.text.length > 1000){
+        textField.text = @"0";
+    }
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSLog(@"%ld,%lu---%@--%@",range.length,(unsigned long)range.location,textField.text,string);
+   if(textField == self.textFieldPay){
+       //限制只能输数字
+       NSString * numString = @"0123456789";
+       if (![numString containsString:string]) {
+           return NO;
+       }
+    }
+    return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+   textField.text = @"";
 }
 
 
