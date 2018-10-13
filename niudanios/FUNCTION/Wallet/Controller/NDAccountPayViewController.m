@@ -8,6 +8,7 @@
 
 #import "NDAccountPayViewController.h"
 #import "UIButton+BackgroundColor.h"
+#import "NDPayManager.h"
 @interface NDAccountPayViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btnPay1;
@@ -206,9 +207,11 @@
 
 -(void)payBeginWithMoney:(NSInteger)money{
     if (self.btnCurrPayType == self.btnSelectPayAli) {
-        [SVProgressHUD showToast:[NSString stringWithFormat:@"支付宝支付-%d元",money]];
+//        [SVProgressHUD showToast:[NSString stringWithFormat:@"支付宝支付-%d元",money]];
+        [NDPayManager aliPayWithMoney:1];
     }else if (self.btnCurrPayType == self.btnSelectPayWechat){
-        [SVProgressHUD showToast:[NSString stringWithFormat:@"微信支付-%d元",money]];
+//        [SVProgressHUD showToast:[NSString stringWithFormat:@"微信支付-%d元",money]];
+        [NDPayManager weixinPayWithMoney:1];
     }
     
 }

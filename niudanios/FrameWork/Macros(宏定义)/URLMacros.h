@@ -149,6 +149,14 @@
 #pragma mark 钱包
 ///查询消费记录
 #define URL_queryConsume HTTP(@"app/customerDetail/queryConsume.mvc")
+///支付宝充值下单
+#define URL_alipay HTTP(@"app/zfb/pay.mvc")
+///微信充值下单
+#define URL_wxpay HTTP(@"app/wx/pay.mvc")
+///支付宝支付同步回调
+#define URL_payQueryzfb HTTP(@"app/zfb/payQuery.mvc")
+///微信充值同步回调
+#define URL_payQuerywx HTTP(@"app/wx/payQuery.mvc")
 
 ///关于我们
 #define URL_cqueryAboutUs HTTP(@"app/expressCost/queryAboutUs.mvc")
