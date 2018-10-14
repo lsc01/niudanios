@@ -395,6 +395,7 @@
 		41FF5286215BE565002BA837 /* NDNiudanKindFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF5285215BE565002BA837 /* NDNiudanKindFilterModel.m */; };
 		41FF5289215BE57A002BA837 /* NDNiudanPriceFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF5288215BE57A002BA837 /* NDNiudanPriceFilterModel.m */; };
 		41FF528C215BE5E6002BA837 /* NDNiudanSortFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41FF528B215BE5E6002BA837 /* NDNiudanSortFilterModel.m */; };
+		4EA81CCF217339BA0026F12C /* NDBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EA81CCE217339BA0026F12C /* NDBaseWebViewController.m */; };
 		A94DFA5EA5A7F199B9A4FE09 /* libPods-niudanios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */; };
 /* End PBXBuildFile section */
 
@@ -1177,6 +1178,8 @@
 		41FF5288215BE57A002BA837 /* NDNiudanPriceFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanPriceFilterModel.m; sourceTree = "<group>"; };
 		41FF528A215BE5E5002BA837 /* NDNiudanSortFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDNiudanSortFilterModel.h; sourceTree = "<group>"; };
 		41FF528B215BE5E6002BA837 /* NDNiudanSortFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDNiudanSortFilterModel.m; sourceTree = "<group>"; };
+		4EA81CCD217339BA0026F12C /* NDBaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDBaseWebViewController.h; sourceTree = "<group>"; };
+		4EA81CCE217339BA0026F12C /* NDBaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDBaseWebViewController.m; sourceTree = "<group>"; };
 		6BE9B46B95753F0ABE41725E /* libPods-niudanios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-niudanios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-niudanios.release.xcconfig"; path = "Target Support Files/Pods-niudanios/Pods-niudanios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1534,6 +1537,8 @@
 				41E34192212E302700F19371 /* NDBaseTabBarController.m */,
 				41E34194212E303F00F19371 /* NDBaseViewController.h */,
 				41E34195212E303F00F19371 /* NDBaseViewController.m */,
+				4EA81CCD217339BA0026F12C /* NDBaseWebViewController.h */,
+				4EA81CCE217339BA0026F12C /* NDBaseWebViewController.m */,
 			);
 			path = MAIN;
 			sourceTree = "<group>";
@@ -3420,6 +3425,7 @@
 				41E3441A212EFEED00F19371 /* UINavigationBar+Awesome.m in Sources */,
 				41AEAC4521344706003FE10B /* NDHomeHeadView.m in Sources */,
 				41E343DE212EFEED00F19371 /* NSMutableURLRequest+Upload.m in Sources */,
+				4EA81CCF217339BA0026F12C /* NDBaseWebViewController.m in Sources */,
 				41E343B0212EFEED00F19371 /* NSData+SDDataCache.m in Sources */,
 				41E3446A212EFEEE00F19371 /* MLSelectPhotoPickerGroupTableViewCell.m in Sources */,
 				41E34469212EFEEE00F19371 /* MLSelectPhotoPickerFooterCollectionReusableView.m in Sources */,
