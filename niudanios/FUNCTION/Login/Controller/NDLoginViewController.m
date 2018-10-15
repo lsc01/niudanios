@@ -101,6 +101,9 @@
     
 }
 - (IBAction)wechatLoginClick:(id)sender {
+    if ([ShareSDK hasAuthorized:SSDKPlatformTypeWechat]) {
+        [ShareSDK cancelAuthorize:SSDKPlatformTypeWechat];
+    }
     [ShareSDK getUserInfo:SSDKPlatformTypeWechat
            onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
      {
@@ -123,6 +126,11 @@
     
 }
 - (IBAction)qqLoginClick:(id)sender {
+    
+    if ([ShareSDK hasAuthorized:SSDKPlatformTypeQQ]) {
+        [ShareSDK cancelAuthorize:SSDKPlatformTypeQQ];
+    }
+    
     [ShareSDK getUserInfo:SSDKPlatformTypeQQ
            onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
      {

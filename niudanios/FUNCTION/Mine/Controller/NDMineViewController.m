@@ -344,10 +344,10 @@
 -(void)navRightBtnClick{
     
 //    [SVProgressHUD showToast:@"分享"];
-    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
-    [self.navigationController pushViewController:loginVC animated:YES];
-
-    return;
+//    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+//    [self.navigationController pushViewController:loginVC animated:YES];
+//
+//    return;
 
     //1、创建分享参数
     NSArray* imageArray = @[[UIImage imageNamed:@"bg_a.png"]];
@@ -363,10 +363,10 @@
             //2、分享（可以弹出我们的分享菜单和编辑界面）
             [ShareSDK showShareActionSheet:nil
                                      items:@[
-                                             @(SSDKPlatformTypeSinaWeibo),
                                              @(SSDKPlatformSubTypeWechatSession),
                                              @(SSDKPlatformSubTypeWechatTimeline),
-                                             @(SSDKPlatformSubTypeQQFriend)
+                                             @(SSDKPlatformSubTypeQQFriend),
+                                             @(SSDKPlatformSubTypeQZone)
                                              ]
                                shareParams:shareParams
                        onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
