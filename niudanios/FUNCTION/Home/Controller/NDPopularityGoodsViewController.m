@@ -9,7 +9,7 @@
 #import "NDPopularityGoodsViewController.h"
 #import "NDNiudanGoodsCell.h"
 #import "NDGoodsInfoModel.h"
-
+#import "NDBaseWebViewController.h"
 #define Cell_Width (338.0/750*kScreenWidth)
 #define CELL_Height ((255.0/168)*Cell_Width)
 #define Cell_Spacing (kScreenWidth - 2*Cell_Width)/3.0
@@ -167,7 +167,10 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+    webVC.urlString = @"https://www.baidu.com";
+    webVC.title = @"最新商品";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 

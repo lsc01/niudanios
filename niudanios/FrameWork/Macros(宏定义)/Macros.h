@@ -15,7 +15,7 @@
 
 #else
 #define NSLog(...) 
-
+#define HLLLog(...)
 #endif
 
 //判断是否是iPhoneX

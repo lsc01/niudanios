@@ -11,6 +11,7 @@
 #import "NDOrderDetailTableViewCell.h"
 #import "NDLogisticsDetailViewController.h"
 #import "NDOrderDetailInfoModel.h"
+#import "NDGoodsDetailViewController.h"
 @interface NDMineOrderDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDMineOrderDetailView * headerView;
@@ -121,8 +122,12 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-   
+    NDGoodsDetailViewController * vc = [[NDGoodsDetailViewController alloc] init];
+    vc.orderId = self.modelInfo.Id;
+
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
 
 
 

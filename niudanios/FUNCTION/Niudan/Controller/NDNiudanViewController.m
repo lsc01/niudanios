@@ -12,7 +12,7 @@
 #import "NDNiudanKindFilterModel.h"
 #import "NDNiudanPriceFilterModel.h"
 #import "NDNiudanSortFilterModel.h"
-
+#import "NDBaseWebViewController.h"
 
 typedef NS_ENUM(NSInteger,FilterType) {
     Filter_Nomal = 0,
@@ -265,7 +265,10 @@ typedef NS_ENUM(NSInteger,FilterType) {
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+    webVC.urlString = @"https://www.baidu.com";
+    webVC.title = @"最新商品";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 

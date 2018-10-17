@@ -9,6 +9,7 @@
 #import "NDLogisticsDetailViewController.h"
 #import "NDLogisticsDetailTableViewCell.h"
 #import "NDLogisticsDetailHeadView.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 @interface NDLogisticsDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -78,8 +79,26 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [tableView fd_heightForCellWithIdentifier:@"NDLogisticsDetailTableViewCell" cacheByIndexPath:indexPath configuration:^(NDLogisticsDetailTableViewCell * cell) {
+        NDLogisticsInfoModel * model = self.arrData[indexPath.row];
+        if (indexPath.row == 0) {
+            cell.viewLineTop.hidden = YES;
+            cell.viewLineBottom.hidden = NO;
+            cell.labelDes.textColor = HEXCOLOR(0x1dcb7c);
+        }else if (indexPath.row == self.arrData.count-1){
+            cell.viewLineTop.hidden = NO;
+            cell.viewLineBottom.hidden = YES;
+            cell.labelDes.textColor = HEXCOLOR(0x666666);
+        }else{
+            cell.viewLineTop.hidden = NO;
+            cell.viewLineBottom.hidden = NO;
+            cell.labelDes.textColor = HEXCOLOR(0x666666);
+        }
+        cell.labelTime.text = model.time;
+        cell.labelDes.text = model.context;
+    }];
     
-    return 68.0f;
+//    return 68.0f;
     
 }
 
@@ -98,9 +117,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NDLogisticsInfoModel * model = self.arrData[indexPath.row];
     NDLogisticsDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDLogisticsDetailTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NDLogisticsInfoModel * model = self.arrData[indexPath.row];
     if (indexPath.row == 0) {
         cell.viewLineTop.hidden = YES;
         cell.viewLineBottom.hidden = NO;

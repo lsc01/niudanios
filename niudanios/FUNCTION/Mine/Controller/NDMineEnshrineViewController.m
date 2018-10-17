@@ -10,6 +10,7 @@
 #import "NDMineEnshrineTableViewCell.h"
 #import "NDMineEnshrineInfoModel.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "NDBaseWebViewController.h"
 @interface NDMineEnshrineViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -123,6 +124,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+    webVC.urlString = @"https://www.baidu.com";
+    webVC.title = @"我的收藏";
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 #pragma mark - 空白页
