@@ -22,7 +22,7 @@
 #import "NDAboutViewController.h"
 #import "NDMineAddressViewController.h"
 #import "ShareSdkHeader.h"
-
+#import "SAMKeychain.h"
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
 @interface NDMineViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -45,6 +45,7 @@
     self.fd_prefersNavigationBarHidden = YES;//隐藏导航栏
     self.title = @"个人中心";
     [self setUI];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -55,10 +56,40 @@
         }];
       
         self.labelName.text = [HLLShareManager shareMannager].userModel.nickName;
+        ///每次回来都同步一下服务器信息，不过要下次显示才生效
+        [self findCustomerInfo];
+        
     }else{
         self.imageHead.image = [UIImage imageNamed:@"head_placehold"];
         self.labelName.text = @"未登录";
     }
+}
+    
+    
+-(void)findCustomerInfo{
+    
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"id"];
+    [HLLHttpManager postWithURL:URL_findCustomerInfo params:dictP success:^(NSDictionary *responseObject) {
+       
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count > 0) {
+            NSDictionary * dict = arrRows.firstObject;
+            NDUserInfoModel * model = [NDUserInfoModel mj_objectWithKeyValues:dict[@"tbCustomer"]];
+            
+            NSDictionary * dictT = [[HLLShareManager shareMannager].userModel mj_keyValues];
+            NSDictionary * dictT2 = [model mj_keyValues];
+            if (dictT != dictT2) {
+                [HLLShareManager shareMannager].userModel = model;
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT2 options:0 error:nil];
+                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+            }
+            
+        }
+       
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        
+    }];
 }
 
 -(void)setUI{
@@ -341,65 +372,75 @@
     [self.navigationController pushViewController:settingVC animated:YES];
     
 }
+   
+    
 -(void)navRightBtnClick{
-    
-//    [SVProgressHUD showToast:@"分享"];
-//    NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
-//    [self.navigationController pushViewController:loginVC animated:YES];
-//
-//    return;
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_ShareContent params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count > 0) {
+            NSDictionary * dict = arrRows.firstObject;
+            [self shareWithDict:dict];
+        }
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"操作失败"];
+    }];
 
+    
+    
+}
+    
+-(void)shareWithDict:(NSDictionary *)dictShare{
     //1、创建分享参数
-    NSArray* imageArray = @[[UIImage imageNamed:@"bg_a.png"]];
-    if (imageArray) {
-        
-        NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        [shareParams SSDKSetupShareParamsByText:@"分享内容"
-                                         images:imageArray
-                                            url:[NSURL URLWithString:@"http://mob.com"]
-                                          title:@"分享标题"
-                                           type:SSDKContentTypeAuto];
     
-            //2、分享（可以弹出我们的分享菜单和编辑界面）
-            [ShareSDK showShareActionSheet:nil
-                                     items:@[
-                                             @(SSDKPlatformSubTypeWechatSession),
-                                             @(SSDKPlatformSubTypeWechatTimeline),
-                                             @(SSDKPlatformSubTypeQQFriend),
-                                             @(SSDKPlatformSubTypeQZone)
-                                             ]
-                               shareParams:shareParams
-                       onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    [shareParams SSDKSetupShareParamsByText:@""
+                                     images:[UIImage imageNamed:@"bg_nrd"]
+                                        url:[NSURL URLWithString:dictShare[@"address"]]
+                                      title:dictShare[@"title"]
+                                       type:SSDKContentTypeAuto];
+    
+    //2、分享（可以弹出我们的分享菜单和编辑界面）
+    [ShareSDK showShareActionSheet:nil
+                             items:@[
+                                     @(SSDKPlatformSubTypeWechatSession),
+                                     @(SSDKPlatformSubTypeWechatTimeline),
+                                     @(SSDKPlatformSubTypeQQFriend),
+                                     @(SSDKPlatformSubTypeQZone)
+                                     ]
+                       shareParams:shareParams
+               onShareStateChanged:^(SSDKResponseState state, SSDKPlatformType platformType, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error, BOOL end) {
+                   
+                   switch (state) {
+                       case SSDKResponseStateSuccess:
+                       {
+                           UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                               message:nil
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"确定"
+                                                                     otherButtonTitles:nil];
+                           [alertView show];
                            
-                           switch (state) {
-                               case SSDKResponseStateSuccess:
-                               {
-                                   UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-                                                                                       message:nil
-                                                                                      delegate:nil
-                                                                             cancelButtonTitle:@"确定"
-                                                                             otherButtonTitles:nil];
-                                   [alertView show];
-                                   
-                               }
-                                   break;
-                               case SSDKResponseStateFail:
-                               {
-                                   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
-                                                                                   message:[NSString stringWithFormat:@"%@",error]
-                                                                                  delegate:nil
-                                                                         cancelButtonTitle:@"OK"
-                                                                         otherButtonTitles:nil, nil];
-                                   [alert show];
-                                   
-                               }
-                                   break;
-                               default:
-                                   break;
-                           }
-                }];
-
-    }
+                       }
+                       break;
+                       case SSDKResponseStateFail:
+                       {
+                           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                           message:[NSString stringWithFormat:@"%@",error]
+                                                                          delegate:nil
+                                                                 cancelButtonTitle:@"OK"
+                                                                 otherButtonTitles:nil, nil];
+                           [alert show];
+                           
+                       }
+                       break;
+                       default:
+                       break;
+                   }
+               }];
+    
 }
 
 

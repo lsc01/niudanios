@@ -17,7 +17,10 @@
 
 @implementation NDHomeGoodsCell
 
-
+-(void)setArrCellModel:(NSArray *)arrCellModel{
+    _arrCellModel = arrCellModel;
+    [self.collectionView reloadData];
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -60,7 +63,7 @@
 
 //设置每个分组里cell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5;
+    return self.arrCellModel.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -70,6 +73,10 @@
     
     cell.layer.cornerRadius = 4;
     cell.layer.masksToBounds = YES;
+    
+    NDGoodsInfoModel * model = self.arrCellModel[indexPath.row];
+    
+    cell.model = model;
     return cell;
 }
 

@@ -55,7 +55,7 @@
         config.userContentController = [[WKUserContentController alloc] init];
         // 注入JS对象名称AppModel，当JS通过AppModel来调用时，
         // 我们可以在WKScriptMessageHandler代理中接收到
-        [config.userContentController addScriptMessageHandler:self name:@"AppModel"];
+//        [config.userContentController addScriptMessageHandler:self name:@"AppModel"];
         
         _webConfig = config;
     }
@@ -69,6 +69,7 @@
         _progressView = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleBar];
         _progressView.tintColor = HEXCOLOR(0x1997eb);
         _progressView.trackTintColor = HEXCOLOR(0xF1F1F1);
+        _progressView.hidden = YES;
     }
     return _progressView;
 }

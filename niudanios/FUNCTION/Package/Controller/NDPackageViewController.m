@@ -41,7 +41,7 @@
     self.viewBottomTool.hidden = YES;
     [self setUI];
     [SVProgressHUD show];
-    [self postQueryPostage];
+//    [self postQueryPostage];
 }
 
 -(void)postQueryPostage{
@@ -69,18 +69,26 @@
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     [HLLHttpManager postWithURL:URL_queryBackpack params:dictP success:^(NSDictionary *responseObject) {
         NSArray * arrRows = responseObject[@"rows"];
-        self.arrData = nil;
-        self.arrID = nil;
-        for (NSDictionary * dict in arrRows) {
-            NDPackageGoodsModel * model = [NDPackageGoodsModel mj_objectWithKeyValues:dict];
-            [self.arrData addObject:model];
+        if (arrRows.count > 0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSArray * arrlistBackpack = dictT[@"listBackpack"];
+            self.arrData = nil;
+            self.arrID = nil;
+            for (NSDictionary * dict in arrlistBackpack) {
+                NDPackageGoodsModel * model = [NDPackageGoodsModel mj_objectWithKeyValues:dict];
+                [self.arrData addObject:model];
+            }
+            [self.tableView reloadData];
+            if (self.arrData.count>0) {
+                self.viewBottomTool.hidden = NO;
+                NSNumber * count = dictT[@"number"];
+                self.labelDes.text = [NSString stringWithFormat:@"满%@件包邮",count];
+            }else{
+                self.viewBottomTool.hidden = YES;
+            }
+            
         }
-        [self.tableView reloadData];
-        if (self.arrData.count>0) {
-            self.viewBottomTool.hidden = NO;
-        }else{
-            self.viewBottomTool.hidden = YES;
-        }
+        
         [SVProgressHUD dismiss];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];

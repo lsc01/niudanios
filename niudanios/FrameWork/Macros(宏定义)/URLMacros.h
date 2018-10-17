@@ -57,6 +57,9 @@
 #define URL_newGoodsDetail HTTP(@"app/gashaponMachine/queryBycustomerIdNew.mvc")
 ///人气商品展开
 #define URL_HumanGoodsDetail HTTP(@"app/gashaponMachine/queryBycustomerIdHuman.mvc")
+///首页的所有数据
+#define URL_homeAllData HTTP(@"app/home/coalition.mvc")
+
 
 
 #pragma mark - 扭蛋
@@ -70,8 +73,8 @@
 #define URL_qmoneyCompare HTTP(@"app/moneyCompare/list.mvc")
 ///扭蛋机分类
 #define URL_classify HTTP(@"app/classify/list.mvc")
-
-
+///扭蛋机分类+扭蛋机金额条件接口合并
+#define URL_classifycoalition HTTP(@"app/classify/coalition.mvc")
 
 #pragma mark - 背包
 ///背包信息查询
@@ -121,9 +124,9 @@
 
 #pragma mark 奖励金相关
 ///奖励金查询
-#define URL_queryBounty HTTP(@"app/Horation/queryBounty.mvc")
+#define URL_queryBounty HTTP(@"app/horation/queryBounty.mvc")
 ///领取奖励金
-#define URL_receiveHortation HTTP(@"app/Horation/receiveHortation.mvc")
+#define URL_receiveHortation HTTP(@"app/horation/receiveHortation.mvc")
 ///我的下线
 #define URL_rqueryHeeler HTTP(@"app/customer/queryHeeler.mvc")
 
@@ -163,6 +166,11 @@
 
 ///客服电话
 #define URL_customPhone HTTP(@"app/expressCost/customPhone.mvc")
+
+///分享
+#define URL_ShareContent HTTP(@"app/expressCost/sharing.mvc")
+
+
 
 #define ImageUrl(x) ([(x) hasPrefix:@"https"]||[(x) hasPrefix:@"http"])?(x):(HTTP(x))
 #endif /* URLMacros_h */

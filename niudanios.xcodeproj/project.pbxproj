@@ -3630,7 +3630,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5W52S85U9Q;
+				DEVELOPMENT_TEAM = FUH3LBSK84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/niudanios/FrameWork/PayTools/AliPay",
@@ -3661,7 +3661,7 @@
 					"$(PROJECT_DIR)/niudanios/FrameWork/PayTools/AliPay",
 					"$(PROJECT_DIR)/niudanios/FrameWork/OpenSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3673,7 +3673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5W52S85U9Q;
+				DEVELOPMENT_TEAM = FUH3LBSK84;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/niudanios/FrameWork/PayTools/AliPay",
@@ -3704,7 +3704,7 @@
 					"$(PROJECT_DIR)/niudanios/FrameWork/PayTools/AliPay",
 					"$(PROJECT_DIR)/niudanios/FrameWork/OpenSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

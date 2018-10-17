@@ -32,9 +32,9 @@ typedef NS_ENUM(NSInteger,FilterType) {
 @property (nonatomic ,copy) NSString * sortIdCurr;
 @property (nonatomic ,strong) NSMutableArray * arrFilterCurr;
 @property (nonatomic ,strong) NSArray * arrSortFilter;
-
+@property (nonatomic ,strong) NSDictionary * dictSortFilter;
+    
 @property (nonatomic ,strong) UICollectionView * collectionView;
-
 
 @property (weak, nonatomic) IBOutlet UIView *viewSearchFieldBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldSearch;
@@ -49,6 +49,9 @@ typedef NS_ENUM(NSInteger,FilterType) {
 @property (weak, nonatomic) IBOutlet UIView *viewFilterBar;
 
 @property (nonatomic ,strong) NSMutableArray * arrData;
+    
+    
+    
 @end
 
 @implementation NDNiudanViewController
@@ -89,6 +92,9 @@ typedef NS_ENUM(NSInteger,FilterType) {
         [SVProgressHUD dismiss];
     }];
 }
+    
+    
+    
 
 -(void)setUI{
     self.viewSearchFieldBg.layer.cornerRadius = 4;
@@ -293,7 +299,99 @@ typedef NS_ENUM(NSInteger,FilterType) {
     [dictP setObject:self.textFieldSearch.text forKey:@"machineName"];
     [self postRequestWithDictP:dictP];
 }
+    
+    
+    ///查询条件 type== 1 种类查询  type==2 金额条件
+-(void)findKindConditionWithType:(NSInteger)type{
+    FilterType filterType = 0;
+    if (type == 1) {
+        filterType = Filter_Kind;
+    }else if (type == 2){
+        filterType = Filter_Price;
+    }
+    
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_classifycoalition params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        [self.view bringSubviewToFront:self.filterView];
+        self.filterView.hidden = NO;
+        self.filterType = filterType;
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count>0) {
+            NSDictionary * dictT = arrRows.firstObject;
+            NSArray * arrListClass = dictT[@"listClass"];
+            NSArray * arrListMoneyCompare = dictT[@"listMoneyCompare"];
+            self.arrFilterCurr = nil;
+            NSMutableArray * arrTemp1 = [NSMutableArray array];
+            NSMutableArray * arrTempModel1 = [NSMutableArray array];
+            for (NSDictionary * dict in arrListClass) {
+                NDNiudanKindFilterModel * model = [NDNiudanKindFilterModel mj_objectWithKeyValues:dict];
+                if (type == 1) {
+                    [self.arrFilterCurr addObject:model];
+                }
+                 [arrTempModel1 addObject:model];
+                NDNiudanFilterModel * modelTemp = [[NDNiudanFilterModel alloc] init];
+                modelTemp.textValue = model.classifyName;
+                if ([model.Id isEqualToString:self.kindIdCurr]) {
+                    modelTemp.textColor = HEXCOLOR(kBaseColor);
+                }else{
+                    modelTemp.textColor = HEXCOLOR(0x222222);
+                }
+                
+                [arrTemp1 addObject:modelTemp];
+            }
+            if (type == 1) {
+                self.filterView.arrayModel = arrTemp1;
+            }
+            
+            NSMutableArray * arrTemp2 = [NSMutableArray array];
+            NSMutableArray * arrTempModel2 = [NSMutableArray array];
+            for (NSDictionary * dict in arrListMoneyCompare) {
+                NDNiudanPriceFilterModel * model = [NDNiudanPriceFilterModel mj_objectWithKeyValues:dict];
+                if (type == 2) {
+                    [self.arrFilterCurr addObject:model];
+                }
+                [arrTempModel2 addObject:model];
+                NDNiudanFilterModel * modelTemp = [[NDNiudanFilterModel alloc] init];
+                modelTemp.textValue = model.name;
+                if ([model.Id isEqualToString:self.kindIdCurr]) {
+                    modelTemp.textColor = HEXCOLOR(kBaseColor);
+                }else{
+                    modelTemp.textColor = HEXCOLOR(0x222222);
+                }
+                
+                [arrTemp2 addObject:modelTemp];
+            }
+            if (type == 2) {
+                self.filterView.arrayModel = arrTemp2;
+            }
+            
+            self.dictSortFilter = @{@"listClass":@{@"model":arrTempModel1,@"show":arrTemp1},
+                                @"listMoneyCompare":@{@"model":arrTempModel2,@"show":arrTemp2}};
+        }
+        
+        
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"获取失败,请重试"];
+    }];
+}
+    
+    
 - (IBAction)kindBtnClick:(UIButton *)sender {
+    if (self.dictSortFilter) {
+        [self.view bringSubviewToFront:self.filterView];
+        self.filterView.hidden = NO;
+        self.filterType = Filter_Kind;
+        NSDictionary * dictData = self.dictSortFilter[@"listClass"];
+        self.arrFilterCurr = [NSMutableArray arrayWithArray:dictData[@"model"]];
+        self.filterView.arrayModel = dictData[@"show"];
+    }else{
+        [self findKindConditionWithType:1];
+    }
+    
+    return;
     
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_classify params:nil success:^(NSDictionary *responseObject) {
@@ -326,6 +424,20 @@ typedef NS_ENUM(NSInteger,FilterType) {
     
 }
 - (IBAction)priceBtnClick:(UIButton *)sender {
+    
+    if (self.dictSortFilter) {
+        [self.view bringSubviewToFront:self.filterView];
+        self.filterView.hidden = NO;
+        self.filterType = Filter_Price;
+        NSDictionary * dictData = self.dictSortFilter[@"listMoneyCompare"];
+        self.arrFilterCurr = [NSMutableArray arrayWithArray:dictData[@"model"]];
+        self.filterView.arrayModel = dictData[@"show"];
+    }else{
+        [self findKindConditionWithType:2];
+    }
+    
+    return;
+    
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_qmoneyCompare params:nil success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

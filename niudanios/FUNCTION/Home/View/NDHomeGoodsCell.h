@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface NDHomeGoodsCell : UITableViewCell
+    
+    
+    @property (nonatomic ,strong) NSArray * arrCellModel;
 @property (nonatomic ,copy) void(^selectItemBlock)(NSInteger index);
 -(void)setSelectItemBlock:(void (^)(NSInteger index))selectItemBlock;
 @end

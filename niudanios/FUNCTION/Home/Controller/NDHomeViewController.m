@@ -17,6 +17,10 @@
 #import "SYQRCodeViewController.h"
 #import "NDHomeBannerModel.h"
 #import "NDHomeNewMessageModel.h"
+#import "NDGoodsInfoModel.h"
+#import "NDBaseWebViewController.h"
+
+
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
@@ -25,9 +29,18 @@
 
 @property (nonatomic ,strong) NSArray * arrBannerModel;
 @property (nonatomic ,strong) NSArray * arrNewMsgModel;
+    
+///最新商品
+@property (nonatomic ,strong) NSArray * arrHomeNewModel;
+///猜你喜欢
+@property (nonatomic ,strong) NSArray * arrHomeLikeModel;
+///最新商品
+@property (nonatomic ,strong) NSArray * arrHomePeopleModel;
 
 ///当前点击的是哪个，用来验证登录 0 最新商品  1人气商品
 @property (nonatomic ,assign) NSInteger selectIndex;
+    
+
 
 @end
 
@@ -39,8 +52,11 @@
     
     [self setNav];
     [self setUI];
-    [self performSelector:@selector(httpGetInfoRequest) withObject:nil afterDelay:0.5];
+//    [self performSelector:@selector(httpGetInfoRequest) withObject:nil afterDelay:0.5];
+    [SVProgressHUD show];
+    [self postGetAllRequest];
 }
+    
 
 
 -(void)setNav{
@@ -54,9 +70,14 @@
 
 -(void)scanBtnClick{
     SYQRCodeViewController *QRVC = [SYQRCodeViewController new];
+    WeakSelf();
     [QRVC setSYQRCodeSuncessBlock:^(SYQRCodeViewController *vc, NSString *qrString) {
-        [self.navigationController popViewControllerAnimated:YES];
+        StrongSelf();
+        [strongself.navigationController popViewControllerAnimated:NO];
         NSLog(@"string:%@",qrString);
+        
+        NDGoodsPayViewController * vcpay = [[NDGoodsPayViewController alloc] init];
+        [strongself.navigationController pushViewController:vcpay animated:YES];
     }];
     [QRVC setSYQRCodeFailBlock:^(SYQRCodeViewController *vc) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -111,7 +132,7 @@
     if (section == 0 || section == 1) {
         return 1;
     }else{
-        return 3;
+        return self.arrHomeLikeModel.count;
     }
     
 }
@@ -171,23 +192,54 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section ==0 || indexPath.section == 1) {
+    if (indexPath.section == 0) {
         NDHomeGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDHomeGoodsCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.arrCellModel = self.arrHomeNewModel;
+        WeakSelf();
+        [cell setSelectItemBlock:^(NSInteger index) {
+            StrongSelf();
+            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+            webVC.urlString = @"https://www.baidu.com";
+            webVC.title = @"最新商品";
+            [strongself.navigationController pushViewController:webVC animated:YES];
+        }];
         return cell;
-    }else{
+    }else if (indexPath.section == 1) {
+        NDHomeGoodsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDHomeGoodsCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.arrCellModel = self.arrHomePeopleModel;
+        WeakSelf();
+        [cell setSelectItemBlock:^(NSInteger index) {
+            StrongSelf();
+            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+            webVC.urlString = @"https://www.baidu.com";
+            webVC.title = @"人气商品";
+            [strongself.navigationController pushViewController:webVC animated:YES];
+        }];
+        return cell;
+    }else if (indexPath.section == 2){
+        
+        NDGoodsInfoModel * model = self.arrHomeLikeModel[indexPath.row];
         NDHomeLikeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDHomeLikeCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model = model;
         return cell;
     }
+    return nil;
     
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    NDGoodsPayViewController * vc = [[NDGoodsPayViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if(indexPath.section == 2){
+        NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+        webVC.urlString = @"https://www.baidu.com";
+        webVC.title = @"猜你喜欢";
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
 }
 
 -(NDHomeHeadView *)headView{
@@ -201,6 +253,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self postGetAllRequest];
     [self.headView startAnimation];
 }
 
@@ -212,6 +265,7 @@
 #pragma mark - 网络请求
 
 -(void)httpGetInfoRequest{
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [SVProgressHUD show];
     });
@@ -268,7 +322,7 @@
         self.arrBannerModel = [NDHomeBannerModel mj_objectArrayWithKeyValuesArray:arrRows];
         NSMutableArray * arrImages = [NSMutableArray array];
         for (NDHomeBannerModel * model in self.arrBannerModel) {
-            [arrImages addObject:[model.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            [arrImages addObject:[model.image_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
         [self.headView setClcleViewUrlImageArray:arrImages];
         
@@ -313,6 +367,35 @@
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         finishBlock?finishBlock():nil;
     }];
+}
+    
+-(void)postGetAllRequest{
+    [HLLHttpManager postWithURL:URL_homeAllData  params:nil success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count > 0) {
+            NSDictionary * dictData = arrRows.firstObject;
+            self.arrBannerModel = [NDHomeBannerModel mj_objectArrayWithKeyValuesArray:dictData[@"sowingImg"]];
+            self.arrNewMsgModel = [NDHomeNewMessageModel mj_objectArrayWithKeyValuesArray:dictData[@"sowingMessage"]];
+            self.arrHomePeopleModel = [NDGoodsInfoModel mj_objectArrayWithKeyValuesArray:dictData[@"homePeople"]];
+            self.arrHomeLikeModel = [NDGoodsInfoModel mj_objectArrayWithKeyValuesArray:dictData[@"homeLike"]];
+            self.arrHomeNewModel = [NDGoodsInfoModel mj_objectArrayWithKeyValuesArray:dictData[@"homeNew"]];
+            
+            
+            NSMutableArray * arrImages = [NSMutableArray array];
+            for (NDHomeBannerModel * model in self.arrBannerModel) {
+                [arrImages addObject:[model.image_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            }
+            [self.headView setClcleViewUrlImageArray:arrImages];
+            [self.headView setcycVerticalArray:self.arrNewMsgModel];
+            [self.tableView reloadData];
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"加载错误"];
+    }];
+
 }
 
 @end

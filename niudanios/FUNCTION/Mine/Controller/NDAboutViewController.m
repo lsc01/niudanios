@@ -9,6 +9,7 @@
 #import "NDAboutViewController.h"
 #import "NDAboutTableViewCell.h"
 #import "NDAboutInfoModel.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 @interface NDAboutViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic ,strong) NSMutableArray * arrData;
@@ -66,8 +67,11 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 173.0f;
+    return [tableView fd_heightForCellWithIdentifier:@"NDAboutTableViewCell" cacheByIndexPath:indexPath configuration:^(NDAboutTableViewCell * cell) {
+        NDAboutInfoModel * model = self.arrData[indexPath.section];
+        [cell setModel:model];
+    }];
+   
     
 }
 
@@ -88,7 +92,6 @@
     NDAboutTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDAboutTableViewCell"  forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NDAboutInfoModel * model = self.arrData[indexPath.section];
-    
     [cell setModel:model];
     
     return cell;
