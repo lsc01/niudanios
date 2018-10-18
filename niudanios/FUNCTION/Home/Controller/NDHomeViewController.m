@@ -322,7 +322,7 @@
         self.arrBannerModel = [NDHomeBannerModel mj_objectArrayWithKeyValuesArray:arrRows];
         NSMutableArray * arrImages = [NSMutableArray array];
         for (NDHomeBannerModel * model in self.arrBannerModel) {
-            [arrImages addObject:[model.image_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            [arrImages addObject:[model.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         }
         [self.headView setClcleViewUrlImageArray:arrImages];
         
@@ -384,7 +384,7 @@
             
             NSMutableArray * arrImages = [NSMutableArray array];
             for (NDHomeBannerModel * model in self.arrBannerModel) {
-                [arrImages addObject:[model.image_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                [arrImages addObject:[model.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
             [self.headView setClcleViewUrlImageArray:arrImages];
             [self.headView setcycVerticalArray:self.arrNewMsgModel];

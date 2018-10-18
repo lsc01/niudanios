@@ -11,6 +11,6 @@
 @interface NDHomeBannerModel : NSObject
 
 
-@property (nonatomic ,assign) NSInteger image_target_id;
-@property (nonatomic ,copy) NSString * image_url;
+@property (nonatomic ,assign) NSInteger imageTargetId;
+@property (nonatomic ,copy) NSString * imageUrl;
 @end
