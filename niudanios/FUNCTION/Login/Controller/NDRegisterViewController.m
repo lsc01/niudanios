@@ -46,8 +46,10 @@
 }
 
 -(void)loginBtnClick{
-    NDBindPhoneViewController * vc = [[NDBindPhoneViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    NDBindPhoneViewController * vc = [[NDBindPhoneViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)setUI{
