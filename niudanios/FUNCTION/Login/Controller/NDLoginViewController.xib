@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -134,9 +134,24 @@
                         <constraint firstAttribute="height" constant="1" id="JRT-cM-0vd"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG5-c1-xcx">
+                    <rect key="frame" x="300" y="167" width="60" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="OED-Nw-v3H"/>
+                        <constraint firstAttribute="height" constant="30" id="p6N-LD-W1W"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="忘记密码">
+                        <color key="titleColor" red="0.1137254902" green="0.79607843140000001" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="forgetPwdClick:" destination="-1" eventType="touchUpInside" id="u8K-yi-MmG"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="bG5-c1-xcx" firstAttribute="top" secondItem="wEx-FZ-83Z" secondAttribute="bottom" constant="2" id="23a-vf-pWN"/>
                 <constraint firstItem="Za0-lI-vPG" firstAttribute="centerY" secondItem="0mS-LZ-PFA" secondAttribute="centerY" id="2Mm-YT-OG7"/>
                 <constraint firstItem="wEx-FZ-83Z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="4AK-PM-Dom"/>
                 <constraint firstItem="0mS-LZ-PFA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-49" id="91x-yo-zbO"/>
@@ -157,6 +172,7 @@
                 <constraint firstItem="Za0-lI-vPG" firstAttribute="width" secondItem="0mS-LZ-PFA" secondAttribute="width" id="nwG-Rp-hPa"/>
                 <constraint firstItem="Za0-lI-vPG" firstAttribute="height" secondItem="0mS-LZ-PFA" secondAttribute="height" id="wYY-uP-Ef7"/>
                 <constraint firstAttribute="trailing" secondItem="saX-rQ-RyO" secondAttribute="trailing" constant="12" id="yrP-74-rQ6"/>
+                <constraint firstAttribute="trailing" secondItem="bG5-c1-xcx" secondAttribute="trailing" constant="15" id="zGW-ID-12a"/>
                 <constraint firstItem="wEx-FZ-83Z" firstAttribute="top" secondItem="Ldw-Lc-mLU" secondAttribute="bottom" constant="20" id="zRx-wN-MZ5"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="53.5"/>

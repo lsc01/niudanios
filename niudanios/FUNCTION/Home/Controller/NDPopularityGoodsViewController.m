@@ -128,7 +128,7 @@
         NSArray * arrRows = responseObject[@"rows"];
         if (arrRows.count >0) {
             NSDictionary * dictT = arrRows.firstObject;
-            if ([dictT[@"code"] integerValue] == 1) {
+            if ([dictT[@"code"] integerValue] == 0) {
                 [SVProgressHUD showToast:@"取消收藏成功"];
             }else{
                 [SVProgressHUD showToast:dictT[@"msg"]];

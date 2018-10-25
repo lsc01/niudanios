@@ -11,7 +11,8 @@
 
 
 
-#define BsemURL_PREFIX  @"https://www.7qiandao.com/niudan/"
+#define BsemURL_PREFIX  @"http://www.7qiandao.com/niudan/"
+//#define BsemURL_PREFIX  @"http://184r63363z.imwork.net:26359/niudan/"
 
 
 #define HTTP(x) [BsemURL_PREFIX stringByAppendingString:x]

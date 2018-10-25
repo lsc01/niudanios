@@ -34,8 +34,12 @@ typedef NS_ENUM(NSInteger , RequsetType) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         });
+        
         NSData * data = (NSData *)responseObject;
-        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSLog(@"string:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        NSError * error;
+        NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"error:%@",error);
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"url:%@ ---- \nresponseObject：%@",url,dict);
             NSInteger code = [dict[@"code"] integerValue];
@@ -141,11 +145,8 @@ typedef NS_ENUM(NSInteger , RequsetType) {
     // 设置超时时间，写在上面不起作用，要写在[AFHTTPRequestSerializer serializer]后
     manager.requestSerializer.timeoutInterval = 10.f;
     
-    
     return manager;
 }
-
-
 
 
 @end

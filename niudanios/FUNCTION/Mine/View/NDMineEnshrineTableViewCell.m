@@ -18,7 +18,7 @@
     self.imageViewGoods.clipsToBounds = YES;
 }
 - (IBAction)deleteBtnClick:(UIButton *)sender {
-    _deleteEnshrinGoodsBlock?_deleteEnshrinGoodsBlock(self.model.gmid):nil;
+    _deleteEnshrinGoodsBlock?_deleteEnshrinGoodsBlock(self.model.Id):nil;
 }
 
 -(void)setModel:(NDMineEnshrineInfoModel *)model{

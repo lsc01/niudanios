@@ -159,6 +159,7 @@
             [self.navigationController pushViewController:updatePhone animated:YES];
         }else if (indexPath.row == 2){
             NDForgetPwdViewController * updatePwdVC = [[NDForgetPwdViewController alloc] init];
+            updatePwdVC.title = @"修改密码";
             [self.navigationController pushViewController:updatePwdVC animated:YES];
         }
     }else if (indexPath.section == 1){

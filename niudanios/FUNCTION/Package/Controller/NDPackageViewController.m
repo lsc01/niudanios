@@ -86,7 +86,11 @@
             }else{
                 self.viewBottomTool.hidden = YES;
             }
-            
+            [self.arrID removeAllObjects];
+            if (self.arrID.count==0) {
+                self.btnAllSelect.selected = NO;
+            }
+            self.labelSelect.text = [NSString stringWithFormat:@"已选择%d件",self.arrID.count];
         }
         
         [SVProgressHUD dismiss];

@@ -13,6 +13,7 @@
 #import "NDUserInfoModel.h"
 #import "SAMKeychain.h"
 #import "NDBindPhoneViewController.h"
+#import "NDForgetPwdViewController.h"
 @interface NDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -152,6 +153,12 @@
      }];
 }
 
+- (IBAction)forgetPwdClick:(UIButton *)sender {
+    
+    NDForgetPwdViewController * vc = [[NDForgetPwdViewController alloc] init];
+	vc.title = @"重置密码";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 -(void)loginWithOpenId:(NSString *)openId andStatus:(NSString *)status andNickName:(NSString *)nickName andIcon:(NSString *)icon{
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
