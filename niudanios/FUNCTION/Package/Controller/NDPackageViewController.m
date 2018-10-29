@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.title = @"我的扭蛋";
+    self.navigationItem.title = @"我的扭蛋";
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
     self.viewBottomTool.hidden = YES;
