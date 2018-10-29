@@ -375,8 +375,17 @@
    
     
 -(void)navRightBtnClick{
+    if (![HLLShareManager shareMannager].userModel) {
+        NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+        return;
+    }
+    
     [SVProgressHUD show];
-    [HLLHttpManager postWithURL:URL_ShareContent params:nil success:^(NSDictionary *responseObject) {
+    
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"id"];
+    [HLLHttpManager postWithURL:URL_ShareContent params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         NSArray * arrRows = responseObject[@"rows"];
         if (arrRows.count > 0) {
