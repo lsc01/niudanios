@@ -27,9 +27,18 @@
     dispatch_once(&onceToken, ^{
         instance = [[NDPayManager alloc] init];
         instance.payStatus = pay_status_none;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ndNotification_DidBecomeActive) name:@"NOTIFICATION_DidBecomeActive" object:nil];
+        
     });
     return instance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ndNotification_DidBecomeActive) name:@"NOTIFICATION_DidBecomeActive" object:nil];
+    }
+    return self;
 }
 
 
