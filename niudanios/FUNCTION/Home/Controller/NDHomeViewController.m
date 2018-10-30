@@ -19,7 +19,7 @@
 #import "NDHomeNewMessageModel.h"
 #import "NDGoodsInfoModel.h"
 #import "NDBaseWebViewController.h"
-
+#import "NDLoginViewController.h"
 
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -200,9 +200,15 @@
         WeakSelf();
         [cell setSelectItemBlock:^(NSInteger index) {
             StrongSelf();
+            if (![HLLShareManager shareMannager].userModel) {
+                NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+                [strongself.navigationController pushViewController:loginVC animated:YES];
+                return;
+            }
+            NDGoodsInfoModel * model = self.arrHomeNewModel[index];
             NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-            webVC.urlString = @"https://www.baidu.com";
-            webVC.title = @"最新商品";
+            webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
+            webVC.title = @"扭蛋";
             [strongself.navigationController pushViewController:webVC animated:YES];
         }];
         return cell;
@@ -213,9 +219,15 @@
         WeakSelf();
         [cell setSelectItemBlock:^(NSInteger index) {
             StrongSelf();
+            if (![HLLShareManager shareMannager].userModel) {
+                NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+                [strongself.navigationController pushViewController:loginVC animated:YES];
+                return;
+            }
+            NDGoodsInfoModel * model = self.arrHomePeopleModel[index];
             NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-            webVC.urlString = @"https://www.baidu.com";
-            webVC.title = @"人气商品";
+            webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
+            webVC.title = @"扭蛋";
             [strongself.navigationController pushViewController:webVC animated:YES];
         }];
         return cell;
@@ -235,9 +247,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if(indexPath.section == 2){
+        if (![HLLShareManager shareMannager].userModel) {
+            NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+            [self.navigationController pushViewController:loginVC animated:YES];
+            return;
+        }
+        
+        NDGoodsInfoModel * model = self.arrHomeLikeModel[indexPath.row];
         NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-        webVC.urlString = @"https://www.baidu.com";
-        webVC.title = @"猜你喜欢";
+        webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
+        webVC.title = @"扭蛋";
         [self.navigationController pushViewController:webVC animated:YES];
     }
 }

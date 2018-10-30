@@ -13,7 +13,7 @@
 #import "NDNiudanPriceFilterModel.h"
 #import "NDNiudanSortFilterModel.h"
 #import "NDBaseWebViewController.h"
-
+#import "NDLoginViewController.h"
 typedef NS_ENUM(NSInteger,FilterType) {
     Filter_Nomal = 0,
     Filter_Kind = 1,
@@ -265,9 +265,15 @@ typedef NS_ENUM(NSInteger,FilterType) {
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (![HLLShareManager shareMannager].userModel) {
+        NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+        return;
+    }
+    NDGoodsInfoModel * model = self.arrData[indexPath.row];
     NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-    webVC.urlString = @"https://www.baidu.com";
-    webVC.title = @"最新商品";
+    webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
+    webVC.title = @"扭蛋";
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

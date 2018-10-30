@@ -124,9 +124,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NDMineEnshrineInfoModel * model = self.arrData[indexPath.row];
     NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-    webVC.urlString = @"https://www.baidu.com";
-    webVC.title = @"我的收藏";
+    webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.gmid,[HLLShareManager shareMannager].userModel.Id];
+    webVC.title = @"扭蛋";
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

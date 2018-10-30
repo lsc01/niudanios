@@ -9,11 +9,8 @@
 #ifndef URLMacros_h
 #define URLMacros_h
 
-
-
-//#define BsemURL_PREFIX  @"http://www.7qiandao.com/niudan/"
-#define BsemURL_PREFIX  @"http://39.108.163.217/niudan/"
-
+//#define BsemURL_PREFIX  @"http://39.108.163.217/niudan/"//正式
+#define BsemURL_PREFIX  @"http://193.112.218.20/niudan/"//测试
 
 #define HTTP(x) [BsemURL_PREFIX stringByAppendingString:x]
 
@@ -170,8 +167,8 @@
 
 ///分享
 #define URL_ShareContent HTTP(@"app/expressCost/sharing.mvc")
-
-
+///扭蛋H5页面
+#define URL_h5ToTwisted HTTP(@"h5/toTwisted.mvc")
 
 #define ImageUrl(x) ([(x) hasPrefix:@"https"]||[(x) hasPrefix:@"http"])?(x):(HTTP(x))
 #endif /* URLMacros_h */

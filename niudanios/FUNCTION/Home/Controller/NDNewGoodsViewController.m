@@ -9,6 +9,7 @@
 #import "NDNewGoodsViewController.h"
 #import "NDNiudanGoodsCell.h"
 #import "NDBaseWebViewController.h"
+#import "NDLoginViewController.h"
 #define Cell_Width (338.0/750*kScreenWidth)
 #define CELL_Height ((255.0/168)*Cell_Width)
 #define Cell_Spacing (kScreenWidth - 2*Cell_Width)/3.0
@@ -162,9 +163,15 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (![HLLShareManager shareMannager].userModel) {
+        NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+        return;
+    }
+    NDGoodsInfoModel * model = self.arrData[indexPath.row];
     NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-    webVC.urlString = @"https://www.baidu.com";
-    webVC.title = @"最新商品";
+    webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
+    webVC.title = @"扭蛋";
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
