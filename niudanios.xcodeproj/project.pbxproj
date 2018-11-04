@@ -127,6 +127,14 @@
 		4147F9CB214E40D300ECC253 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F9CA214E40CE00ECC253 /* QuartzCore.framework */; };
 		4147F9CD214E40DF00ECC253 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F9CC214E40DA00ECC253 /* CoreText.framework */; };
 		4147F9D0214E43FA00ECC253 /* NDPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4147F9CF214E43FA00ECC253 /* NDPayManager.m */; };
+		4152E67E218EDF78001C6BE6 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */; };
+		4152E67F218EDF78001C6BE6 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */; };
+		4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4152E67D218EDF78001C6BE6 /* GuideImage.bundle */; };
+		4152E687218EE0C3001C6BE6 /* start1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E682218EE0C3001C6BE6 /* start1.jpg */; };
+		4152E688218EE0C3001C6BE6 /* start2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E683218EE0C3001C6BE6 /* start2.jpeg */; };
+		4152E689218EE0C3001C6BE6 /* start3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E684218EE0C3001C6BE6 /* start3.jpeg */; };
+		4152E68A218EE0C3001C6BE6 /* start4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E685218EE0C3001C6BE6 /* start4.jpeg */; };
+		4152E68B218EE0C3001C6BE6 /* start5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E686218EE0C3001C6BE6 /* start5.jpg */; };
 		419F4895215E4DB300F483CA /* NDMineOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */; };
 		419F4898215E5C0A00F483CA /* NDMineEnshrineInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4897215E5C0A00F483CA /* NDMineEnshrineInfoModel.m */; };
 		419F489B215E604200F483CA /* NDNuidanRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F489A215E604200F483CA /* NDNuidanRecordModel.m */; };
@@ -658,6 +666,16 @@
 		4147F9CC214E40DA00ECC253 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4147F9CE214E43FA00ECC253 /* NDPayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPayManager.h; sourceTree = "<group>"; };
 		4147F9CF214E43FA00ECC253 /* NDPayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPayManager.m; sourceTree = "<group>"; };
+		4152E679218EDF78001C6BE6 /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
+		4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGifImageOperation.m; sourceTree = "<group>"; };
+		4152E67B218EDF78001C6BE6 /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
+		4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGuidePageHUD.m; sourceTree = "<group>"; };
+		4152E67D218EDF78001C6BE6 /* GuideImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideImage.bundle; sourceTree = "<group>"; };
+		4152E682218EE0C3001C6BE6 /* start1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start1.jpg; sourceTree = "<group>"; };
+		4152E683218EE0C3001C6BE6 /* start2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start2.jpeg; sourceTree = "<group>"; };
+		4152E684218EE0C3001C6BE6 /* start3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start3.jpeg; sourceTree = "<group>"; };
+		4152E685218EE0C3001C6BE6 /* start4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start4.jpeg; sourceTree = "<group>"; };
+		4152E686218EE0C3001C6BE6 /* start5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start5.jpg; sourceTree = "<group>"; };
 		419F4893215E4DB300F483CA /* NDMineOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderInfoModel.h; sourceTree = "<group>"; };
 		419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderInfoModel.m; sourceTree = "<group>"; };
 		419F4896215E5C0A00F483CA /* NDMineEnshrineInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineEnshrineInfoModel.h; sourceTree = "<group>"; };
@@ -1494,6 +1512,30 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		4152E678218EDF78001C6BE6 /* DHGuidePageHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4152E679218EDF78001C6BE6 /* DHGifImageOperation.h */,
+				4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */,
+				4152E67B218EDF78001C6BE6 /* DHGuidePageHUD.h */,
+				4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */,
+				4152E67D218EDF78001C6BE6 /* GuideImage.bundle */,
+			);
+			path = DHGuidePageHUD;
+			sourceTree = "<group>";
+		};
+		4152E681218EE0C3001C6BE6 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				4152E682218EE0C3001C6BE6 /* start1.jpg */,
+				4152E683218EE0C3001C6BE6 /* start2.jpeg */,
+				4152E684218EE0C3001C6BE6 /* start3.jpeg */,
+				4152E685218EE0C3001C6BE6 /* start4.jpeg */,
+				4152E686218EE0C3001C6BE6 /* start5.jpg */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		419F48A2215E754E00F483CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1963,6 +2005,7 @@
 		41E3418D212E2FAC00F19371 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				4152E681218EE0C3001C6BE6 /* Image */,
 				41B4AF02212DB6B40008E66B /* AppDelegate.h */,
 				41B4AF03212DB6B40008E66B /* AppDelegate.m */,
 				41B4AF05212DB6B40008E66B /* ViewController.h */,
@@ -2823,6 +2866,7 @@
 		41E34357212EFEED00F19371 /* Utils(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				4152E678218EDF78001C6BE6 /* DHGuidePageHUD */,
 				4104486D21455B1D00686119 /* BRPickerView */,
 				4104483C2141850700686119 /* QRScanTool */,
 				410447CC213EC2D800686119 /* ELCycleVerticalView */,
@@ -3070,6 +3114,7 @@
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
 				4104486321434C3B00686119 /* NDLogisticsDetailTableViewCell.xib in Resources */,
 				410448042140219300686119 /* NDAboutTableViewCell.xib in Resources */,
+				4152E687218EE0C3001C6BE6 /* start1.jpg in Resources */,
 				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
 				410448222141724800686119 /* NDVerifyOrderHeadView.xib in Resources */,
 				4104485921434B9C00686119 /* NDLogisticsDetailViewController.xib in Resources */,
@@ -3092,10 +3137,12 @@
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				4118EE2B216D079E00D7F774 /* 未完成功能统计.md in Resources */,
 				4104479C213D5D5F00686119 /* NDMyWalletViewController.xib in Resources */,
+				4152E688218EE0C3001C6BE6 /* start2.jpeg in Resources */,
 				410447AB213D757100686119 /* NDAccountPayDeatailVC.xib in Resources */,
 				410447DC213ECEA200686119 /* NDMineDownTableViewCell.xib in Resources */,
 				41AEAC77213BCA1E003FE10B /* NDMIneDataViewController.xib in Resources */,
 				410447EB21400B6B00686119 /* NDNuidanRecordViewController.xib in Resources */,
+				4152E689218EE0C3001C6BE6 /* start3.jpeg in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41AEAC72213BC566003FE10B /* NDBindPhoneViewController.xib in Resources */,
 				410447FF2140216700686119 /* NDAboutViewController.xib in Resources */,
@@ -3107,8 +3154,10 @@
 				410448092140258700686119 /* NDMineAddressTableViewCell.xib in Resources */,
 				41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
+				4152E68A218EE0C3001C6BE6 /* start4.jpeg in Resources */,
 				410447E1213ED29A00686119 /* NDTaskBonusViewController.xib in Resources */,
 				41AEAC4F21345375003FE10B /* NDHomeGoodsCell.xib in Resources */,
+				4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */,
 				410447C2213EAED800686119 /* NDNewGoodsViewController.xib in Resources */,
 				41B4AF0C212DB6B40008E66B /* Assets.xcassets in Resources */,
 				41AEAC6D213BA6FC003FE10B /* NDRegisterViewController.xib in Resources */,
@@ -3135,6 +3184,7 @@
 				410447D7213ECDEE00686119 /* NDMineDownViewController.xib in Resources */,
 				41378AF42132FB0700076ADD /* NDSettingHeaderView.xib in Resources */,
 				41A89D7C21778BA5001E6CAA /* NDGoodsDetailViewController.xib in Resources */,
+				4152E68B218EE0C3001C6BE6 /* start5.jpg in Resources */,
 				41E3446B212EFEEE00F19371 /* MLSelectPhoto.bundle in Resources */,
 				41AEAC81213BCDF0003FE10B /* NDMineDataCell.xib in Resources */,
 				4115BE1C213C161B001AFA49 /* NDMineOrderDetailViewController.xib in Resources */,
@@ -3302,6 +3352,7 @@
 				41E343B7212EFEED00F19371 /* NSDictionary+URL.m in Sources */,
 				41E3440E212EFEED00F19371 /* UIImage+SuperCompress.m in Sources */,
 				41E3440F212EFEED00F19371 /* UIImage+Vector.m in Sources */,
+				4152E67F218EDF78001C6BE6 /* DHGuidePageHUD.m in Sources */,
 				41E34446212EFEED00F19371 /* UIViewController+TopBarMessage.m in Sources */,
 				41E34445212EFEED00F19371 /* UIViewController+StoreKit.m in Sources */,
 				41FF528C215BE5E6002BA837 /* NDNiudanSortFilterModel.m in Sources */,
@@ -3457,6 +3508,7 @@
 				410447CB213EC1B800686119 /* UIViewController+toast.m in Sources */,
 				41AEAC5821345E35003FE10B /* NDHomeGoodsCollectionViewCell.m in Sources */,
 				4147F9BA214E400100ECC253 /* openssl_wrapper.m in Sources */,
+				4152E67E218EDF78001C6BE6 /* DHGifImageOperation.m in Sources */,
 				410448862145655400686119 /* NDSexSelectView.m in Sources */,
 				41E343CD212EFEED00F19371 /* NSString+MIME.m in Sources */,
 				41E343CF212EFEED00F19371 /* NSString+QMUI.m in Sources */,

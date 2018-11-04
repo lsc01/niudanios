@@ -20,7 +20,7 @@
 #import "NDGoodsInfoModel.h"
 #import "NDBaseWebViewController.h"
 #import "NDLoginViewController.h"
-
+#import "DHGuidePageHUD.h"
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
@@ -49,7 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+     [self setStaticGuidePage];
     [self setNav];
     [self setUI];
 //    [self performSelector:@selector(httpGetInfoRequest) withObject:nil afterDelay:0.5];
@@ -57,7 +57,12 @@
     [self postGetAllRequest];
 }
     
-
+- (void)setStaticGuidePage {
+    NSArray *imageNameArray = @[@"start1.jpg",@"start2.jpeg",@"start3.jpeg",@"start4.jpeg",@"start5.jpg"];
+    DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) imageNameArray:imageNameArray buttonIsHidden:NO];
+    guidePage.slideInto = YES;
+    [self.tabBarController.view addSubview:guidePage];
+}
 
 -(void)setNav{
     UIButton * btnNav = [UIButton buttonWithType:UIButtonTypeCustom];
