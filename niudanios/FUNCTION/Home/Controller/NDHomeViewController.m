@@ -49,7 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-     [self setStaticGuidePage];
+//     [self setStaticGuidePage];
     [self setNav];
     [self setUI];
 //    [self performSelector:@selector(httpGetInfoRequest) withObject:nil afterDelay:0.5];
