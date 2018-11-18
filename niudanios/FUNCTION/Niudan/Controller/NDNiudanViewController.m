@@ -93,8 +93,6 @@ typedef NS_ENUM(NSInteger,FilterType) {
     }];
 }
     
-    
-    
 
 -(void)setUI{
     self.viewSearchFieldBg.layer.cornerRadius = 4;
@@ -118,38 +116,43 @@ typedef NS_ENUM(NSInteger,FilterType) {
         strongself.filterView.hidden = YES;
         NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
         [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
-        switch (self.filterType) {
+        switch (strongself.filterType) {
             case Filter_Kind:
             {
                 
                 NDNiudanKindFilterModel * model = self.arrFilterCurr[row];
                 [dictP setObject:model.Id forKey:@"classifyId"];
-                self.kindIdCurr = model.Id;
+                strongself.kindIdCurr = model.Id;
             }
                 break;
             case Filter_Price:
             {
                 NDNiudanPriceFilterModel * model = self.arrFilterCurr[row];
                 [dictP setObject:model.Id forKey:@"compareId"];
-                self.priceIdCurr = model.Id;
+                strongself.priceIdCurr = model.Id;
             }
                 break;
             case Filter_Sort:
             {
                 if (row == 0) {
-                    self.sortIdCurr = @"0";
+                    strongself.sortIdCurr = @"0";
                     break;
                 }
                 NDNiudanKindFilterModel * model = self.arrFilterCurr[row];
                 [dictP setObject:model.Id forKey:@"status"];
-                self.sortIdCurr = model.Id;
+                strongself.sortIdCurr = model.Id;
             }
                 break;
                 
             default:
                 break;
         }
-        [self postRequestWithDictP:dictP];
+        [strongself postRequestWithDictP:dictP];
+    }];
+    
+    [self.filterView setCloseFilterViewBlock:^{
+        StrongSelf();
+        strongself.filterView.hidden = YES;
     }];
     
 }
@@ -299,13 +302,14 @@ typedef NS_ENUM(NSInteger,FilterType) {
 }
 
 - (IBAction)searchBtnClick:(UIButton *)sender {
-    if(self.textFieldSearch.text.length <1){
-        [SVProgressHUD showToast:@"请输入查询条件"];
-        return;
-    }
+  
+    self.filterView.hidden = YES;
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
-    [dictP setObject:self.textFieldSearch.text forKey:@"machineName"];
+    if(self.textFieldSearch.text.length >0){
+        [dictP setObject:self.textFieldSearch.text forKey:@"machineName"];
+    }
+    
     [self postRequestWithDictP:dictP];
 }
     

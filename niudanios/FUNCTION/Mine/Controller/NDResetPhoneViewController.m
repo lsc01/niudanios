@@ -7,7 +7,7 @@
 //
 
 #import "NDResetPhoneViewController.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 
 @interface NDResetPhoneViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewBg1;
@@ -95,7 +95,9 @@
                 [HLLShareManager shareMannager].userModel.loginMobile = self.phone;
                 NSDictionary * dic = [[HLLShareManager shareMannager].userModel mj_keyValues];
                 NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+//                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 if ([self.delegate respondsToSelector:@selector(updatePhoneSuccess)]) {
                     [self.delegate updatePhoneSuccess];
                 }

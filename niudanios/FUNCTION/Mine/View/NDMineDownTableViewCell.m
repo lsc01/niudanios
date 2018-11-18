@@ -22,6 +22,7 @@
     [self.imageviewHead sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.headPortrait)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
+
     self.labelDate.text = model.createTime;
     self.userName.text = model.nickName;
     self.labelCount.text = [NSString stringWithFormat:@"%@",model.count];

@@ -203,6 +203,10 @@
         StrongSelf();
         [strongself cellRigthBtnActionWithId:Id andOrderState:orderState];
     }];
+    [cell setLookOrderStateBtnActionBlock:^(NSString *Id, OrderState orderState) {
+        StrongSelf();
+        [strongself cellOrderDetailWithId:Id];
+    }];
     return cell;
     
 }

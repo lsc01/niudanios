@@ -174,6 +174,9 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if (self.arrDataModel.count==0) {
+        return 0;
+    }
     NDAddressProvinceDataModel *provinceModel = self.arrDataModel[rowOfProvince];
     NDAddressCityDataModel *cityModel = provinceModel.city[rowOfCity];
     if (component == 0) {

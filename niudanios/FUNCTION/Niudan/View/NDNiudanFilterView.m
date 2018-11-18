@@ -22,7 +22,9 @@
     [super awakeFromNib];
     [self setUI];
 }
-
+-(void)backbroundButtonClick{
+    self.closeFilterViewBlock?self.closeFilterViewBlock():nil;
+}
 
 -(void)setUI{
     UIView * viewBg = [[UIView alloc] init];
@@ -33,6 +35,14 @@
         make.edges.mas_equalTo(self);
     }];
     
+    UIButton * closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeBtn setBackgroundColor:[UIColor clearColor]];
+    [closeBtn addTarget:self action:@selector(backbroundButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [viewBg addSubview:closeBtn];
+    
+    [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(viewBg);
+    }];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -88,6 +98,11 @@
 -(void)setArrayModel:(NSArray<NDNiudanFilterModel *> *)arrayModel{
     _arrayModel = arrayModel;
     [self.tableView reloadData];
+    if (arrayModel.count==0) {
+        self.tableView.hidden = YES;
+    }else{
+        self.tableView.hidden = NO;
+    }
 }
 
 

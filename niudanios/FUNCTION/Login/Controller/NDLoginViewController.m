@@ -11,7 +11,7 @@
 #import "UIViewController+toast.h"
 #import "ShareSdkHeader.h"
 #import "NDUserInfoModel.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 #import "NDBindPhoneViewController.h"
 #import "NDForgetPwdViewController.h"
 @interface NDLoginViewController ()
@@ -82,8 +82,10 @@
             if (code == 0) {
                 [SVProgressHUD showToast:@"登录成功"];
                 NDUserInfoModel * userModel = [NDUserInfoModel mj_objectWithKeyValues:dictT[@"tbCustomer"]];
-                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT[@"tbCustomer"] options:0 error:nil];
+//                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 [HLLShareManager shareMannager].userModel = userModel;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [SVProgressHUD dismiss];
@@ -175,8 +177,10 @@
             if (code == 0) {
                 [SVProgressHUD showToast:@"登录成功"];
                 NDUserInfoModel * userModel = [NDUserInfoModel mj_objectWithKeyValues:dictT[@"tbCustomer"]];
-                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT[@"tbCustomer"] options:0 error:nil];
+//                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 [HLLShareManager shareMannager].userModel = userModel;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [SVProgressHUD dismiss];

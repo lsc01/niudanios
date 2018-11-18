@@ -11,7 +11,7 @@
 #import "NDSettingHeaderView.h"
 #import "NDUpdatePhoneViewController.h"
 #import "NDMIneDataViewController.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 #import "NDForgetPwdViewController.h"
 @interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource,NDUpdatePhoneViewControllerDelegate,NDMIneDataViewControllerDelegate>
 @property (nonatomic ,strong) NDSettingHeaderView * headView;
@@ -62,7 +62,9 @@
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"" message:@"确定退出登录?" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //点击按钮响应事件
-        [SAMKeychain deletePasswordForService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+//        [SAMKeychain deletePasswordForService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:acdadaddacnuizcnas];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [HLLShareManager shareMannager].userModel = nil;
         [self.navigationController popViewControllerAnimated:YES];
     }]];

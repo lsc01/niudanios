@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger,OrderState) {
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewGoods;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnLookOrderState;
 @property (weak, nonatomic) IBOutlet UILabel *labelGoodsName;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelTime;
@@ -37,5 +38,5 @@ typedef NS_ENUM(NSInteger,OrderState) {
 
 
 @property (nonatomic ,copy) void(^rigthBtnActionBlock)(NSString * Id, OrderState orderState);
-
+@property (nonatomic ,copy) void(^lookOrderStateBtnActionBlock)(NSString * Id, OrderState orderState);
 @end

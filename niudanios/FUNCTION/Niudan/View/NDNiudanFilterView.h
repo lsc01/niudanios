@@ -16,5 +16,5 @@
 
 @property (nonatomic ,copy) void(^selectRowBlock)(NSInteger row);
 -(void)setSelectRowBlock:(void (^)(NSInteger row))selectRowBlock;
-
+@property (nonatomic ,copy) void(^closeFilterViewBlock)(void);
 @end

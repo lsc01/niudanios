@@ -106,11 +106,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NDOrderDetailTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NDOrderDetailTableViewCell"     forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-    [cell.imageViewOrder sd_setImageWithURL:[NSURL URLWithString:ImageUrl(self.modelInfo.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [cell.imageViewOrder sd_setImageWithURL:[NSURL URLWithString:ImageUrl(self.modelInfo.gashaponImg)] placeholderImage:[UIImage imageNamed:@"placehold_xx"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
+ 
     cell.labelOrderId.text = self.modelInfo.Id;
     cell.labelGoodsName.text = self.modelInfo.gashaponName;
     cell.labelMoney.text =[NSString stringWithFormat:@"¥ %d",self.modelInfo.freightMoney];

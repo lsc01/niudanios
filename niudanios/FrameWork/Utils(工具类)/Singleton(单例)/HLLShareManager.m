@@ -26,7 +26,8 @@ static HLLShareManager *share = nil;
     if (_userModel) {
         return _userModel;
     }else{
-        NSData * data = [SAMKeychain passwordDataForService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+//        NSData * data = [SAMKeychain passwordDataForService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+        NSData * data = [[NSUserDefaults standardUserDefaults] objectForKey:acdadaddacnuizcnas];
         if (data==nil) {
             return nil;
         }

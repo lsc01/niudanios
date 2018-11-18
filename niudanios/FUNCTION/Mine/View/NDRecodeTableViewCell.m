@@ -24,6 +24,7 @@
     [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
+    
     self.labelName.text = model.gashaponName;
     self.labelTime.text = model.timeFormat;
     self.labelPrice.text = [NSString stringWithFormat:@"%@",model.machinePrice];

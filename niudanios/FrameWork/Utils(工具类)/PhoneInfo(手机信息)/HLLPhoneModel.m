@@ -127,6 +127,7 @@ typedef NS_ENUM(NSUInteger, DiviceType) {
     return [[UIDevice currentDevice] systemVersion];
 }
 +(const NSString *)getUUIDString{
+    
     if ([SAMKeychain passwordForService:sssdvrsss account:asavvxcsfsca] == nil) {
         [SAMKeychain setPassword:[[UIDevice currentDevice].identifierForVendor UUIDString] forService:sssdvrsss account:asavvxcsfsca];
     }

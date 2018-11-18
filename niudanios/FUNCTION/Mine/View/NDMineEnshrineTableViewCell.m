@@ -23,9 +23,11 @@
 
 -(void)setModel:(NDMineEnshrineInfoModel *)model{
     _model = model;
+ 
     [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.machineImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
+
     self.labelName.text = model.machineName;
     self.labelPrice.text = [NSString stringWithFormat:@"%@",model.machinePrice];
 }

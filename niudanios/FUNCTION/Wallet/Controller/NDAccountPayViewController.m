@@ -228,6 +228,10 @@
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     NSLog(@"%ld,%lu---%@--%@",range.length,(unsigned long)range.location,textField.text,string);
    if(textField == self.textFieldPay){
+       //删除就直接返回yes
+       if (range.length>0&&string.length == 0){
+           return YES;
+       }
        //限制只能输数字
        NSString * numString = @"0123456789";
        if (![numString containsString:string]) {

@@ -22,7 +22,7 @@
 #import "NDAboutViewController.h"
 #import "NDMineAddressViewController.h"
 #import "ShareSdkHeader.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
 @interface NDMineViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -82,7 +82,9 @@
             if (dictT != dictT2) {
                 [HLLShareManager shareMannager].userModel = model;
                 NSData * data = [NSJSONSerialization dataWithJSONObject:dictT2 options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+//                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }
             
         }

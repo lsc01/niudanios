@@ -17,6 +17,6 @@
 @property (nonatomic ,copy) NSString * machineName;
 @property (nonatomic ,assign) NSInteger machinePrice;
 @property (nonatomic ,assign) NSInteger salesVolume;
-
+@property (nonatomic ,copy) NSString * homeImgUrl;
 @property (nonatomic ,assign) NSInteger status;
 @end

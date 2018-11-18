@@ -12,7 +12,7 @@
 #import "NDUpdatePhoneViewController.h"
 #import "BRDatePickerView.h"
 #import "NDSexSelectView.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 #import "HLLSysAuthorityManager.h"
 #import "HLLPhoneModel.h"
 
@@ -152,7 +152,9 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
             [HLLShareManager shareMannager].userModel = model;
             NSDictionary * dictT = [[HLLShareManager shareMannager].userModel mj_keyValues];
             NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
-            [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+//            [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
         [SVProgressHUD showToast:@"修改成功"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

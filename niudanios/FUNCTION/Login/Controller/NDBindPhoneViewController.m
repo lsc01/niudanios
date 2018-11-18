@@ -7,7 +7,7 @@
 //
 
 #import "NDBindPhoneViewController.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 @interface NDBindPhoneViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -75,8 +75,10 @@
             if (code == 0) {
                 [SVProgressHUD showToast:@"绑定成功"];
                 NDUserInfoModel * userModel = [NDUserInfoModel mj_objectWithKeyValues:dictT[@"tbCustomer"]];
-                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT options:0 error:nil];
-                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                NSData * data = [NSJSONSerialization dataWithJSONObject:dictT[@"tbCustomer"] options:0 error:nil];
+//                [SAMKeychain setPasswordData:data forService:sevodadacnuizcnas account:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 [HLLShareManager shareMannager].userModel = userModel;
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [SVProgressHUD dismiss];

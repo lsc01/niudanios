@@ -9,7 +9,7 @@
 #ifndef AppInfoMacros_h
 #define AppInfoMacros_h
 
-#define sevodadacnuizcnas @"sevodadacnuizcnass"
-#define acdadaddacnuizcnas @"acdadaddacnuizcnass"
+//#define sevodadacnuizcnas @"sevodadacnuizcnasss"
+#define acdadaddacnuizcnas @"acdadaddacnuizcnasss"
 
 #endif /* AppInfoMacros_h */

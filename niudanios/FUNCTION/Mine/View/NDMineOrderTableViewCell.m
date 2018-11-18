@@ -20,6 +20,12 @@
     self.btnOrder.layer.borderWidth = 1;
     
     
+    self.btnLookOrderState.layer.cornerRadius = 14;
+    self.btnLookOrderState.clipsToBounds = YES;
+    self.btnLookOrderState.layer.borderColor = HEXCOLOR(0xe5e5e5).CGColor;
+    self.btnLookOrderState.layer.borderWidth = 1;
+    self.btnLookOrderState.hidden = YES;
+    
     self.imageViewGoods.layer.cornerRadius = 4;
     self.imageViewGoods.clipsToBounds = YES;
     
@@ -28,7 +34,8 @@
 
 -(void)setModel:(NDMineOrderInfoModel *)model{
     _model = model;
-    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.gashaponImg)] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+ 
+    [self.imageViewGoods sd_setImageWithURL:[NSURL URLWithString:ImageUrl(model.gashaponImg)] placeholderImage:[UIImage imageNamed:@"placehold_xx"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         NSLog(@"error:%@",error);
     }];
     self.labelOrderId.text= model.orderId;
@@ -37,10 +44,13 @@
     
     if ([model.status isEqualToString:@"DF"]) {
         self.orderState = OrderState_1;
+        self.btnLookOrderState.hidden = NO;
     }else if ([model.status isEqualToString:@"DS"]){
         self.orderState = OrderState_2;
+        self.btnLookOrderState.hidden = YES;
     }else if ([model.status isEqualToString:@"YS"]){
         self.orderState = OrderState_3;
+        self.btnLookOrderState.hidden = YES;
     }
     
 }
@@ -83,6 +93,9 @@
         default:
             break;
     }
+}
+- (IBAction)lookOrderState:(UIButton *)sender {
+    _lookOrderStateBtnActionBlock?_lookOrderStateBtnActionBlock(self.model.Id,self.orderState):nil;
 }
 
 - (IBAction)rightBtnClick:(UIButton *)sender {

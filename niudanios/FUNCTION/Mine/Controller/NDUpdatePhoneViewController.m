@@ -7,7 +7,7 @@
 //
 
 #import "NDUpdatePhoneViewController.h"
-#import "SAMKeychain.h"
+//#import "SAMKeychain.h"
 #import "NDResetPhoneViewController.h"
 @interface NDUpdatePhoneViewController ()<NDResetPhoneViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewBg1;
