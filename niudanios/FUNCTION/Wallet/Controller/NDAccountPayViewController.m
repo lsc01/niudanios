@@ -208,10 +208,10 @@
 -(void)payBeginWithMoney:(NSInteger)money{
     if (self.btnCurrPayType == self.btnSelectPayAli) {
 //        [SVProgressHUD showToast:[NSString stringWithFormat:@"支付宝支付-%d元",money]];
-        [[NDPayManager sharedManager] aliPayWithMoney:1];
+        [[NDPayManager sharedManager] aliPayWithMoney:money];
     }else if (self.btnCurrPayType == self.btnSelectPayWechat){
 //        [SVProgressHUD showToast:[NSString stringWithFormat:@"微信支付-%d元",money]];
-        [[NDPayManager sharedManager] weixinPayWithMoney:1];
+        [[NDPayManager sharedManager] weixinPayWithMoney:money];
     }
     
 }

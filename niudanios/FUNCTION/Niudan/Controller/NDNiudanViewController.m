@@ -14,6 +14,7 @@
 #import "NDNiudanSortFilterModel.h"
 #import "NDBaseWebViewController.h"
 #import "NDLoginViewController.h"
+#import "UIScrollView+EmptyDataSet.h"
 typedef NS_ENUM(NSInteger,FilterType) {
     Filter_Nomal = 0,
     Filter_Kind = 1,
@@ -24,7 +25,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
 #define Cell_Width (338.0/750*kScreenWidth)
 #define CELL_Height ((255.0/168)*Cell_Width)
 #define Cell_Spacing (kScreenWidth - 2*Cell_Width)/3.0
-@interface NDNiudanViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource>
+@interface NDNiudanViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic ,assign) FilterType filterType;
 @property (nonatomic ,copy) NSString * kindIdCurr;
@@ -69,7 +70,8 @@ typedef NS_ENUM(NSInteger,FilterType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetDelegate = self;
     [self setUI];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
@@ -535,5 +537,43 @@ typedef NS_ENUM(NSInteger,FilterType) {
     }
     return _arrData;
 }
+
+
+#pragma mark - 空白页
+//空白页显示图片
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIImage imageNamed:@"bg_enpty"];
+}
+//空白页显示标题
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *title = @"这里啥都没有~";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0f],
+                                 NSForegroundColorAttributeName:HEXCOLOR(0x333333)
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
+//空白页显示详细描述
+//- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+//    NSString *text = @"暂时没有已上课程";
+//
+//    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+//    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+//    paragraph.alignment = NSTextAlignmentCenter;
+//
+//    NSDictionary *attributes = @{
+//                                 NSFontAttributeName:[UIFont systemFontOfSize:14.0f],
+//                                 NSForegroundColorAttributeName:[UIColor lightGrayColor],
+//                                 NSParagraphStyleAttributeName:paragraph
+//                                 };
+//
+//    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+//}
+
+//将组件彼此上下分离（默认分隔为11个分
+- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView {
+    return 16.0f;
+}
+
 
 @end

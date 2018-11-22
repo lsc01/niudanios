@@ -23,7 +23,7 @@
     }];
     self.labelNum.text = [NSString stringWithFormat:@"%d",model.machinePrice];
     self.labelName.text = model.machineName;
-    self.labelOther.text = [NSString stringWithFormat:@"%d",model.salesVolume];
+    self.labelOther.text = [NSString stringWithFormat:@"销量:%d",model.salesVolume];
 }
     
 @end
