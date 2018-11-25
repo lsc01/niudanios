@@ -171,6 +171,8 @@
 #define URL_ShareContent HTTP(@"app/expressCost/sharing.mvc")
 ///扭蛋H5页面
 #define URL_h5ToTwisted HTTP(@"h5/toTwisted.mvc")
+///获取二维码扫描后的H5 URL
+#define URL_toAppPay HTTP(@"pay/toAppPay.mvc")
 
 #define ImageUrl(x) ([(x) hasPrefix:@"https"]||[(x) hasPrefix:@"http"])?(x):(HTTP(x))
 #endif /* URLMacros_h */

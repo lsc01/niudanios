@@ -21,6 +21,7 @@
 #import "NDBaseWebViewController.h"
 #import "NDLoginViewController.h"
 #import "DHGuidePageHUD.h"
+#import "AFNetworking.h"
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
@@ -74,15 +75,24 @@
 }
 
 -(void)scanBtnClick{
+    
+    if (![HLLShareManager shareMannager].userModel) {
+        NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+        return;
+    }
+    
+    
     SYQRCodeViewController *QRVC = [SYQRCodeViewController new];
     WeakSelf();
     [QRVC setSYQRCodeSuncessBlock:^(SYQRCodeViewController *vc, NSString *qrString) {
         StrongSelf();
         [strongself.navigationController popViewControllerAnimated:NO];
         NSLog(@"string:%@",qrString);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [strongself postToAppPayH5:qrString];
+        });
         
-        NDGoodsPayViewController * vcpay = [[NDGoodsPayViewController alloc] init];
-        [strongself.navigationController pushViewController:vcpay animated:YES];
     }];
     [QRVC setSYQRCodeFailBlock:^(SYQRCodeViewController *vc) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -91,6 +101,84 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [self.navigationController pushViewController:QRVC animated:YES];
+}
+
+
+-(void)postToAppPayH5:(NSString *)code{
+    if (![code containsString:@"id="]) {
+        [SVProgressHUD showToast:@"请扫描正确二维码"];
+        return;
+    }
+    
+    NSArray * arrTTT = [code componentsSeparatedByString:@"id="];
+    if (arrTTT.count>0) {
+        NSString * Id = arrTTT.lastObject;
+        [SVProgressHUD show];
+        NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+        [dictP setObject:Id forKey:@"id"];
+        [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"userId"];
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSSet *acceptableContentTypes = manager.responseSerializer.acceptableContentTypes;
+        NSMutableSet *mutableContentTypes = [[NSMutableSet alloc] initWithSet:acceptableContentTypes];
+        [mutableContentTypes addObject:@"text/plain"];
+        [mutableContentTypes addObject:@"text/html"];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.responseSerializer.acceptableContentTypes = [[NSSet alloc] initWithSet:mutableContentTypes];
+        // 设置超时时间，写在上面不起作用，要写在[AFHTTPRequestSerializer serializer]后
+        manager.requestSerializer.timeoutInterval = 10.f;
+        
+        [manager.requestSerializer setValue:@"gandong" forHTTPHeaderField:@"niudan"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+        });
+        
+        [manager POST:URL_toAppPay parameters:dictP progress:^(NSProgress * _Nonnull uploadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            });
+            
+            NSData * data = (NSData *)responseObject;
+            NSLog(@"string:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSError * error;
+            NSDictionary * dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            NSLog(@"error:%@",error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                NSInteger code = [dict[@"code"] integerValue];
+                if (code == 0) {
+                    NSArray * arrT = dict[@"rows"];
+                    if (arrT.count>0) {
+                        NSDictionary * dictT = arrT.firstObject;
+                        if ([dictT[@"code"] integerValue] == 0) {
+                            NSString * url = dictT[@"url"];
+                            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+                            webVC.urlString = url;
+                            webVC.title = @"扭蛋";
+                            [self.navigationController pushViewController:webVC animated:YES];
+                        }else{
+                            [SVProgressHUD showToast:dictT[@"msg"]];
+                        }
+                    }
+                }else if (code == 999999){
+                    [SVProgressHUD showToast:@"请求失败"];
+                }
+                
+            });
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showToast:@"网络错误"];
+            });
+        }];
+    }
+    
+    
 }
 
 -(void)setUI{
