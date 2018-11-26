@@ -22,6 +22,7 @@
 #import "NDLoginViewController.h"
 #import "DHGuidePageHUD.h"
 #import "AFNetworking.h"
+#import "NDAccountPayViewController.h"
 @interface NDHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic ,strong) NDHomeHeadView * headView;
@@ -160,7 +161,18 @@
                             webVC.urlString = url;
                             webVC.title = @"扭蛋";
                             [self.navigationController pushViewController:webVC animated:YES];
-                        }else{
+                        }else if ([dictT[@"code"] integerValue] == 3){
+                            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"余额不足" preferredStyle:UIAlertControllerStyleAlert];
+                            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                
+                            }]];
+                            [alert addAction:[UIAlertAction actionWithTitle:@"充值" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                NDAccountPayViewController * payVC = [[NDAccountPayViewController alloc] init];
+                                [self.navigationController pushViewController:payVC animated:YES];
+                            }]];
+                            [self presentViewController:alert animated:YES completion:nil];
+                        } else{
+                            
                             [SVProgressHUD showToast:dictT[@"msg"]];
                         }
                     }

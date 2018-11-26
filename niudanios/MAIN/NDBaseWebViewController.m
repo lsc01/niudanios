@@ -8,6 +8,7 @@
 
 #import "NDBaseWebViewController.h"
 #import <WebKit/WebKit.h>
+#import "NDAccountPayViewController.h"
 @interface NDBaseWebViewController ()<WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate,UIScrollViewDelegate>
 @property (nonatomic,strong)WKWebViewConfiguration *webConfig;
 @property (nonatomic, strong) WKWebView *webView;
@@ -53,9 +54,6 @@
         config.processPool = [[WKProcessPool alloc] init];
         // 通过JS与webview内容交互
         config.userContentController = [[WKUserContentController alloc] init];
-        // 注入JS对象名称AppModel，当JS通过AppModel来调用时，
-        // 我们可以在WKScriptMessageHandler代理中接收到
-//        [config.userContentController addScriptMessageHandler:self name:@"AppModel"];
         
         _webConfig = config;
     }
@@ -79,6 +77,25 @@
     [super viewDidLoad];
     [self FVSetUpSubviews];
     // Do any additional setup after loading the view.
+
+}
+
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    
+    [self.webConfig.userContentController addScriptMessageHandler:self name:@"jsToApp"];
+    
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    [self.webConfig.userContentController removeScriptMessageHandlerForName:@"jsToApp"];
+    
 }
 
 -(void)updateViewConstraints{
@@ -164,9 +181,16 @@
 #pragma mark - WKScriptMessageHandler
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
-    if ([message.name isEqualToString:@"AppModel"]) {
-        if ([message.body[@"body"]isEqualToString:@"qrScanForHouseStore"]) {
-        }
+    if ([message.name isEqualToString:@"jsToApp"]) {
+            UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"余额不足" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"充值" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NDAccountPayViewController * payVC = [[NDAccountPayViewController alloc] init];
+                [self.navigationController pushViewController:payVC animated:YES];
+            }]];
+            [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -290,9 +314,12 @@
 
 - (void)dealloc
 {
-    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    [self.webView removeObserver:self forKeyPath:@"title"];
     [self.webView removeObserver:self forKeyPath:@"loading"];
+    [self.webView removeObserver:self forKeyPath:@"title"];
+    [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
+    self.webView.navigationDelegate = nil;
+    self.webView.UIDelegate = nil;
+    self.webView.scrollView.delegate = nil;
     
 }
 
