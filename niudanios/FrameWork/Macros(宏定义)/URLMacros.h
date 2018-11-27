@@ -170,7 +170,10 @@
 ///分享
 #define URL_ShareContent HTTP(@"app/expressCost/sharing.mvc")
 ///扭蛋H5页面
-#define URL_h5ToTwisted HTTP(@"h5/toTwisted.mvc")
+//#define URL_h5ToTwisted HTTP(@"h5/toTwisted.mvc")
+///请求h5地址
+#define URL_skipH5 HTTP(@"app/gashaponMachine/skipH5.mvc")
+
 ///获取二维码扫描后的H5 URL
 #define URL_toAppPay HTTP(@"pay/toAppPay.mvc")
 

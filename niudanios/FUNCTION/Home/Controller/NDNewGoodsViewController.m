@@ -169,12 +169,32 @@
         return;
     }
     NDGoodsInfoModel * model = self.arrData[indexPath.row];
-    NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-    webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
-    webVC.title = @"扭蛋";
-    [self.navigationController pushViewController:webVC animated:YES];
+    [self postURL_h5ToTwisted:model.Id customerId:[HLLShareManager shareMannager].userModel.Id];
 }
 
+
+-(void)postURL_h5ToTwisted:(NSString *)Id customerId:(NSString *)customerId{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:Id forKey:@"id"];
+    [dictP setObject:customerId forKey:@"customerId"];
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * rows = responseObject[@"rows"];
+        if (rows.count>0) {
+            NSDictionary * dict = rows.firstObject;
+            NSString * url = dict[@"address"];
+            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+            webVC.urlString = url;
+            webVC.title = @"扭蛋";
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"网络错误"];
+    }];
+}
 
 -(UICollectionView *)collectionView{
     if (_collectionView == nil) {

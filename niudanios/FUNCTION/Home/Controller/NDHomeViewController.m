@@ -50,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//     [self setStaticGuidePage];
+    [self setStaticGuidePage];
     [self setNav];
     [self setUI];
 //    [self performSelector:@selector(httpGetInfoRequest) withObject:nil afterDelay:0.5];
@@ -59,7 +59,7 @@
 }
     
 - (void)setStaticGuidePage {
-    NSArray *imageNameArray = @[@"start1.jpg",@"start2.jpeg",@"start3.jpeg",@"start4.jpeg",@"start5.jpg"];
+    NSArray *imageNameArray = @[@"start1.jpg",@"start2.jpg",@"start3.jpg"];
     DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) imageNameArray:imageNameArray buttonIsHidden:NO];
     guidePage.slideInto = YES;
     [self.tabBarController.view addSubview:guidePage];
@@ -299,10 +299,8 @@
                 return;
             }
             NDGoodsInfoModel * model = self.arrHomeNewModel[index];
-            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-            webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
-            webVC.title = @"扭蛋";
-            [strongself.navigationController pushViewController:webVC animated:YES];
+        
+            [strongself postURL_h5ToTwisted:model.Id customerId:[HLLShareManager shareMannager].userModel.Id];
         }];
         return cell;
     }else if (indexPath.section == 1) {
@@ -318,10 +316,8 @@
                 return;
             }
             NDGoodsInfoModel * model = self.arrHomePeopleModel[index];
-            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-            webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
-            webVC.title = @"扭蛋";
-            [strongself.navigationController pushViewController:webVC animated:YES];
+    
+            [strongself postURL_h5ToTwisted:model.Id customerId:[HLLShareManager shareMannager].userModel.Id];
         }];
         return cell;
     }else if (indexPath.section == 2){
@@ -336,6 +332,30 @@
     
 }
 
+-(void)postURL_h5ToTwisted:(NSString *)Id customerId:(NSString *)customerId{
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:Id forKey:@"id"];
+    [dictP setObject:customerId forKey:@"customerId"];
+    [SVProgressHUD show];
+    [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * rows = responseObject[@"rows"];
+        if (rows.count>0) {
+            NSDictionary * dict = rows.firstObject;
+            NSString * url = dict[@"address"];
+            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+            webVC.urlString = url;
+            webVC.title = @"扭蛋";
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"网络错误"];
+    }];
+}
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -347,10 +367,7 @@
         }
         
         NDGoodsInfoModel * model = self.arrHomeLikeModel[indexPath.row];
-        NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
-        webVC.urlString = [NSString stringWithFormat:@"%@?id=%@&customerId=%@",URL_h5ToTwisted,model.Id,[HLLShareManager shareMannager].userModel.Id];
-        webVC.title = @"扭蛋";
-        [self.navigationController pushViewController:webVC animated:YES];
+        [self postURL_h5ToTwisted:model.Id customerId:[HLLShareManager shareMannager].userModel.Id];
     }
 }
 

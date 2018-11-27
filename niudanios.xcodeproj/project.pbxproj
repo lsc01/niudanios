@@ -130,11 +130,6 @@
 		4152E67E218EDF78001C6BE6 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */; };
 		4152E67F218EDF78001C6BE6 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */; };
 		4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4152E67D218EDF78001C6BE6 /* GuideImage.bundle */; };
-		4152E687218EE0C3001C6BE6 /* start1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E682218EE0C3001C6BE6 /* start1.jpg */; };
-		4152E688218EE0C3001C6BE6 /* start2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E683218EE0C3001C6BE6 /* start2.jpeg */; };
-		4152E689218EE0C3001C6BE6 /* start3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E684218EE0C3001C6BE6 /* start3.jpeg */; };
-		4152E68A218EE0C3001C6BE6 /* start4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E685218EE0C3001C6BE6 /* start4.jpeg */; };
-		4152E68B218EE0C3001C6BE6 /* start5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4152E686218EE0C3001C6BE6 /* start5.jpg */; };
 		419F4895215E4DB300F483CA /* NDMineOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */; };
 		419F4898215E5C0A00F483CA /* NDMineEnshrineInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4897215E5C0A00F483CA /* NDMineEnshrineInfoModel.m */; };
 		419F489B215E604200F483CA /* NDNuidanRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F489A215E604200F483CA /* NDNuidanRecordModel.m */; };
@@ -180,6 +175,9 @@
 		41B4AF12212DB6B40008E66B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B4AF11212DB6B40008E66B /* main.m */; };
 		41BFB71B216BB97D00ABA033 /* NDResetPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41BFB719216BB97D00ABA033 /* NDResetPhoneViewController.m */; };
 		41BFB71C216BB97D00ABA033 /* NDResetPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41BFB71A216BB97D00ABA033 /* NDResetPhoneViewController.xib */; };
+		41C29C0421AD94B700700B61 /* start3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41C29C0121AD94B700700B61 /* start3.jpg */; };
+		41C29C0521AD94B700700B61 /* start2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41C29C0221AD94B700700B61 /* start2.jpg */; };
+		41C29C0621AD94B700700B61 /* start1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41C29C0321AD94B700700B61 /* start1.jpg */; };
 		41C6C88A21551FEB00B89DE5 /* NDHomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C6C88921551FEB00B89DE5 /* NDHomeBannerModel.m */; };
 		41C6C88D215528F400B89DE5 /* NDHomeNewMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C6C88C215528F400B89DE5 /* NDHomeNewMessageModel.m */; };
 		41D237332169E8F100FF32F6 /* NDAboutInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 41D237322169E8F100FF32F6 /* NDAboutInfoModel.m */; };
@@ -671,11 +669,6 @@
 		4152E67B218EDF78001C6BE6 /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
 		4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGuidePageHUD.m; sourceTree = "<group>"; };
 		4152E67D218EDF78001C6BE6 /* GuideImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideImage.bundle; sourceTree = "<group>"; };
-		4152E682218EE0C3001C6BE6 /* start1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start1.jpg; sourceTree = "<group>"; };
-		4152E683218EE0C3001C6BE6 /* start2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start2.jpeg; sourceTree = "<group>"; };
-		4152E684218EE0C3001C6BE6 /* start3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start3.jpeg; sourceTree = "<group>"; };
-		4152E685218EE0C3001C6BE6 /* start4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start4.jpeg; sourceTree = "<group>"; };
-		4152E686218EE0C3001C6BE6 /* start5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start5.jpg; sourceTree = "<group>"; };
 		419F4893215E4DB300F483CA /* NDMineOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderInfoModel.h; sourceTree = "<group>"; };
 		419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderInfoModel.m; sourceTree = "<group>"; };
 		419F4896215E5C0A00F483CA /* NDMineEnshrineInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineEnshrineInfoModel.h; sourceTree = "<group>"; };
@@ -749,6 +742,9 @@
 		41BFB718216BB97D00ABA033 /* NDResetPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDResetPhoneViewController.h; sourceTree = "<group>"; };
 		41BFB719216BB97D00ABA033 /* NDResetPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDResetPhoneViewController.m; sourceTree = "<group>"; };
 		41BFB71A216BB97D00ABA033 /* NDResetPhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDResetPhoneViewController.xib; sourceTree = "<group>"; };
+		41C29C0121AD94B700700B61 /* start3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start3.jpg; sourceTree = "<group>"; };
+		41C29C0221AD94B700700B61 /* start2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start2.jpg; sourceTree = "<group>"; };
+		41C29C0321AD94B700700B61 /* start1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start1.jpg; sourceTree = "<group>"; };
 		41C6C88821551FEB00B89DE5 /* NDHomeBannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeBannerModel.h; sourceTree = "<group>"; };
 		41C6C88921551FEB00B89DE5 /* NDHomeBannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDHomeBannerModel.m; sourceTree = "<group>"; };
 		41C6C88B215528F400B89DE5 /* NDHomeNewMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDHomeNewMessageModel.h; sourceTree = "<group>"; };
@@ -1527,11 +1523,9 @@
 		4152E681218EE0C3001C6BE6 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				4152E682218EE0C3001C6BE6 /* start1.jpg */,
-				4152E683218EE0C3001C6BE6 /* start2.jpeg */,
-				4152E684218EE0C3001C6BE6 /* start3.jpeg */,
-				4152E685218EE0C3001C6BE6 /* start4.jpeg */,
-				4152E686218EE0C3001C6BE6 /* start5.jpg */,
+				41C29C0321AD94B700700B61 /* start1.jpg */,
+				41C29C0221AD94B700700B61 /* start2.jpg */,
+				41C29C0121AD94B700700B61 /* start3.jpg */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -3114,7 +3108,6 @@
 				41E341A1212E32E800F19371 /* NDHomeViewController.xib in Resources */,
 				4104486321434C3B00686119 /* NDLogisticsDetailTableViewCell.xib in Resources */,
 				410448042140219300686119 /* NDAboutTableViewCell.xib in Resources */,
-				4152E687218EE0C3001C6BE6 /* start1.jpg in Resources */,
 				41AEAC632136FD41003FE10B /* NDNiudanFilterCell.xib in Resources */,
 				410448222141724800686119 /* NDVerifyOrderHeadView.xib in Resources */,
 				4104485921434B9C00686119 /* NDLogisticsDetailViewController.xib in Resources */,
@@ -3135,18 +3128,18 @@
 				4104484A2141850700686119 /* QRCodebottomLeft@2x.png in Resources */,
 				4147F963214E3FB000ECC253 /* AlipaySDK.bundle in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
+				41C29C0621AD94B700700B61 /* start1.jpg in Resources */,
 				4118EE2B216D079E00D7F774 /* 未完成功能统计.md in Resources */,
 				4104479C213D5D5F00686119 /* NDMyWalletViewController.xib in Resources */,
-				4152E688218EE0C3001C6BE6 /* start2.jpeg in Resources */,
 				410447AB213D757100686119 /* NDAccountPayDeatailVC.xib in Resources */,
 				410447DC213ECEA200686119 /* NDMineDownTableViewCell.xib in Resources */,
 				41AEAC77213BCA1E003FE10B /* NDMIneDataViewController.xib in Resources */,
 				410447EB21400B6B00686119 /* NDNuidanRecordViewController.xib in Resources */,
-				4152E689218EE0C3001C6BE6 /* start3.jpeg in Resources */,
 				41E3419C212E32D700F19371 /* NDLoginViewController.xib in Resources */,
 				41AEAC72213BC566003FE10B /* NDBindPhoneViewController.xib in Resources */,
 				410447FF2140216700686119 /* NDAboutViewController.xib in Resources */,
 				41044818214171F900686119 /* NDVerifyOrderTableViewCell.xib in Resources */,
+				41C29C0421AD94B700700B61 /* start3.jpg in Resources */,
 				4104484B2141850700686119 /* QRCodebottomLeft@3x.png in Resources */,
 				4104488021455B1D00686119 /* BRCity.plist in Resources */,
 				41E341B0212E332700F19371 /* NDMineViewController.xib in Resources */,
@@ -3154,7 +3147,6 @@
 				410448092140258700686119 /* NDMineAddressTableViewCell.xib in Resources */,
 				41AEAC542134538F003FE10B /* NDHomeLikeCell.xib in Resources */,
 				41B4AF0F212DB6B40008E66B /* LaunchScreen.storyboard in Resources */,
-				4152E68A218EE0C3001C6BE6 /* start4.jpeg in Resources */,
 				410447E1213ED29A00686119 /* NDTaskBonusViewController.xib in Resources */,
 				41AEAC4F21345375003FE10B /* NDHomeGoodsCell.xib in Resources */,
 				4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */,
@@ -3173,6 +3165,7 @@
 				4104484F2141850700686119 /* QRCodeLine@3x.png in Resources */,
 				41AEAC8B213BDBC8003FE10B /* NDMineOrderSelectView.xib in Resources */,
 				410447F521401C7400686119 /* NDRecodeTableViewCell.xib in Resources */,
+				41C29C0521AD94B700700B61 /* start2.jpg in Resources */,
 				4104484D2141850700686119 /* QRCodebottomRight@3x.png in Resources */,
 				41E341AB212E331400F19371 /* NDPackageViewController.xib in Resources */,
 				410447F021400BAC00686119 /* NDMineEnshrineViewController.xib in Resources */,
@@ -3184,7 +3177,6 @@
 				410447D7213ECDEE00686119 /* NDMineDownViewController.xib in Resources */,
 				41378AF42132FB0700076ADD /* NDSettingHeaderView.xib in Resources */,
 				41A89D7C21778BA5001E6CAA /* NDGoodsDetailViewController.xib in Resources */,
-				4152E68B218EE0C3001C6BE6 /* start5.jpg in Resources */,
 				41E3446B212EFEEE00F19371 /* MLSelectPhoto.bundle in Resources */,
 				41AEAC81213BCDF0003FE10B /* NDMineDataCell.xib in Resources */,
 				4115BE1C213C161B001AFA49 /* NDMineOrderDetailViewController.xib in Resources */,
