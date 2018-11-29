@@ -18,6 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="90.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cow-ah-E7U">
+                        <rect key="frame" x="268" y="35.5" width="40" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="d5N-Ct-IZG"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="uvp-TI-I59"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7kq-jM-yZu">
                         <rect key="frame" x="12" y="33" width="25" height="25"/>
                         <constraints>
@@ -51,6 +61,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="3II-hb-J90" secondAttribute="trailing" id="6Jo-GV-5Ll"/>
+                    <constraint firstItem="Cow-ah-E7U" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8kz-Qy-hHw"/>
+                    <constraint firstAttribute="trailing" secondItem="Cow-ah-E7U" secondAttribute="trailing" constant="12" id="AGg-5s-f6o"/>
                     <constraint firstAttribute="trailing" secondItem="hhY-yc-fkz" secondAttribute="trailing" constant="12" id="OIu-BJ-hcn"/>
                     <constraint firstItem="IxX-iG-3cL" firstAttribute="leading" secondItem="7kq-jM-yZu" secondAttribute="trailing" constant="12" id="Tid-pU-Tzc"/>
                     <constraint firstAttribute="bottom" secondItem="3II-hb-J90" secondAttribute="bottom" id="hPU-iR-xkg"/>
@@ -66,9 +78,10 @@
                 <outlet property="imageViewHead" destination="7kq-jM-yZu" id="H4g-qf-S51"/>
                 <outlet property="imageViewRight" destination="hhY-yc-fkz" id="C62-LQ-o83"/>
                 <outlet property="labelName" destination="IxX-iG-3cL" id="Vmz-J1-oNq"/>
+                <outlet property="labelRight" destination="Cow-ah-E7U" id="ROn-9U-Kuv"/>
                 <outlet property="viewLine" destination="3II-hb-J90" id="IaJ-Xw-rIr"/>
             </connections>
-            <point key="canvasLocation" x="-552" y="-43"/>
+            <point key="canvasLocation" x="-552" y="-43.5"/>
         </tableViewCell>
     </objects>
     <resources>

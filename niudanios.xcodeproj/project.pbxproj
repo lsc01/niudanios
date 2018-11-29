@@ -3077,7 +3077,7 @@
 				TargetAttributes = {
 					41B4AEFE212DB6B40008E66B = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -3683,8 +3683,8 @@
 			baseConfigurationReference = 02A9B9D301B91C1015EC5A55 /* Pods-niudanios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FUH3LBSK84;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3748,8 +3748,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "adaebf6f-6b12-4178-897a-9a48a9cc782c";
+				PROVISIONING_PROFILE_SPECIFIER = niudaniosTest3_s;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3759,8 +3759,8 @@
 			baseConfigurationReference = B9BCEE4AFDF1560BE4DEA52D /* Pods-niudanios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FUH3LBSK84;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3824,8 +3824,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsc.niudanios2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "adaebf6f-6b12-4178-897a-9a48a9cc782c";
+				PROVISIONING_PROFILE_SPECIFIER = niudaniosTest3_s;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

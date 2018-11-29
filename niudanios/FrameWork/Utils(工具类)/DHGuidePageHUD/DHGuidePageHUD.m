@@ -127,6 +127,8 @@
 }
 
 - (void)removeGuidePageHUD {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isNotFirstLaunch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self removeFromSuperview];
 }
 

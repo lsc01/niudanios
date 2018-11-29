@@ -66,7 +66,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 2;
+    return 3;
     
 }
 
@@ -78,12 +78,18 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         cell.imageViewRight.hidden = YES;
+        cell.labelRight.hidden = YES;
         if (indexPath.row == 0) {
             cell.imageViewHead.image = [UIImage imageNamed:@"ic_arg"];
             cell.labelName.text = @"账号充值";
         }else if (indexPath.row == 1){
             cell.imageViewHead.image = [UIImage imageNamed:@"ic_ads"];
             cell.labelName.text = @"账号明细";
+        }else if (indexPath.row == 2){
+            cell.labelRight.hidden = NO;
+            cell.imageViewHead.image = [UIImage imageNamed:@"ic_integral"];
+            cell.labelName.text = @"我的积分";
+            cell.labelRight.text = @"100";
         }
         
         
@@ -99,9 +105,10 @@
     }else if (indexPath.row == 1){
         NDAccountPayDeatailVC * vc = [[NDAccountPayDeatailVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 2){
+        
     }
 }
-
 
 
 

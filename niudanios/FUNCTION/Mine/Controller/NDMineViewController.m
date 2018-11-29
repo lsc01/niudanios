@@ -22,6 +22,7 @@
 #import "NDAboutViewController.h"
 #import "NDMineAddressViewController.h"
 #import "ShareSdkHeader.h"
+#import "NDBaseWebViewController.h"
 //#import "SAMKeychain.h"
 #define Head_H (kScreenWidth*(360.0/750))
 #define KheadViewH(x) ((x)*(kScreenWidth/375.0))
@@ -303,19 +304,44 @@
                 NDNuidanRecordViewController * vc = [[NDNuidanRecordViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
             }else if(tag == 4){
-                NDTaskBonusViewController * vc = [[NDTaskBonusViewController alloc] init];
-                [strongself.navigationController pushViewController:vc animated:YES];
+//                NDTaskBonusViewController * vc = [[NDTaskBonusViewController alloc] init];
+//                [strongself.navigationController pushViewController:vc animated:YES];
+                [strongself getH5AddressUrlWithUrl:URL_getCouponUrl];
             }else if(tag == 5){
                 NDMineAddressViewController * vc = [[NDMineAddressViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
             }else if(tag == 6){
                 NDMineDownViewController * vc = [[NDMineDownViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
+            }else if(tag == 7){
+                [strongself getH5AddressUrlWithUrl:URL_getFeedbackUrl];
             }
         }];
         return cell;
     }
+}
 
+-(void)getH5AddressUrlWithUrl:(NSString *)postUrl{
+    [SVProgressHUD show];
+    NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
+    [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
+    [HLLHttpManager postWithURL:postUrl params:dictP success:^(NSDictionary *responseObject) {
+        [SVProgressHUD dismiss];
+        NSArray * arrRows = responseObject[@"rows"];
+        if (arrRows.count > 0) {
+            NSDictionary * dict = arrRows.firstObject;
+            NSString * url = dict[@"address"];
+            NSString * title = dict[@"title"];
+            NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+            webVC.urlString = url;
+            webVC.title = title;
+            [self.navigationController pushViewController:webVC animated:YES];
+        }
+        
+    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"网络错误"];
+    }];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

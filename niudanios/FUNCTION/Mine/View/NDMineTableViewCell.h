@@ -14,5 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewRight;
 @property (weak, nonatomic) IBOutlet UIView *viewLine;
+@property (weak, nonatomic) IBOutlet UILabel *labelRight;
 
 @end

@@ -161,6 +161,12 @@
 ///微信充值同步回调
 #define URL_payQuerywx HTTP(@"app/wx/payQuery.mvc")
 
+///获取优惠券的URL
+#define URL_getCouponUrl HTTP(@"app/coupon/couponUrl.mvc")
+
+///获取反馈的URL
+#define URL_getFeedbackUrl HTTP(@"app/feedback/feedbackUrl.mvc")
+
 ///关于我们
 #define URL_cqueryAboutUs HTTP(@"app/expressCost/queryAboutUs.mvc")
 
