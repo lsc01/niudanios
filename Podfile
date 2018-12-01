@@ -30,7 +30,7 @@ pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
 pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
 pod 'mob_sharesdk/ShareSDKPlatforms/WeChatFull'
 
-
+pod 'JPush', '~> 3.0.7'
 # 使用配置文件分享模块（非必需）
 #pod 'mob_sharesdk/ShareSDKConfigFile'
 

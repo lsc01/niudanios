@@ -16,6 +16,9 @@ PODS:
     - AFNetworking/NSURLSession
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (5.0.6)
+  - JCore (1.1.6)
+  - JPush (3.0.7):
+    - JCore (~> 1.1.6)
   - Masonry (1.1.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.15.1)
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - DZNEmptyDataSet (~> 1.8.1)
   - IQKeyboardManager (~> 5.0.6)
+  - JPush (~> 3.0.7)
   - Masonry (~> 1.1.0)
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.15.1)
@@ -68,6 +72,8 @@ SPEC REPOS:
     - AFNetworking
     - DZNEmptyDataSet
     - IQKeyboardManager
+    - JCore
+    - JPush
     - Masonry
     - MJExtension
     - MJRefresh
@@ -83,6 +89,8 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
+  JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
+  JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
@@ -94,6 +102,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: ae3aa9e12704b25816a37007975e090300f949e2
+PODFILE CHECKSUM: fbe94d6ace142c4a6d003e14bf1d494000f19c0d
 
 COCOAPODS: 1.6.0.beta.1
