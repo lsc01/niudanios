@@ -114,6 +114,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
+
+
 #pragma mark- JPUSHRegisterDelegate
 // iOS 12 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
@@ -229,7 +231,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_DidBecomeActive" object:nil];
+    [application setApplicationIconBadgeNumber:0];
+    [JPUSHService resetBadge];
 }
+
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -100,6 +100,7 @@
         }
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
+        [SVProgressHUD showToast:@"登录失败"];
     }];
     
 }

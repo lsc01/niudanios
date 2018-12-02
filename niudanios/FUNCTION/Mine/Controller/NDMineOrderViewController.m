@@ -88,6 +88,7 @@
         if (self.currPage != 1) {
             self.currPage--;
         }
+        [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         [self.tableView reloadData];
     }];

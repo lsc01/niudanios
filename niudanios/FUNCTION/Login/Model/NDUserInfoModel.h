@@ -23,7 +23,7 @@
  parentId    String    上线id
  headPortrait    String    用户头像地址
  code    String    0成功，成功还返回用户信息，1账号密码不匹配，2不可以为空
- 
+ integral 积分
  
  */
 
@@ -34,6 +34,7 @@
 @property (nonatomic ,copy) NSString * loginMobile;
 @property (nonatomic ,copy) NSString * flag;
 @property (nonatomic ,copy) NSString * money;
+@property (nonatomic ,copy) NSString * integral;
 @property (nonatomic ,copy) NSString * nickName;
 @property (nonatomic ,copy) NSString * parentId;
 @property (nonatomic ,copy) NSString * headPortrait;

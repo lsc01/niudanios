@@ -89,7 +89,7 @@
             cell.labelRight.hidden = NO;
             cell.imageViewHead.image = [UIImage imageNamed:@"ic_integral"];
             cell.labelName.text = @"我的积分";
-            cell.labelRight.text = @"100";
+            cell.labelRight.text = [NSString stringWithFormat:@"%@ 分",[HLLShareManager shareMannager].userModel.integral];
         }
         
         

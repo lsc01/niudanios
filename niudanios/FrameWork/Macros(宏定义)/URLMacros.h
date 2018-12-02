@@ -89,10 +89,6 @@
 #pragma mark 快递
 ///查询运费金额
 #define URL_squeryDistinguish HTTP(@"app/expressCost/queryDistinguish.mvc")
-///查询包邮数量
-#define URL_queryPostage HTTP(@"app/expressCost/queryPostage.mvc")//没接
-
-
 
 #pragma mark ----- 我的
 #pragma mark 订单相关

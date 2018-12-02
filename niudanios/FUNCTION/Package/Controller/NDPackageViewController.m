@@ -41,21 +41,7 @@
     self.viewBottomTool.hidden = YES;
     [self setUI];
     [SVProgressHUD show];
-//    [self postQueryPostage];
-}
 
--(void)postQueryPostage{
- 
-    [HLLHttpManager postWithURL:URL_queryPostage params:nil success:^(NSDictionary *responseObject) {
-        NSArray * arrRows = responseObject[@"rows"];
-        if (arrRows.count>0) {
-            NSDictionary * dict = arrRows.firstObject;
-            NSNumber * count = dict[@"number"];
-            self.labelDes.text = [NSString stringWithFormat:@"满%@件包邮",count];
-        }
-    } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
-        
-    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -94,8 +80,10 @@
         }
         
         [SVProgressHUD dismiss];
+        [self.tableView.mj_header endRefreshing];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
+        [self.tableView.mj_header endRefreshing];
     }];
 }
 
@@ -123,9 +111,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
 }
 
-
+-(void)headerRefresh{
+//    [SVProgressHUD show];
+    [self postRequest];
+}
 
 
 - (IBAction)selectAllClick:(UIButton *)sender {

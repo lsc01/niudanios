@@ -213,7 +213,14 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
 }
+-(void)headerRefresh
+{
+//    [SVProgressHUD show];
+    [self postGetAllRequest];
+}
+
 #pragma mark - tableview
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -396,7 +403,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self postGetAllRequest];
+//    [self postGetAllRequest];
     [self.headView startAnimation];
 }
 
@@ -531,10 +538,12 @@
             }
             [self.headView setClcleViewUrlImageArray:arrImages];
             [self.headView setcycVerticalArray:self.arrNewMsgModel];
+            [self.tableView.mj_header endRefreshing];
             [self.tableView reloadData];
         }
         
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
+        [self.tableView.mj_header endRefreshing];
         [SVProgressHUD dismiss];
         [SVProgressHUD showToast:@"加载错误"];
     }];

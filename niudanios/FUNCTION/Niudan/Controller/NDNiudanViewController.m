@@ -90,9 +90,15 @@ typedef NS_ENUM(NSInteger,FilterType) {
             [self.arrData addObject:model];
         }
         [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {
         [SVProgressHUD dismiss];
+        [self.collectionView.mj_header endRefreshing];
     }];
+}
+
+-(void)headerRefresh{
+    [self searchBtnClick:nil];
 }
     
 
@@ -314,10 +320,11 @@ typedef NS_ENUM(NSInteger,FilterType) {
         _collectionView.dataSource = self;//UICollectionViewDataSource
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.bounces = NO;
+//        _collectionView.bounces = NO;
         _collectionView.backgroundColor = [UIColor clearColor];
         //网格视图的cell必须要用注册的方式,头部尾部也需要注册
         [_collectionView registerNib:[UINib nibWithNibName:@"NDNiudanGoodsCell" bundle:nil] forCellWithReuseIdentifier:@"NDNiudanGoodsCell"];
+        _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
     }
     return _collectionView;
 }
@@ -345,6 +352,33 @@ typedef NS_ENUM(NSInteger,FilterType) {
     }
     
     [SVProgressHUD show];
+    
+    NSMutableArray * arrTemp1 = [NSMutableArray array];
+    NSMutableArray * arrTempModel1 = [NSMutableArray array];
+    NDNiudanKindFilterModel * modelTemp1 = [[NDNiudanKindFilterModel alloc] init];
+    modelTemp1.classifyName = @"全部";
+    modelTemp1.flag = @"";
+    modelTemp1.Id = @"";
+    NDNiudanFilterModel * modelTempClass1 = [[NDNiudanFilterModel alloc] init];
+    modelTempClass1.textValue = @"全部";
+    modelTempClass1.textColor = HEXCOLOR(0x222222);
+    [arrTemp1 addObject:modelTempClass1];
+    [arrTempModel1 addObject:modelTemp1];
+    
+    NSMutableArray * arrTemp2 = [NSMutableArray array];
+    NSMutableArray * arrTempModel2 = [NSMutableArray array];
+    NDNiudanPriceFilterModel * modelTemp2 = [[NDNiudanPriceFilterModel alloc] init];
+    modelTemp2.name = @"全部";
+    modelTemp2.flag = @"1";
+    modelTemp2.Id = @"";
+    modelTemp2.maxMoney = 0;
+    modelTemp2.minMoney = 0;
+    NDNiudanFilterModel * modelTempClass2 = [[NDNiudanFilterModel alloc] init];
+    modelTempClass2.textValue = @"全部";
+    modelTempClass2.textColor = HEXCOLOR(0x222222);
+    [arrTemp2 addObject:modelTempClass2];
+    [arrTempModel2 addObject:modelTemp2];
+    
     [HLLHttpManager postWithURL:URL_classifycoalition params:nil success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         [self.view bringSubviewToFront:self.filterView];
@@ -356,8 +390,8 @@ typedef NS_ENUM(NSInteger,FilterType) {
             NSArray * arrListClass = dictT[@"listClass"];
             NSArray * arrListMoneyCompare = dictT[@"listMoneyCompare"];
             self.arrFilterCurr = nil;
-            NSMutableArray * arrTemp1 = [NSMutableArray array];
-            NSMutableArray * arrTempModel1 = [NSMutableArray array];
+//            NSMutableArray * arrTemp1 = [NSMutableArray array];
+//            NSMutableArray * arrTempModel1 = [NSMutableArray array];
             for (NSDictionary * dict in arrListClass) {
                 NDNiudanKindFilterModel * model = [NDNiudanKindFilterModel mj_objectWithKeyValues:dict];
                 if (type == 1) {
@@ -378,8 +412,8 @@ typedef NS_ENUM(NSInteger,FilterType) {
                 self.filterView.arrayModel = arrTemp1;
             }
             
-            NSMutableArray * arrTemp2 = [NSMutableArray array];
-            NSMutableArray * arrTempModel2 = [NSMutableArray array];
+//            NSMutableArray * arrTemp2 = [NSMutableArray array];
+//            NSMutableArray * arrTempModel2 = [NSMutableArray array];
             for (NSDictionary * dict in arrListMoneyCompare) {
                 NDNiudanPriceFilterModel * model = [NDNiudanPriceFilterModel mj_objectWithKeyValues:dict];
                 if (type == 2) {
