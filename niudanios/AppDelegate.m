@@ -13,6 +13,9 @@
 #import "ShareSDKHeader.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "NDPayManager.h"
+#import "NDLoginViewController.h"
+#import "NDBaseWebViewController.h"
+#import "HLLGetCurrentVC.h"
 
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
@@ -22,7 +25,7 @@
 #endif
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
-
+@property (nonatomic ,strong) NDBaseTabBarController * tabVC;
 @end
 
 @implementation AppDelegate
@@ -42,8 +45,8 @@
     [self setJPushwithLaunchingWithOptions:launchOptions];
     [NSURL URLWithString:@"www.baidu.com"];
     
-    NDBaseTabBarController * tab = [[NDBaseTabBarController alloc] init];
-    self.window.rootViewController = tab;
+    _tabVC = [[NDBaseTabBarController alloc] init];
+    self.window.rootViewController = _tabVC;
 
 
     [self.window makeKeyAndVisible];
@@ -115,25 +118,29 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 
 
-
+#ifdef __IPHONE_12_0
 #pragma mark- JPUSHRegisterDelegate
 // iOS 12 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center openSettingsForNotification:(UNNotification *)notification{
     if (notification && [notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //从通知界面直接进入应用
+        NSLog(@"从通知界面直接进入应用");
     }else{
         //从通知设置界面进入应用
+        NSLog(@"从通知设置界面进入应用");
     }
 }
-
+#endif
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     // Required
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
+        NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
     }
-    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有 Badge、Sound、Alert 三种类型可以选择设置
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有 Badge、Sound、Alert 三种类型可以选择设置
 }
 
 // iOS 10 Support
@@ -142,14 +149,25 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
+        NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
+        [self dealWithRemoteNotification:userInfo];
     }
+//    UIAlertView *test = [[UIAlertView alloc] initWithTitle:@"OS10 收到远程通知"
+//                                                   message:@"pushSetting"
+//                                                  delegate:self
+//                                         cancelButtonTitle:@"yes"
+//                                         otherButtonTitles:nil, nil];
+//    [test show];
     completionHandler();  // 系统要求执行这个方法
 }
+#endif
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     // Required, iOS 7 Support
     [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"iOS7及以上系统，收到通知:%@", [self logDic:userInfo]);
+    [self dealWithRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -157,7 +175,56 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     // Required, For systems with less than or equal to iOS 6
     [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"iOS6及以下系统，收到通知:%@", [self logDic:userInfo]);
 }
+
+-(void)dealWithRemoteNotification:(NSDictionary *)userInfo{
+    NSInteger code = [userInfo[@"code"] integerValue];
+    if (![HLLShareManager shareMannager].userModel) {
+        if ([[HLLGetCurrentVC getCurrentVC] isKindOfClass:[NDLoginViewController class]]) {
+            return;
+        }
+        NDLoginViewController * loginVC = [[NDLoginViewController alloc] init];
+        [[HLLGetCurrentVC getCurrentVC].navigationController pushViewController:loginVC animated:YES];
+    }else{
+        if (code == 0) {
+            NSString * addressT = userInfo[@"address"];
+            if (addressT.length>0) {
+                addressT = [NSString stringWithFormat:@"%@&customerId=%@",addressT,[HLLShareManager shareMannager].userModel.Id];
+                NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
+                webVC.urlString = addressT;
+                webVC.title = @"扭蛋";
+                [[HLLGetCurrentVC getCurrentVC].navigationController pushViewController:webVC animated:YES];
+            }
+        }else if (code == 1){
+            [self.tabVC setSelectedIndex:2];
+        }
+    }
+}
+
+
+// log NSSet with UTF8
+// if not ,log will be \Uxxx
+- (NSString *)logDic:(NSDictionary *)dic {
+    if (![dic count]) {
+        return nil;
+    }
+    NSString *tempStr1 =
+    [[dic description] stringByReplacingOccurrencesOfString:@"\\u"
+                                                 withString:@"\\U"];
+    NSString *tempStr2 =
+    [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    NSString *tempStr3 =
+    [[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *str =
+    [NSPropertyListSerialization propertyListFromData:tempData
+                                     mutabilityOption:NSPropertyListImmutable
+                                               format:NULL
+                                     errorDescription:NULL];
+    return str;
+}
+
 
 #pragma mark  - ShareSDKInit
 - (void)ADShareSDKInit {
