@@ -11,11 +11,10 @@
 
 #ifdef DEBUG
 #define NSLog(...) NSLog(__VA_ARGS__)
-#define HLLLog(...) NSLog(__VA_ARGS__)
 
 #else
 #define NSLog(...) 
-#define HLLLog(...)
+
 #endif
 
 //判断是否是iPhoneX

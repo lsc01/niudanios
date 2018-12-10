@@ -299,6 +299,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
             webVC.urlString = url;
             webVC.title = @"扭蛋";
             [self.navigationController pushViewController:webVC animated:YES];
+            [NDPostOtherRequestManager recordBrowseCountWithGashaponId:Id];
         }
         
     } failure:^(NSError *error, NSInteger errCode, NSString *errMsg) {

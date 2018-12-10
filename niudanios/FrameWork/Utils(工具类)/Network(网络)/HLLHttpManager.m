@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger , RequsetType) {
                 success?success(dict):nil;
             }else if (code == 999999){
                 failure?failure(nil,999999,dict[@"errorMsg"]):nil;
-                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",[dict[@"code"] integerValue],dict[@"msg"],url,params);
+                NSLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",[dict[@"code"] integerValue],dict[@"msg"],url,params);
             }
             
         });
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger , RequsetType) {
         });
         dispatch_async(dispatch_get_main_queue(), ^{
             failure?failure(error,0,nil):nil;
-            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
+            NSLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
         });
     }];
 }
@@ -83,14 +83,14 @@ typedef NS_ENUM(NSInteger , RequsetType) {
                 success?success(dict):nil;
             }else if (code == 999999){
                 failure?failure(nil,999999,dict[@"errorMsg"]):nil;
-                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",999999,dict[@"msg"],url,params);
+                NSLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",999999,dict[@"msg"],url,params);
             }
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             failure?failure(error,0,nil):nil;
-            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
+            NSLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
         });
     }];
 }
@@ -120,14 +120,14 @@ typedef NS_ENUM(NSInteger , RequsetType) {
                 success?success(dict):nil;
             }else if (code == 999999){
                 failure?failure(nil,999999,dict[@"errorMsg"]):nil;
-                HLLLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",999999,dict[@"msg"],url,params);
+                NSLog(@"HTTP-请求失败- error:x errCode:%d errMsg:%@\n url:%@ -- params:%@",999999,dict[@"msg"],url,params);
             }
         });
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             failure?failure(error,0,nil):nil;
-            HLLLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
+            NSLog(@"HTTP-请求失败- error:%@  errCode:x errMsg:x\n url:%@ -- params:%@",error,url,params);
         });
     }];
 }

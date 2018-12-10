@@ -130,6 +130,7 @@
 		4152E67E218EDF78001C6BE6 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */; };
 		4152E67F218EDF78001C6BE6 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */; };
 		4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4152E67D218EDF78001C6BE6 /* GuideImage.bundle */; };
+		4158FB5F21BE89FA00FC0E55 /* NDPostOtherRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB5E21BE89FA00FC0E55 /* NDPostOtherRequestManager.m */; };
 		419F4895215E4DB300F483CA /* NDMineOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */; };
 		419F4898215E5C0A00F483CA /* NDMineEnshrineInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4897215E5C0A00F483CA /* NDMineEnshrineInfoModel.m */; };
 		419F489B215E604200F483CA /* NDNuidanRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F489A215E604200F483CA /* NDNuidanRecordModel.m */; };
@@ -670,6 +671,8 @@
 		4152E67B218EDF78001C6BE6 /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
 		4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGuidePageHUD.m; sourceTree = "<group>"; };
 		4152E67D218EDF78001C6BE6 /* GuideImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideImage.bundle; sourceTree = "<group>"; };
+		4158FB5D21BE89FA00FC0E55 /* NDPostOtherRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPostOtherRequestManager.h; sourceTree = "<group>"; };
+		4158FB5E21BE89FA00FC0E55 /* NDPostOtherRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPostOtherRequestManager.m; sourceTree = "<group>"; };
 		419F4893215E4DB300F483CA /* NDMineOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderInfoModel.h; sourceTree = "<group>"; };
 		419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderInfoModel.m; sourceTree = "<group>"; };
 		419F4896215E5C0A00F483CA /* NDMineEnshrineInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineEnshrineInfoModel.h; sourceTree = "<group>"; };
@@ -1582,6 +1585,8 @@
 				41E34195212E303F00F19371 /* NDBaseViewController.m */,
 				4EA81CCD217339BA0026F12C /* NDBaseWebViewController.h */,
 				4EA81CCE217339BA0026F12C /* NDBaseWebViewController.m */,
+				4158FB5D21BE89FA00FC0E55 /* NDPostOtherRequestManager.h */,
+				4158FB5E21BE89FA00FC0E55 /* NDPostOtherRequestManager.m */,
 			);
 			path = MAIN;
 			sourceTree = "<group>";
@@ -3445,6 +3450,7 @@
 				41E34439212EFEED00F19371 /* UIView+Nib.m in Sources */,
 				41FF527D215A8548002BA837 /* NDPackageGoodsModel.m in Sources */,
 				41E34438212EFEED00F19371 /* UIView+GestureCallback.m in Sources */,
+				4158FB5F21BE89FA00FC0E55 /* NDPostOtherRequestManager.m in Sources */,
 				41E343B8212EFEED00F19371 /* NSDictionary+XML.m in Sources */,
 				41E343BC212EFEED00F19371 /* NSObject+AppInfo.m in Sources */,
 				4104479B213D5D5F00686119 /* NDMyWalletViewController.m in Sources */,

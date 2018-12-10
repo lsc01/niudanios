@@ -190,20 +190,20 @@
                 case kCTCellularDataRestrictedStateUnknown:
                     // app网络权限不确定
                     // 各种操作
-                    HLLLog(@"app网络权限不确定");
+                    NSLog(@"app网络权限不确定");
                     switch ([HLLShareManager shareMannager].NetworkStatus) {
                         case AFNetworkReachabilityStatusUnknown:
                         case AFNetworkReachabilityStatusNotReachable:
                         {
                             isAllowComplated?isAllowComplated(NO):nil;
-                            HLLLog(@"app网络权限受限——");
+                            NSLog(@"app网络权限受限——");
                         }
                             break;
                         case AFNetworkReachabilityStatusReachableViaWiFi:
                         case AFNetworkReachabilityStatusReachableViaWWAN:
                         {
                             isAllowComplated?isAllowComplated(YES):nil;
-                            HLLLog(@"app网络权限不受限——");
+                            NSLog(@"app网络权限不受限——");
                         }
                             break;
                             
@@ -221,14 +221,14 @@
                         case AFNetworkReachabilityStatusNotReachable:
                         {
                             isAllowComplated?isAllowComplated(NO):nil;
-                            HLLLog(@"app网络权限受限");
+                            NSLog(@"app网络权限受限");
                         }
                             break;
                         case AFNetworkReachabilityStatusReachableViaWiFi:
                         case AFNetworkReachabilityStatusReachableViaWWAN:
                         {
                             isAllowComplated?isAllowComplated(YES):nil;
-                            HLLLog(@"app只允许使用wifi");
+                            NSLog(@"app只允许使用wifi");
                         }
                             break;
                             
@@ -241,7 +241,7 @@
                     // app网络权限不受限
                     // 各种操作
                     isAllowComplated?isAllowComplated(YES):nil;
-                    HLLLog(@"app网络权限不受限");
+                    NSLog(@"app网络权限不受限");
                     break;
                     
                 default:

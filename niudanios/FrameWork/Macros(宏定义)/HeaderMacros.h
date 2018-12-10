@@ -26,4 +26,6 @@
 #import "HLLShareManager.h"
 #import "HLLVerifyTools.h"
 #import <UIImageView+WebCache.h>
+
+#import "NDPostOtherRequestManager.h"
 #endif /* HeaderMacros_h */

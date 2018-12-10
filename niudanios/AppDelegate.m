@@ -48,7 +48,7 @@
     _tabVC = [[NDBaseTabBarController alloc] init];
     self.window.rootViewController = _tabVC;
 
-
+    [NDPostOtherRequestManager recordAPPLaunchCount];
     [self.window makeKeyAndVisible];
     return YES;
 }

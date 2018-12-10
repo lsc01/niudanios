@@ -179,5 +179,11 @@
 ///获取二维码扫描后的H5 URL
 #define URL_toAppPay HTTP(@"pay/toAppPay.mvc")
 
+///记录用户打开次数
+#define URL_loginRecordAppend HTTP(@"app/loginRecord/append.mvc")
+///浏览接口
+#define URL_browseRecord HTTP(@"/app/browse/record.mvc")
+
+
 #define ImageUrl(x) ([(x) hasPrefix:@"https"]||[(x) hasPrefix:@"http"])?(x):(HTTP(x))
 #endif /* URLMacros_h */

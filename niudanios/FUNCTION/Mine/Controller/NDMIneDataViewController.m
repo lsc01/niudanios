@@ -324,7 +324,7 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
                 }else{
                     
                     [HLLSysAuthorityManager alertWithTitle:@"相机被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相机",[HLLPhoneModel getAPPName]]];
-                    HLLLog(@"不允许相机");
+                    NSLog(@"不允许相机");
                 }
             }];
         }
@@ -332,14 +332,14 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
         case SYS_Authorized:
         {
             [self OpenCamera];
-            HLLLog(@"允许相机");
+            NSLog(@"允许相机");
         }
             break;
         case SYS_Denied:
         {
             
             [HLLSysAuthorityManager alertWithTitle:@"相机被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相机",[HLLPhoneModel getAPPName]]];
-            HLLLog(@"不允许相机");
+            NSLog(@"不允许相机");
         }
             break;
             
@@ -411,7 +411,7 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
                 }else{
                     
                     [HLLSysAuthorityManager alertWithTitle:@"相册被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相册",[HLLPhoneModel getAPPName]]];
-                    HLLLog(@"不允许相册");
+                    NSLog(@"不允许相册");
                 }
             }];
         }
@@ -419,14 +419,14 @@ typedef void(^SelectedPhotos)(NSArray *photoArray);
         case SYS_Authorized:
         {
             [self openPhotoAlbum];
-            HLLLog(@"允许相册");
+            NSLog(@"允许相册");
         }
             break;
         case SYS_Denied:
         {
             
             [HLLSysAuthorityManager alertWithTitle:@"相册被禁用" message:[NSString stringWithFormat:@"请在系统中的“设置”-“%@”中允许访问您的相册",[HLLPhoneModel getAPPName]]];
-            HLLLog(@"不允许相册");
+            NSLog(@"不允许相册");
         }
             break;
             
