@@ -177,6 +177,10 @@
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:Id forKey:@"id"];
     [dictP setObject:customerId forKey:@"customerId"];
+    if ([HLLShareManager shareMannager].currLocationInfo.length>0) {
+        [dictP setObject:[HLLShareManager shareMannager].currLocationInfo forKey:@"GpsName"];
+    }
+    [dictP setObject:[HLLPhoneModel getDiviceTypeName] forKey:@"phoneModel"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

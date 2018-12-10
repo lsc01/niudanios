@@ -16,7 +16,9 @@
 #import "NDLoginViewController.h"
 #import "NDBaseWebViewController.h"
 #import "HLLGetCurrentVC.h"
-
+#import "INTULocationManager.h"
+#import "JZLocationConverter.h"
+#import "HLLSysAuthorityManager.h"
 // 引入 JPush 功能所需头文件
 #import "JPUSHService.h"
 // iOS10 注册 APNs 所需头文件
@@ -26,6 +28,7 @@
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 @property (nonatomic ,strong) NDBaseTabBarController * tabVC;
+@property(nonatomic,strong)CLLocationManager *locationManager;
 @end
 
 @implementation AppDelegate
@@ -43,6 +46,12 @@
     [self AFNetWorkingInit];
     [self ADShareSDKInit];
     [self setJPushwithLaunchingWithOptions:launchOptions];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+
+    
     [NSURL URLWithString:@"www.baidu.com"];
     
     _tabVC = [[NDBaseTabBarController alloc] init];
@@ -300,9 +309,48 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFICATION_DidBecomeActive" object:nil];
     [application setApplicationIconBadgeNumber:0];
     [JPUSHService resetBadge];
+    
+    [self getLocalInfo];
+}
+
+///获取定位信息
+-(void)getLocalInfo{
+    
+    if ([HLLSysAuthorityManager isAllowLocaiton:nil]) {
+            
+        if([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+            
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        
+        [self.locationManager startUpdatingLocation];   //开始定位
+     
+    }
+   
 }
 
 
+/* 定位完成后 回调 */
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+    CLLocation *location = [locations lastObject];
+    
+    CLLocationCoordinate2D coordinate = location.coordinate;
+    //  经纬度
+    NSLog(@"---x:%f---y:%f",coordinate.latitude,coordinate.longitude);
+    [HLLShareManager shareMannager].currLocation = location;
+    [manager stopUpdatingLocation];   //停止定位
+}
+
+/* 定位失败后 回调 */
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    
+    if (error.code == kCLErrorDenied) {
+        // 提示用户出错
+        NSLog(@"定位出错");
+    }
+    [manager stopUpdatingLocation];   //停止定位
+}
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

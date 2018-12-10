@@ -8,6 +8,7 @@
 
 #import "HLLShareManager.h"
 #import "SAMKeychain.h"
+#import "BSELocationTool.h"
 @implementation HLLShareManager
 static HLLShareManager *share = nil;
 +(instancetype)shareMannager
@@ -36,5 +37,18 @@ static HLLShareManager *share = nil;
         return share.userModel;
     }
 }
+
+-(void)setCurrLocation:(CLLocation *)currLocation{
+    _currLocation = currLocation;
+    [BSELocationTool TransCLLocationTo:currLocation City:^(NSString *city) {
+        NSLog(@"city:%@",city);
+    } Location:^(NSString *location) {
+        NSLog(@"location:%@",location);
+        self.currLocationInfo = location;
+    } Coordinate:^(CLLocationCoordinate2D Coordinate) {
+        NSLog(@"Coordinate:lat:%lf,lon:%lf",Coordinate.latitude,Coordinate.longitude);
+    }];
+}
+
 
 @end

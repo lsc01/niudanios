@@ -28,4 +28,5 @@
 #import <UIImageView+WebCache.h>
 
 #import "NDPostOtherRequestManager.h"
+#import "HLLPhoneModel.h"
 #endif /* HeaderMacros_h */

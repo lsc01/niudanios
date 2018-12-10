@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworkReachabilityManager.h>
 #import "NDUserInfoModel.h"
+#import <CoreLocation/CoreLocation.h>
 @interface HLLShareManager : NSObject
 +(instancetype)shareMannager;
 //网络连接状态
@@ -16,4 +17,6 @@
 ///用户信息
 @property (nonatomic ,strong) NDUserInfoModel * userModel;
 
+@property(nonatomic,assign) CLLocation * currLocation;
+@property(nonatomic,copy) NSString * currLocationInfo;
 @end

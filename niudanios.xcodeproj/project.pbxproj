@@ -131,6 +131,12 @@
 		4152E67F218EDF78001C6BE6 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */; };
 		4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4152E67D218EDF78001C6BE6 /* GuideImage.bundle */; };
 		4158FB5F21BE89FA00FC0E55 /* NDPostOtherRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB5E21BE89FA00FC0E55 /* NDPostOtherRequestManager.m */; };
+		4158FB6D21BE965200FC0E55 /* BSELocationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB6221BE965100FC0E55 /* BSELocationTool.m */; };
+		4158FB6E21BE965200FC0E55 /* INTUHeadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB6421BE965100FC0E55 /* INTUHeadingRequest.m */; };
+		4158FB6F21BE965200FC0E55 /* INTULocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB6721BE965100FC0E55 /* INTULocationManager.m */; };
+		4158FB7021BE965200FC0E55 /* INTULocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB6921BE965100FC0E55 /* INTULocationRequest.m */; };
+		4158FB7121BE965200FC0E55 /* INTURequestIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB6C21BE965100FC0E55 /* INTURequestIDGenerator.m */; };
+		4158FB7521BE97FB00FC0E55 /* JZLocationConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4158FB7421BE97FB00FC0E55 /* JZLocationConverter.m */; };
 		419F4895215E4DB300F483CA /* NDMineOrderInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */; };
 		419F4898215E5C0A00F483CA /* NDMineEnshrineInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F4897215E5C0A00F483CA /* NDMineEnshrineInfoModel.m */; };
 		419F489B215E604200F483CA /* NDNuidanRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 419F489A215E604200F483CA /* NDNuidanRecordModel.m */; };
@@ -673,6 +679,20 @@
 		4152E67D218EDF78001C6BE6 /* GuideImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GuideImage.bundle; sourceTree = "<group>"; };
 		4158FB5D21BE89FA00FC0E55 /* NDPostOtherRequestManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPostOtherRequestManager.h; sourceTree = "<group>"; };
 		4158FB5E21BE89FA00FC0E55 /* NDPostOtherRequestManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPostOtherRequestManager.m; sourceTree = "<group>"; };
+		4158FB6121BE965100FC0E55 /* BSELocationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSELocationTool.h; sourceTree = "<group>"; };
+		4158FB6221BE965100FC0E55 /* BSELocationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSELocationTool.m; sourceTree = "<group>"; };
+		4158FB6321BE965100FC0E55 /* INTUHeadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTUHeadingRequest.h; sourceTree = "<group>"; };
+		4158FB6421BE965100FC0E55 /* INTUHeadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTUHeadingRequest.m; sourceTree = "<group>"; };
+		4158FB6521BE965100FC0E55 /* INTULocationManager+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager+Internal.h"; sourceTree = "<group>"; };
+		4158FB6621BE965100FC0E55 /* INTULocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationManager.h; sourceTree = "<group>"; };
+		4158FB6721BE965100FC0E55 /* INTULocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTULocationManager.m; sourceTree = "<group>"; };
+		4158FB6821BE965100FC0E55 /* INTULocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationRequest.h; sourceTree = "<group>"; };
+		4158FB6921BE965100FC0E55 /* INTULocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTULocationRequest.m; sourceTree = "<group>"; };
+		4158FB6A21BE965100FC0E55 /* INTULocationRequestDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTULocationRequestDefines.h; sourceTree = "<group>"; };
+		4158FB6B21BE965100FC0E55 /* INTURequestIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INTURequestIDGenerator.h; sourceTree = "<group>"; };
+		4158FB6C21BE965100FC0E55 /* INTURequestIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INTURequestIDGenerator.m; sourceTree = "<group>"; };
+		4158FB7321BE97FB00FC0E55 /* JZLocationConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JZLocationConverter.h; sourceTree = "<group>"; };
+		4158FB7421BE97FB00FC0E55 /* JZLocationConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JZLocationConverter.m; sourceTree = "<group>"; };
 		419F4893215E4DB300F483CA /* NDMineOrderInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineOrderInfoModel.h; sourceTree = "<group>"; };
 		419F4894215E4DB300F483CA /* NDMineOrderInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDMineOrderInfoModel.m; sourceTree = "<group>"; };
 		419F4896215E5C0A00F483CA /* NDMineEnshrineInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDMineEnshrineInfoModel.h; sourceTree = "<group>"; };
@@ -1534,6 +1554,34 @@
 			path = Image;
 			sourceTree = "<group>";
 		};
+		4158FB6021BE965100FC0E55 /* INTULocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				4158FB6121BE965100FC0E55 /* BSELocationTool.h */,
+				4158FB6221BE965100FC0E55 /* BSELocationTool.m */,
+				4158FB6321BE965100FC0E55 /* INTUHeadingRequest.h */,
+				4158FB6421BE965100FC0E55 /* INTUHeadingRequest.m */,
+				4158FB6521BE965100FC0E55 /* INTULocationManager+Internal.h */,
+				4158FB6621BE965100FC0E55 /* INTULocationManager.h */,
+				4158FB6721BE965100FC0E55 /* INTULocationManager.m */,
+				4158FB6821BE965100FC0E55 /* INTULocationRequest.h */,
+				4158FB6921BE965100FC0E55 /* INTULocationRequest.m */,
+				4158FB6A21BE965100FC0E55 /* INTULocationRequestDefines.h */,
+				4158FB6B21BE965100FC0E55 /* INTURequestIDGenerator.h */,
+				4158FB6C21BE965100FC0E55 /* INTURequestIDGenerator.m */,
+			);
+			path = INTULocationManager;
+			sourceTree = "<group>";
+		};
+		4158FB7221BE97FB00FC0E55 /* JZLocationConverter */ = {
+			isa = PBXGroup;
+			children = (
+				4158FB7321BE97FB00FC0E55 /* JZLocationConverter.h */,
+				4158FB7421BE97FB00FC0E55 /* JZLocationConverter.m */,
+			);
+			path = JZLocationConverter;
+			sourceTree = "<group>";
+		};
 		419F48A2215E754E00F483CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2040,6 +2088,8 @@
 		41E341BA212EFEED00F19371 /* FrameWork */ = {
 			isa = PBXGroup;
 			children = (
+				4158FB7221BE97FB00FC0E55 /* JZLocationConverter */,
+				4158FB6021BE965100FC0E55 /* INTULocationManager */,
 				4147F94E214E3EC100ECC253 /* PayTools */,
 				41E341B1212EFEBF00F19371 /* Macros(宏定义) */,
 				41E341C2212EFEED00F19371 /* Expand(扩展) */,
@@ -3272,6 +3322,7 @@
 				41E343EA212EFEED00F19371 /* UIBezierPath+Symbol.m in Sources */,
 				4104481F2141723800686119 /* NDVerifyOrderViewController.m in Sources */,
 				41AEAC622136FD41003FE10B /* NDNiudanFilterCell.m in Sources */,
+				4158FB7021BE965200FC0E55 /* INTULocationRequest.m in Sources */,
 				41E34471212EFEEE00F19371 /* HLLPhoneModel.m in Sources */,
 				41E3442A212EFEED00F19371 /* UITextField+Blocks.m in Sources */,
 				41E343BD212EFEED00F19371 /* NSObject+AutoCoding.m in Sources */,
@@ -3375,6 +3426,7 @@
 				41E3444B212EFEED00F19371 /* UIWebView+JS.m in Sources */,
 				410448032140219300686119 /* NDAboutTableViewCell.m in Sources */,
 				41378AF82133071B00076ADD /* NDSettingTableViewCell.m in Sources */,
+				4158FB7121BE965200FC0E55 /* INTURequestIDGenerator.m in Sources */,
 				41E3444F212EFEED00F19371 /* UIWebVIew+SwipeGesture.m in Sources */,
 				410447DB213ECEA200686119 /* NDMineDownTableViewCell.m in Sources */,
 				41AEAC85213BD8F4003FE10B /* NDMineOrderViewController.m in Sources */,
@@ -3429,6 +3481,7 @@
 				41E3419B212E32D700F19371 /* NDLoginViewController.m in Sources */,
 				41E34410212EFEED00F19371 /* UIImageView+Addition.m in Sources */,
 				41E343F3212EFEED00F19371 /* UIColor+Gradient.m in Sources */,
+				4158FB6E21BE965200FC0E55 /* INTUHeadingRequest.m in Sources */,
 				41E3445D212EFEEE00F19371 /* MLSelectPhotoPickerGroup.m in Sources */,
 				41E3442B212EFEED00F19371 /* UITextField+History.m in Sources */,
 				41E3445E212EFEEE00F19371 /* MLSelectPhotoBrowserViewController.m in Sources */,
@@ -3455,6 +3508,7 @@
 				41E343BC212EFEED00F19371 /* NSObject+AppInfo.m in Sources */,
 				4104479B213D5D5F00686119 /* NDMyWalletViewController.m in Sources */,
 				41E34425212EFEED00F19371 /* UIScrollView+Pages.m in Sources */,
+				4158FB7521BE97FB00FC0E55 /* JZLocationConverter.m in Sources */,
 				41AEAC5C2136FB6A003FE10B /* NDNiudanFilterView.m in Sources */,
 				41E343DD212EFEED00F19371 /* NSURLConnection+SelfSigned.m in Sources */,
 				41E343B3212EFEED00F19371 /* NSDateFormatter+Make.m in Sources */,
@@ -3507,6 +3561,7 @@
 				419F4898215E5C0A00F483CA /* NDMineEnshrineInfoModel.m in Sources */,
 				410447D1213EC2D800686119 /* CycleVerticalModel.m in Sources */,
 				41AEAC7A213BCBF1003FE10B /* NDMineDataHeaderView.m in Sources */,
+				4158FB6D21BE965200FC0E55 /* BSELocationTool.m in Sources */,
 				410447D6213ECDEE00686119 /* NDMineDownViewController.m in Sources */,
 				41E343EC212EFEED00F19371 /* UIButton+Block.m in Sources */,
 				41E343D2212EFEED00F19371 /* NSString+Ruby.m in Sources */,
@@ -3530,6 +3585,7 @@
 				41E34419212EFEED00F19371 /* UILabel+SuggestSize.m in Sources */,
 				41E343EB212EFEED00F19371 /* UIButton+BackgroundColor.m in Sources */,
 				41E34458212EFEED00F19371 /* UIImage+MLTint.m in Sources */,
+				4158FB6F21BE965200FC0E55 /* INTULocationManager.m in Sources */,
 				41E34467212EFEEE00F19371 /* MLSelectPhotoPickerCollectionView.m in Sources */,
 				41E3440A212EFEED00F19371 /* UIImage+PDF.m in Sources */,
 				410447B7213E09CF00686119 /* NDPackageTableViewCell.m in Sources */,

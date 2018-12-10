@@ -114,7 +114,7 @@
         make.left.top.bottom.right.mas_equalTo(self.view);
     }];
     
-    NSURL *url = [NSURL URLWithString:self.urlString];
+    NSURL *url = [NSURL URLWithString:[self.urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     //    [request addValue:cookieString forHTTPHeaderField:@"Cookie"];
     [self.webView loadRequest:request];
