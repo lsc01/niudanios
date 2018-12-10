@@ -54,7 +54,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>19</string>
+	<string>20</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>sinaweibo</string>
@@ -88,12 +88,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>需要使用相机进行二维码扫描、修改头像时拍摄照片</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>需要使用相册修改头像时选取照片</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>需要使用定位服务以便找到附近扭蛋机，为您提供更好的服务</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>需要使用定位服务以便找到附近扭蛋机，为您提供更好的服务</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>需要使用定位服务以便找到附近扭蛋机，为您提供更好的服务</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要使用相册修改头像时选取照片</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

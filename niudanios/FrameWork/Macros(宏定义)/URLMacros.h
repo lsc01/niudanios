@@ -9,8 +9,7 @@
 #ifndef URLMacros_h
 #define URLMacros_h
 
-//#define BsemURL_PREFIX  @"http://39.108.163.217/niudan/"//正式
-//#define BsemURL_PREFIX  @"http://193.112.218.20/niudan/"//测试
+//#define BsemURL_PREFIX  @"http://49.4.70.94:8660/niudan/"//测试
 #define BsemURL_PREFIX  @"https://www.kandoc.com.cn/"
 
 
