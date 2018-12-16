@@ -13,6 +13,7 @@
 #import "NDMIneDataViewController.h"
 //#import "SAMKeychain.h"
 #import "NDForgetPwdViewController.h"
+#import "JPUSHService.h"
 @interface NDSettingViewController ()<UITableViewDelegate,UITableViewDataSource,NDUpdatePhoneViewControllerDelegate,NDMIneDataViewControllerDelegate>
 @property (nonatomic ,strong) NDSettingHeaderView * headView;
 
@@ -67,6 +68,9 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         [HLLShareManager shareMannager].userModel = nil;
         [self.navigationController popViewControllerAnimated:YES];
+        [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+            
+        } seq:0];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //点击按钮响应事件

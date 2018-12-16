@@ -306,7 +306,7 @@
             }else if(tag == 4){
 //                NDTaskBonusViewController * vc = [[NDTaskBonusViewController alloc] init];
 //                [strongself.navigationController pushViewController:vc animated:YES];
-                [strongself getH5AddressUrlWithUrl:URL_getCouponUrl];
+                [strongself getH5AddressUrlWithUrl:URL_getCouponUrl andTitle:@"优惠券"];
             }else if(tag == 5){
                 NDMineAddressViewController * vc = [[NDMineAddressViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
@@ -314,14 +314,14 @@
                 NDMineDownViewController * vc = [[NDMineDownViewController alloc] init];
                 [strongself.navigationController pushViewController:vc animated:YES];
             }else if(tag == 7){
-                [strongself getH5AddressUrlWithUrl:URL_getFeedbackUrl];
+                [strongself getH5AddressUrlWithUrl:URL_getFeedbackUrl andTitle:@"客服"];
             }
         }];
         return cell;
     }
 }
 
--(void)getH5AddressUrlWithUrl:(NSString *)postUrl{
+-(void)getH5AddressUrlWithUrl:(NSString *)postUrl andTitle:(NSString *)titleP{
     [SVProgressHUD show];
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
@@ -331,7 +331,7 @@
         if (arrRows.count > 0) {
             NSDictionary * dict = arrRows.firstObject;
             NSString * url = dict[@"address"];
-            NSString * title = dict[@"title"];
+            NSString * title = titleP;
             NDBaseWebViewController * webVC = [[NDBaseWebViewController alloc] init];
             webVC.urlString = url;
             webVC.title = title;

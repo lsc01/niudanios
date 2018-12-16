@@ -14,6 +14,7 @@
 //#import "SAMKeychain.h"
 #import "NDBindPhoneViewController.h"
 #import "NDForgetPwdViewController.h"
+#import "JPUSHService.h"
 @interface NDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPhone;
@@ -87,6 +88,11 @@
                 [[NSUserDefaults standardUserDefaults] setObject:data forKey:acdadaddacnuizcnas];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 [HLLShareManager shareMannager].userModel = userModel;
+                if ([HLLShareManager shareMannager].userModel.Id.length>0) {
+                    [JPUSHService setAlias:[HLLShareManager shareMannager].userModel.Id completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+                        
+                    } seq:0];
+                }
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [SVProgressHUD dismiss];
                     [self.navigationController popViewControllerAnimated:YES];

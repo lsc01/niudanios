@@ -111,8 +111,32 @@
     [JPUSHService setupWithOption:launchOptions appKey:@"827287a40715554140146e36"
                           channel:@"App Store"
                  apsForProduction:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(networkDidLogin:)
+                                                 name:kJPFNetworkDidLoginNotification
+                                               object:nil];
     
 }
+/**
+ 
+ 登录成功，设置别名，移除监听
+
+ */
+
+
+-(void)networkDidLogin:(NSNotification *)notification {
+    NSLog(@"已登录");
+    if ([HLLShareManager shareMannager].userModel.Id.length>0) {
+        [JPUSHService setAlias:[HLLShareManager shareMannager].userModel.Id completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+            
+        } seq:0];
+    }
+   
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kJPFNetworkDidLoginNotification
+                                                  object:nil];
+}
+
 
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
