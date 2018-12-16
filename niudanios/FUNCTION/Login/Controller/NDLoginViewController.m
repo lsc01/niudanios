@@ -13,7 +13,7 @@
 #import "NDUserInfoModel.h"
 //#import "SAMKeychain.h"
 #import "NDBindPhoneViewController.h"
-#import "NDForgetPwdViewController.h"
+#import "NDResetPwdViewController.h"
 #import "JPUSHService.h"
 @interface NDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIView *viewInputBg;
@@ -164,7 +164,7 @@
 
 - (IBAction)forgetPwdClick:(UIButton *)sender {
     
-    NDForgetPwdViewController * vc = [[NDForgetPwdViewController alloc] init];
+    NDResetPwdViewController * vc = [[NDResetPwdViewController alloc] init];
 	vc.title = @"重置密码";
     [self.navigationController pushViewController:vc animated:YES];
 }

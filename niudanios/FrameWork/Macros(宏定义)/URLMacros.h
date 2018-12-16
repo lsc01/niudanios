@@ -29,7 +29,7 @@
 ///修改密码
 #define URL_updatePwd HTTP(@"app/customer/updatePwd.mvc")
 ///重置密码
-#define URL_resetPwd HTTP(@"app/customer/resetPwd.mvc")//没接
+#define URL_resetPwd HTTP(@"app/customer/resetPwd.mvc")
 ///修改用户信息
 #define URL_updateCustomerInfo HTTP(@"app/customer/updateCustomerInfo.mvc")
 ///查询用户信息

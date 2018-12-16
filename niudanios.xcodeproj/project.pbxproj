@@ -127,6 +127,8 @@
 		4147F9CB214E40D300ECC253 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F9CA214E40CE00ECC253 /* QuartzCore.framework */; };
 		4147F9CD214E40DF00ECC253 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4147F9CC214E40DA00ECC253 /* CoreText.framework */; };
 		4147F9D0214E43FA00ECC253 /* NDPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4147F9CF214E43FA00ECC253 /* NDPayManager.m */; };
+		4149CA3321C68BC800EADB24 /* NDResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4149CA3121C68BC800EADB24 /* NDResetPwdViewController.m */; };
+		4149CA3421C68BC800EADB24 /* NDResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4149CA3221C68BC800EADB24 /* NDResetPwdViewController.xib */; };
 		4152E67E218EDF78001C6BE6 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */; };
 		4152E67F218EDF78001C6BE6 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152E67C218EDF78001C6BE6 /* DHGuidePageHUD.m */; };
 		4152E680218EDF78001C6BE6 /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4152E67D218EDF78001C6BE6 /* GuideImage.bundle */; };
@@ -672,6 +674,9 @@
 		4147F9CC214E40DA00ECC253 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4147F9CE214E43FA00ECC253 /* NDPayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDPayManager.h; sourceTree = "<group>"; };
 		4147F9CF214E43FA00ECC253 /* NDPayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDPayManager.m; sourceTree = "<group>"; };
+		4149CA3021C68BC800EADB24 /* NDResetPwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDResetPwdViewController.h; sourceTree = "<group>"; };
+		4149CA3121C68BC800EADB24 /* NDResetPwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDResetPwdViewController.m; sourceTree = "<group>"; };
+		4149CA3221C68BC800EADB24 /* NDResetPwdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NDResetPwdViewController.xib; sourceTree = "<group>"; };
 		4152E679218EDF78001C6BE6 /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
 		4152E67A218EDF78001C6BE6 /* DHGifImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGifImageOperation.m; sourceTree = "<group>"; };
 		4152E67B218EDF78001C6BE6 /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
@@ -1678,6 +1683,9 @@
 				41D237342169FBA200FF32F6 /* NDForgetPwdViewController.h */,
 				41D237352169FBA200FF32F6 /* NDForgetPwdViewController.m */,
 				41D237362169FBA200FF32F6 /* NDForgetPwdViewController.xib */,
+				4149CA3021C68BC800EADB24 /* NDResetPwdViewController.h */,
+				4149CA3121C68BC800EADB24 /* NDResetPwdViewController.m */,
+				4149CA3221C68BC800EADB24 /* NDResetPwdViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3192,6 +3200,7 @@
 				410447FA21401C9200686119 /* NDMineEnshrineTableViewCell.xib in Resources */,
 				4104484A2141850700686119 /* QRCodebottomLeft@2x.png in Resources */,
 				4147F963214E3FB000ECC253 /* AlipaySDK.bundle in Resources */,
+				4149CA3421C68BC800EADB24 /* NDResetPwdViewController.xib in Resources */,
 				41378AEF2132F8F500076ADD /* NDSettingViewController.xib in Resources */,
 				41C29C0621AD94B700700B61 /* start1.jpg in Resources */,
 				4118EE2B216D079E00D7F774 /* 未完成功能统计.md in Resources */,
@@ -3346,6 +3355,7 @@
 				41D237372169FBA200FF32F6 /* NDForgetPwdViewController.m in Sources */,
 				41E343E8212EFEED00F19371 /* UIBezierPath+LxThroughPointsBezier.m in Sources */,
 				41E343C5212EFEED00F19371 /* NSString+Base64.m in Sources */,
+				4149CA3321C68BC800EADB24 /* NDResetPwdViewController.m in Sources */,
 				410447B3213D8A6D00686119 /* NDNiudanFilterModel.m in Sources */,
 				41E3441B212EFEED00F19371 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				41E3446E212EFEEE00F19371 /* HLLHttpManager.m in Sources */,
