@@ -34,8 +34,13 @@
         self.labelYunfei.text = @"(快递费0元)";
         self.yunfei = @"0";
     }else{
-        //通过区计算快递费
-        [self calculateYunfeiWithAredId:self.defaultAddrModel.areaId];
+        if (self.arrGoodsModel.count<5) {
+            //通过区计算快递费
+            [self calculateYunfeiWithAredId:self.defaultAddrModel.areaId];
+        }else{
+            self.labelYunfei.text = @"(快递费0元)";
+            self.yunfei = @"0";
+        }
     }
     [self setUI];
     
@@ -147,6 +152,9 @@
         _headView.model = self.defaultAddrModel;
     }
     self.headView.model = self.defaultAddrModel;
+    if (self.arrGoodsModel.count<5) {
+        [self calculateYunfeiWithAredId:model.areaId];
+    }
 }
 
 

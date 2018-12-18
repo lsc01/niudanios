@@ -9,8 +9,8 @@
 #ifndef URLMacros_h
 #define URLMacros_h
 //#define BsemURL_PREFIX  @"http://lijiapengx.xicp.io/niudan/"//个人的
-#define BsemURL_PREFIX  @"http://49.4.70.94:8660/niudan/"//测试
-//#define BsemURL_PREFIX  @"https://www.kandoc.com.cn/"
+//#define BsemURL_PREFIX  @"http://49.4.70.94:8660/niudan/"//测试
+#define BsemURL_PREFIX  @"https://www.kandoc.com.cn/"
 
 
 #define HTTP(x) [BsemURL_PREFIX stringByAppendingString:x]
