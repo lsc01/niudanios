@@ -126,7 +126,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NDMineEnshrineInfoModel * model = self.arrData[indexPath.row];
-    [self postURL_h5ToTwisted:model.Id customerId:[HLLShareManager shareMannager].userModel.Id];
+    [self postURL_h5ToTwisted:model.gmid customerId:[HLLShareManager shareMannager].userModel.Id];
 }
 
 -(void)postURL_h5ToTwisted:(NSString *)Id customerId:(NSString *)customerId{
