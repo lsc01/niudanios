@@ -361,6 +361,8 @@
         [dictP setObject:[HLLShareManager shareMannager].currLocationInfo forKey:@"GpsName"];
     }
     [dictP setObject:[HLLPhoneModel getDiviceTypeName] forKey:@"phoneModel"];
+    BOOL isVoice = [[[NSUserDefaults standardUserDefaults] valueForKey:kVoiceSwitch] isEqualToString:@"Y"];
+    [dictP setObject:@(isVoice) forKey:@"soundSwitch"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
@@ -539,7 +541,7 @@
             
             NSMutableArray * arrImages = [NSMutableArray array];
             for (NDHomeBannerModel * model in self.arrBannerModel) {
-                [arrImages addObject:[model.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                [arrImages addObject:[HTTP(model.imageUrl?:@"") stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             }
             [self.headView setClcleViewUrlImageArray:arrImages];
             [self.headView setcycVerticalArray:self.arrNewMsgModel];

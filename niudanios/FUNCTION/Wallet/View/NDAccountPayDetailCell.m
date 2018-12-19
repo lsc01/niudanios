@@ -32,11 +32,13 @@
         self.labelDes.text = @"任务奖励";
         
     }else if ([model.status integerValue] == 2){
-        self.labelDes.text = @"扭蛋";
-        
-    }else if ([model.status integerValue] == 3){
         self.labelDes.text = @"订单";
         
+    }else if ([model.status integerValue] == 3){
+        self.labelDes.text = @"线上扭蛋";
+        
+    }else if ([model.status integerValue] == 4){
+        self.labelDes.text = @"线下扭蛋";
     }
     self.labelAdd.text = model.version;
     self.labelDay.text = model.createTime;

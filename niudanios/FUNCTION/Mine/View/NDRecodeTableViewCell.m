@@ -27,7 +27,7 @@
     
     self.labelName.text = model.gashaponName;
     self.labelTime.text = model.timeFormat;
-    self.labelPrice.text = [NSString stringWithFormat:@"%@",model.machinePrice];
+    self.labelPrice.text = [NSString stringWithFormat:@"%@",model.gashaponPrice];
     
 }
 

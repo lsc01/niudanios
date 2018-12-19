@@ -13,6 +13,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+}
+- (IBAction)switchVoiceChange:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:sender.isOn?@"Y":@"N" forKey:kVoiceSwitch];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

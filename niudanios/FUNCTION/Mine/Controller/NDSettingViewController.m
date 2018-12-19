@@ -21,6 +21,7 @@
 
 @property(nonatomic,strong)UITableView *tableView;
 
+@property (nonatomic ,assign) BOOL isVoiceSwitch;
 
 @end
 
@@ -35,6 +36,7 @@
 
 
 -(void)setUI{
+    self.isVoiceSwitch = [[[NSUserDefaults standardUserDefaults] objectForKey:kVoiceSwitch] isEqualToString:@"Y"];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStylePlain];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -138,6 +140,7 @@
             cell.labelName.text = @"声音";
             cell.switchVoice.hidden = NO;
             cell.imageViewRight.hidden = YES;
+            cell.switchVoice.on = self.isVoiceSwitch;
         }else if (indexPath.row == 1){
             cell.labelName.text = @"清除缓存";
             cell.viewLine.hidden = YES;

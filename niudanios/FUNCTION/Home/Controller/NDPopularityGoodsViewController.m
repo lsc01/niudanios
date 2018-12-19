@@ -186,6 +186,8 @@
         [dictP setObject:[HLLShareManager shareMannager].currLocationInfo forKey:@"GpsName"];
     }
     [dictP setObject:[HLLPhoneModel getDiviceTypeName] forKey:@"phoneModel"];
+    BOOL isVoice = [[[NSUserDefaults standardUserDefaults] valueForKey:kVoiceSwitch] isEqualToString:@"Y"];
+    [dictP setObject:@(isVoice) forKey:@"soundSwitch"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

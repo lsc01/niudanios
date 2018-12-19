@@ -38,7 +38,7 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+    [self setVoiceConfig];
     [NDPayManager registerWXAppid];
     
     [self IQKeyboardManagerInit];
@@ -61,6 +61,14 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+-(void)setVoiceConfig{
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kVoiceSwitch]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"Y" forKey:kVoiceSwitch];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
 #pragma mark  - KeyBoardInit
 -(void)IQKeyboardManagerInit
 {
@@ -117,6 +125,7 @@
                                                object:nil];
     
 }
+
 /**
  
  登录成功，设置别名，移除监听

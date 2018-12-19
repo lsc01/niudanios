@@ -38,9 +38,14 @@
     NSMutableDictionary * dictP = [NSMutableDictionary dictionary];
     [dictP setObject:[HLLShareManager shareMannager].userModel.Id forKey:@"customerId"];
     if (tag!=0) {
-        [dictP setObject:@(tag-1) forKey:@"status"];
+        if (tag==1) {
+            [dictP setObject:@(0) forKey:@"status"];
+        }else{
+            [dictP setObject:@(tag) forKey:@"status"];
+        }
+        
     }
-    
+    NSLog(@"dicttt:%@",dictP);
     [HLLHttpManager postWithURL:URL_queryConsume params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
         NSArray * arrRows = responseObject[@"rows"];
@@ -103,17 +108,17 @@
     NDNiudanFilterModel * model2 = [[NDNiudanFilterModel alloc] init];
     model2.textValue = @"充值";
     model2.textColor = HEXCOLOR(0x222222);
-    NDNiudanFilterModel * model3 = [[NDNiudanFilterModel alloc] init];
-    model3.textValue = @"扭蛋";
-    model3.textColor = HEXCOLOR(0x222222);
+//    NDNiudanFilterModel * model3 = [[NDNiudanFilterModel alloc] init];
+//    model3.textValue = @"奖励";
+//    model3.textColor = HEXCOLOR(0x222222);
     NDNiudanFilterModel * mode4 = [[NDNiudanFilterModel alloc] init];
-    mode4.textValue = @"奖励";
+    mode4.textValue = @"订单";
     mode4.textColor = HEXCOLOR(0x222222);
     NDNiudanFilterModel * model5 = [[NDNiudanFilterModel alloc] init];
-    model5.textValue = @"订单";
+    model5.textValue = @"扭蛋";
     model5.textColor = HEXCOLOR(0x222222);
     
-    self.filterView.arrayModel = @[model,model2,model3,mode4,model5];
+    self.filterView.arrayModel = @[model,model2,mode4,model5];
 }
 
 

@@ -9,5 +9,6 @@
 #ifndef ThirdInfoMacros_h
 #define ThirdInfoMacros_h
 
+#define kVoiceSwitch @"kVoiceSwitch"
 
 #endif /* ThirdInfoMacros_h */

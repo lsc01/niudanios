@@ -292,6 +292,8 @@ typedef NS_ENUM(NSInteger,FilterType) {
         [dictP setObject:[HLLShareManager shareMannager].currLocationInfo forKey:@"GpsName"];
     }
     [dictP setObject:[HLLPhoneModel getDiviceTypeName] forKey:@"phoneModel"];
+    BOOL isVoice = [[[NSUserDefaults standardUserDefaults] valueForKey:kVoiceSwitch] isEqualToString:@"Y"];
+    [dictP setObject:@(isVoice) forKey:@"soundSwitch"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
@@ -358,19 +360,21 @@ typedef NS_ENUM(NSInteger,FilterType) {
     
     [SVProgressHUD show];
     
-    NSMutableArray * arrTemp1 = [NSMutableArray array];
+    
     NSMutableArray * arrTempModel1 = [NSMutableArray array];
     NDNiudanKindFilterModel * modelTemp1 = [[NDNiudanKindFilterModel alloc] init];
     modelTemp1.classifyName = @"全部";
     modelTemp1.flag = @"";
     modelTemp1.Id = @"";
+    [arrTempModel1 addObject:modelTemp1];
+    NSMutableArray * arrTemp1 = [NSMutableArray array];
     NDNiudanFilterModel * modelTempClass1 = [[NDNiudanFilterModel alloc] init];
     modelTempClass1.textValue = @"全部";
     modelTempClass1.textColor = HEXCOLOR(0x222222);
     [arrTemp1 addObject:modelTempClass1];
-    [arrTempModel1 addObject:modelTemp1];
     
-    NSMutableArray * arrTemp2 = [NSMutableArray array];
+    
+    
     NSMutableArray * arrTempModel2 = [NSMutableArray array];
     NDNiudanPriceFilterModel * modelTemp2 = [[NDNiudanPriceFilterModel alloc] init];
     modelTemp2.name = @"全部";
@@ -378,11 +382,13 @@ typedef NS_ENUM(NSInteger,FilterType) {
     modelTemp2.Id = @"";
     modelTemp2.maxMoney = 0;
     modelTemp2.minMoney = 0;
+    [arrTempModel2 addObject:modelTemp2];
+    NSMutableArray * arrTemp2 = [NSMutableArray array];
     NDNiudanFilterModel * modelTempClass2 = [[NDNiudanFilterModel alloc] init];
     modelTempClass2.textValue = @"全部";
     modelTempClass2.textColor = HEXCOLOR(0x222222);
     [arrTemp2 addObject:modelTempClass2];
-    [arrTempModel2 addObject:modelTemp2];
+    
     
     [HLLHttpManager postWithURL:URL_classifycoalition params:nil success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];
@@ -395,11 +401,17 @@ typedef NS_ENUM(NSInteger,FilterType) {
             NSArray * arrListClass = dictT[@"listClass"];
             NSArray * arrListMoneyCompare = dictT[@"listMoneyCompare"];
             self.arrFilterCurr = nil;
+            if (type == 1) {
+                [self.arrFilterCurr addObject:modelTemp1];
+            }else if (type == 2){
+                [self.arrFilterCurr addObject:modelTemp2];
+            }
 //            NSMutableArray * arrTemp1 = [NSMutableArray array];
 //            NSMutableArray * arrTempModel1 = [NSMutableArray array];
             for (NSDictionary * dict in arrListClass) {
                 NDNiudanKindFilterModel * model = [NDNiudanKindFilterModel mj_objectWithKeyValues:dict];
                 if (type == 1) {
+                    
                     [self.arrFilterCurr addObject:model];
                 }
                  [arrTempModel1 addObject:model];
@@ -422,6 +434,7 @@ typedef NS_ENUM(NSInteger,FilterType) {
             for (NSDictionary * dict in arrListMoneyCompare) {
                 NDNiudanPriceFilterModel * model = [NDNiudanPriceFilterModel mj_objectWithKeyValues:dict];
                 if (type == 2) {
+                    
                     [self.arrFilterCurr addObject:model];
                 }
                 [arrTempModel2 addObject:model];
