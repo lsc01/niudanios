@@ -182,7 +182,7 @@
     }
     [dictP setObject:[HLLPhoneModel getDiviceTypeName] forKey:@"phoneModel"];
     BOOL isVoice = [[[NSUserDefaults standardUserDefaults] valueForKey:kVoiceSwitch] isEqualToString:@"Y"];
-    [dictP setObject:@(isVoice) forKey:@"soundSwitch"];
+    [dictP setObject:isVoice?@"true":@"false" forKey:@"soundSwitch"];
     [SVProgressHUD show];
     [HLLHttpManager postWithURL:URL_skipH5 params:dictP success:^(NSDictionary *responseObject) {
         [SVProgressHUD dismiss];

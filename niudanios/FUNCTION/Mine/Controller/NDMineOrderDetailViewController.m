@@ -112,7 +112,7 @@
  
     cell.labelOrderId.text = self.modelInfo.Id;
     cell.labelGoodsName.text = self.modelInfo.gashaponName;
-    cell.labelMoney.text =[NSString stringWithFormat:@"¥ %d",self.modelInfo.freightMoney];
+    cell.labelMoney.text =[NSString stringWithFormat:@"¥ %@",self.modelInfo.freightMoney];
     
     return cell;
    
