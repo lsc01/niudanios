@@ -9,7 +9,11 @@
 #import "NDBaseWebViewController.h"
 #import <WebKit/WebKit.h>
 #import "NDAccountPayViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 @interface NDBaseWebViewController ()<WKScriptMessageHandler,WKNavigationDelegate,WKUIDelegate,UIScrollViewDelegate>
+{
+    SystemSoundID sound;
+}
 @property (nonatomic,strong)WKWebViewConfiguration *webConfig;
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
@@ -88,6 +92,8 @@
     
     
     [self.webConfig.userContentController addScriptMessageHandler:self name:@"jsToApp"];
+    [self.webConfig.userContentController addScriptMessageHandler:self name:@"jsToStart"];
+    [self.webConfig.userContentController addScriptMessageHandler:self name:@"jsToFinish"];
     
 }
 - (void)viewWillDisappear:(BOOL)animated {
@@ -95,7 +101,13 @@
     [super viewWillDisappear:animated];
     
     [self.webConfig.userContentController removeScriptMessageHandlerForName:@"jsToApp"];
+    [self.webConfig.userContentController removeScriptMessageHandlerForName:@"jsToStart"];
+    [self.webConfig.userContentController removeScriptMessageHandlerForName:@"jsToFinish"];
     
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self stopShakeAction];
 }
 
 -(void)updateViewConstraints{
@@ -191,6 +203,10 @@
                 [self.navigationController pushViewController:payVC animated:YES];
             }]];
             [self presentViewController:alert animated:YES completion:nil];
+    }else if ([message.name isEqualToString:@"jsToStart"]){
+        [self startShakeAction];
+    }else if ([message.name isEqualToString:@"jsToFinish"]){
+        [self stopShakeAction];
     }
 }
 
@@ -322,5 +338,32 @@
     self.webView.scrollView.delegate = nil;
     
 }
+#pragma mark -控制震动
+-(void)stopShakeAction{
+    NSLog(@"stop shake action");
+    //[audioPlayer stop];
+    AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate);
+    [self stopAlertSoundWithSoundID:sound];
+    
+}
+-(void)stopAlertSoundWithSoundID:(SystemSoundID)sound {
+    AudioServicesDisposeSystemSoundID(kSystemSoundID_Vibrate);
+    
+}
+-(void)startShakeAction{
+    NSLog(@"start shake action");
+    
+//    AudioServicesCreateSystemSoundID(NULL,&sound);
+    AudioServicesAddSystemSoundCompletion(kSystemSoundID_Vibrate,NULL,NULL,soundCompleteCallback,NULL);
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//    AudioServicesPlaySystemSound(sound);
+    
+}
+void soundCompleteCallback(SystemSoundID sound, void* clientData) {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);//震动
+//    AudioServicesPlaySystemSound(sound);
+    
+}
+extern OSStatus AudioServicesAddSystemSoundCompletion(SystemSoundID inSystemSoundID,CFRunLoopRef inRunLoop,CFStringRef inRunLoopMode,AudioServicesSystemSoundCompletionProc inCompletionRoutine,void* inClientData)__OSX_AVAILABLE_STARTING(__MAC_10_5,__IPHONE_2_0);
 
 @end
