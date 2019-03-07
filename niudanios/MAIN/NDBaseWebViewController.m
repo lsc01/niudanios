@@ -174,7 +174,7 @@
         // 手动调用JS代码
         // 每次页面完成都会调用
         [self.webView evaluateJavaScript:@"initialise()" completionHandler:^(id _Nullable item, NSError * _Nullable error) {
-            
+            NSLog(@"error:%@",error);
         }];
         _progressTop = -1.0f;
         [self.view setNeedsUpdateConstraints];
